@@ -138,7 +138,7 @@ function MatchHandler() {
                 return;
             }
 
-            obj.element.find(self.gameArea.backSelector).hide();
+            obj.element.find(self.gameArea.frontSelector).hide();
 
             //check if the click was the first click
             if (typeof match == "boolean") {
