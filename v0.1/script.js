@@ -249,7 +249,7 @@ function MatchHandler() {
                         var cards_src = [];
 
                         manualCards.each(function(index, elm){
-                            cards_src.push($(elm).find(self.gameArea.backSelector+' img').attr('src'));
+                            cards_src.push($(elm).find(self.gameArea.frontSelector+' img').attr('src'));
 
                         }).promise().done(function(){
                             jQuery.unique(cards_src);
