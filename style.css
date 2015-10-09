@@ -1,0 +1,43 @@
+.game_menu {
+    background-color: #a2304e;
+    height: 100px;
+}
+
+header img {
+    float: left;
+    margin: 0;
+    padding: 2%;
+    height: 50px;
+    width: 50px;
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+body {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+}
+
+.stats {
+    background-color: whitesmoke;
+    float: left;
+    height: 500px;
+    width: 25%;
+}
+
+.game-area {
+    background-color: #824603;
+    float: left;
+    margin: 5%;
+    height: 50%;
+    width: 50%;
+}
+
+.card {
+    display: inline-block;
+    border: 3px darkred solid;
+}
