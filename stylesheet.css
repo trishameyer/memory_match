@@ -1,0 +1,96 @@
+*{
+    border: 1px solid black;
+}
+body{
+    height:100vh;
+    position:relative;
+    background-image: url("im")
+}
+/*game area*/
+.game-area {
+    position: relative;
+    height: 85%;
+    top: 10%;
+}
+/*game info*/
+.game-area>.col-md-4{
+    position:relative;
+    height:100%;
+}
+
+.container {
+    width: 970px;
+    height: 100%;
+}
+
+.game-area>.col-md-4>.game-info{
+
+    height:100%;
+}
+
+.game-area>.col-md-4>.game-info>.container-fluid{
+    height:100%;
+}
+
+.game-area>.col-md-4>.game-info>.container-fluid>ul{
+
+}
+
+.game-area>.col-md-4>.game-info>.container-fluid>ul>li{
+
+}
+/*game board*/
+.game-area>.col-md-8{
+    height:100%;
+}
+
+.game-area>.col-md-8>.game-board{
+    height: 80%;
+    position: relative;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+}
+
+.game-area>.col-md-8>.game-board>.container-fluid{
+    height:100%;
+}
+
+.game-area>.col-md-8>.game-board>.container-fluid>.row{
+    height:33.33%;
+}
+.game-area>.col-md-8>.game-board>.container-fluid>.row>.col-md-2{
+    height:100%;
+    padding-right: 10px;
+    padding-left: 10px;
+
+}
+/*card*/
+.wrapper {
+    position: relative;
+    height: 96%;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    border-radius: 10%;
+}
+
+img.card-back {
+    width: 100%;
+    height:100%;
+    position: absolute;
+    transition: 2s;
+}
+
+img.card-front {
+    width: 100%;
+    height:100%;
+    position: absolute;
+    transition: 2s;
+    backface-visibility: hidden;
+
+}
+
+.wrapper:hover>img.card-back, .wrapper:hover>img.card-front{
+    transform: rotateY(180deg);
+}
+
+
