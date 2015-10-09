@@ -1,61 +1,81 @@
 /*------------Universal-----------*/
-body{
-    width:100vw;
-    height:100vh;
-    margin:0 auto;
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background-image: url('images/ocean_sunset_beach_nature_landscape_cloud_reflection_rock_hd_4k_ultrahd_wallpaper_2560x1440.jpg');
 }
-/*------------Nav-----------*/
 
+/*------------Nav-----------*/
+.navbar-inverse{
+    opacity:0.7;
+}
 /*------------Sidebar-----------*/
-#sidebar{
-    background-color:#333;
-    color: #9d9d9d
+#sidebar {
+    background-color: #333;
+    color: #9d9d9d;
+    opacity:0.7;
 }
+#sidebar ul li{
+    margin: 5% 2%;
+}
+
 /*------------Game board-----------*/
-.game_area{
-    width:75%;
-    height:75%;
+.game_area {
+    width: 100%;
 }
-table{
-    width:100%;
-    height:auto;
+
+table {
+    width: 90%;
+    height: auto;
+    margin-left:4%;
 }
-td{
-    width:16.66%;
+
+td {
+    width: 16.66%;
 }
-.card_container{
-    width:100%;
-    height:auto;
-    position:relative;
-    margin: 20px 10px;
+
+.card_container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: 20px 0px;
 }
-.card_container > .front{
-    position:relative;
+
+.card_container > .front {
+    position: relative;
     transform: perspective(600px) rotateY(0deg);
-    width:130px; height:210px;
+    width: 100px;
+    height: 150px;
     backface-visibility: hidden;
     transition: transform .5s linear 0s;
-    background:#FC0;
+    background: #FC0;
 }
-.card_container > .back{
-    position:absolute;
+
+.card_container > .back {
+    position: absolute;
     transform: perspective(600px) rotateY(180deg);
-    width:130px; height:210px;
+    width: 100px;
+    height: 150px;
     backface-visibility: hidden;
     transition: transform .5s linear 0s;
     background: #80BFFF;
 }
-.front img{
-    height:100%;
-    width:100%;
+
+.front img {
+    height: 100%;
+    width: 100%;
 }
-.back img{
-    height:100%;
-    width:100%;
+
+.back img {
+    height: 100%;
+    width: 100%;
 }
-.card_container:hover > .front{
+
+.card_container:hover > .front {
     transform: perspective(600px) rotateY(-180deg);
 }
-.card_container:hover > .back{
+
+.card_container:hover > .back {
     transform: perspective(600px) rotateY(0deg);
 }
