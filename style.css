@@ -1,6 +1,23 @@
+@font-face {
+    font-family: metropolian;
+    src: url("Metropolian-Text.ttf");
+}
+
+body {
+    background-image: url("images/background_wallpaper.jpg");
+    height: 100vh;
+    width: 100vw;
+    font-family: metropolian, serif;
+    position: relative;
+}
+
+/* index.html */
+
 .game_menu {
-    background-color: #a2304e;
+    background-color: indigo;
     height: 100px;
+    width: 100%;
+    position: relative;
 }
 
 header img {
@@ -14,30 +31,61 @@ header img {
 ul li {
     list-style: none;
     display: inline-block;
-}
-
-body {
-    background-color: black;
-    height: 100vh;
-    width: 100vw;
+    font-size: 3vw;
 }
 
 .stats {
-    background-color: whitesmoke;
+    background-color: dimgray;
     float: left;
-    height: 500px;
-    width: 25%;
+    height: 480px;
+    width: 20%;
+    position: absolute;
 }
 
-.game-area {
-    background-color: #824603;
+#game-area {
+    background-color: dimgrey;
     float: left;
-    margin: 5%;
+    margin: 4% 0 0 22%;
     height: 50%;
-    width: 50%;
+    width: 900px;
 }
 
 .card {
+    height: 175px;
+    width: 120px;
+    margin: 0;
+    padding: 1%;
     display: inline-block;
-    border: 3px darkred solid;
+    position: relative;
+}
+
+.card img {
+    height: 175px;
+    width: 120px;
+}
+
+.front, .back {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(180deg);
+    transition-duration: 2s;
+}
+
+.card:hover .front {
+    transform: rotateY(0deg);
+    transition-duration: 2s;
+}
+
+/* about.html */
+
+.about {
+    background-color: black;
+    color: white;
 }
