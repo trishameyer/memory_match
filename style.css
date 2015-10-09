@@ -21,7 +21,7 @@ body {
 }
 
 /*------------Game board-----------*/
-.game_area {
+.game-area {
     width: 100%;
 }
 
@@ -35,14 +35,14 @@ td {
     width: 16.66%;
 }
 
-.card_container {
+.card {
     width: 100%;
     height: auto;
     position: relative;
     margin: 20px 0px;
 }
 
-.card_container > .front {
+.card > .front {
     position: relative;
     transform: perspective(600px) rotateY(0deg);
     width: 100px;
@@ -52,7 +52,7 @@ td {
     background: #FC0;
 }
 
-.card_container > .back {
+.card > .back {
     position: absolute;
     transform: perspective(600px) rotateY(180deg);
     width: 100px;
@@ -72,10 +72,10 @@ td {
     width: 100%;
 }
 
-.card_container:hover > .front {
+.card:hover > .front {
     transform: perspective(600px) rotateY(-180deg);
 }
 
-.card_container:hover > .back {
+.card:hover > .back {
     transform: perspective(600px) rotateY(0deg);
 }

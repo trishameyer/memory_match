@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -18,7 +21,7 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">Game Option 1</a></li>
                 <li><a href="#">Game Option 2</a></li>
-                <li><a href="#">Game Option 3</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </div>
     </div>
@@ -26,85 +29,64 @@
 
 <div class="col-md-1" id="sidebar">
     <ul class="nav nav-pills nav-stacked">
-        <li>Score</li>
-        <li>Time</li>
-        <li>Accuracy</li>
+        <li class="games_played">
+            <div class="label">
+                Games Played
+            </div>
+        </li>
+        <li class="attempts">
+            <div class="label">
+                Attempts
+            </div>
+        </li>
+        <li class="accuracy">
+            <div class="label">
+                Accuracy
+            </div>
+        </li>
+        <li>
+            <button type="button" class=".btn-default">
+                Reset
+            </button>
+        </li>
     </ul>
 </div>
 <div class="col-md-11" id="game_board">
-    <div class="game_area">
+    <div class="game-area">
         <table>
             <tr>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
-                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
-                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="card_container">
-                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
-                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card_container">
-                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
-                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card_container">
-                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
-                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card_container">
-                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
-                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card_container">
-                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
-                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
@@ -112,37 +94,75 @@
             </tr>
             <tr>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
                 </td>
                 <td>
-                    <div class="card_container">
+                    <div class="card">
+                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
+                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="card">
+                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
+                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="card">
+                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
+                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="card">
+                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
+                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="card">
+                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
+                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="card">
+                        <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
+                        <div class="front">back<img src="images/cardback-rankedladder.png"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="card">
                         <div class="back">front<img src="images/afp-cute-puppy.jpg"></div>
                         <div class="front">back<img src="images/cardback-rankedladder.png"></div>
                     </div>
