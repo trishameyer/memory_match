@@ -1,0 +1,213 @@
+@font-face
+{
+    font-family: korataki;
+    src: url("assets/fonts/korataki.ttf");
+}
+
+body
+{
+    background-image: url("assets/images/wallpaper02.jpg");
+}
+
+div.page-wrapper
+{
+    border: 1px solid white;
+    position: relative;
+    font-family: korataki;
+    color: white;
+    width: 80vw;
+    height: 98vh;
+    margin: auto auto;
+}
+
+.header
+{
+    /*border: 1px solid red;*/
+    position: absolute;
+    top: 0%;
+    height: 10vh;
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.header>#logo
+{
+    margin-left: 1%;
+    float: left;
+}
+
+.header>#logo>a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.header>#logo>a>h1
+{
+    font-size: 3vw;
+    margin-top: 1%;
+    margin-bottom: 0;
+}
+
+.header>#logo>a>p
+{
+    font-size: 2vw;
+    margin-top: -0.7vw;
+}
+
+.header>#menu
+{
+    text-align: center;
+}
+
+.header>#menu>nav>ul
+{
+    list-style-type: none;
+}
+
+.header>#menu>nav>ul>li
+{
+    display: inline-block;
+    width: 33%;
+}
+
+.header>#menu>nav>ul>li>a
+{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+/* index.html STYLING*/
+.stats-section
+{
+    /*border: 1px solid blue;*/
+    position: absolute;
+    top: 16vh;
+    width: 16vw;
+    height: 60%;
+    overflow: hidden;
+    text-align: center;
+}
+
+#game-area
+{
+    /*border: 1px solid green;*/
+    position: relative;
+    top: 18vh;
+    right: 6.5vw;
+    float: right;
+    width: 52vw;
+    height: 36vw;
+}
+
+div.card
+{
+    position: relative;
+    width: 7.857vw;
+    height: 11vw;
+    display: inline-block;
+    margin: .5vw .4vw;
+    float: left;
+}
+
+div.card>span.back
+{
+    transition-duration: .4s;
+    z-index: 200;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+}
+
+div.card>span.back>img
+{
+    width: inherit;
+    height: inherit;
+}
+
+div.card>span.front
+{
+    transition-duration: .4s;
+    z-index: 100;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    transform-origin: 50% 50%;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+div.card>span.front>img
+{
+    width: inherit;
+    height: inherit;
+}
+
+/*div.card:hover>span.back
+{
+    transition-duration: .8s;
+    z-index: 90;
+    transform-origin: 50% 50%;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+}
+
+div.card:hover>span.front
+{
+    transition-duration: .8s;
+    transform-origin: 50% 50%;
+    transform: rotateY(360deg);
+}*/
+/*END index.html STYLING*/
+
+
+
+/*about.html STYLING*/
+#about-section
+{
+    position: relative;
+    top: 12vh;
+    width: 90%;
+    margin: 0 auto;
+    padding: 2vw;
+    background-color: rgba(3, 95, 145, .5);
+}
+
+#about-section>h2
+{
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#about-section>#designed-by
+{
+    text-align: center;
+}
+
+#about-section>#designed-by>a
+{
+    color: cornflowerblue;
+}
+
+#about-section>#designed-by>a:visited
+{
+    color: cornflowerblue;
+}
+
+#about-section>#designed-by>a>img
+{
+    width: 8vw;
+}
+
+#about-section>#description>h3
+{
+    text-transform: uppercase;
+}
+/*END about.html STYLING*/
+
+
