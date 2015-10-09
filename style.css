@@ -11,7 +11,7 @@ body
 
 div.page-wrapper
 {
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     position: relative;
     font-family: korataki;
     color: white;
@@ -202,6 +202,12 @@ div.card:hover>span.front
 #about-section>#designed-by>a>img
 {
     width: 8vw;
+}
+
+#about-section>#description p,
+#about-section>#description li
+{
+    font-size: 90%;
 }
 
 #about-section>#description>h3
