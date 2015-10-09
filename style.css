@@ -1,0 +1,61 @@
+/*------------Universal-----------*/
+body{
+    width:100vw;
+    height:100vh;
+    margin:0 auto;
+}
+/*------------Nav-----------*/
+
+/*------------Sidebar-----------*/
+#sidebar{
+    background-color:#333;
+    color: #9d9d9d
+}
+/*------------Game board-----------*/
+.game_area{
+    width:75%;
+    height:75%;
+}
+table{
+    width:100%;
+    height:auto;
+}
+td{
+    width:16.66%;
+}
+.card_container{
+    width:100%;
+    height:auto;
+    position:relative;
+    margin: 20px 10px;
+}
+.card_container > .front{
+    position:relative;
+    transform: perspective(600px) rotateY(0deg);
+    width:130px; height:210px;
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+    background:#FC0;
+}
+.card_container > .back{
+    position:absolute;
+    transform: perspective(600px) rotateY(180deg);
+    width:130px; height:210px;
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+    background: #80BFFF;
+}
+.front img{
+    height:100%;
+    width:100%;
+}
+.back img{
+    height:100%;
+    width:100%;
+}
+.card_container:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+}
+.card_container:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+}
