@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="style.css">
     <link href="https://code.jquery.com/jquery-2.1.4.min.js">
     <link href="http://learning-fuze.github.io/memory_match/v0.1/script.js">
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <div class="game_menu">
-        <img src="" alt="game logo">
-        <ul>
-            <li>Settings</li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </div>
-</header>
+<div id="full_page">
 
-<main>
-    <div class="stats">
-        <h1>Stats</h1>
+    <header>
+        <div class="game_menu">
+            <img src="" alt="game logo">
+            <ul>
+                <li>Settings</li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </header>
 
-        <div class="games-played">
-            <p class="label">Games Played</p>
+    <main>
+        <div class="stats">
+            <h1>Stats</h1>
 
-            <div class="value">
+            <div class="games-played">
+                <p class="label">Games Played</p>
+
+                <div class="value">
+                </div>
             </div>
+
+            <div class="attempts">
+                <div class="label">
+                    <p>Attempts</p>
+                </div>
+                <div class="value">
+                </div>
+            </div>
+
+            <div class="accuracy">
+                <div class="label">
+                    <p>Accuracy</p>
+                </div>
+                <div class="value">
+                </div>
+            </div>
+
+            <button class="reset" type="button">Reset Game</button>
+
         </div>
 
-        <div class="attempts">
-            <div class="label">
-                <p>Attempts</p>
-            </div>
-            <div class="value">
-            </div>
-        </div>
-
-        <div class="accuracy">
-            <div class="label">
-                <p>Accuracy</p>
-            </div>
-            <div class="value">
-            </div>
-        </div>
-
-        <button class="reset" type="button">Reset Game</button>
-
-    </div>
-
-    <!-- remove background color of this div later, keep on until cards are how you want them -->
-    <div id="game-area">
-        <div class="card_row1">
+        <!-- remove background color of this div later, keep on until cards are how you want them -->
+        <div id="game-area">
+            <!-- row one -->
             <div class="card">
                 <div class="front"><img src="images/cardfront1.jpg" alt="card"></div>
                 <div class="back"><img src="images/cardback.jpg" alt="card"></div>
@@ -81,9 +83,8 @@
                 <div class="front"><img src="images/cardfront3.jpg" alt="card"></div>
                 <div class="back"><img src="images/cardback.jpg" alt="card"></div>
             </div>
-        </div>
 
-        <div class="card_row2">
+            <!-- row two -->
             <div class="card">
                 <div class="front"><img src="images/cardfront4.jpg" alt="card"></div>
                 <div class="back"><img src="images/cardback.jpg" alt="card"></div>
@@ -113,9 +114,8 @@
                 <div class="front"><img src="images/cardfront6.jpg" alt="card"></div>
                 <div class="back"><img src="images/cardback.jpg" alt="card"></div>
             </div>
-        </div>
 
-        <div class="card_row3">
+            <!-- row three -->
             <div class="card">
                 <div class="front"><img src="images/cardfront7.jpg" alt="card"></div>
                 <div class="back"><img src="images/cardback.jpg" alt="card"></div>
@@ -145,13 +145,17 @@
                 <div class="front"><img src="images/cardfront9.jpg" alt="card"></div>
                 <div class="back"><img src="images/cardback.jpg" alt="card"></div>
             </div>
+
         </div>
-    </div>
-</main>
+    </main>
+
+</div>
 
 <footer>
     <!-- need to create a custom foreground image to go here -->
 </footer>
+
+</div>
 
 </body>
 </html>

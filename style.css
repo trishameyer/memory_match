@@ -7,17 +7,28 @@ body {
     background-image: url("images/background_wallpaper.jpg");
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     font-family: metropolian, serif;
-    position: relative;
 }
 
 /* index.html */
+
+#full_page {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
 
 .game_menu {
     background-color: indigo;
     height: 100px;
     width: 100%;
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 header img {
@@ -28,7 +39,7 @@ header img {
     width: 50px;
 }
 
-ul li {
+.game_menu ul li {
     list-style: none;
     display: inline-block;
     font-size: 3vw;
@@ -69,6 +80,7 @@ ul li {
     backface-visibility: hidden;
 }
 
+/* css animations from the initial card prototype
 .front {
     transform: rotateY(-180deg);
 }
@@ -82,6 +94,7 @@ ul li {
     transform: rotateY(0deg);
     transition-duration: 2s;
 }
+*/
 
 /* about.html */
 
