@@ -1,0 +1,21 @@
+<style>
+img {
+    float: left;
+    height: 50%%;
+    width: 10%;
+    margin-top: 0;
+    padding: 0;
+}
+.container-fluid h1 {
+    text-align: center;
+}
+#sidebar-wrapper {
+    height: 100%;
+    background-color: black;
+    color: aliceblue;
+    width: 10%;
+}
+#content_area {
+    background-color:blue;
+}
+</style>
