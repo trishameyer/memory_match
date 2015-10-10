@@ -19,3 +19,67 @@ img {
     background-color:blue;
 }
 </style>
+
+  .game_area {
+      position: relative;
+      width: 60vw;
+  }
+
+.single_card {
+    height: 16vh;
+    width: 9vw;
+    margin: 1em .5em;
+    padding: 0;
+    /*box-sizing: border-box;
+    border: 1px solid green;*/
+    display: inline-block;
+}
+
+.single_card img {
+    width: 100%;
+    height: 100%;
+}
+
+.front_back {
+    padding: 0;
+    width: 18vw;
+    height: 16vh;
+}
+
+.front_back img {
+    width: 49.9%;
+    height: 100%;
+    display: inline-block;
+    margin: 0;
+    float: left;
+}
+
+.two_faces {
+    position: relative;
+    padding:0;
+    width: 9vw;
+    height: 16vh;
+    margin: 1em .5em;
+    display: inline-block;
+}
+
+.two_faces img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.two_faces:hover > .backcard {
+    transform: rotateY(-180deg) perspective(1000px);
+    transition-duration: 2s;
+    backface-visibility: hidden;
+}
+
+.frontcard {
+    transform: rotateY(180deg);
+}
+
+.two_faces:hover > .frontcard {
+    transform: rotateY(0deg) perspective(1000px);
+    transition-duration: 2s;
+}
