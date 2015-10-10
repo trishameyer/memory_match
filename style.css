@@ -1,0 +1,78 @@
+body {
+    background-image: url("http://i.ytimg.com/vi/uip1tBrRtws/maxresdefault.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+}
+.intro {
+    padding: 5%;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Paytone One', sans-serif;
+}
+.intro h1 {
+    font: 1.5em 'Paytone One', sans-serif;
+}
+nav {
+    float: right;
+}
+.well, .well a {
+    background: transparent;
+    border: 5px solid #000;
+    color: #fff;
+}
+
+.card .front {
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+}
+
+.card .back {
+    position: absolute;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+}
+
+.card:hover > .front {
+    transform: rotateY(0deg);
+}
+
+.card:hover > .back {
+    transform: rotateY(180deg);
+}
+
+.bottom_row {
+    margin-top: 20%;
+}
+.hook{
+    position: absolute;
+    top:-380px;
+    transition-timing-function: ease-in-out;
+}
+
+@keyframes mymove {
+    0%   {left:0px; top:-380px;}
+    50%  {left:0px; top:0px;}
+    100% {left:0px; top:-380px;}
+}
+
+@-webkit-keyframes mymove {
+    0%   {left:0px; top:-380px;}
+    50%  {left:0px; top:0px;}
+    100% {left:0px; top:-380px;}
+}
+
+.hook{
+
+    -webkit-animation: mymove 25s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 25s infinite;
+
+}
+.cards img {
+    width: 120px;
+    height:144px;
+    overflow: hidden;
+
+}
