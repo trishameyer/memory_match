@@ -20,10 +20,10 @@ img {
 }
 </style>*/
 
-  .game-area {
+.game-area {
       position: relative;
       width: 60vw;
-  }
+}
 
 .single_card {
     height: 16vh;
@@ -54,7 +54,7 @@ img {
     float: left;
 }
 
-.two_faces {
+.card {
     position: relative;
     padding:0;
     width: 9vw;
@@ -63,8 +63,25 @@ img {
     display: inline-block;
 }
 
-.two_faces img {
+.front {
     position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+.front img {
+    width: 100%;
+    height: 100%;
+}
+
+.back img{
     width: 100%;
     height: 100%;
 }
