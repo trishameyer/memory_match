@@ -20,7 +20,7 @@ img {
 }
 </style>*/
 
-  .game_area {
+  .game-area {
       position: relative;
       width: 60vw;
   }
@@ -69,6 +69,7 @@ img {
     height: 100%;
 }
 
+/*
 .two_faces:hover > .backcard {
     transform: rotateY(-180deg) perspective(1000px);
     transition-duration: 2s;
@@ -83,3 +84,4 @@ img {
     transform: rotateY(0deg) perspective(1000px);
     transition-duration: 2s;
 }
+*/
