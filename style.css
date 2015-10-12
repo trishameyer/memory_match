@@ -23,13 +23,12 @@ body {
 /*------------Game board-----------*/
 #game-area {
     width: 100%;
-    display:inline-block;
 }
 
 .card {
-    width: 100%;
-    height: auto;
-    margin: 20px 0px;
+    width: 8%;
+    height: 150px;
+    margin: 20px;
     display:inline-block;
     position:relative;
 }
@@ -47,15 +46,9 @@ body {
     width: 100px;
     height: 150px;
 }
-
-.front img {
-    height: 100%;
-    width: 100%;
-}
-
-.back img {
-    height: 100%;
-    width: 100%;
+img{
+    height:100%;
+    width:100%;
 }
 
 /*.card:hover > .front {
