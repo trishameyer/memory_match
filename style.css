@@ -19,10 +19,28 @@ img {
     background-color:blue;
 }
 </style>*/
+.jumbotron img {
+    height: 123px;
+    width: 104px;
+}
 
-.game-area {
+.jumbotron h1 {
+    display: inline-block;
+}
+#wrapper {
+    height: 50vh;
+    width: 17%%;
+    background-color: black;
+    color: aliceblue;
+    position: absolute;
+    top: 24vh;
+
+}
+#game-area {
       position: relative;
       width: 60vw;
+      display: inline-block;
+      margin-left: 26%;
 }
 
 .single_card {
