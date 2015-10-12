@@ -21,29 +21,19 @@ body {
 }
 
 /*------------Game board-----------*/
-.game-area {
+#game-area {
     width: 100%;
-}
-
-table {
-    width: 90%;
-    height: auto;
-    margin-left:4%;
-}
-
-td {
-    width: 16.66%;
+    display:inline-block;
 }
 
 .card {
     width: 100%;
     height: auto;
-    position: relative;
     margin: 20px 0px;
 }
 
-.card > .front {
-    position: relative;
+.front {
+    position: absolute;
     transform: perspective(600px) rotateY(0deg);
     width: 100px;
     height: 150px;
@@ -52,8 +42,8 @@ td {
     background: #FC0;
 }
 
-.card > .back {
-    position: absolute;
+.back {
+    position: relative;
     transform: perspective(600px) rotateY(180deg);
     width: 100px;
     height: 150px;
