@@ -23,6 +23,8 @@ body {
 /*------------Game board-----------*/
 #game-area {
     width: 100%;
+    position:relative;
+    left: 2%;
 }
 
 .card {
