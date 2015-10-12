@@ -30,26 +30,22 @@ body {
     width: 100%;
     height: auto;
     margin: 20px 0px;
+    display:inline-block;
+    position:relative;
 }
 
 .front {
     position: absolute;
-    transform: perspective(600px) rotateY(0deg);
+    z-index: 1;
     width: 100px;
     height: 150px;
-    backface-visibility: hidden;
-    transition: transform .5s linear 0s;
-    background: #FC0;
 }
 
 .back {
-    position: relative;
-    transform: perspective(600px) rotateY(180deg);
+    position: absolute;
+    z-index: 2;
     width: 100px;
     height: 150px;
-    backface-visibility: hidden;
-    transition: transform .5s linear 0s;
-    background: #80BFFF;
 }
 
 .front img {
@@ -62,10 +58,11 @@ body {
     width: 100%;
 }
 
-.card:hover > .front {
+/*.card:hover > .front {
     transform: perspective(600px) rotateY(-180deg);
 }
 
-.card:hover > .back {
+#.card:hover > .back {
     transform: perspective(600px) rotateY(0deg);
 }
+*/
