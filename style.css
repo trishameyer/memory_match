@@ -25,9 +25,10 @@ div.page-wrapper
     /*border: 1px solid red;*/
     position: absolute;
     top: 0%;
-    height: 10vh;
+    height: 11vh;
     width: 100%;
-    overflow: hidden;
+    z-index: 200;
+    /*overflow: hidden;*/
     display: inline-block;
 }
 
@@ -139,7 +140,9 @@ div.card>span.front
     height: inherit;
     transform-origin: 50% 50%;
     transform: rotateY(180deg);
-    backface-visibility: hidden;
+
+    /* Used when using the rotation animation. */
+    /*backface-visibility: hidden;*/
 }
 
 div.card>span.front>img
@@ -148,6 +151,7 @@ div.card>span.front>img
     height: inherit;
 }
 
+/* Rotation animation */
 /*div.card:hover>span.back
 {
     transition-duration: .8s;
@@ -172,11 +176,19 @@ div.card:hover>span.front
 {
     position: relative;
     top: 12vh;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding: 2vw;
     background-color: rgba(3, 95, 145, .5);
 }
+
+#about-section p,
+#about-section li,
+#about-section a
+{
+    font-size: 90%;
+}
+
 
 #about-section>h2
 {
@@ -202,12 +214,6 @@ div.card:hover>span.front
 #about-section>#designed-by>a>img
 {
     width: 8vw;
-}
-
-#about-section>#description p,
-#about-section>#description li
-{
-    font-size: 90%;
 }
 
 #about-section>#description>h3
