@@ -16,7 +16,7 @@ div.page-wrapper
     font-family: korataki;
     color: white;
     width: 80vw;
-    height: 98vh;
+    /*height: 98vh;*/
     margin: auto auto;
 }
 
