@@ -9,6 +9,8 @@ body{
     text-shadow: 0 1px 2px #f9ceb1;
 }
 
+
+
 .navbar-inverse .navbar-toggle .icon-bar {
     background-color: #f91002;
     text-shadow: 0 1px 1px #f9ceb1;
@@ -66,15 +68,16 @@ body{
 .btn:hover{
     background: linear-gradient(#00d95d 50%, #009746);
 }
-.wrapper{
+.card{
     height: 12em;
     width: 100%;
     position: relative;
     margin: 7% 0;
     perspective: 300px;
+    max-width: 160px;
 }
 
-.card-front, .card-back{
+.front, .back{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -83,13 +86,13 @@ body{
 
 }
 
-.card-front{
+.front{
     backface-visibility: hidden;
 }
 
-.wrapper:hover>.card-front, .wrapper:hover >.card-back{
-    transform: rotateY(180deg);
-}
+.card.clicked >.front, .card.clicked >.back{
+     transform: rotateY(180deg);
+ }
 
 .game-board .row >.col-xs-4, .game-board .row>.col-sm-3{
     padding-right: 7px;
@@ -102,7 +105,7 @@ body{
 @media screen and (min-width: 992px){
     .game-info ul li  {
         display: inline-block;
-        font-size: 3vw;
+        font-size: 2.6vw;
     }
 
     .game-board .row >.col-xs-4, .game-board .row>.col-sm-3 {
@@ -111,7 +114,7 @@ body{
     }
 
     .game-info ul li, .game-info .btn{
-        margin: 16% 0;
+        margin: 12% 0;
     }
 }
 
