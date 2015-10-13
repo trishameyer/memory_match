@@ -1,63 +1,1 @@
-$(function(){
-    newGame();
-});
-
-function newGame(){
-    $('.card').click(function(e) {
-        $(this).addClass('clicked');  //on click rotate 180deg
-    }
-}
-
-
-
-var randomBoard = shuffle('$imgArray');//variables to keep track of
-var $funding = $('#funding>.value');
-var $accuracy = $('#accuracy>.value');
-var $round = $('#round>.value');
-var srcOfFlipped = [];
-var currentFlipped = 0; //you'll add one to this value when a card is flipped
-var TotalFlipped = 0; //total ammount of cards flipped on the game board, there's 18 so once total = 18..
-
-
-
-
-
-
-//array of images (back);
-var $imgArray = $('.back');
-
-//array of images(the function below makes this into the source array;
-var srcArray = [];
-
-//array of sourses function
-$imgArray.each(function(){
-    srcArray.push($(this).attr('src'));
-});
-
-console.log(srcArray);
-
-
-//shuffle function
-function shuffle(array){
-    var i = array.length;
-    var rand;
-    var temp;
-    while(--i>0){
-        rand = Math.floor(Math.random()*(i+1));
-        temp = array[i];
-        array[i] = array[rand];
-        array[rand] = temp;
-    }
-    return array;
-}
-//shuffle the game board below..
-
-
-
-
-
-
-
-
-
-
+$(function(){    flipCard();});//function for a new game, randomize cards,function newGame() {    var $randGameboard = shuffle(srcArray); //make a new array of randomized src attributes    for (var i = 0; i < $randGameboard.length; i++){        var curSrc = $randGameboard[i]; //store the current index value of random array in a variable        //$imgArray is a jquery object that references an html node list.. when you index this.. it'll pul the value... make that value a jquery object        $($imgArray[i]).attr('src', curSrc);//make the index value a jquery object and change it's attr value to the random src index i    }}//variables to keep track ofvar $funding = $('#funding').next().html();var $accuracy = $('#accuracy').next();var $round = $('#round').next();var srcOfFlipped = []; //you'll add one to this value when a card is flippedvar TotalFlipped = 0; //total ammount of cards flipped on the game board, there's 18 so once total = 18..function flipCard() {    if (srcOfFlipped.length < 1) { //if there's no cards flipped        $('.card').click(function (e) { //on click            var srcClicked = $(this).find('img:first').attr('src');//current clicked card grab the src, push into srcOfFlipped array                $(this).addClass('clicked'); // add the css class to rotate current card back and front                srcOfFlipped.push(srcClicked);//push flipped back image attr into array            console.log(srcOfFlipped);        });    }    else if(srcOfFlipped.length === 1){        $('.card').click(function (e) { //on click            if ( !== srcOfFlipped[0]) {                $(this).addClass('clicked'); // add the css class to rotate current card back and front                var srcClicked = $(this).find('img:first').attr('src');//current clicked card grab the src, push into srcOfFlipped array                srcOfFlipped.push(srcClicked);//push flipped back image attr into array                console.log(srcOfFlipped);            }        });    }}//array of images (back);var $imgArray = $('.back');//array of images(the function below makes this into the source array;var srcArray = [];//for each index value in the array of images ('.back'), push the attr 'src' into a new array. ^^$imgArray.each(function(){    srcArray.push($(this).attr('src'));});//shuffle functionfunction shuffle(array){    var i = array.length;    var rand;    var temp;    while(--i>0){        rand = Math.floor(Math.random()*(i+1));        temp = array[i];        array[i] = array[rand];        array[rand] = temp;    }    return array;}//shuffle the game board below..
