@@ -19,6 +19,13 @@ body {
 nav {
     float: right;
 }
+
+ul li a {
+    text-decoration: none;
+    font-size: 2em;
+    color: purple;
+
+}
 .well, .well a {
     background: transparent;
     border: 5px solid #000;
@@ -86,16 +93,17 @@ nav {
 .sharkTail {
     width:60px;
     position: absolute;
-    top: 313px;
+    top: 317px;
     margin-left: 1334px;
-    transition-duration: infinite;
-    animation: tail_fin 10s infinite;
+    animation: tail_fin 1s infinite;
+    animation-delay: 11s;
+    visibility: hidden;
 
 }
 
 
 @keyframes tail_fin {
-    0%{transform: rotateY(0deg);}
+    0%{visibility: visible;}
     50%{transform: rotateY(35deg);}
     100%{transform: rotateY(0deg);}
 
@@ -112,7 +120,7 @@ nav {
     90% {width:300px; margin-left:1160px; top:300px; }
     100% {width:300px; margin-left:1100px; top:300px; }
 }
-
+/*
 @keyframes tail {
     0%   {width: 30px; left:0px; top:10px;}
     45% {width: 30px; margin-left:800px; top: 100px;}
@@ -123,7 +131,7 @@ nav {
     90% {width:60px; margin-left:1260px; top:300px; }
     100% {width:60px; margin-left:1330px; top:320px; }
 }
-
+*/
 @keyframes bubble {
     0%   {left:0px; bottom:0px;}
     100% {left:0px; bottom: 1200px;}
@@ -134,10 +142,61 @@ nav {
     height:144px;
     overflow: hidden;
 }
-
+.about_bubble{
+    width:120px;
+    opacity: .8;
+    margin-top:35%;
+}
 .about_pic {
     width: 600px;
-    margin: 10% 20%;
-    opacity: .9;
+    margin: 0 20%;
+    opacity: .8;
+}
 
+.bubbles {
+    opacity:.5;
+    position:absolute;
+    bottom:0px;
+    margin-left:1200px;
+    animation: bubble 65s infinite;
+}
+.big_bubble {
+    width:30px;
+}
+
+.md_bubble {
+    width:20px;
+}
+.sm_bubble{
+    width:15px;
+}
+.bubble1{
+    margin-left:1200px;
+}
+.bubble2{
+    margin-left:180px;
+}
+.bubble3{
+    margin-left:260px;
+}
+.bubble4{
+    margin-left:1100px;
+}
+.bubble5{
+    margin-left:580px;
+}
+.bubble6{
+    margin-left:660px;
+}
+.bubble7{
+    margin-left:270px;
+}
+.bubble8{
+    margin-left:710px;
+}
+.bubble9{
+    margin-left:1080px;
+}
+.bubble10{
+    margin-left:860px;
 }
