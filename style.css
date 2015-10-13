@@ -1,23 +1,28 @@
 body {
   margin: 0;
+  background: url("images/mm_bg1.png") no-repeat;
+  background-size: 100% 100%;
 }
 header {
   width: 100vw;
-  height: 20vh;
-  background-color: #125c30;
+  height: 15vh;
+  /*background-color: #125c30;*/
 }
 .stats {
   width: 20vw;
   height: 80vh;
   display: inline-block;
-  background-color: #479968;
+  /*background-color: #479968;*/
 }
-.game-area {
-  width: 78vw;
-  height: 80vh;
+#game-area {
+  width: 60vw;
+  height: 75vh;
   display: inline-block;
-  background-color: #6db78b;
-  float: right;
+  /*background-color: #6db78b;*/
+  border: 1px solid white;
+  position: relative;
+  left: 10%;
+  top: 0;
 }
 
 #logo {
@@ -66,11 +71,13 @@ header {
   margin: 30px auto;
 }
 
+
 .card {
-  width: 16%;
-  height: 33%;
+  width: 12%;
+  height: 28%;
   display: inline-block;
   position: relative;
+  margin: 1% 2%;
   transform-style: preserve-3d;
   perspective: 800px;
   transition: transform 1.5s;
@@ -81,11 +88,19 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
+  #backface-visibility: hidden;
 }
 .front {
-  transform: rotateY(180deg);
+  #transform: rotateY(180deg);
 }
 .card:hover {
-  transform: rotateY(180deg);
+  #transform: rotateY(180deg);
+}
+
+/* about.html styling */
+.mypic img {
+  border-radius: 50px;
+}
+.about_back {
+  background-color: lightgreen;
 }
