@@ -1,0 +1,63 @@
+/*------------Universal-----------*/
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background-image: url('images/ocean_sunset_beach_nature_landscape_cloud_reflection_rock_hd_4k_ultrahd_wallpaper_2560x1440.jpg');
+}
+
+/*------------Nav-----------*/
+.navbar-inverse{
+    opacity:0.7;
+}
+/*------------Sidebar-----------*/
+#sidebar {
+    background-color: #333;
+    color: #9d9d9d;
+    opacity:0.7;
+}
+#sidebar ul li{
+    margin: 5% 2%;
+}
+
+/*------------Game board-----------*/
+#game-area {
+    width: 100%;
+    position:relative;
+    left: 2%;
+}
+
+.card {
+    width: 8%;
+    height: 150px;
+    margin: 20px;
+    display:inline-block;
+    position:relative;
+}
+
+.front {
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 150px;
+}
+
+.back {
+    position: absolute;
+    z-index: 2;
+    width: 100px;
+    height: 150px;
+}
+img{
+    height:100%;
+    width:100%;
+}
+
+/*.card:hover > .front {
+    transform: perspective(600px) rotateY(-180deg);
+}
+
+#.card:hover > .back {
+    transform: perspective(600px) rotateY(0deg);
+}
+*/
