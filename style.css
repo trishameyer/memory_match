@@ -1,0 +1,181 @@
+@font-face {
+    font-family: metropolian;
+    src: url("Metropolian-Text.ttf");
+}
+
+body {
+    background-color: black;
+    height: 950px;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: metropolian, serif;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover, li a:hover {
+    color: dimgray;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+/* index.html */
+
+#full_page {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url("images/background_wallpaper.jpg");
+}
+
+.game_menu {
+    background-color: indigo;
+    line-height: 80px;
+    height: 80px;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+header img {
+    float: left;
+    margin: 0;
+    padding: 1%;
+    height: 50px;
+    width: 50px;
+}
+
+.game_menu ul {
+    margin: 0;
+    text-align: center;
+    padding: 0;
+}
+
+.game_menu ul li {
+    list-style: none;
+    display: inline-block;
+    font-size: 3vw;
+    padding-left: 35px;
+}
+
+main {
+    position: absolute;
+}
+
+.stats {
+    background-color: dimgray;
+    float: left;
+    height: 400px;
+    width: 200px;
+    position: absolute;
+    padding: 1%;
+}
+
+
+
+#game-area {
+    float: left;
+    margin: 0;
+    height: 60%;
+    width: 1200px;
+    position: relative;
+    top: 25px;
+    left: 225px;
+    text-align: center;
+}
+
+.card {
+    height: 195px;
+    width: 140px;
+    margin: 1%;
+    padding: 1%;
+    display: inline-block;
+    position: relative;
+    background-image: url("images/card_frame.png");
+    background-size: 100% 100%;
+}
+
+.card img {
+    height: inherit;
+    width: inherit;
+    position: absolute;
+}
+
+.front img, .back img {
+    height: 154px;
+    width: 108px;
+    top: 21px;
+    left: 16px;
+}
+
+.front, .back {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+#foreground {
+    height: 50px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    background: url("images/wood_tile.jpg") repeat-x;
+}
+
+#left_lady {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+}
+
+/* css animations from the initial card prototype
+.front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(180deg);
+    transition-duration: 2s;
+}
+
+.card:hover .front {
+    transform: rotateY(0deg);
+    transition-duration: 2s;
+}
+ */
+
+/* about.html */
+
+.about_wrapper {
+    margin: 2%;
+    padding: 2%;
+    background-image: url(images/background_wallpaper.jpg);
+}
+
+.about {
+    text-align: center;
+    background-color: indigo;
+    color: white;
+    height: 90%;
+    width: 90%;
+    padding: 1%;
+    margin: auto;
+    line-height: 25px;
+}
+
+.about ul {
+    padding: 0;
+}
+
+.about li {
+    list-style: none;
+}
