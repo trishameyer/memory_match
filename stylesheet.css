@@ -22,7 +22,6 @@ body{
 
 .navbar-inverse .navbar-nav>li>a {
     color:#f91002;
-
 }
 .game-area{
     min-height: 100vh;
@@ -40,13 +39,17 @@ body{
 .game-info ul li{
     display: inline-block;
     font-size: 4.2vw;
-    color: #f91002;
-    text-shadow: 0 1px 4px #009746;
+    color: #FFE3E1;
+}
+
+.game-info ul li.value {
+    color: white;
+    text-shadow: 0 0 14px rgb(249, 16, 2);
 }
 
 .game-info .container-fluid{
     position: relative;
-    background-color: rgba(0, 0, 0, 0.39);
+    background-color: rgba(0, 0, 0, 0.74);
     border-radius: 5%;
     border: 1px solid #00d95d;
 }
@@ -83,6 +86,7 @@ body{
     position: absolute;
     transition: .5s;
     border-radius: 5%;
+    border: 3px solid green;
 
 }
 
