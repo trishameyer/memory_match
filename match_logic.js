@@ -21,12 +21,14 @@ function cardClicked()
     {
         first_card_clicked = $(this);
         rotateCard(first_card_clicked);
+        makeCardUnclickable(first_card_clicked);
     }
     else
     if (second_card_clicked == null)    // NO
     {
         second_card_clicked = $(this);
         rotateCard(second_card_clicked);
+        makeCardUnclickable(second_card_clicked);
         if (checkCardsMatch())
         {
             if(++match_counter == total_card_matches)
@@ -43,7 +45,14 @@ function cardClicked()
             // which otherwise would be trying to rotate null cards.
             var temp_one = first_card_clicked;
             var temp_two = second_card_clicked;
-            setTimeout(function(){rotatePair(temp_one, temp_two);}, 2000);
+            setTimeout(
+                function()
+                {
+                    makeCardClickable(temp_one);
+                    makeCardClickable(temp_two);
+                    rotatePair(temp_one, temp_two);
+                },
+                2000);
         }
         resetClickedCards();
     }
@@ -66,6 +75,16 @@ function checkCardsMatch()
         return true;
 
     return false;
+}
+
+function makeCardUnclickable($card)
+{
+    $card.off('click');
+}
+
+function makeCardClickable($card)
+{
+    $card.on('click', cardClicked);
 }
 
 function rotatePair(first, second)
@@ -97,5 +116,6 @@ function resetGame()
     $("div.card>span").removeClass("rotate-card-hide");
     $("div.card>span").removeClass("rotate-card-show");
     $("div#game-area>p").remove();
+    $("div#game-area>div.card").click(cardClicked);
     console.log("resetGame called!!!");
 }
