@@ -8,18 +8,45 @@ $(document).ready(function () {
     $(".back").click(card_clicked);
 
     function card_clicked() {
+        $(this).addClass("selected_card");
         $(this).hide();
 
         if (first_card_clicked == null) {
             first_card_clicked = $(this).prev().find("img").attr("src");
-            console.log(first_card_clicked);
             return first_card_clicked;
         }
 
         else {
             second_card_clicked = $(this).prev().find("img").attr("src");
             console.log(second_card_clicked);
-            return second_card_clicked;
+
+            if (first_card_clicked == second_card_clicked) {
+                match_counter = match_counter + 1;
+                first_card_clicked = null;
+                second_card_clicked = null;
+                console.log(first_card_clicked);
+                console.log(second_card_clicked);
+                console.log(match_counter);
+
+                if (match_counter == total_possible_matches) {
+                    alert("You won! It's working! Yay!");
+                }
+            }
+
+            else {
+                $(".back").unbind();
+                setTimeout(function () {
+                    $(".selected_card").show();
+                    first_card_clicked = null;
+                    second_card_clicked = null;
+                    console.log(first_card_clicked);
+                    console.log(second_card_clicked);
+                    console.log(match_counter);
+                    $(".back").removeClass("selected_card").click(card_clicked);
+                }, 2000);
+
+            }
+
         }
 
     };

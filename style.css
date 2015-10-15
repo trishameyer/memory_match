@@ -137,6 +137,10 @@ main {
     left: 30px;
 }
 
+.selected_card {
+
+}
+
 /* css animations from the initial card prototype
 .front {
     transform: rotateY(-180deg);
