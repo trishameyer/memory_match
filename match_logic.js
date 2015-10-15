@@ -1,7 +1,9 @@
 var first_card_clicked = null;
 var second_card_clicked = null;
 var match_counter = 0;
+var card_pair_flipped = false;
 var total_card_matches = 9;
+
 
 $(document).ready(function()
 {
@@ -16,6 +18,21 @@ function cardClicked()
 {
     console.log("A card was clicked!!!");
 
+    if (card_pair_flipped)
+    {
+        // Do a shaking animation
+        $(this).addClass("anim-shake");
+        var temp_card = $(this);
+        setTimeout(
+            function()
+            {
+                temp_card.removeClass("anim-shake");
+            },
+            650);
+
+        return;
+    }
+
     // Flowchart - first_card_clicked is null?
     if (first_card_clicked == null)     // YES
     {
@@ -29,8 +46,11 @@ function cardClicked()
         second_card_clicked = $(this);
         rotateCard(second_card_clicked);
         makeCardUnclickable(second_card_clicked);
+        card_pair_flipped = true;
+
         if (checkCardsMatch())
         {
+            card_pair_flipped = false;
             if(++match_counter == total_card_matches)
             {
                 // YOU WON!
@@ -48,6 +68,7 @@ function cardClicked()
             setTimeout(
                 function()
                 {
+                    card_pair_flipped = false;
                     makeCardClickable(temp_one);
                     makeCardClickable(temp_two);
                     rotatePair(temp_one, temp_two);
@@ -109,13 +130,22 @@ function winGame()
 
 function resetGame()
 {
+    // Reset the global variables
     first_card_clicked = null;
     second_card_clicked = null;
     match_counter = 0;
+
+    // Make the cards visible and showing their back faces
     $("div.card").removeClass("make-disappear");
     $("div.card>span").removeClass("rotate-card-hide");
     $("div.card>span").removeClass("rotate-card-show");
+
+    // Remove the winning message
     $("div#game-area>p").remove();
+
+    // Make all the cards clickable.
     $("div#game-area>div.card").click(cardClicked);
+    card_pair_flipped = false;
+
     console.log("resetGame called!!!");
 }
