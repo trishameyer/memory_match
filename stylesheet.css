@@ -9,6 +9,11 @@ body{
     text-shadow: 0 1px 2px #f9ceb1;
 }
 
+#sickNavbar>ul>li:first-child {
+    position: relative;
+    transform: translateY(13%);
+
+}
 
 
 .navbar-inverse .navbar-toggle .icon-bar {
@@ -127,5 +132,11 @@ body{
 @media screen and (max-width: 547px){
     .game-area{
         padding-top: 20%;
+    }
+    #sickNavbar>ul>li:first-child {
+        position: relative;
+        transform: translateY(7%);
+        margin-left: 2.5%;
+        margin-bottom: 1%;
     }
 }
