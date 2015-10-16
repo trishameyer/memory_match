@@ -109,10 +109,11 @@ header {
   top: 0;
   left: 0;
   width: 100vw;
+  height: 100vh;
 }
 
 
-/* About.html styling */
+/*** About.html styling ***/
 #page_about {
   padding: 50px;
 }
