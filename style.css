@@ -5,6 +5,7 @@
 
 body {
     background-color: black;
+    color: ghostwhite;
     height: 950px;
     width: 100vw;
     margin: 0;
@@ -13,7 +14,7 @@ body {
 }
 
 a:link {
-    color: black;
+    color: ghostwhite;
     text-decoration: none;
 }
 
@@ -22,7 +23,7 @@ a:hover, li a:hover {
 }
 
 a:visited {
-    color: black;
+    color: ghostwhite;
     text-decoration: none;
 }
 
@@ -34,13 +35,14 @@ a:visited {
     padding: 0;
     height: 100%;
     width: 100%;
-    background-image: url("images/background_wallpaper.jpg");
+    background-image: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0)), url("images/background_wallpaper.jpg");
 }
 
 .game_menu {
-    background-color: indigo;
+    background: url("images/curtain_top_mirror.png") no-repeat, url("images/curtain_top_mirror2.png") repeat-x, linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    background-size: contain, contain;
     line-height: 80px;
-    height: 80px;
+    height: 188px;
     width: 100%;
     position: relative;
     margin: 0;
@@ -57,7 +59,6 @@ header img {
 
 .game_menu ul {
     margin: 0;
-    text-align: center;
     padding: 0;
 }
 
@@ -73,15 +74,14 @@ main {
 }
 
 .stats {
-    background-color: dimgray;
+    background-image: url("images/curtain_left.png");
+    background-size: 100%;
     float: left;
-    height: 400px;
+    height: 480px;
     width: 200px;
     position: absolute;
     padding: 1%;
 }
-
-
 
 #game-area {
     float: left;
@@ -103,6 +103,7 @@ main {
     position: relative;
     background-image: url("images/card_frame.png");
     background-size: 100% 100%;
+
 }
 
 .card img {
@@ -123,12 +124,21 @@ main {
     backface-visibility: hidden;
 }
 
+.front {
+
+}
+
+.back {
+    opacity: 1;
+}
+
 #foreground {
     height: 50px;
     width: 100vw;
     position: absolute;
     bottom: 0;
-    background: url("images/wood_tile.jpg") repeat-x;
+    background: url("images/wood_tile.jpg") repeat-x, linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0));
+
 }
 
 #left_lady {
@@ -141,21 +151,15 @@ main {
 
 }
 
-/* css animations from the initial card prototype
-.front {
-    transform: rotateY(-180deg);
+/*card animations*/
+.back_effect {
+    opacity: 0.5;
 }
 
-.card:hover .back {
-    transform: rotateY(180deg);
+.front_effect {
+    opacity: 1;
     transition-duration: 2s;
 }
-
-.card:hover .front {
-    transform: rotateY(0deg);
-    transition-duration: 2s;
-}
- */
 
 /* about.html */
 

@@ -9,6 +9,7 @@ $(document).ready(function () {
 
     function card_clicked() {
         $(this).addClass("selected_card");
+        $(this).addClass("back_effect");
         $(this).hide();
 
         if (first_card_clicked == null) {
