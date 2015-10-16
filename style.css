@@ -35,6 +35,7 @@ a:visited {
     height: 950px;
     width: 100%;
     background-image: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0)), url("images/background_wallpaper.jpg");
+    text-shadow: 1px 1px 8px ghostwhite;
 }
 
 .game_menu {
@@ -96,8 +97,7 @@ main {
 .reset:hover {
     background-color: rgba(255,255,255,0.2);
     border-color: rgba(255,255,255,0.4)
-    transition: background-color 0.3s ease-in,
-    border-color 0.3s ease-in;
+    transition: background-color 0.3s ease-in, border-color 0.3s ease-in;
 }
 
 #game-area {
@@ -120,7 +120,6 @@ main {
     position: relative;
     background-image: url("images/card_frame.png");
     background-size: 100% 100%;
-
 }
 
 .card img {
@@ -181,17 +180,9 @@ main {
 
 /* about.html */
 
-/*
-.about_wrapper {
-    height: 500px;
-    width: 100%;
-    margin: 0;
-    padding: 1%;
-    background-image: url(images/background_wallpaper.jpg);
-} */
-
 #about_page {
     background: black url("images/curtain_top_mirror2.png") top left repeat-x;
+    text-shadow: 1px 1px 8px ghostwhite;
 }
 
 .about {
