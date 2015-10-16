@@ -1,25 +1,31 @@
 # Memory Match - Version 0.5 (v0.5)
 
 #### Overview
+
 > Version 0.5 is where we combine the basic JS skills we learned through the presentations & prototypes and apply it towards the v0.1 HTML structure. We will be adding the basic functionality to match cards as they are clicked and determine if the game is won by the user.
 
 > For this version we will be breaking down the programmatic flow and explaining the decisions that the program has to make to fully understand how the user is interacting. As we move further into the program we will be showing less and less of the flow and expect a certain level of understanding of logical flow. The diagram below should help you follow along with the bullet points.
 
 > **Related Videos**
-> - Insert Links Here
+> - <a href="https://plus.google.com/u/0/events/cn2ca07j9v8nt5kdd1olqe3ljrc?authkey=CNK97_OZ4ee8ag">Video - JS Functions</a>
+> - <a href="https://plus.google.com/u/0/hangouts/onair/watch?hid=hoaevent%2Fc4a35jk6e468buf0fpua0em74dc&ytl=_2QMZLre2Iw&hl=en">Video - JS Comparisons and Conditionals</a>
+
+> **Related Reading**
+> - <a href="https://drive.google.com/open?id=0B7eOl4joefDuR2FKZTVvN0lQQ00">READING - JS Comparisons & Conditionals</a>
+> - <a href="https://drive.google.com/open?id=0B7eOl4joefDuRHNPU0xXNUNIRGs">READING - JS Functions</a>
 
 > **Related Prototypes**
-> - Insert Links Here
+> - <a href="https://github.com/Learning-Fuze/prototypes/tree/master/js_comparisons_conditionals">PROTOTYPE - JS Comparisons & Conditionals</a>
+> - <a href="https://github.com/Learning-Fuze/prototypes/tree/master/js_functions">PROTOTYPE - JS Functions</a>
 
 #### Getting Started
 
 > - If you haven't already started the v0.1 start there - <a href="https://github.com/Learning-Fuze/memory_match/tree/v0.1#getting-started">View Details Here</a>
 > - Are you on your master branch?
-    - **Yes** - continue to "Pull Latest Changes"
+    - **Yes** - continue with next step
     - **I dont know** Run the command below
-        - `git branch` - this will highlight the branch you are currently on
-    - **No** - Make sure you `git add .` and `git commit` to your current branch before you switch to your master branch
-> - Pull Latest Changes    
+        - `git branch` - this will highlight the branch you are currenlty on
+    - **No** - Make sure you add and commit to your branch you are on then switch to your master branch
         - `git checkout master`
         - `git pull origin master` - **Now continue with the next steps**
 > - Create a feature branch
@@ -78,4 +84,4 @@
 >                       - reset both card_clicked
 >                       - variables to null
 >                       - click handler functionality is complete, return
-> <img src="https://docs.google.com/drawings/d/1JT0nsiTg3HXG2L3QFPnfAmPoQDWUCRNKDvl2qr1r9xo/pub?w=960&h=720" width="750"/>
+> <img src="https://docs.google.com/drawings/d/10lvQqhaFnmwiGuQN5ZzMT78Imh09afJs8kegHZBvddk/pub?w=960&h=720" width="750"/>
