@@ -58,6 +58,11 @@ body{
     border-radius: 5%;
     border: 1px solid #00d95d;
 }
+
+.game-info>.container-fluid li {
+    max-height: 31px;
+}
+
 .btn {
     border: 5px outset rgb(240, 236, 236);
     border-radius: 7px;
@@ -122,8 +127,11 @@ body{
         padding-left: .5%;
     }
 
-    .game-info ul li, .game-info .btn{
-        margin: 12% 0;
+}
+
+@media screen and (min-width: 840px){
+    .game-info ul div:last-child>li:first-child{
+        margin-left: -1%;
     }
 }
 
@@ -138,5 +146,9 @@ body{
         transform: translateY(7%);
         margin-left: 2.5%;
         margin-bottom: 1%;
+    }
+
+    .game-info>.container-fluid>ul>div:last-child {
+        padding: 0px 10px;
     }
 }
