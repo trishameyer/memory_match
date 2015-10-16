@@ -48,18 +48,23 @@ function cardClicked()
         makeCardUnclickable(second_card_clicked);
         card_pair_flipped = true;
 
-        if (checkCardsMatch())
+        // Flowchart - first_card_clicked is equal to second_card_clicked
+        if (checkCardsMatch())      // YES
         {
+            // Allow other cards to be flipped
             card_pair_flipped = false;
+
+            // Flowchart - increment match counter and
+            // Are all cards matched?
             if(++match_counter == total_card_matches)
             {
-                // YOU WON!
+                // Flowchart - Display to the user that they have won
                 console.log("YOU WON!!!!");
                 winGame();
                 return;
             }
         }
-        else
+        else                        // NO
         {
             // Need to cache the clicked cards due to the setTimeout,
             // which otherwise would be trying to rotate null cards.
@@ -75,11 +80,15 @@ function cardClicked()
                 },
                 2000);
         }
+        // Flowchart - if pair doesn't match or not all cards matched
+        // Reset variables
         resetClickedCards();
     }
     return;
 }
 
+// Rotates the card either back-to-front or front-to-back, depending
+// on the current side facing up.
 function rotateCard($the_card)
 {
     var $back_card = $the_card.find("span.back");
@@ -89,6 +98,9 @@ function rotateCard($the_card)
     $front_card.toggleClass("rotate-card-show");
 }
 
+
+// Compares the relative source paths of the two cards picked.
+// Returns true if the paths are identical.
 function checkCardsMatch()
 {
     var $card_src = first_card_clicked.find("span.front>img").attr("src");
@@ -98,16 +110,20 @@ function checkCardsMatch()
     return false;
 }
 
+
+// Removes the onclick event-handler for a specific card div.
 function makeCardUnclickable($card)
 {
     $card.off('click');
 }
 
+// Adds the onclick event-handler for a specific card div.
 function makeCardClickable($card)
 {
     $card.on('click', cardClicked);
 }
 
+// Used only to rotate a mismatched pair of cards.
 function rotatePair(first, second)
 {
     rotateCard(first);
@@ -120,14 +136,20 @@ function resetClickedCards()
     second_card_clicked = null;
 }
 
+// Undergoes the game-winning sequence.
 function winGame()
 {
+    // Make all the cards disappear.
     $("div.card").addClass("make-disappear");
+
+    // Add a YOU WON!!! to the game area, where the cards one were.
     var game_area = $("div#game-area");
     game_area.prepend("<p>YOU WON!!!</p>");
+
     console.log(game_area);
 }
 
+// The event-handling function for when the Reset Game button is clicked.
 function resetGame()
 {
     // Reset the global variables
@@ -144,7 +166,9 @@ function resetGame()
     $("div#game-area>p").remove();
 
     // Make all the cards clickable.
-    $("div#game-area>div.card").click(cardClicked);
+    $("div#game-area>div.card").off('click');
+    $("div#game-area>div.card").on('click', cardClicked);
+    //$("div#game-area>div.card").click(cardClicked);
     card_pair_flipped = false;
 
     console.log("resetGame called!!!");
