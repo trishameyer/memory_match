@@ -113,6 +113,17 @@ body{
     padding-left: 7px;
 }
 
+div#modalIntro {
+    position: absolute;
+    top: 50%;
+    width: 80%;
+    height: 80%;
+    border: 5px solid black;
+    transform: translate3d(-50%, -50%, 0 );
+    left: 50%;
+    box-shadow: 0 0 50px 100px rgba(255, 255, 255, 0.6);
+}
+
 
 
 /*large width*/
