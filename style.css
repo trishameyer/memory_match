@@ -1,69 +1,73 @@
 body {
   margin: 0;
-  background: url("images/mm_legacy1.png") no-repeat;
-  background-size: 100% 100%;
+  background-color: #020416;
+  border-bottom: 3px solid #021A50;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 1.2em;
+  color: #E0FDFC;
+}
+a {
+  text-decoration: none;
+  color: #FC284A;
 }
 header {
   width: 100vw;
-  height: 15vh;
-  /*background-color: #125c30;*/
+  height: 10vh;
+  background: url("images/mm_top.jpg") no-repeat;
+  background-size: 100% 100%;
+  border-bottom: 3px solid #021A50;
 }
 .stats {
   width: 20vw;
-  height: 80vh;
+  height: 89vh;
   display: inline-block;
-  /*background-color: #479968;*/
+  border-right: 3px solid #021A50;
 }
 #game-area {
   width: 60vw;
   height: 75vh;
   display: inline-block;
-  /*background-color: #6db78b;*/
-  border: 1px solid white;
+  vertical-align: top;
   position: relative;
-  left: 10%;
-  top: 0;
+  top: 7vh;
+  left: 10vw;
 }
 
+/* Header elements */
 #logo {
   display: inline-block;
-  width: 5%;
-  height: 50%;
-  border: 1px solid red;
-  position: relative;
-  top: 25%;
-  left: 3%;
-  background: url("images/MegaMan-forward_s.jpg") no-repeat;
+  width: 12%;
+  height: 100%;
+  background: url("images/mm_logo.jpg") no-repeat;
   background-size: 100% 100%;
 }
-#game-title {
+#game-title, #settings, #about {
   display: inline-block;
-  width: 30%;
-  height: 50%;
-  border: 1px solid orange;
+  vertical-align: top;
   position: relative;
+  top: 32%;
+  margin-right: 8%;
+}
+#game-title {
+  width: 28%;
+  height: 50%;
+  font-size: 28px;
+  text-shadow: 1px 2px #194720;
   top: 25%;
   left: 15%;
 }
 #settings {
-  display: inline-block;
   width: 10%;
   height: 50%;
-  border: 1px solid yellow;
-  position: relative;
-  top: 25%;
-  left: 25%;
+  left: 19%;
 }
 #about {
-  display: inline-block;
   width: 10%;
   height: 50%;
-  border: 1px solid blue;
-  position: relative;
-  top: 25%;
-  left: 35%;
+  left: 16%;
 }
 
+/* Stats elements */
 .stats > div {
   width: 80%;
   height: 20%;
@@ -71,18 +75,20 @@ header {
   margin: 30px auto;
 }
 
-
+/* Game-area elements */
 .card {
-  width: 12%;
+  width: 13%;
   height: 28%;
   display: inline-block;
   position: relative;
-  margin: 1% 2%;
+  margin: 1% 1%;
   transform-style: preserve-3d;
   perspective: 800px;
   transition: transform 1.5s;
 }
 .card img {
+  border: 2px solid grey;
+  border-radius: 5px;
   position: absolute;
   top: 0;
   left: 0;
@@ -97,10 +103,28 @@ header {
   #transform: rotateY(180deg);
 }
 
-/* about.html styling */
+#img_win {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+
+/* About.html styling */
+#page_about {
+  padding: 50px;
+}
+.back_link {
+  text-align: center;
+}
 .mypic img {
   border-radius: 50px;
-}
-.about_back {
-  background-color: lightgreen;
+  width: 120px;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+  -o-filter: grayscale(1);
+  -ms-filter: grayscale(1);
 }

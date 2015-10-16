@@ -6,70 +6,18 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <!-- <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script> -->
-
-  <script>
-    $(document).ready(function() {
-      $(".card").click(card_clicked);
-
-      var first_card_clicked = null;
-      var second_card_clicked = null;
-      var total_possible_matches = 2;
-      var match_counter = 0;
-
-      function card_clicked() {
-        $(this).find(".back").hide();
-
-        if (first_card_clicked == null) {
-          console.log("1st yes null");
-          first_card_clicked = $(this);
-        }
-        else {
-          console.log("1st not null");
-          second_card_clicked = $(this);
-
-          if (first_card_clicked.find(".front img").attr("src") == second_card_clicked.find(".front img").attr("src")) {
-            console.log("a match");
-            match_counter++;
-            first_card_clicked = null;
-            second_card_clicked = null;
-
-            if (match_counter == total_possible_matches) {
-              $(".card").hide();
-              alert("You Win!");
-            }
-            else {
-            }
-          }
-
-          else {
-            setTimeout(function () {
-              console.log("no match");
-              first_card_clicked.find(".back").show();
-              second_card_clicked.find(".back").show();
-              first_card_clicked = null;
-              second_card_clicked = null;
-              console.log("Ack! Try again.");
-            }, 2000);
-          }
-
-        }
-      }
-
-    });
-
-  </script>
-
+  <script src="main.js"></script>
 </head>
 <body>
 
   <header>
-    <div id="logo">logo</div>
+    <div id="logo"></div>
 
     <div id="game-title">Mega Man - Robot Masters</div>
 
-    <div id="settings">settings</div>
+    <div id="settings">Settings</div>
 
-    <div id="about"><a href="about.html">about</a></div>
+    <div id="about"><a href="about.html">About</a></div>
   </header>
 
 
@@ -99,7 +47,7 @@
         <img src="images/Ballade.jpg">
       </div>
       <div class="back">
-        <img src="images/MegaMan-back.jpg">
+        <img src="images/MegaMan-back2.jpg">
       </div>
     </div>
 
@@ -108,7 +56,7 @@
         <img src="images/Ballade.jpg">
       </div>
       <div class="back">
-        <img src="images/MegaMan-back.jpg">
+        <img src="images/MegaMan-back2.jpg">
       </div>
     </div>
 
@@ -118,7 +66,7 @@
         <img src="images/CutMan.jpg">
       </div>
       <div class="back">
-        <img src="images/MegaMan-back.jpg">
+        <img src="images/MegaMan-back2.jpg">
       </div>
     </div>
 
@@ -127,7 +75,7 @@
         <img src="images/CutMan.jpg">
       </div>
       <div class="back">
-        <img src="images/MegaMan-back.jpg">
+        <img src="images/MegaMan-back2.jpg">
       </div>
     </div>
 
@@ -265,6 +213,9 @@
     </div>
 -->
   </section>
+
+  <!-- the following image is displayed when the game is won -->
+  <img id="img_win" src="images/mm_legacy1.png" alt="Win image">
 
 </body>
 </html>
