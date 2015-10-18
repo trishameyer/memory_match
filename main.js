@@ -1,6 +1,6 @@
 var first_card_clicked = null;
 var second_card_clicked = null;
-var total_possible_matches = 2;
+var total_possible_matches = 9;
 var match_counter = 0;
 
 $(document).ready(function () {
@@ -9,6 +9,7 @@ $(document).ready(function () {
 
     function card_clicked() {
         $(this).addClass("selected_card");
+        //$(this).addClass("back_effect");
         $(this).hide();
 
         if (first_card_clicked == null) {
@@ -27,6 +28,7 @@ $(document).ready(function () {
                 console.log(first_card_clicked);
                 console.log(second_card_clicked);
                 console.log(match_counter);
+                $(".back").removeClass("selected_card")
 
                 if (match_counter == total_possible_matches) {
                     alert("You won! It's working! Yay!");
@@ -43,7 +45,7 @@ $(document).ready(function () {
                     console.log(second_card_clicked);
                     console.log(match_counter);
                     $(".back").removeClass("selected_card").click(card_clicked);
-                }, 2000);
+                }, 1200);
 
             }
 

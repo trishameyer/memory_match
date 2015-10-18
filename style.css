@@ -5,24 +5,24 @@
 
 body {
     background-color: black;
-    height: 950px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: metropolian, serif;
     width: 100vw;
     margin: 0;
     padding: 0;
-    font-family: metropolian, serif;
 }
 
 a:link {
-    color: black;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
 }
 
 a:hover, li a:hover {
-    color: dimgray;
+    color: ghostwhite;
 }
 
 a:visited {
-    color: black;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
 }
 
@@ -32,15 +32,17 @@ a:visited {
     position: relative;
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 950px;
     width: 100%;
-    background-image: url("images/background_wallpaper.jpg");
+    background-image: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0)), url("images/background_wallpaper.jpg");
+    text-shadow: 1px 1px 8px ghostwhite;
 }
 
 .game_menu {
-    background-color: indigo;
+    background: url("images/curtain_top_mirror.png") no-repeat, url("images/curtain_top_mirror2.png") repeat-x, linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    background-size: contain, contain;
     line-height: 80px;
-    height: 80px;
+    height: 140px;
     width: 100%;
     position: relative;
     margin: 0;
@@ -57,7 +59,6 @@ header img {
 
 .game_menu ul {
     margin: 0;
-    text-align: center;
     padding: 0;
 }
 
@@ -73,15 +74,31 @@ main {
 }
 
 .stats {
-    background-color: dimgray;
+    background-image: url("images/curtain_left.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     float: left;
-    height: 400px;
-    width: 200px;
+    height: 480px;
+    width: 140px;
     position: absolute;
     padding: 1%;
+    line-height: 38px;
 }
 
+.reset {
+    display: inline-block;
+    padding: 0 10px;
+    border: 3px solid rgba(255,255,255,0.2);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+}
 
+.reset:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4)
+    transition: background-color 0.3s ease-in, border-color 0.3s ease-in;
+}
 
 #game-area {
     float: left;
@@ -97,7 +114,7 @@ main {
 .card {
     height: 195px;
     width: 140px;
-    margin: 1%;
+    margin: 0.5% 1%;
     padding: 1%;
     display: inline-block;
     position: relative;
@@ -123,63 +140,73 @@ main {
     backface-visibility: hidden;
 }
 
+.front {
+
+}
+
+.back {
+    opacity: 1;
+}
+
 #foreground {
     height: 50px;
     width: 100vw;
     position: absolute;
     bottom: 0;
-    background: url("images/wood_tile.jpg") repeat-x;
+    background: url("images/wood_tile.jpg") repeat-x, linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0));
+
 }
 
 #left_lady {
     position: absolute;
     bottom: 40px;
     left: 30px;
+    opacity: 0.5;
 }
 
 .selected_card {
-
 }
 
-/* css animations from the initial card prototype
-.front {
-    transform: rotateY(-180deg);
+/*card animations
+.back_effect {
+    opacity: 0.5;
 }
 
-.card:hover .back {
-    transform: rotateY(180deg);
+.front_effect {
+    opacity: 1;
     transition-duration: 2s;
 }
-
-.card:hover .front {
-    transform: rotateY(0deg);
-    transition-duration: 2s;
-}
- */
+*/
 
 /* about.html */
 
-.about_wrapper {
-    margin: 2%;
-    padding: 2%;
-    background-image: url(images/background_wallpaper.jpg);
+#about_page {
+    background: black url("images/curtain_top_mirror2.png") top left repeat-x;
+    text-shadow: 1px 1px 8px ghostwhite;
 }
 
 .about {
+    align-content: center;
     text-align: center;
-    background-color: indigo;
-    color: white;
-    height: 90%;
-    width: 90%;
-    padding: 1%;
-    margin: auto;
-    line-height: 25px;
+    height: 450px;
+    width: 60%;
+    padding: 2%;
+    margin: 2% auto;
+    line-height: 30px;
+    border: 20px;
 }
 
 .about ul {
     padding: 0;
+    margin: 0;
 }
 
 .about li {
+    margin: 0;
+    padding-bottom: 2%;
     list-style: none;
+}
+
+p {
+    margin: 2%;
 }
