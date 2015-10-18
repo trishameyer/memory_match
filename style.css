@@ -52,6 +52,19 @@ img{
     height:100%;
     width:100%;
 }
+/*.show{*/
+/*position: absolute;*/
+/*z-index: 1;*/
+/*width: 100px;*/
+/*height: 150px;*/
+/*}*/
+/*.hide{*/
+/*display:none;*/
+/*position: absolute;*/
+/*z-index: 1;*/
+/*width: 100px;*/
+/*height: 150px;*/
+/*}*/
 
 /*.card:hover > .front {
     transform: perspective(600px) rotateY(-180deg);
