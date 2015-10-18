@@ -6,7 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
+    <!--<script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>-->
+    <script src="memory_match.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -31,21 +32,21 @@
     <ul class="nav nav-pills nav-stacked">
         <li class="games_played">
             <div class="label">
-                Games Played
+                <span>Games Played:<p id="games_played_stat"></p></span>
             </div>
         </li>
         <li class="attempts">
             <div class="label">
-                Attempts
+                <span>Attempts:<p id="attempts_stat"></p></span>
             </div>
         </li>
         <li class="accuracy">
             <div class="label">
-                Accuracy
+                <span>Accuracy:<p id="accuracy_stat"></p></span>
             </div>
         </li>
         <li>
-            <button type="button" class=".btn-default">
+            <button type="button" class=".btn-default" onclick="reset_stats()">
                 Reset
             </button>
         </li>
@@ -55,83 +56,82 @@
     <div id="game-area">
         <div class="row">
             <div class="card">
-                <div class="back"><img src="images/card_back.png"></div>
-                <div class="front"><img src="images/card1.png"></div>
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card_1.png"></div>
             </div>
             <div class="card">
-                <div class="back"><img src="images/card_back.png"></div>
-                <div class="front"><img src="images/card1.png"></div>
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card_1.png"></div>
             </div>
             <div class="card">
-                <div class="back"><img src="images/card_back.png"></div>
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
                 <div class="front"><img src="images/card2.png"></div>
             </div>
             <div class="card">
-                <div class="back"><img src="images/card_back.png"></div>
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
                 <div class="front"><img src="images/card2.png"></div>
             </div>
             <div class="card">
-                <div class="back"><img src="images/card_back.png"></div>
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
                 <div class="front"><img src="images/card3.png"></div>
             </div>
             <div class="card">
-                <div class="back"><img src="images/card_back.png"></div>
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
                 <div class="front"><img src="images/card3.png"></div>
             </div>
         </div>
-    <div class="row">
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card4.png"></div>
+        <div class="row">
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card4.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card4.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card5.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card5.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card6.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card6.png"></div>
+            </div>
         </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card4.png"></div>
+        <div class="row">
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card7.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card7.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card8.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card8.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card9.png"></div>
+            </div>
+            <div class="card">
+                <div class="back" onclick="card_clicked(this)"><img src="images/card_back.png"></div>
+                <div class="front"><img src="images/card9.png"></div>
+            </div>
         </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card5.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card5.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card6.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card6.png"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card7.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card7.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card8.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card8.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card9.png"></div>
-        </div>
-        <div class="card">
-            <div class="back"><img src="images/card_back.png"></div>
-            <div class="front"><img src="images/card9.png"></div>
-        </div>
-    </div>
-
     </div>
 </div>
 </body>
