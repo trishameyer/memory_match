@@ -82,14 +82,14 @@ function display_stats(){
 
     matches = match_counter;
     attempts = attempts_counter;
-    accuracy = (matches / attempts);
+    accuracy = Math.round((matches / attempts) * 100);
 
     if(debug) console.log(matches);
     if(debug) console.log(attempts);
     if(debug) console.log(accuracy);
     $('#games_played_stat').text(games_played);
     $('#attempts_stat').text(attempts);
-    $('#accuracy_stat').text(((attempts>0)?(accuracy) * 100 + '%' : '-'));
+    $('#accuracy_stat').text(((attempts>0)?(accuracy) + '%' : '-'));
 }
 
 function reset_stats(){
