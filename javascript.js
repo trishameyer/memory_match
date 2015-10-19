@@ -23,7 +23,7 @@ $( document ).ready(function() {
 });
 
 function card_clicked(event) {
-    $(this).addClass('hideCard'); //could put $(this).toggleClass('someclass that affects css') instead.
+    $(this).hide(); //could put $(this).toggleClass('someclass that affects css') instead.
     console.log('event objects worked!');
     if (first_card_clicked == null) {
         first_card_clicked = $(this).prev().find('img').attr('src'); //do I need to  get the image source for the DOM?
@@ -45,7 +45,8 @@ function card_clicked(event) {
             }
         } else {
             console.log('first_card_clicked != second_card_clicked');
-            $('hideCard').toggleClass('showCard'); //could put $('.back').toggleClass('someclass that affects css') instead to flip it back.
+            $('.back').show();
+            //could put $('.back').toggleClass('someclass that affects css') instead to flip it back.
             //$(second_card_clicked).toggleClass('showCar')
             first_card_clicked = null;
             second_card_clicked = null;
@@ -56,14 +57,14 @@ function card_clicked(event) {
     }
 }
 
-function display_stats(event) {
+function display_stats() {
     $(".games_played .value").text(games_played);
     $('.attempts .value').text(attempts);
-    accuracy = (Math.round((matches/attempts)) * 100) + "%"
+    accuracy = Math.round((matches/attempts) * 100) + "%";
     $('.accuracy .value').text(accuracy);
 }
 
-function reset_stats (event) {
+function reset_stats() {
     accuracy = 0;
     matches = 0;
     attempts = 0;

@@ -72,6 +72,10 @@
     display: block;
 }
 
+.card_matched {
+    display: none;
+}
+
 /*
 .two_faces:hover > .backcard {
     transform: rotateY(-180deg) perspective(1000px);
