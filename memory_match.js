@@ -17,6 +17,8 @@ var debug = true;
 $( document ).ready(function() {
     if(debug) console.log( "ready!" );
     display_stats();
+
+    $('body').on("click", "#reset_button", reset_stats);
 });
 
 function getSrc(element) { //for obtaining image source for comparison

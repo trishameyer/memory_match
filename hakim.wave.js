@@ -77,7 +77,7 @@
 				tweetUpdateInterval = setInterval( CreateBubble, TWEETS_FREQUENCY );
 				twitchInterval = setInterval( Twitch, TWITCH_INTERVAL );
 				
-				DownloadTweets();
+				//DownloadTweets();
 				CreateBubble();
 				ResizeCanvas();
 				
@@ -112,44 +112,44 @@
 		/**
 		 * 
 		 */
-		function DownloadTweets() {
-			isDownloadingTweets = true;
-			
-			if( twitterPolls ++ > 20 ) {
-				Terminate( "That's it. No more tweets for you." );
-			}
-			
-			$.post("search.php", {query: TWITTER_QUERY, max_id: twitterMaxId, rpp: TWEETS_PER_PAGE}, function(xml){
-				
-				if( !$('entry',xml) || $('entry',xml).length == 0 ) {
-					if (twitterRetries++ > 3) {
-						Terminate("Oops, Twitter doesn't want to serve us at the moment.");
-					}
-				}
-				
-				$('entry',xml).each(function(i){
-					var tweet = {};
-					tweet.title = $(this).find("title").text();   
-					tweet.content = $(this).find("content").text();   
-					tweet.published = $(this).find("published").text();   
-					tweet.link = $(this).find("link").text();   
-					tweet.authorURI = $(this).find("uri").text();
-					tweet.author = $(this).find("name").text();
-					tweet.author = "@" + tweet.author.slice(0, tweet.author.indexOf(" "));
-					tweet.id = $(this).find("id").text();
-					tweet.id = tweet.id.slice( tweet.id.lastIndexOf(":") + 1 );
-					
-					if( i == $('entry',xml).length - 1 ) {
-						twitterMaxId = parseInt( tweet.id ) - 1;
-					}
-					
-					tweets.push( tweet );
-				});
-				
-				isDownloadingTweets = false;
-				
-			});
-		}
+		//function DownloadTweets() {
+		//	isDownloadingTweets = true;
+		//
+		//	if( twitterPolls ++ > 20 ) {
+		//		Terminate( "That's it. No more tweets for you." );
+		//	}
+		//
+		//	$.post("search.php", {query: TWITTER_QUERY, max_id: twitterMaxId, rpp: TWEETS_PER_PAGE}, function(xml){
+		//
+		//		if( !$('entry',xml) || $('entry',xml).length == 0 ) {
+		//			if (twitterRetries++ > 3) {
+		//				Terminate("Oops, Twitter doesn't want to serve us at the moment.");
+		//			}
+		//		}
+		//
+		//		$('entry',xml).each(function(i){
+		//			var tweet = {};
+		//			tweet.title = $(this).find("title").text();
+		//			tweet.content = $(this).find("content").text();
+		//			tweet.published = $(this).find("published").text();
+		//			tweet.link = $(this).find("link").text();
+		//			tweet.authorURI = $(this).find("uri").text();
+		//			tweet.author = $(this).find("name").text();
+		//			tweet.author = "@" + tweet.author.slice(0, tweet.author.indexOf(" "));
+		//			tweet.id = $(this).find("id").text();
+		//			tweet.id = tweet.id.slice( tweet.id.lastIndexOf(":") + 1 );
+		//
+		//			if( i == $('entry',xml).length - 1 ) {
+		//				twitterMaxId = parseInt( tweet.id ) - 1;
+		//			}
+		//
+		//			tweets.push( tweet );
+		//		});
+		//
+		//		isDownloadingTweets = false;
+		//
+		//	});
+		//}
 		
 		/**
 		 * 

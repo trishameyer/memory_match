@@ -5,9 +5,8 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!--<script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="memory_match.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -46,8 +45,7 @@
                 <span>Accuracy:<p id="accuracy_stat"></p></span>
             </div>
         </li>
-        <li>
-            <button type="button" class=".btn-default" onclick="reset_stats()">
+        <li><button type="button" id="reset_button">
                 Reset
             </button>
         </li>
@@ -135,9 +133,8 @@
         </div>
     </div>
 </div>
-<!--<canvas id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view-->
-    <!--this.</p></canvas>-->
-<!--&lt;!&ndash;<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>&ndash;&gt;-->
-<!--<script src="hakim.wave.js"></script>-->
+<canvas id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view
+    this.</p></canvas>
+<script src="hakim.wave.js"></script>
 </body>
 </html>
