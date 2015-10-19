@@ -92,13 +92,22 @@ body{
 .card{
     height: 12em;
     width: 100%;
-    position: static;
+    position: relative;
     margin: 7% 0;
     perspective: 300px;
     max-width: 160px;
 }
 
-
+.front.morph, .back.morph{
+    transition: 1s;
+    height: 66%;
+    width: 92%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%);
+    top: 15%;
+    left: 5%;
+    border: none;
+}
 
 .front, .back{
     width: 100%;
