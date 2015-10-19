@@ -27,14 +27,10 @@ function card_clicked(event) {
     console.log('event objects worked!');
     if (first_card_clicked == null) {
         first_card_clicked = $(this).prev().find('img').attr('src'); //do I need to  get the image source for the DOM?
-      //  $(this).addClass("matches");
     } else {
         second_card_clicked = $(this).prev().find('img').attr('src');
-    //    $(this).addClass("matches");
-        //again, see above comment.
- //       accuracy = matches/attempts;
+
         if (first_card_clicked === second_card_clicked) {
-    //        $(".matches").hide();
             match_counter++;
             matches++;
             attempts++;
@@ -46,23 +42,17 @@ function card_clicked(event) {
             } else {
                 return console.log('click handler functionality is complete - the first one');
             }
-            //throw in an if statement here to get rid of the first click's match class?
-        } /* else if (first_card_clicked !== null && second_card_clicked !== null && first_card_clicked != second_card_clicked){
-            $(
-        } */
+        }
         else {
             console.log('first_card_clicked != second_card_clicked');
             //could put $('.back').toggleClass('someclass that affects css') instead to flip it back.
-            //$(second_card_clicked).toggleClass('showCar')
+      //      $(first_card_clicked).sibling().find('img').show();
+      //      $(second_card_clicked).sibling().find('img').show();
             first_card_clicked = null;
             second_card_clicked = null;
-  //          $(this).removeClass('matches');
             console.log('click handler functionality is complete - the second');
             attempts++;
-    //        $(this).removeClass('matches');
-            //should add a card_clicked class to the ones with back flipped.
-            $('.back').show(); //askfjsklajf l;nsj trying to get it to only flip the cards that haven't matched.
-   //         $('.matches').hide();s
+            $('.back').show(2000);
         }
     }
 }
