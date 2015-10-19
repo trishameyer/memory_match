@@ -59,7 +59,6 @@ function card_clicked(element) {
         if (match_counter == total_possible_matches) {
             //all matches have been made
             $('#game-area').find('.card').addClass('hide_matched_cards');
-            alert("Congratulations you won the Piston Cup!");
             matches = match_counter;
             attempts = attempts_counter;
             accuracy = (matches / attempts) * 10;
@@ -69,6 +68,7 @@ function card_clicked(element) {
             else {
                 $(".accuracy").find(".value").text(accuracy + "%");
             }
+            $("#game-area").append($("<h1>").html("You won the Piston Cup!"));
         }
     }
 }
@@ -101,9 +101,3 @@ function reset_stats() {
     $('#game-area').find('.card').removeClass('hide_matched_cards');
     $('.card').find('.back').removeClass('matched_card');
 }
-$('.selected_card').click(function(){
-    $(this).find('.card').addClass('flipped').mouseleave(function(){
-        $(this).removeClass('flipped');
-    });
-    return true;
-});

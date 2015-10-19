@@ -1,18 +1,23 @@
-header{
+#extras{
     display:inline-block;
-    position:absolute;
-    bottom:0px;
+    position:relative;
     left:0px;
+    bottom:0px;
+    margin-left:15px;
+    font-size:20px;
+    margin-right:20px;
 }
+
 a{
      color:white;
      text-shadow: 7px 7px 7px red;
-     display:block;
+     display:inline-block;
      font-family: 'Marck Script', cursive;
-     font-size:20px;
+     font-size:25px;
      padding-left:15px;
      text-decoration: none;
      margin-top:25px;
+     margin-right:45px;
  }
 a:hover{
      color:red;
@@ -43,9 +48,9 @@ body{
 .stats{
      display:inline-block;
      position:absolute;
-     bottom:90px;
+     bottom:20px;
      left:20px;
-     width:50%;
+     width:65%;
  }
 .stats div{
     display:inline-block;
@@ -57,22 +62,23 @@ body{
     margin-right:20px;
 }
 #game-area{
-     width:750px;
-     position:relative;
-     perspective: 1000px;
+    height: 65vh;
+    width:65vw;
+    position:relative;
+
  }
 .back {
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
     float: left;
     position: absolute;
 }
-.front{
-     width:100%;
-     height:100%;
-     position:absolute;
-     float:left;
- }
+.front {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    float: left;
+}
 .card{
      width:100px;
      height:100px;
@@ -121,7 +127,7 @@ button{
      font-family: 'Marck Script', cursive;
      border:none;
      left:-5px;
-     bottom:48px;
+     bottom:10px;
      position:relative;
      font-size:12px;
      background-size:100% 100%;
@@ -133,6 +139,7 @@ button{
      width:115px;
      margin-top:50px;
      margin-bottom:20px;
+     margin-right:10px;
  }
 .buttonpic{
      height:100px;
@@ -151,7 +158,6 @@ button{
 
 .selected_card{
     visibility: hidden;
-;
  }
 .matched_card {
      visibility: hidden;
@@ -159,7 +165,6 @@ button{
 .hide_matched_cards{
     visibility: hidden;
 }
-
 @-webkit-keyframes neon1 {
     from {
              text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
@@ -168,28 +173,42 @@ button{
              text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
          }
 }
-@media screen and (min-width:0px) and (max-width:950px){
+@media screen and (min-width:0px) and (max-width:435px){
+    body{
+        visibility: hidden;
+    }
+}
+@media screen and (min-width:450px) and (max-width:1130px){
     .stats{
-            display:inline-block;
-            position:relative;
-        }
-}
-@media screen and (max-width:950px){
-    header{
-            display:inline-block;
-            position:absolute;
-        }
-
-}
-@media screen and (min-width:100px) and (max-width:1200px){
+        display:inline-block;
+        position:relative;
+        bottom:40px;
+        left:20px;
+        width:65%;
+    }
     .stats div{
-            display:inline-block;
-            position:relative;
-            left:0px;
-            bottom:0px;
-            margin-left:15px;
-            font-size:20px;
-        }
+        display:inline-block;
+        position:relative;
+        left:0px;
+        bottom:0px;
+        margin-left:15px;
+        font-size:20px;
+        margin-right:20px;
+    }
+    #extras{
+        width:75vw;
+        height:75vh;
+        display: inline-block;
+    }
+    h2 {
+        font-size: 100%;
+    }
+    h3{
+        font-size:100%;
+    }
+    .value{
+        font-size:15%;
+    }
     .front{
             height:100%;
              width:100%;
