@@ -8,16 +8,19 @@ var games_played = 0;
 
 $(function () {
 
+    function card_effect(element) {
+        $(element).toggleClass("back_effect");
+        $(element).prev(".front").toggleClass("front_effect");
+    }
+
     function display_stats() {
         accuracy = Math.round(100*(match_counter / attempts));
         $(".games-played .value").text(games_played);
         $(".attempts .value").text(attempts);
+
         if (match_counter == 0 && attempts == 0) {
             $(".accuracy .value").text("100%");
         }
-        //else if (match_counter == 1 && attempts == 1)  {
-        //    $(".accuracy .value").text("100%");
-        //}
         else {
             $(".accuracy .value").text(accuracy + "%");
         }
@@ -34,8 +37,11 @@ $(function () {
 
     function card_clicked() {
         $(this).addClass("selected_card");
-        //$(this).addClass("back_effect");
-        $(this).hide();
+        $(this).off("click");
+        card_effect(this);
+        setTimeout(function (){
+            $(this).hide();
+        }, 2000);
 
         if (first_card_clicked == null) {
             first_card_clicked = $(this).prev().find("img").attr("src");
@@ -63,8 +69,9 @@ $(function () {
             }
 
             else {
-                $(".back").unbind();
+                $(".back").off("click");
                 setTimeout(function () {
+                    card_effect(".selected_card");
                     $(".selected_card").show();
                     display_stats();
                     first_card_clicked = null;
