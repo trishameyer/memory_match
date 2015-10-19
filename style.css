@@ -40,6 +40,17 @@ h2{
      font-family: 'Marck Script', cursive;
      font-size:23px;
  }
+h5{
+    color:white;
+    text-shadow: 7px 7px 7px red;
+    display:inline;
+    font-family: 'Marck Script', cursive;
+    font-size:5vw;
+    position:absolute;
+    right:6%;
+    top:25%;
+    animation: neon1 1.5s ease-in-out infinite alternate;
+}
 body{
      background:url(images/cars_28.jpg)
      no-repeat center center fixed;

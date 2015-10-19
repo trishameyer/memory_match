@@ -68,7 +68,7 @@ function card_clicked(element) {
             else {
                 $(".accuracy").find(".value").text(accuracy + "%");
             }
-            $("#game-area").append($("<h1>").html("You won the Piston Cup!"));
+            $("#game-area").append($("<h5>").html("You won the Piston Cup!"));
         }
     }
 }
@@ -100,4 +100,5 @@ function reset_stats() {
     $(".back").show();
     $('#game-area').find('.card').removeClass('hide_matched_cards');
     $('.card').find('.back').removeClass('matched_card');
+    $("h5").remove();
 }
