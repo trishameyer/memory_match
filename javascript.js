@@ -47,7 +47,7 @@ function card_clicked(event) {
                 return console.log('click handler functionality is complete - the first one');
             }
             //throw in an if statement here to get rid of the first click's match class?
-        } /* else if (first_card_clicked !== null && second_card_clicked === null){
+        } /* else if (first_card_clicked !== null && second_card_clicked !== null && first_card_clicked != second_card_clicked){
             $(
         } */
         else {
@@ -70,8 +70,11 @@ function card_clicked(event) {
 function display_stats() {
     $(".games_played .value").text(games_played);
     $('.attempts .value').text(attempts);
-    accuracy = Math.round((matches/attempts) * 100) + '%';
-    $('.accuracy .value').text(accuracy);
+    accuracy = Math.round((matches/attempts) * 100);
+    if (isNaN(accuracy)) {
+        accuracy = 0;
+    }
+    $('.accuracy .value').text(accuracy + '%');
 }
 
 function reset_stats() {
@@ -79,4 +82,5 @@ function reset_stats() {
     matches = 0;
     attempts = 0;
     display_stats();
+    $('.back').show();
 }
