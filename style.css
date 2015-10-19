@@ -77,6 +77,7 @@ div.page-wrapper
 {
     text-decoration: none;
     color: white;
+    font-size: 2vw;
 }
 
 
@@ -92,6 +93,27 @@ div.page-wrapper
     text-align: center;
     background-color: rgba(3, 95, 145, .5);
     display: inline-block;
+    padding-bottom: 1vw;
+}
+
+.stats-section h1
+{
+    font-size: 1vw;
+}
+
+.stats-section p
+{
+    font-size: 0.8vw;
+}
+
+.stats-section input[type=button]
+{
+    width: 14vw;
+    height: 2vw;
+    font-family: korataki;
+    font-size: 0.8vw;
+    color: white;
+    background-color: rgba(3, 95, 145, .5);;
 }
 
 #game-area

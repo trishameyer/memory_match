@@ -19,7 +19,7 @@ $(document).ready(function()
 
     $("div#game-area>div.card").click(cardClicked);
     //document.querySelector("#game-area>div.card").addEventListener("click", cardClicked);
-    $("button.reset").click(resetGame);
+    $("input.reset").click(resetGame);
 });
 
 function cardClicked()
