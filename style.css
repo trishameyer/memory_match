@@ -3,9 +3,11 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0 auto;
-    background-image: url('images/ocean_sunset_beach_nature_landscape_cloud_reflection_rock_hd_4k_ultrahd_wallpaper_2560x1440.jpg');
+    background-image: url('images/vignetting_glowing_blue_light_background-wide.jpg');
 }
-
+canvas{
+    position:fixed;
+}
 /*------------Nav-----------*/
 .navbar-inverse{
     opacity:0.7;
@@ -52,25 +54,13 @@ img{
     height:100%;
     width:100%;
 }
-/*.show{*/
-/*position: absolute;*/
-/*z-index: 1;*/
-/*width: 100px;*/
-/*height: 150px;*/
-/*}*/
-/*.hide{*/
-/*display:none;*/
-/*position: absolute;*/
-/*z-index: 1;*/
-/*width: 100px;*/
-/*height: 150px;*/
-/*}*/
 
-/*.card:hover > .front {
-    transform: perspective(600px) rotateY(-180deg);
-}
-
-#.card:hover > .back {
-    transform: perspective(600px) rotateY(0deg);
-}
-*/
+/*Movement Classes*/
+/*.front_flip{*/
+/*transform: perspective(600px) rotateY(-180deg);*/
+/*transition: transform .5s linear 0s;*/
+/*}*/
+/*.back_flip{*/
+/*transform: perspective(600px) rotateY(0deg);*/
+/*transition: transform .5s linear 0s;*/
+/*}*/

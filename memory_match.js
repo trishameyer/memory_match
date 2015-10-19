@@ -53,7 +53,7 @@ function card_clicked(element){
             console.log(match_counter);
             first_card_clicked = false; //reset variables for next card set
             second_card_clicked = false; //reset variables for next card set
-
+            display_stats();
         }
         else{ //no match!
             if(debug) console.log('second else initiated');
@@ -62,6 +62,8 @@ function card_clicked(element){
 
             hide_card(first_card);
             hide_card(second_card);
+
+            display_stats();
         }
     }
 
