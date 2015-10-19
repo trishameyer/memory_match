@@ -38,6 +38,7 @@
     height: 21vh;
     margin: 1em .5em;
     display: inline-block;
+    transition-duration: 2s;
 }
 
 .front {
@@ -60,6 +61,15 @@
 .back img{
     width: 100%;
     height: 100%;
+}
+
+.hideCard {
+    display: none;
+}
+
+.showCard {
+    transition-duration: 2s;
+    display: block;
 }
 
 /*
