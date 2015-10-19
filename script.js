@@ -49,7 +49,7 @@ function card_clicked(element) {
             second_card_clicked = null;
             setTimeout(function () {
                 $(".selected_card").removeClass("selected_card");
-            }, 1050);
+            }, 650);
             console.log("cards don't match");
 
             //user clicks on a non_matched card which increases attempts_counter
@@ -68,7 +68,7 @@ function card_clicked(element) {
             else {
                 $(".accuracy").find(".value").text(accuracy + "%");
             }
-            $("#game-area").append($("<h5>").html("You won the Piston Cup!"));
+            $("#game-area").append($("<h5>").html("You won the <span>Piston Cup!</span>"));
         }
     }
 }
