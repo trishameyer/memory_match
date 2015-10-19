@@ -8,10 +8,8 @@ var match_counter = 0;
 var matches =0;
 var attempts = 0;
 var accuracy = 0;
-var games_played = 0;
 
-
-
+//trying using event objects.
 $( document ).ready(function() {
     $(".back").click(card_clicked);
     $(".back").click(display_stats);
@@ -20,6 +18,8 @@ $( document ).ready(function() {
         reset_stats();
         display_stats();
     });
+    games_played = 0;
+    reset_stats();
 });
 
 function card_clicked(event) {
@@ -27,11 +27,14 @@ function card_clicked(event) {
     console.log('event objects worked!');
     if (first_card_clicked == null) {
         first_card_clicked = $(this).prev().find('img').attr('src'); //do I need to  get the image source for the DOM?
+      //  $(this).addClass("matches");
     } else {
         second_card_clicked = $(this).prev().find('img').attr('src');
+    //    $(this).addClass("matches");
         //again, see above comment.
  //       accuracy = matches/attempts;
         if (first_card_clicked === second_card_clicked) {
+    //        $(".matches").hide();
             match_counter++;
             matches++;
             attempts++;
@@ -43,16 +46,23 @@ function card_clicked(event) {
             } else {
                 return console.log('click handler functionality is complete - the first one');
             }
-        } else {
+            //throw in an if statement here to get rid of the first click's match class?
+        } /* else if (first_card_clicked !== null && second_card_clicked === null){
+            $(
+        } */
+        else {
             console.log('first_card_clicked != second_card_clicked');
-            $('.back').show();
             //could put $('.back').toggleClass('someclass that affects css') instead to flip it back.
             //$(second_card_clicked).toggleClass('showCar')
             first_card_clicked = null;
             second_card_clicked = null;
+  //          $(this).removeClass('matches');
             console.log('click handler functionality is complete - the second');
             attempts++;
+    //        $(this).removeClass('matches');
             //should add a card_clicked class to the ones with back flipped.
+            $('.back').show(); //askfjsklajf l;nsj trying to get it to only flip the cards that haven't matched.
+   //         $('.matches').hide();s
         }
     }
 }
@@ -60,7 +70,7 @@ function card_clicked(event) {
 function display_stats() {
     $(".games_played .value").text(games_played);
     $('.attempts .value').text(attempts);
-    accuracy = Math.round((matches/attempts) * 100) + "%";
+    accuracy = Math.round((matches/attempts) * 100) + '%';
     $('.accuracy .value').text(accuracy);
 }
 
