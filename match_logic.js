@@ -24,37 +24,12 @@ $(document).ready(function()
 
 function getPosition(elem)
 {
-    var xpos = 0;
-    var ypos = 0;
-
-    console.log("offsetLeft = " + elem.offsetLeft);
-    console.log("offsetWidth = " + elem.offsetWidth);
-    console.log("scrollLeft = " + elem.scrollLeft);
-    console.log("clientLeft = " + elem.clientLeft);
-    console.log("offsetTop = " + elem.offsetTop);
-    console.log("scrollTop = " + elem.scrollTop);
-    console.log("clientTop = " + elem.clientTop);
-    while (elem)
-    {
-        xpos += (elem.offsetLeft - elem.scrollLeft + elem.clientLeft);
-        ypos += (elem.offsetTop - elem.scrollTop + elem.clientTop);
-        elem = elem.offsetParent;
-    }
-
-    var pos =
-    {
-        "x" : xpos,
-        "y" : ypos
-    }
-    console.log("position: " + "(" + pos.x + ", " + pos.y + ")");
-    return (pos);
+    // TODO - add functionality that determines the viewport coordinates of an element
 }
 
 function cardClicked()
 {
     console.log("Da card clicked: " + $(this));
-    //var pos = getPosition($(this));
-    //console.log("A card located at (" + pos.x + ", " + pos.y + ")");
 
     if (card_pair_flipped)
     {
