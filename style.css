@@ -203,22 +203,32 @@ main {
     height: 450px;
     width: 60%;
     padding: 2%;
-    margin: 2% auto;
-    line-height: 30px;
+    margin: 1% auto;
+    line-height: 25px;
     border: 20px;
 }
 
+.about img {
+    height: 50%;
+}
+
 .about ul {
-    padding: 0;
+    padding: 4% 0 3% 0;
     margin: 0;
+}
+
+#skills {
+    font-weight: bold;
 }
 
 .about li {
     margin: 0;
     padding-bottom: 2%;
     list-style: none;
+    font-size: 14px;
+    line-height: 15px;
 }
 
 p {
-    margin: 2%;
+    margin: 1%;
 }
