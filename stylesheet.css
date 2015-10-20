@@ -98,10 +98,7 @@ body{
     max-width: 160px;
 }
 
-.card2{
-    position: relative;
-    z-index: -5
-}
+
 
 #border-left{
     content: '';
@@ -170,8 +167,16 @@ body{
 
 .front.morph, .back.morph{
     background: radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%);
+    height: 75%;
+    border-radius: 50%;
+    top: 15%;
+    left: 5%;
     border: none;
-    transform: translate3d(100%)
+}
+
+.bounce{
+    bottom: 23px;
+
 }
 
 .front, .back{
@@ -180,7 +185,7 @@ body{
     position: absolute;
     transition: .5s;
     border-radius: 5%;
-    /*border: 3px solid green;*/
+    /*border: 3px solid white;*/
 }
 
 
@@ -194,10 +199,7 @@ body{
      transform: rotateY(180deg);
  }
 
-.card.clicked.matched >.front, .card.clicked >.back.matched{
-    transform: rotateY(180deg);
-    border: 1px solid yellow;
-}
+
 
 .game-board .row{
     position: relative;
@@ -205,6 +207,10 @@ body{
     border-radius: 1%;
     border: 1px solid #00d95d;
     padding: 1%;
+    transition: 1s;
+
+
+
 }
 
 .game-board .row >.col-xs-4, .game-board .row>.col-sm-3{
@@ -215,7 +221,16 @@ body{
 
 .game-board .row > .col-md-2, .game-board .row{
     position: static ;
+}
 
+@-webkit-keyframes pulse {
+    0%{background-color:rgba(0, 0, 0, 0.74);}
+    75%{background-color: rgba(237, 26, 26, 0.55);}
+
+}
+
+.warning{
+    -webkit-animation: pulse .35s infinite alternate;
 }
 
 
