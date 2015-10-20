@@ -5,6 +5,7 @@ var match_counter = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
+
 function card_effect(element) {
     $(element).toggleClass("back_effect");
     $(element).prev(".front").toggleClass("front_effect");
@@ -24,9 +25,8 @@ function display_stats() {
 }
 
 function reset_stats() {
-    $(".back").show();
-    $(".matched").removeClass("matched");
-    $("div").removeClass("back_effect").removeClass("front_effect").removeClass("selected_card");
+    $(".back").show();//.on("click", card_clicked);
+    $("div").removeClass("back_effect").removeClass("front_effect").removeClass("selected_card").removeClass("matched");
     games_played = games_played + 1;
     accuracy = 0;
     match_counter = 0;
@@ -39,11 +39,11 @@ function card_clicked(_this) {
         return
     }
     $(_this).addClass("selected_card");
-    $(_this).off("click");
+    //$(_this).off("click");
     card_effect(_this);
-    setTimeout(function () {
-        $(_this).hide();
-    }, 2000);
+    //setTimeout(function () {
+    //    $(_this).hide();
+    //}, 2000);
 
     if (first_card_clicked == null) {
         first_card_clicked = $(_this).prev().find("img").attr("src");
@@ -62,6 +62,8 @@ function card_clicked(_this) {
             console.log(first_card_clicked);
             console.log(second_card_clicked);
             console.log(match_counter);
+            $(".selected_card").addClass("matched");
+            $("div").removeClass("selected_card");
 
             if (match_counter == total_possible_matches) {
                 alert("You won! It's working! Yay!");
@@ -69,7 +71,7 @@ function card_clicked(_this) {
         }
 
         else {
-            $(".back").off("click", card_clicked());
+            $(".back").off("click", card_clicked);
             setTimeout(function () {
                 card_effect(".selected_card");
                 $(".selected_card").show();
@@ -78,25 +80,22 @@ function card_clicked(_this) {
                 console.log(first_card_clicked);
                 console.log(second_card_clicked);
                 console.log(match_counter);
-                $(".back").removeClass("selected_card").on("click", card_clicked());
+                $(".back").removeClass("selected_card").on("click", card_clicked);
             }, 1200);
 
         }
-        display_stats();
 
     }
-
+    display_stats();
 }
 
 $(document).ready(function () {
 
-
-
-    $(".back").click(function(){
+    $(".back").click(function () {
         card_clicked(this);
     });
 
-    $(".reset").click(function(){
+    $(".reset").click(function () {
         reset_stats();
     });
 
