@@ -129,20 +129,16 @@ main {
     background-size: 100% 100%;
 }
 
-.card img {
-    height: inherit;
-    width: inherit;
-    position: absolute;
-}
-
 .front img, .back img {
     height: 154px;
     width: 108px;
     top: 21px;
     left: 16px;
+    position: absolute;
+    backface-visibility: hidden;
 }
 
-.front, .back {
+.front, .back, .matched{
     position: absolute;
     backface-visibility: hidden;
 }
