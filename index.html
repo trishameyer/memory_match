@@ -48,15 +48,21 @@
                     <a href="about.html"><img class="about_bubble" src="images/about_link.png"></a></a>
                 </li>
                 <li><!--will reset the game -->
-                    <a class="reset" href="#"><img width="150px" class="reset" src="images/reset.png"></a>
+                    <div class="reset" onclick="reset()">
+                    <img width="150px" class="reset" src="images/reset.png">
+                    </div>
                 </li>
             </ul>
         </nav>
     </div>
+    <div class="win_container"><h1 id="win"">YOU WON!!</h1>
+        <h1 class="play_again" onclick="reset()">play again?</h1>
+    </div>
 </header>
 <div>
-    <img class="sharkTail" src="images/tail.png">
     <img class="sharkBody" src="images/bruce.png">
+    <img class="sharkTail" src="images/tail.png">
+
 
 </div>
 <div class="hook">
@@ -69,11 +75,10 @@
 
     <div class="row">
         <div class="col-md-2" id="div">
-
         </div>
 
         <div class="col-md-8">
-            <div id="win">YOU WON!!</div>
+
             <div class="row cards" id="game-area">
                 <div onclick="cardClick(this)" class="col-md-2 card">
                     <div class="front"><img width="140px" src="images/lilturtle.jpg" class="img-responsive"></div>
@@ -161,15 +166,15 @@
                 <h1>Stats:</h1>
                 <div class="games-played">
                     <div class="label">Games played</div>
-                    <div class="value"></div>
+                    <div class="games_played_value">0</div>
                 </div>
                 <div class="attempts">
                     <div class="label">Attempts</div>
-                    <div class="value"></div>
+                    <div class="attempts_value">0</div>
                 </div>
                 <div class="accuracy">
                     <div class="label">Accuracy</div>
-                    <div class="value"></div>
+                    <div class="accuracy_value">0</div>
                 </div>
             </div>
         </div>
