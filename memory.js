@@ -95,6 +95,7 @@ function reset() {
 function display_stats() {
     console.log(match_counter);
     accuracy = match_counter / attempts;
+    var accuracy_percent = (Math.floor((accuracy) * 100));
 
     $('.games_played_value').empty().append(games_played);
     $('.attempts_value').empty().append(attempts);
