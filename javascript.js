@@ -41,6 +41,7 @@ function card_clicked(event) {
             console.log("class name: "+ this.className);
             if (match_counter === total_possible_matches) {
                 alert('You have won!');
+                reset_stats();
             } else {
                 return console.log('click handler functionality is complete - the first one');
             }
