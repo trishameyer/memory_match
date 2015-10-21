@@ -62,13 +62,27 @@ function card_clicked(element) {
             matches = match_counter;
             attempts = attempts_counter;
             accuracy = (matches / attempts) * 10;
+
+            //displays 100% instead of NaN, if not 100% displays correct %
             if (accuracy == Infinity) {
                 $(".accuracy").find(".value").text(100 + "%");
             }
             else {
                 $(".accuracy").find(".value").text(accuracy + "%");
             }
+            //adds You Won message after game_area has been cleared
             $("#game-area").append($("<h5>").html("You won the <span>Piston Cup!</span>"));
+            $("body").css("background-image", "url(images/dark4.png)");
+        }
+        //if matches made, change background to darker
+        if (match_counter ==3){
+            $("body").css("background-image", "url(images/dark1.png)");
+        }
+        if (match_counter == 5){
+            $("body").css("background-image", "url(images/dark2.png)");
+        }
+        if (match_counter ==7){
+            $("body").css("background-image", "url(images/dark3.png)");
         }
     }
 }
@@ -101,4 +115,43 @@ function reset_stats() {
     $('#game-area').find('.card').removeClass('hide_matched_cards');
     $('.card').find('.back').removeClass('matched_card');
     $("h5").remove();
+    $("body").css("background-image", "url(images/cars_28.jpg)");
 }
+
+//Jquery objects for dynamic board
+
+var card_div = $("<div>",{
+    class : "card"
+});
+
+var front_div = $("<div>",{
+    class : "front"
+
+});
+
+var back_div = $("<div>", {
+    class:"back"
+});
+
+
+var img_front = $("<img>").addClass("front").attr("src", picture);
+var img_back = $("<img>").addClass("back").attr("src", "radiatorspringscard.jpg");
+
+front_div.append(img_front);
+back_div.append(img_back);
+card_div.append(front_div, back_div);
+$("#game_area").append(card_div);
+
+var pics_array = ["fillmore.jpg", "flo.jpg", "guido.jpg", "lighteningmcqueen.jpg", "luigi.jpg", "mater.jpg", "ramone.jpg",
+    "sally.jpg", "sarge.jpg"];
+
+var fractional_numbers = Math.random() * pics_array.length;
+var whole_numbers=Math.floor(fractional_numbers);
+var picture = pics_array[whole_numbers];
+
+
+
+
+random_pic_index
+random_picture = pics [random_pic_index]
+pics.splice(random_pic_index, 1)

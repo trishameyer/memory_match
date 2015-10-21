@@ -45,15 +45,14 @@ h5{
     font-family: 'League Script', arial;
     font-size:5vw;
     position:absolute;
-    right:3%;
-    top:24%;
+    right:7%;
+    top:16%;
     opacity: 0.8;
-    color: #ebffff;
+    color:white;
     text-shadow: 2px 2px 1px rgba(0,0,0,0.5), 0 0 15px red, 0 0 10px red, 0 0 50px red;
-    -webkit-animation: fade 3s infinite alternate;
+    transition: fade 3s infinite alternate, blink .01s infinite alternate;
     animation: fade 3s infinite alternate;
-    transform: rotate(-3deg);
-
+    transform: rotate(-1deg);
 }
 span{
     display:inline;
@@ -65,18 +64,19 @@ span{
     opacity: 0.8;
     color: #cff;
     margin-top:25px;
-    text-shadow: 2px 2px 1px rgba(0,0,0,0.5), 0 0 20px red, 0 0 10px red, 0 0 50px red;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.5), 0 0 10px red, 0 0 10px red, 0 0 50px red;
     -webkit-animation: blink .01s infinite alternate;
 }
 body{
-     background:url(images/cars_28.jpg)
+     background: #EDEBED url(images/cars_28.jpg)
      no-repeat center center fixed;
      background-size: cover;
+
  }
 .stats{
      display:inline-block;
      position:absolute;
-     bottom:20px;
+     bottom:0px;
      left:20px;
      width:65%;
  }
@@ -211,16 +211,6 @@ button{
         opacity: 0.5;
     }
 }
-@-o-keyframes blink {
-    70% {
-        opacity: 0.7;
-    }
-}
-@keyframes blink {
-    70% {
-        opacity: 0.7;
-    }
-}
 @-moz-keyframes fade {
     40% {
         opacity: 0.8;
@@ -239,40 +229,6 @@ button{
     }
 }
 @-webkit-keyframes fade {
-    40% {
-        opacity: 0.8;
-    }
-    42% {
-        opacity: 0.1;
-    }
-    43% {
-        opacity: 0.8;
-    }
-    45% {
-        opacity: 0.1;
-    }
-    46% {
-        opacity: 0.8;
-    }
-}
-@-o-keyframes fade {
-    40% {
-        opacity: 0.8;
-    }
-    42% {
-        opacity: 0.1;
-    }
-    43% {
-        opacity: 0.8;
-    }
-    45% {
-        opacity: 0.1;
-    }
-    46% {
-        opacity: 0.8;
-    }
-}
-@keyframes fade {
     40% {
         opacity: 0.8;
     }
