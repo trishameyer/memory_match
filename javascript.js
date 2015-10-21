@@ -23,7 +23,7 @@ $( document ).ready(function() {
 });
 
 function card_clicked(event) {
-    $(this).hide(); //could put $(this).toggleClass('someclass that affects css') instead.
+    $(this).hide().addClass('card_selected'); //could put $(this).toggleClass('someclass that affects css') instead.
     console.log('event objects worked!');
     if (first_card_clicked == null) {
         first_card_clicked = $(this).prev().find('img').attr('src'); //do I need to  get the image source for the DOM?
@@ -37,6 +37,8 @@ function card_clicked(event) {
             console.log('match_counter is: ' + match_counter);
             first_card_clicked = null;
             second_card_clicked = null;
+            $('.card_selected').removeClass('card_selected');
+            console.log("class name: "+ this.className);
             if (match_counter === total_possible_matches) {
                 alert('You have won!');
             } else {
@@ -52,7 +54,10 @@ function card_clicked(event) {
             second_card_clicked = null;
             console.log('click handler functionality is complete - the second');
             attempts++;
-            $('.back').show(2000);
+            $('.card_selected').show(2000);
+         //   wait = setTimeout(function() {
+           //     $('.card_selected').show()
+           // }, 2000);
         }
     }
 }
