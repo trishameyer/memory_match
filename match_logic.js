@@ -10,12 +10,39 @@ var attempts = 0;       // Increments when the player selects a pair of cards (m
 var accuracy = 0;       // Quotient of matches and attempts.
 var games_played = 0;   // Increments when the reset button is pressed.
 
+var str_card_path = 'assets/images/Card_';
+var pics =
+    [
+        'Ashley.png',
+        'Ashley.png',
+        'Garrus.png',
+        'Garrus.png',
+        'Kaidan.png',
+        'Kaidan.png',
+        'Liara.png',
+        'Liara.png',
+        'Miranda.png',
+        'Miranda.png',
+        'ShepardM.png',
+        'ShepardM.png',
+        'Tali.png',
+        'Tali.png',
+        'Thane.png',
+        'Thane.png',
+        'Wrex.png',
+        'Wrex.png'
+    ];
+var shuffle_src_arr = [];
+
 $(document).ready(function()
 {
     console.log("Excuse me while I kiss the sky.");
 
 
     init_display_stats();
+
+    shuffle_src_arr = shuffle_cards(pics);
+    layout_cards(shuffle_src_arr);
 
     $("div#game-area>div.card").click(cardClicked);
     //document.querySelector("#game-area>div.card").addEventListener("click", cardClicked);
@@ -180,6 +207,9 @@ function resetGame()
     reset_stats();
     display_stats();
 
+    shuffle_src_arr = shuffle_cards(shuffle_src_arr);
+    layout_cards(shuffle_src_arr);
+
     // Make the cards visible and showing their back faces
     $("div.card").removeClass("make-disappear");
     $("div.card>span").removeClass("rotate-card-hide");
@@ -243,5 +273,67 @@ function reset_stats()
     matches = 0;
     attempts = 0;
 }
-
 /* END VERSION 1.0 FUNCTIONS */
+
+// Version 1.5 new functions
+function shuffle_cards(card_arr)
+{
+    var splice_arr = [];
+    var rand_index = 0;
+
+    while(card_arr.length > 0)
+    {
+        rand_index = Math.floor(Math.random() * card_arr.length);
+
+        splice_arr.push(card_arr.splice(rand_index, 1)[0]);
+    }
+
+    return splice_arr;
+}
+
+function layout_cards(card_arr)
+{
+    var temp_game_area = $('<div>');
+    // Create all cards and put it in the game area
+    for (var i = 0; i < card_arr.length; i++)
+    {
+        // Create the card container
+        var card_div = $('<div>',
+            {
+                class: 'card'
+            });
+
+        // Create the back part of the card
+        var card_back_span = $('<span>',
+            {
+                class: 'back'
+            });
+        var back_img = $('<img>',
+            {
+                src: (str_card_path + 'Back.png')
+            });
+        card_back_span.append(back_img);
+
+        // Create the front part of the card
+        var card_front_span = $('<span>',
+            {
+                class: 'front'
+            });
+        var final_card_path = str_card_path + card_arr[i];
+        var front_img = $('<img>',
+            {
+                src: final_card_path
+            });
+        card_front_span.append(front_img);
+
+        // Put the new card together
+        card_div = card_div.append(card_back_span);
+        card_div = card_div.append(card_front_span);
+
+        // Add the card to the game area.
+        temp_game_area.append(card_div);
+    }
+    $('#game-area').html(temp_game_area.html());
+    console.log("Final game area: " + $('#game-area').html());
+}
+/* END VERSION 1.5 FUNCTIONS */
