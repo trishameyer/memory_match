@@ -3,7 +3,7 @@ body {
   background-color: #020416;
   border-bottom: 3px solid #021A50;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #E0FDFC;
 }
 a {
@@ -51,7 +51,7 @@ header {
 #game-title {
   width: 28%;
   height: 50%;
-  font-size: 28px;
+  font-size: 140%;
   text-shadow: 1px 2px #194720;
   top: 25%;
   left: 15%;
@@ -69,10 +69,18 @@ header {
 
 /* Stats elements */
 .stats > div {
-  width: 80%;
-  height: 20%;
-  border: 1px solid white;
+  width: 70%;
+  height: 10%;
+  border: 1px solid orange;
   margin: 30px auto;
+  padding: 10px 15px;
+}
+.stats button {
+  border: 1px dashed green;
+  position: relative;
+  left: 30%;
+  width: 40%;
+  height: 5%;
 }
 
 /* Game-area elements */
@@ -105,11 +113,11 @@ header {
 
 #img_win {
   display: none;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 
