@@ -9,11 +9,10 @@ var games_played = 0;
 var accuracy_percent = (Math.floor((accuracy) * 100));
 
 function cardClick(element) {
-
+    var front_img = $(element).parent().find('.front');
     //hides back of card
-    var back = $(element).find('.back');
+    var back = $(element);
     $(back).hide()
-    var front_img = $(element).find('.front');
     //if cards are already matched wont record as matched again
     if (front_img.hasClass('match')) {
         return;
@@ -23,19 +22,19 @@ function cardClick(element) {
     //checks if its first card if true stores src in first_card_clicked
     if (first_card_clicked == null) {
         //stores first_card_clicked var with src
-        first_card_clicked = $(element);
+        first_card_clicked = $(element).parent().find('.front');
         console.log("this is the img with class " + (front_img));
-        0
+
     }
     else {
         // stores src in second_card_clicked var
-        second_card_clicked = $(element);
+        second_card_clicked = $(element).parent().find('.front');
         attempts++;
 
         //check if we have a match
-        if (first_card_clicked.find('.front').find('img').attr('src') == second_card_clicked.find('.front').find('img').attr('src')) {
-            $(first_card_clicked).find('.front').addClass('match');
-            $(second_card_clicked).find('.front').addClass('match');
+        if (first_card_clicked.find('img').attr('src') == second_card_clicked.find('img').attr('src')) {
+            $(first_card_clicked).find('img').addClass('match');
+            $(second_card_clicked).find('img').addClass('match');
             console.log('first set ', first_card_clicked.find('.front').find('img').attr('src'), second_card_clicked.find('.front').find('img').attr('src'));
             //set global var back to null
             first_card_clicked = null;
@@ -53,11 +52,10 @@ function cardClick(element) {
         }
         //Cards did not match rest back to show and set global var to null
         else {
-            var reset_card_1 = $(first_card_clicked).find('.back');
-            var reset_card_2 = $(second_card_clicked).find('.back');
+            var reset_card_1 = $(first_card_clicked).parent().find('.back');
+            var reset_card_2 = $(second_card_clicked).parent().find('.back');
             $(reset_card_1).show(1000);
             $(reset_card_2).show(1000);
-
             first_card_clicked = null;
             second_card_clicked = null;
             console.log('second set ', first_card_clicked, second_card_clicked);
@@ -67,16 +65,16 @@ function cardClick(element) {
     }
 }
 /*
-var bubble_pop;
+ var bubble_pop;
 
-function pop() {
-    bubble_pop = setTimeout(function(){ alert("Hello"); }, 3000);
-}
+ function pop() {
+ bubble_pop = setTimeout(function(){ alert("Hello"); }, 3000);
+ }
 
-function stopPop() {
-    clearTimeout(myVar);
-}
-*/
+ function stopPop() {
+ clearTimeout(myVar);
+ }
+ */
 
 function reset() {
     reset_counter++;
