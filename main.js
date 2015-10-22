@@ -81,7 +81,7 @@ function card_clicked(_this) {
                 console.log(second_card_clicked);
                 console.log(match_counter);
                 $(".back").removeClass("selected_card").on("click", card_clicked);
-            }, 1200);
+            }, 1500);
 
         }
 
