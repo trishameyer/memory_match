@@ -193,7 +193,8 @@ body{
 }
 
 .morph{
-    -webkit-animation: morph 2s forwards;
+    -webkit-animation: morph 2s forwards; //
+    /*removed forwards*/
 }
 
 
