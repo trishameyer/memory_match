@@ -14,12 +14,22 @@ var games_played = 0;
 
 var debug = true;
 
+var img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png', 'card7.png', 'card8.png', 'card9.png'];
+
 $( document ).ready(function() {
     if(debug) console.log( "ready!" );
     display_stats();
 
     $('body').on("click", "#reset_button", reset_stats);
 });
+
+function display_cards(mode){
+    if(debug) console.log('cards_displayed');
+    if(mode == 'easy'){
+
+    }
+
+}
 
 function getSrc(element) { //for obtaining image source for comparison
     return $(element).next().find("img").attr("src");
