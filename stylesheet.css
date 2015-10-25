@@ -270,6 +270,19 @@ body{
     -webkit-animation-iteration-count: 4;
 }
 
+@-webkit-keyframes match_rotate{
+    from {
+        transform: rotateY(0);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+.match_rotate{
+    -webkit-animation: match_rotate 1s;
+}
+
 /*
 #modalIntro {
     display:none;
