@@ -12,23 +12,60 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 
-var debug = true;
+var cards_per_row = 6;
 
-var img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png', 'card7.png', 'card8.png', 'card9.png'];
+var debug = false;
+
+var img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png', 'card7.png',
+    'card8.png', 'card9.png','card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png',
+    'card7.png', 'card8.png', 'card9.png'];
 
 $( document ).ready(function() {
     if(debug) console.log( "ready!" );
-    display_stats();
+    //display_stats();
+    assign_random_cards();
 
     $('body').on("click", "#reset_button", reset_stats);
 });
 
-function display_cards(mode){
+function assign_random_cards(){
+    var temp_arr = [];
+    var num_cards_assigned = 0;
+    var current_row = null;
     if(debug) console.log('cards_displayed');
-    if(mode == 'easy'){
+    for(var i=0; i<img_arr.length; i++){
+        temp_arr.push(i);
+    }
+    for(var i=0; i<img_arr.length; i++){
+        var rand_index = Math.floor(Math.random() * (temp_arr.length));
+        if(current_row == null || num_cards_assigned % cards_per_row === 0){
+            var row = $('<div>').addClass('row');
+            $('#game-area').append(row);
+            current_row = row;
+        }
+        if(debug) console.log(img_arr[temp_arr[rand_index]]);
+        add_card_to_row(current_row, img_arr[temp_arr[rand_index]]);
+        num_cards_assigned++;
+        temp_arr.splice(temp_arr[rand_index],1)
+
 
     }
+}
 
+function add_card_to_row(row, card_img){
+    var back_img_raw = 'card_back.png';
+    var card = $('<div>').addClass('card');
+    var front = $('<div>').addClass('front');
+    var front_img = $('<img>').attr('src','images/'+ card_img );
+    var back = $('<div>').addClass('back').click(card_clicked);
+    var back_img = $('<img>').attr('src','images/' + back_img_raw);
+    front.append(front_img);
+    back.append(back_img);
+    card.append(front);
+    card.append(back);
+
+    //var test = $('<span>').text(card_img);
+    row.append(card);
 }
 
 function getSrc(element) { //for obtaining image source for comparison
@@ -48,21 +85,21 @@ function card_clicked(element){
         first_card = element;
         first_card_clicked = true; //first card clicked
         card_img_1 = getSrc(element);
-        console.log(card_img_1);
+        if(debug) console.log(card_img_1);
     }
     else{
-        console.log('else initiated');
+        if(debug) console.log('else initiated');
         $(element).hide(); //show second card
         second_card = element;
         second_card_clicked = true; //second card clicked
         card_img_2 = getSrc(element);
-        console.log(card_img_2);
+        if(debug) console.log(card_img_2);
         attempts_counter += 1;
         if(debug) console.log('number of attempts is equal to: ' + attempts_counter);
 
         if(card_img_1 == card_img_2 && first_card_clicked && second_card_clicked){
             match_counter += 1;
-            console.log(match_counter);
+            if(debug) console.log(match_counter);
             first_card_clicked = false; //reset variables for next card set
             second_card_clicked = false; //reset variables for next card set
             display_stats();
