@@ -103,12 +103,35 @@ function cardClicked()
             {
                 // Flowchart - Display to the user that they have won
                 console.log("YOU WON!!!!");
-                winGame();
+                setTimeout(
+                    function()
+                    {
+                        winGame();
+                    },
+                    500
+                );
+                //winGame();
                 //return;
             }
         }
         else                        // NO
         {
+            // Shake the screen!
+            var temp_wrapper = $('div.page-wrapper');
+            setTimeout(
+                function()
+                {
+                    temp_wrapper.addClass("anim-quake");
+                },
+                500);
+
+            setTimeout(
+                function()
+                {
+                    temp_wrapper.removeClass("anim-quake");
+                },
+                1000);
+
             // Need to cache the clicked cards due to the setTimeout,
             // which otherwise would be trying to rotate null cards.
             var temp_one = first_card_clicked;
