@@ -107,7 +107,7 @@ body{
     left: 0;
     top: 0;
     right: 0;
-    border-left: 5px solid rgb(38, 197, 70);
+    border-left: 4px solid rgb(38, 197, 70);
     transform: scale(0);
     transition:.5s;
     transform-origin: bottom left;
@@ -122,7 +122,7 @@ body{
     left: 0;
     top: 0;
     right: 0;
-    border-right: 5px solid rgb(38, 197, 70);
+    border-right: 4px solid rgb(38, 197, 70);
     transform: scale(0);
     transition: .5s;
     transform-origin: top right;
@@ -137,7 +137,7 @@ body{
     left: 0;
     top: 0;
     right: 0;
-    border-top: 5px solid rgb(38, 197, 70);
+    border-top: 4px solid rgb(38, 197, 70);
     transform: scale(0);
     transition: .5s;
     transform-origin: top left;
@@ -151,7 +151,7 @@ body{
     left: 0;
     top: 0;
     right: 0;
-    border-bottom: 5px solid rgb(38, 197, 70);
+    border-bottom: 4px solid rgb(38, 197, 70);
     transform: scale(0);
     transition: .5s;
     transform-origin: bottom right;
@@ -166,10 +166,11 @@ body{
 
 .morphEnd{
     background: radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%);
-    height: 73% !important;
+    height: 50% !important;
+    width: 76% !important;
     border-radius: 50% !important;
-    top: 15%;
-    left: 5%;
+    top: 27%;
+    left: 12%;
     border: none;
 }
 @-webkit-keyframes morph {
@@ -183,10 +184,11 @@ body{
 
     to{
         background: radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%);
-        height: 75%;
+        height: 50%;
+        width:76%;
         border-radius: 50%;
-        top: 15%;
-        left: 5%;
+        top: 27%;
+        left: 12%;
         border: none;
     }
 }
@@ -250,13 +252,23 @@ body{
 }
 
 
-
-
-
 .warning{
     -webkit-animation: pulse .35s infinite alternate;
 }
 
+@-webkit-keyframes spin {
+    from {
+        transform: rotateZ(0);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+.spin{
+    -webkit-animation: spin .1s ;
+    -webkit-animation-iteration-count: 4;
+}
 
 /*
 #modalIntro {
