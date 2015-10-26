@@ -22,7 +22,7 @@ var img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png',
 
 $( document ).ready(function() {
     if(debug) console.log( "ready!" );
-    //display_stats();
+    display_stats();
     assign_random_cards();
 
     $('body').on("click", "#reset_button", reset_stats);
@@ -33,12 +33,13 @@ function assign_random_cards(){
     var num_cards_assigned = 0;
     var current_row = null;
     if(debug) console.log('cards_displayed');
-    for(var i=0; i<img_arr.length; i++){
+    for(var i=0; i<img_arr.length; i++){//fill temp array with indexes totalling number of cards
         temp_arr.push(i);
 
     }
 
-    for(var i=0; i<img_arr.length; i++){
+    for(var i=0; i<img_arr.length; i++){//loop through img array to create rows with 6 cards
+        //also sets random value to each img in array for display of all cards
         var rand_index = Math.floor(Math.random() * (temp_arr.length));
         if(current_row == null || num_cards_assigned % cards_per_row === 0){
             var row = $('<div>').addClass('row');
@@ -49,7 +50,7 @@ function assign_random_cards(){
         add_card_to_row(current_row, img_arr[temp_arr[rand_index]], temp_arr[rand_index]);
         num_cards_assigned++;
 
-        temp_arr.splice(rand_index,1);
+        temp_arr.splice(rand_index,1);//remove placeholder from temp_array to mark usage
     }
 }
 
@@ -67,23 +68,21 @@ function add_card_to_row(row, card_img, id){
         card_clicked(id);
     });
 
-    var back_img = $('<img>').attr('src','images/' + back_img_raw);
+    var back_img = $('<img>').attr('src','images/' + back_img_raw); //adds back img to all cards
 
     front.append(front_img);
     back.append(back_img);
     card.append(front);
     card.append(back);
 
-    //var test = $('<span>').text(card_img);
     row.append(card);
 }
 
 function getSrc(id) { //for obtaining image source for comparison
     return $('#front-img-'+id).attr('src');
-    //return $(element).find("img").attr("src");
 }
 
-function hide_card(element) {
+function hide_card(element) {//show back img of card after flip doesn't result in match
     $(element).show(1000);
     if(debug) console.log('card hidden');
 }
