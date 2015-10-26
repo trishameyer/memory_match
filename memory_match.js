@@ -17,7 +17,7 @@ var cards_per_row = 6;
 var debug = true;
 
 var img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png', 'card7.png',
-    'card8.png', 'card9.png','card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png',
+    'card8.png', 'card9.png', 'card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png',
     'card7.png', 'card8.png', 'card9.png'];
 
 $( document ).ready(function() {
@@ -40,15 +40,16 @@ function assign_random_cards(){
 
     for(var i=0; i<img_arr.length; i++){//loop through img array to create rows with 6 cards
         //also sets random value to each img in array for display of all cards
-        var rand_index = Math.floor(Math.random() * (temp_arr.length));
-        if(current_row == null || num_cards_assigned % cards_per_row === 0){
+        var rand_index = Math.floor(Math.random() * (temp_arr.length));//gives random number index from 0 to array length
+        //rand index will change as temp array gets smaller after each iteration
+        if(current_row == null || num_cards_assigned % cards_per_row === 0){//add 6 cards per row b/c var cards_per_row set as 6
             var row = $('<div>').addClass('row');
             $('#game-area').append(row);
             current_row = row;
         }
         if(debug) console.log(img_arr[temp_arr[rand_index]]);
-        add_card_to_row(current_row, img_arr[temp_arr[rand_index]], temp_arr[rand_index]);
-        num_cards_assigned++;
+        add_card_to_row(current_row, img_arr[temp_arr[rand_index]], temp_arr[rand_index]); //add card at temp array index
+        num_cards_assigned++; //for checking card additions per row
 
         temp_arr.splice(rand_index,1);//remove placeholder from temp_array to mark usage
     }
