@@ -14,7 +14,7 @@ var games_played = 0;
 
 var cards_per_row = 6;
 
-var debug = false;
+var debug = true;
 
 var img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png', 'card7.png',
     'card8.png', 'card9.png','card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png',
@@ -35,7 +35,9 @@ function assign_random_cards(){
     if(debug) console.log('cards_displayed');
     for(var i=0; i<img_arr.length; i++){
         temp_arr.push(i);
+
     }
+
     for(var i=0; i<img_arr.length; i++){
         var rand_index = Math.floor(Math.random() * (temp_arr.length));
         if(current_row == null || num_cards_assigned % cards_per_row === 0){
@@ -44,21 +46,29 @@ function assign_random_cards(){
             current_row = row;
         }
         if(debug) console.log(img_arr[temp_arr[rand_index]]);
-        add_card_to_row(current_row, img_arr[temp_arr[rand_index]]);
+        add_card_to_row(current_row, img_arr[temp_arr[rand_index]], temp_arr[rand_index]);
         num_cards_assigned++;
-        temp_arr.splice(temp_arr[rand_index],1)
 
-
+        temp_arr.splice(rand_index,1);
     }
 }
 
-function add_card_to_row(row, card_img){
+function add_card_to_row(row, card_img, id){
     var back_img_raw = 'card_back.png';
     var card = $('<div>').addClass('card');
+
     var front = $('<div>').addClass('front');
     var front_img = $('<img>').attr('src','images/'+ card_img );
-    var back = $('<div>').addClass('back').click(card_clicked);
+    $(front_img).attr('id','front-img-'+id);
+    var back = $('<div>').addClass('back');
+    $(back).attr('id','back-'+id);
+
+    $(back).click( function(){
+        card_clicked(id);
+    });
+
     var back_img = $('<img>').attr('src','images/' + back_img_raw);
+
     front.append(front_img);
     back.append(back_img);
     card.append(front);
@@ -68,8 +78,9 @@ function add_card_to_row(row, card_img){
     row.append(card);
 }
 
-function getSrc(element) { //for obtaining image source for comparison
-    return $(element).next().find("img").attr("src");
+function getSrc(id) { //for obtaining image source for comparison
+    return $('#front-img-'+id).attr('src');
+    //return $(element).find("img").attr("src");
 }
 
 function hide_card(element) {
@@ -77,14 +88,17 @@ function hide_card(element) {
     if(debug) console.log('card hidden');
 }
 
-function card_clicked(element){
+function card_clicked(id){
+
+    console.log('test clicked ' + id);
+    var element = $('#back-'+id);
 
     if(first_card_clicked == false){
         //console.log('if initiated');
         $(element).hide(); //show first card
         first_card = element;
         first_card_clicked = true; //first card clicked
-        card_img_1 = getSrc(element);
+        card_img_1 = getSrc(id);
         if(debug) console.log(card_img_1);
     }
     else{
@@ -92,7 +106,7 @@ function card_clicked(element){
         $(element).hide(); //show second card
         second_card = element;
         second_card_clicked = true; //second card clicked
-        card_img_2 = getSrc(element);
+        card_img_2 = getSrc(id);
         if(debug) console.log(card_img_2);
         attempts_counter += 1;
         if(debug) console.log('number of attempts is equal to: ' + attempts_counter);
