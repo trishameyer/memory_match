@@ -283,7 +283,7 @@ body{
     -webkit-animation: match_rotate 1s;
 }
 
-/*
+
 #modalIntro {
     display:none;
     position: absolute;
@@ -309,6 +309,7 @@ body{
     margin-top: -9%;
     margin-bottom: 8%;
     font-size: 3.5vw;
+    text-decoration: underline;
 
 }
 
@@ -355,7 +356,7 @@ body{
     background-color: rgba(0, 0, 0, 0.74);
     box-shadow: 0 0 0 500px rgba(0, 0, 0, 0.74);
 }
-*/
+
 
 
 audio {
