@@ -89,7 +89,7 @@ function card_clicked(element) {
             }
             else {
                 //displays % in stats area
-                $(".accuracy").find(".value").text(accuracy + "%");
+                $(".accuracy").find(".value").text(Math.floor(accuracy) + "%");
             }
             //adds You Won message after game_area has been cleared
             $("#game-area").append($("<h5>").html("You won the <span>Piston Cup!</span>"));
