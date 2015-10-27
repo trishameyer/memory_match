@@ -283,6 +283,24 @@ body{
     -webkit-animation: match_rotate 1s;
 }
 
+#dropdown{
+    border: 7px solid black;
+    width: 30%;
+    height: 20%;
+    position: absolute;
+    right: 6%;
+    background-color: rgba(253, 148, 148, 0.83);
+    z-index: 1;
+    border-radius: 0 0 5% 5%;
+    color: green;
+    font-size: 2.5vw;
+    top: 6%;
+    text-align: center;
+    font-style: italic;
+    text-shadow: 0 2px rgba(237, 26, 26, 0.92);
+
+}
+
 /*
 #modalIntro {
     display:none;
