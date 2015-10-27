@@ -30,7 +30,12 @@
             <div class="collapse navbar-collapse" id="sickNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><button type="button" class="btn btn-primary.gradient reset">Reset</button></li>
-                    <li id="settings"><a href="#">Settings</a></li>
+                    <li>
+                        <a href="#" id="settings">Settings</a>
+                        <div id="dropdown">Intensity
+                            <input type="range" min="1" max="3">
+                        </div>
+                    </li>
                     <li><a href="#">About</a></li>
                 </ul>
             </div>
@@ -39,9 +44,6 @@
 </header>
 
 <div class="container"><!--Game Area/Main-->
-    <div id="dropdown">Intensity
-        <input type="range" min="0" max="10">
-    </div>
     <main class="game-area">
         <div class="col-xs-12 col-md-4">
             <section class="game-info"> <!--game-info section-->
