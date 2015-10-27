@@ -283,7 +283,7 @@ body{
     -webkit-animation: match_rotate 1s;
 }
 
-
+/*
 #modalIntro {
     display:none;
     position: absolute;
@@ -358,7 +358,7 @@ body{
 }
 
 
-
+*/
 audio {
     display: none;
 }
