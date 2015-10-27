@@ -22,6 +22,9 @@ body {
 nav {
     float: right;
 }
+.navbar {
+    margin-bottom: -150px;
+}
 
 ul li a {
     text-decoration: none;
@@ -193,7 +196,7 @@ ul li a {
     }
 }
 
-.cards img, .cards {
+.card img, .cards {
     width: 120px;
     height: 144px;
     overflow: hidden;
