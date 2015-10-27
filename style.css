@@ -193,7 +193,7 @@ ul li a {
     }
 }
 
-.cards img {
+.cards img, .cards {
     width: 120px;
     height: 144px;
     overflow: hidden;

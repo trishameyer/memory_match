@@ -7,6 +7,48 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 var accuracy_percent = (Math.floor((accuracy) * 100));
+var card_front = [];
+var cards = 6;
+
+
+
+function card_creation(){
+
+    var div_card =  $('<div>').addClass('col-md-2 card');
+    var back_img = $('<img>').attr('src','images/darla.jpg').addClass('cards');
+    var front_img = $('<img>').attr('src','images/lilturtle.jpg').addClass('cards');
+    $(back_img).append(front_img);
+    var div_back = $('<div>').addClass('back').append(back_img);
+    var div_front = $('<div>').addClass('back').append(back_img);
+
+
+    $(div_card).append(div_back);
+    $('#game-area').append(div_card);
+}
+
+
+
+
+
+function board_creation(){
+    var i = 0;
+    while(i < cards){
+        card_creation();
+        i++;
+    }
+}
+board_creation();
+
+
+
+
+$('.back').click(function(){
+    $(this).hide();
+});
+
+
+
+/*
 
 function cardClick(element) {
     var front_img = $(element).parent().find('.front');
@@ -64,17 +106,7 @@ function cardClick(element) {
 
     }
 }
-/*
- var bubble_pop;
 
- function pop() {
- bubble_pop = setTimeout(function(){ alert("Hello"); }, 3000);
- }
-
- function stopPop() {
- clearTimeout(myVar);
- }
- */
 
 function reset() {
     reset_counter++;
@@ -110,3 +142,5 @@ function reset_stats() {
     $('.accuracy_value').empty().append(accuracy_percent + "%");
 
 }
+
+*/
