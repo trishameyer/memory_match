@@ -7,16 +7,17 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 var accuracy_percent = (Math.floor((accuracy) * 100));
-var card_front_img_random = ['images/lilturtle.jpg', 'images/lilturtle.jpg', 'images/darl.png', 'images/darl.png', 'images/doris.jpg', 'images/doris.jpg',
-    'http://showbizgeek.com/wp-content/uploads/2013/04/Screen-Shot-2013-04-29-at-18.45.30.png', 'http://showbizgeek.com/wp-content/uploads/2013/04/Screen-Shot-2013-04-29-at-18.45.30.png',
-    'https://s-media-cache-ak0.pinimg.com/originals/1c/0c/70/1c0c70c869e98cd5c9ad0fd68410a5ff.jpg', 'https://s-media-cache-ak0.pinimg.com/originals/1c/0c/70/1c0c70c869e98cd5c9ad0fd68410a5ff.jpg',
-    'http://static.tumblr.com/jrqkomz/hOxmf1y09/finding_nemo.jpg', 'http://static.tumblr.com/jrqkomz/hOxmf1y09/finding_nemo.jpg', 'https://s-media-cache-ak0.pinimg.com/236x/a9/3f/11/a93f11b692924f7dc50b095c70aa9d7a.jpg',
-    'https://s-media-cache-ak0.pinimg.com/236x/a9/3f/11/a93f11b692924f7dc50b095c70aa9d7a.jpg', 'http://media.coveringmedia.com/media/images/movies/2012/09/09/nemo_02cf.jpg',
-    'http://media.coveringmedia.com/media/images/movies/2012/09/09/nemo_02cf.jpg', 'http://mobileanimalbackgrounds.com/img/shark/finding-nemo-nemo-dory-a-shark.jpg', 'http://mobileanimalbackgrounds.com/img/shark/finding-nemo-nemo-dory-a-shark.jpg'];
 var cards = 18;
 
 
 function card_creation() {
+    var card_front_img_random = ['images/lilturtle.jpg', 'images/lilturtle.jpg', 'images/darl.png', 'images/darl.png', 'images/doris.jpg', 'images/doris.jpg',
+        'http://showbizgeek.com/wp-content/uploads/2013/04/Screen-Shot-2013-04-29-at-18.45.30.png', 'http://showbizgeek.com/wp-content/uploads/2013/04/Screen-Shot-2013-04-29-at-18.45.30.png',
+        'https://s-media-cache-ak0.pinimg.com/originals/1c/0c/70/1c0c70c869e98cd5c9ad0fd68410a5ff.jpg', 'https://s-media-cache-ak0.pinimg.com/originals/1c/0c/70/1c0c70c869e98cd5c9ad0fd68410a5ff.jpg',
+        'http://static.tumblr.com/jrqkomz/hOxmf1y09/finding_nemo.jpg', 'http://static.tumblr.com/jrqkomz/hOxmf1y09/finding_nemo.jpg', 'https://s-media-cache-ak0.pinimg.com/236x/a9/3f/11/a93f11b692924f7dc50b095c70aa9d7a.jpg',
+        'https://s-media-cache-ak0.pinimg.com/236x/a9/3f/11/a93f11b692924f7dc50b095c70aa9d7a.jpg', 'http://media.coveringmedia.com/media/images/movies/2012/09/09/nemo_02cf.jpg',
+        'http://media.coveringmedia.com/media/images/movies/2012/09/09/nemo_02cf.jpg', 'http://mobileanimalbackgrounds.com/img/shark/finding-nemo-nemo-dory-a-shark.jpg', 'http://mobileanimalbackgrounds.com/img/shark/finding-nemo-nemo-dory-a-shark.jpg'];
+
 //generate random img index assign it to front img
     var front = Math.floor(Math.random() * (card_front_img_random.length - 1));
 //dom creation
@@ -111,6 +112,8 @@ function reset() {
     $('#win').css('visibility', 'hidden');
     $('.play_again').css('visibility', 'hidden');
     reset_stats();
+    $('#game-area').html('');
+    board_creation();
 }
 
 function display_stats() {
