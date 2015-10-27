@@ -113,33 +113,11 @@ ul li a {
     position: absolute;
     top: 500px;
     margin-left: 600px;
-    animation: shark 25s;
+    animation: shark 65s;
     animation-fill-mode: forwards;
 }
 
-.sharkTail {
-    width: 60px;
-    position: absolute;
-    top: 317px;
-    margin-left: 1334px;
-    animation: tail_fin 1s infinite;
-    animation-delay: 26s;
-    visibility: hidden;
 
-}
-
-@keyframes tail_fin {
-    0% {
-        visibility: visible;
-    }
-    50% {
-        transform: rotateY(15deg);
-    }
-    100% {
-        transform: rotateY(0deg);
-    }
-
-}
 
 @keyframes shark {
     0% {
@@ -147,39 +125,39 @@ ul li a {
         left: 0px;
         top: 10px;
     }
+    25% {
+        width: 100px;
+        margin-left: 300px;
+        top: 100px;
+    }
     45% {
         width: 100px;
-        margin-left: 700px;
+        margin-left: 600px;
         top: 100px;
     }
     50% {
         width: 300px;
-        margin-left: 600px;
+        margin-left: 800px;
         top: 200px;
     }
     60% {
         width: 350px;
-        margin-left: 1160px;
-        top: 300px;
-    }
-    60% {
-        width: 350px;
-        margin-left: 900px;
+        margin-left: 1060px;
         top: 300px;
     }
     80% {
-        width: 300px;
+        width: 350px;
         margin-left: 1100px;
         top: 300px;
     }
     90% {
-        width: 300px;
+        width: 350px;
         margin-left: 1160px;
         top: 300px;
     }
     100% {
-        width: 300px;
-        margin-left: 1100px;
+        width: 350px;
+        margin-left: 1000px;
         top: 300px;
     }
 }
