@@ -7,23 +7,34 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 var accuracy_percent = (Math.floor((accuracy) * 100));
-var card_front = [];
+var card_front_img_random = ['images/lilturtle.jpg','images/lilturtle.jpg','images/darl.png','images/darl.png','images/doris.jpg','images/doris.jpg'];
 var cards = 6;
 
 
 
 function card_creation(){
+//generate random # assign it to img
+
+
+    var front = Math.floor(Math.random() * (card_front_img_random.length -1));
+
+    console.log(card_front_img_random[front], front);
+    var front_img= $('<img>').attr('src',card_front_img_random[front]).addClass('cards');
+
 
     var div_card =  $('<div>').addClass('col-md-2 card');
     var back_img = $('<img>').attr('src','images/darla.jpg').addClass('cards');
-    var front_img = $('<img>').attr('src','images/lilturtle.jpg').addClass('cards');
-    $(back_img).append(front_img);
+    $(div_back).append(back_img);
+    $(div_front).append(front_img);
     var div_back = $('<div>').addClass('back').append(back_img);
-    var div_front = $('<div>').addClass('back').append(back_img);
+    var div_front = $('<div>').addClass('front').append(front_img);
 
 
-    $(div_card).append(div_back);
+    $(div_card).append(div_front, div_back);
     $('#game-area').append(div_card);
+    delete card_front_img_random[front];
+    console.log(card_front_img_random, card_front_img_random.length);
+    card_front_img_random.length--;
 }
 
 
