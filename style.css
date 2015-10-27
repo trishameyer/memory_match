@@ -29,8 +29,8 @@ h1{
      font-family: 'Marck Script', cursive;
      font-size:5vw;
      position:absolute;
-     right:6%;
-     top:25%;
+     right:-43%;
+     top:37%;
      animation: neon1 1.5s ease-in-out infinite alternate;
  }
 h2{
@@ -68,15 +68,17 @@ span{
     -webkit-animation: blink .01s infinite alternate;
 }
 body{
-     background: #EDEBED url(images/cars_28.jpg)
+     background:url(images/cars_28.jpg)
      no-repeat center center fixed;
      background-size: cover;
-
+     height: 90vh;
+     width: 90vw;
+     position:relative;
  }
 .stats{
      display:inline-block;
      position:absolute;
-     bottom:0px;
+     bottom:-237px;
      left:20px;
      width:65%;
  }
@@ -142,10 +144,10 @@ h4 {
  }
 .block{
      float:left;
-     width:400px;
+     width:375px;
      height:150px;
      background-color:#e74c3c;
-     margin: -20px 80px;
+     margin: -3px 55px 0px 75px;
      border:5px outset black;
      box-shadow: 10px 10px,-10px -10px #f4f4f4, 0px 0px 5px 5px
  }
@@ -255,7 +257,7 @@ button{
     .stats{
         display:inline-block;
         position:relative;
-        bottom:40px;
+        bottom:-78px;
         left:20px;
         width:65%;
     }
