@@ -186,9 +186,9 @@ button{
     display: block;
 }
 
-.selected_card{
+.selected_card {
     visibility: hidden;
- }
+}
 .matched_card {
      visibility: hidden;
  }
