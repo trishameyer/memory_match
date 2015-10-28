@@ -195,6 +195,16 @@ button{
 .hide_matched_cards{
     visibility: hidden;
 }
+
+audio{
+    width:40px;
+    height:30px;
+    bottom:-277px;
+    right:-1206px;
+    position:relative;
+    background-color:transparent;
+}
+
 @-webkit-keyframes neon1 {
     from {
              text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;

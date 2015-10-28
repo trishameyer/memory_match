@@ -81,7 +81,7 @@ function card_clicked(element) {
             $('#game-area').find('.card').addClass('hide_matched_cards');
             matches = match_counter;
             attempts = attempts_counter;
-            accuracy = (matches / attempts) * 10;
+            accuracy = 100-((attempts / matches) * 10);
 
             //displays 100% instead of NaN
             if (accuracy == Infinity) {
