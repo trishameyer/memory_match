@@ -1,6 +1,6 @@
 //clock
 function clock(){
-    var val = 60;//doc ready. val is 60
+    var val = 10;//doc ready. val is 60
     $('.game-board .row').css('background-color', 'rgba(13, 255, 255, 0.2)');
 
     setInterval(function(){
