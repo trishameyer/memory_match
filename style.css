@@ -29,7 +29,7 @@ h1{
      font-family: 'Marck Script', cursive;
      font-size:5vw;
      position:absolute;
-     right:-43%;
+     right:-60%;
      top:37%;
      animation: neon1 1.5s ease-in-out infinite alternate;
  }
@@ -93,7 +93,7 @@ body{
 }
 #game-area{
     height: 65vh;
-    width:65vw;
+    width:58vw;
     position:relative;
 
  }
@@ -199,8 +199,8 @@ button{
 audio{
     width:40px;
     height:30px;
-    bottom:-277px;
-    right:-1206px;
+    bottom:-347px;
+    right:-1348px;
     position:relative;
     background-color:transparent;
 }

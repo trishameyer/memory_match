@@ -79,8 +79,7 @@ function card_clicked(element) {
             //all matches have been made
             //all matched cards disappear
             $('#game-area').find('.card').addClass('hide_matched_cards');
-            matches = match_counter;
-            attempts = attempts_counter;
+
             accuracy = 100-((attempts / matches) * 10);
 
             //displays 100% instead of NaN
@@ -191,3 +190,4 @@ function create_card_con(src) {
     card_div.append(back_div);
     return card_div;
 }
+
