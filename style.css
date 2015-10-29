@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  background-color: #020416;
-  border-bottom: 3px solid #021A50;
+  /*background-color: #020416;*/
+  background: url("images/mm_top.jpg");
+  /*border-bottom: 3px solid #021A50;*/
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 1.1em;
   color: #E0FDFC;
@@ -13,15 +14,15 @@ a {
 header {
   width: 100vw;
   height: 10vh;
-  background: url("images/mm_top.jpg") no-repeat;
-  background-size: 100% 100%;
-  border-bottom: 3px solid #021A50;
+  /*background: url("images/mm_top.jpg") no-repeat;*/
+  /*background-size: 100% 100%;*/
+  /*border-bottom: 3px solid #021A50;*/
 }
 .stats {
   width: 20vw;
   height: 89vh;
   display: inline-block;
-  border-right: 3px solid #021A50;
+  /*border-right: 3px solid #021A50;*/
 }
 #game-area {
   width: 60vw;
