@@ -34,18 +34,18 @@
 <header class="navbar  navbar-static-top" role="banner">
     <div class="container">
         <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/" class="navbar-brand"><img  width="300px"src="images/logo.png" </a>
+            <a class="navbar-brand"><img  width="300px"src="images/logo.png" </a>
         </div>
+            <div class="reset">
+                <!--add an attr with a class in the function have it look for that attribute and switch the statement and call reset(); -->
+                <img  onclick="difficulty_easy()" difficulty="easy" width="100px" class="easy bubble_easy_hard" src="images/level_one.png">
+                <img  onclick="difficulty_medium()" difficulty="medium" width="100px" class="easy bubble_easy_hard" src="images/level_two.png">
+                <img  onclick="difficulty_hard()" difficulty="hard" width="100px" class="hard bubble_easy_hard" src="images/level_three.png">
+            </div>
         <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="about.html"><img class="about_bubble" src="images/about_link.png"></a></a>
+                    <a href="about.html"><img class="about_bubble" src="images/about_link.png"></a>
                 </li>
                 <li><!--will reset the game -->
                     <div class="reset" onclick="reset()">

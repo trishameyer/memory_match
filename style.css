@@ -7,6 +7,12 @@ body {
 .rest:hover, .nav > li > a:hover {
     background-color: transparent;
 }
+.bubble_easy_hard {
+    opacity: .6;
+}
+.bubble_easy_hard:hover {
+    opacity: .9;
+}
 
 .intro {
     padding: 5%;
@@ -35,7 +41,8 @@ ul li a {
 
 .well, .well a {
     background: transparent;
-    border: 5px solid #000;
+    border: 1px solid #fff;
+    margin-top: 100%;
     color: #fff;
 }
 

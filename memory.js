@@ -8,39 +8,117 @@ var accuracy = 0;
 var games_played = 0;
 var accuracy_percent = (Math.floor((accuracy) * 100));
 var cards = 18;
+var difficulty = null;
+
+function difficulty_hard() {
+    difficulty = 'hard';
+    reset();
+    Lost();
+
+}
+function difficulty_medium() {
+
+    difficulty = 'medium';
+    reset();
+    Lost();
+}
+
+function difficulty_easy() {
+
+    difficulty = 'easy';
+    reset();
+    Lost();
+}
+
+function Lost(){
+    setTimeout(function () {
+        $('.bubble1, .bubble2').css('animation', 'bubble 5s infinite');
+    }, 5000);
+    setTimeout(function () {
+        $('.bubble5, .bubble6, .bubble7, .bubble8').css('animation', 'bubble 7s infinite');
+    }, 6000);
+    setTimeout(function () {
+        $('.bubble3, .bubble4, .bubble10').css('animation', 'bubble 6s infinite');
+    }, 7000);
+    setTimeout(function () {
+        $('.bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7, .bubble8, .bubble9, .bubble10').css('animation', 'bubble 3s infinite');
+    }, 8000);
+    setTimeout(function () {
+        $('.back').fadeOut();
+    }, 9000);
+    setTimeout(function () {
+        $('.front').addClass('match');
+    }, 9000);
+    setTimeout(function () {
+        $('#win').text('Oh No!').css('visibility', 'visible');
+    }, 9000);
+}
 
 
-function card_creation() {
-    var card_front_img_random = ['images/lilturtle.jpg', 'images/lilturtle.jpg', 'images/darl.png', 'images/darl.png', 'images/doris.jpg', 'images/doris.jpg',
-        'http://showbizgeek.com/wp-content/uploads/2013/04/Screen-Shot-2013-04-29-at-18.45.30.png', 'http://showbizgeek.com/wp-content/uploads/2013/04/Screen-Shot-2013-04-29-at-18.45.30.png',
-        'https://s-media-cache-ak0.pinimg.com/originals/1c/0c/70/1c0c70c869e98cd5c9ad0fd68410a5ff.jpg', 'https://s-media-cache-ak0.pinimg.com/originals/1c/0c/70/1c0c70c869e98cd5c9ad0fd68410a5ff.jpg',
-        'http://static.tumblr.com/jrqkomz/hOxmf1y09/finding_nemo.jpg', 'http://static.tumblr.com/jrqkomz/hOxmf1y09/finding_nemo.jpg', 'https://s-media-cache-ak0.pinimg.com/236x/a9/3f/11/a93f11b692924f7dc50b095c70aa9d7a.jpg',
-        'https://s-media-cache-ak0.pinimg.com/236x/a9/3f/11/a93f11b692924f7dc50b095c70aa9d7a.jpg', 'http://media.coveringmedia.com/media/images/movies/2012/09/09/nemo_02cf.jpg',
-        'http://media.coveringmedia.com/media/images/movies/2012/09/09/nemo_02cf.jpg', 'http://mobileanimalbackgrounds.com/img/shark/finding-nemo-nemo-dory-a-shark.jpg', 'http://mobileanimalbackgrounds.com/img/shark/finding-nemo-nemo-dory-a-shark.jpg'];
+function card_creation(front_img_src, bootstrap_card_size) {
 
 //generate random img index assign it to front img
-    var front = Math.floor(Math.random() * (card_front_img_random.length - 1));
+
 //dom creation
-    var front_img = $('<img>').attr('src', card_front_img_random[front]).addClass('cards');
+    var front_img = $('<img>').attr('src', front_img_src).addClass('cards');
     var back_img = $('<img>').attr('src', 'images/darla.jpg').addClass('cards');
     var div_back = $('<div>').addClass('back').append(back_img).attr('onclick', 'cardClick(this)');
     var div_front = $('<div>').addClass('front').append(front_img);
-    var div_card = $('<div>').addClass('col-md-2 card bottom_row');
+    var div_card = $('<div>').addClass(bootstrap_card_size + ' card bottom_row');
     $(div_back).append(back_img);
     $(div_front).append(front_img);
     $(div_card).append(div_front, div_back);
     $('#game-area').append(div_card);
 
 //splices img index from array in order for there to be no more than the matching pair on board
-    card_front_img_random.splice(front, 1);
+
 }
 
 //loops through card creation until there are 18 cards
 function board_creation() {
+    var front_image_source = ['images/lilturtle.jpg',
+        'images/darl.png',
+        'images/doris.jpg',
+        'http://showbizgeek.com/wp-content/uploads/2013/04/Screen-Shot-2013-04-29-at-18.45.30.png',
+        'https://s-media-cache-ak0.pinimg.com/originals/1c/0c/70/1c0c70c869e98cd5c9ad0fd68410a5ff.jpg',
+        'http://static.tumblr.com/jrqkomz/hOxmf1y09/finding_nemo.jpg',
+        'https://s-media-cache-ak0.pinimg.com/236x/a9/3f/11/a93f11b692924f7dc50b095c70aa9d7a.jpg',
+        'http://media.coveringmedia.com/media/images/movies/2012/09/09/nemo_02cf.jpg',
+        'http://mobileanimalbackgrounds.com/img/shark/finding-nemo-nemo-dory-a-shark.jpg'];
+
+    switch (difficulty) {
+        case "easy":
+            //do easy game here
+            var card_front_img_random = front_image_source.slice(0, 4);
+            card_front_img_random = card_front_img_random.concat(card_front_img_random);
+            cards = 8;
+            total_possible_matches = 4;
+            var card_size = 'col-md-3';
+            break;
+        case "medium":
+            //meduim game
+            var card_front_img_random = front_image_source.slice(0, 6);
+            card_front_img_random = card_front_img_random.concat(card_front_img_random);
+            cards = 12;
+            total_possible_matches = 6;
+            var card_size = 'col-md-3';
+            break;
+        case 'hard':
+            //hard game
+            var card_front_img_random = front_image_source;
+            card_front_img_random = card_front_img_random.concat(card_front_img_random);
+            cards = 18;
+            total_possible_matches = 9;
+            var card_size = 'col-md-2';
+            break;
+    }
     var i = 0;
+
     while (i < cards) {
-        card_creation();
+        var front = Math.floor(Math.random() * (card_front_img_random.length));
+        card_creation(card_front_img_random[front], card_size);
         i++;
+        card_front_img_random.splice(front, 1);
     }
 }
 //runs board creation
