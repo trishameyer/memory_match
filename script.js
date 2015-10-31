@@ -55,6 +55,7 @@ function card_clicked(element) {
             match_counter = match_counter + 1;
             matches = matches + 1;
             console.log("cards match");
+            accuracy = Math.round(((matches/attempts)*100).toFixed(2));
         }
         else {
             //the cards don't match
@@ -63,6 +64,7 @@ function card_clicked(element) {
             //resets card to null
             first_card_clicked = null;
             second_card_clicked = null;
+            accuracy = Math.round(((matches/attempts)*100).toFixed(2));
 
             setTimeout(function () {
                 //cards flip back
@@ -79,8 +81,7 @@ function card_clicked(element) {
             //all matches have been made
             //all matched cards disappear
             $('#game-area').find('.card').addClass('hide_matched_cards');
-
-            accuracy = 100-((attempts / matches) * 10);
+            accuracy = Math.round(((matches/attempts)*100).toFixed(2));
 
             //displays 100% instead of NaN
             if (accuracy == Infinity) {
@@ -95,6 +96,7 @@ function card_clicked(element) {
             //changes background to darkest scene
             $("body").css("background-image", "url(images/dark3.png)");
         }
+        display_stats();
     }
 }
 function display_stats() {
@@ -102,8 +104,7 @@ function display_stats() {
     $(".attempts").find(".value").text(attempts);
     matches = match_counter;
     attempts = attempts_counter;
-    accuracy = Math.floor((matches / attempts)) * 10;
-    accuracy = accuracy.toFixed(0);
+    accuracy = Math.round(((matches/attempts)*100).toFixed(2));
     if (accuracy == Infinity) {
         $(".accuracy").find(".value").text(100 + "%");
     }
@@ -121,11 +122,13 @@ function reset_stats() {
     match_counter = 0;
     attempts_counter = 0;
     games_played = games_played + 1;
+    //removes cards from game_area
     $(".container").html("");
+    //adds new random cards to game_area
     random_pictures();
     //adds one to games_played each time reset button is clicked
     $(".games-played").find(".value").text(games_played);
-    $(".accuracy").find(".value").text(0 + " %");
+    $(".accuracy").find(".value").text(0 + "%");
     $(".attempts").find(".value").text(0);
     $(".back").show();
     $('#game-area').find('.card').removeClass('hide_matched_cards');
