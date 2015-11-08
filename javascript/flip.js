@@ -120,7 +120,7 @@ function flip(target_element) {
             $card1 = $(card1);
             src1 = $card1.find('img:first').attr('src');
             count += 1;
-            $('audio').attr('autoplay','autoplay');
+
             //console.log($('audio')[0])
             //console.log(card1, src1, count);
         }

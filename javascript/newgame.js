@@ -1,24 +1,46 @@
 
+////dynamic array
+//var theSrcArray = [
+//    'images/bighead.jpg',
+//    'images/bighead.jpg',
+//    'images/gavin.jpg',
+//    'images/gavin.jpg',
+//    'images/amanda.jpg',
+//    'images/amanda.jpg',
+//    'images/dinesh.jpg',
+//    'images/dinesh.jpg',
+//    'images/richard.jpg',
+//    'images/richard.jpg',
+//    'images/gilfoyle.jpg',
+//    'images/gilfoyle.jpg',
+//    'images/jared.jpg',
+//    'images/jared.jpg',
+//    'images/jian.jpg',
+//    'images/jian.jpg',
+//    'images/peter.png',
+//    'images/peter.png'
+//]
+
 //dynamic array
-var theSrcArray = [
-    'images/bighead.jpg',
-    'images/bighead.jpg',
-    'images/gavin.jpg',
-    'images/gavin.jpg',
-    'images/amanda.jpg',
-    'images/amanda.jpg',
-    'images/dinesh.jpg',
-    'images/dinesh.jpg',
-    'images/richard.jpg',
-    'images/richard.jpg',
-    'images/gilfoyle.jpg',
-    'images/gilfoyle.jpg',
-    'images/jared.jpg',
-    'images/jared.jpg',
-    'images/jian.jpg',
-    'images/jian.jpg',
-    'images/peter.png',
-    'images/peter.png'
+var objArray = [
+    {imgSource: 'images/bighead.jpg', audioSrc: 'bighead.mp3'},
+    {imgSource: 'images/bighead.jpg', audioSrc: 'bighead.mp3'},
+    {imgSource: 'images/gavin.jpg', audioSrc: 'gavin.mp3'},
+    {imgSource: 'images/gavin.jpg', audioSrc: 'gavin.mp3'},
+    {imgSource: 'images/amanda.jpg', audioSrc: 'dinesh.mp3'},
+    {imgSource: 'images/amanda.jpg', audioSrc: 'dinesh.mp3'},
+    {imgSource: 'images/dinesh.jpg', audioSrc: 'dinesh.mp3'},
+    {imgSource: 'images/dinesh.jpg', audioSrc: 'dinesh.mp3'},
+    {imgSource: 'images/richard.jpg', audioSrc: 'dinesh.mp3'},
+    {imgSource: 'images/richard.jpg', audioSrc: 'dinesh.mp3'},
+    {imgSource: 'images/gilfoyle.jpg', audioSrc: 'gilfoyle.mp3'},
+    {imgSource: 'images/gilfoyle.jpg', audioSrc: 'gilfoyle.mp3'},
+    {imgSource: 'images/jared.jpg', audioSrc: 'jared.mp3'},
+    {imgSource: 'images/jared.jpg', audioSrc: 'jared.mp3'},
+    {imgSource: 'images/jian.jpg', audioSrc: 'jian.mp3'},
+    {imgSource: 'images/jian.jpg', audioSrc: 'jian.mp3'},
+    {imgSource: 'images/peter.png', audioSrc: 'peter.mp3'},
+    {imgSource: 'images/peter.png', audioSrc: 'peter.mp3'}
 ]
 
 //function for a new game, randomize cards,
@@ -37,12 +59,13 @@ function newGame() {
     var $borderRight;
     var $borderLeft;
     var $cardContainer;
+    var $audio;
     var $gameRowCol = $('.game-board .row').children();
 
-    var $randGameboard = shuffle(theSrcArray); //make a new array of randomized src attributes
+    var $randGameboard = shuffle(objArray); //make a new array of randomized src attributes
     for (var i = 0; i < $randGameboard.length; i++) {
         $imgBack = $('<img>').attr('class', 'back');//img back
-        curSrc = $randGameboard[i]; //store the current index value of random array in a variable
+        curSrc = $randGameboard[i].imgSource; //store the current index value of random array in a variable
         $imgBack.attr('src', curSrc);
 
         $imgFront = $('<img>').attr('class', 'front').attr('src', 'images/piper_front.jpg');//img front
@@ -51,7 +74,9 @@ function newGame() {
         $borderRight = $('<div>').attr('id', 'border-right');//bor right
         $borderLeft = $('<div>').attr('id', 'border-left');//bor left
         $cardContainer = $('<div>').attr('class', 'card');
-        $cardContainer.append($imgBack, $imgFront, $borderTop, $borderBottom, $borderRight, $borderLeft).click(function(){
+        $audio = $('<audio>').attr('src', $randGameboard[i].audioSrc);//make audio tag with audio src
+        console.log($audio[0]);
+        $cardContainer.append($imgBack, $imgFront, $borderTop, $borderBottom, $borderRight, $borderLeft, $audio).click(function(){
             flip(this);
             flipAudio();
         });
