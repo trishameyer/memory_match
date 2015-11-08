@@ -1,52 +1,30 @@
-
-////dynamic array
-//var theSrcArray = [
-//    'images/bighead.jpg',
-//    'images/bighead.jpg',
-//    'images/gavin.jpg',
-//    'images/gavin.jpg',
-//    'images/amanda.jpg',
-//    'images/amanda.jpg',
-//    'images/dinesh.jpg',
-//    'images/dinesh.jpg',
-//    'images/richard.jpg',
-//    'images/richard.jpg',
-//    'images/gilfoyle.jpg',
-//    'images/gilfoyle.jpg',
-//    'images/jared.jpg',
-//    'images/jared.jpg',
-//    'images/jian.jpg',
-//    'images/jian.jpg',
-//    'images/peter.png',
-//    'images/peter.png'
-//]
-
 //dynamic array
 var objArray = [
-    {imgSource: 'images/bighead.jpg', audioSrc: 'bighead.mp3'},
-    {imgSource: 'images/bighead.jpg', audioSrc: 'bighead.mp3'},
-    {imgSource: 'images/gavin.jpg', audioSrc: 'gavin.mp3'},
-    {imgSource: 'images/gavin.jpg', audioSrc: 'gavin.mp3'},
-    {imgSource: 'images/amanda.jpg', audioSrc: 'dinesh.mp3'},
-    {imgSource: 'images/amanda.jpg', audioSrc: 'dinesh.mp3'},
-    {imgSource: 'images/dinesh.jpg', audioSrc: 'dinesh.mp3'},
-    {imgSource: 'images/dinesh.jpg', audioSrc: 'dinesh.mp3'},
-    {imgSource: 'images/richard.jpg', audioSrc: 'dinesh.mp3'},
-    {imgSource: 'images/richard.jpg', audioSrc: 'dinesh.mp3'},
-    {imgSource: 'images/gilfoyle.jpg', audioSrc: 'gilfoyle.mp3'},
-    {imgSource: 'images/gilfoyle.jpg', audioSrc: 'gilfoyle.mp3'},
-    {imgSource: 'images/jared.jpg', audioSrc: 'jared.mp3'},
-    {imgSource: 'images/jared.jpg', audioSrc: 'jared.mp3'},
-    {imgSource: 'images/jian.jpg', audioSrc: 'jian.mp3'},
-    {imgSource: 'images/jian.jpg', audioSrc: 'jian.mp3'},
-    {imgSource: 'images/peter.png', audioSrc: 'peter.mp3'},
-    {imgSource: 'images/peter.png', audioSrc: 'peter.mp3'}
+    {imgSource: 'images/bighead.jpg', audioSrc: 'audio/bighead.mp3'},
+    {imgSource: 'images/bighead.jpg', audioSrc: 'audio/bighead.mp3'},
+    {imgSource: 'images/gavin.jpg', audioSrc: 'audio/gavin.mp3'},
+    {imgSource: 'images/gavin.jpg', audioSrc: 'audio/gavin.mp3'},
+    {imgSource: 'images/amanda.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/amanda.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/dinesh.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/dinesh.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/richard.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/richard.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/gilfoyle.jpg', audioSrc: 'audio/gilfoyle.wav'},
+    {imgSource: 'images/gilfoyle.jpg', audioSrc: 'audio/gilfoyle.wav'},
+    {imgSource: 'images/jared.jpg', audioSrc: 'audio/jared.mp3'},
+    {imgSource: 'images/jared.jpg', audioSrc: 'audio/jared.mp3'},
+    {imgSource: 'images/jian.jpg', audioSrc: 'audio/jian.mp3'},
+    {imgSource: 'images/jian.jpg', audioSrc: 'audio/jian.mp3'},
+    {imgSource: 'images/peter.png', audioSrc: 'audio/peter.mp3'},
+    {imgSource: 'images/peter.png', audioSrc: 'audio/peter.mp3'}
 ]
 
 //function for a new game, randomize cards,
-function newGame() {
-    clock();
+function newGame(n) {
+    console.log('restart');
     $('.card').remove();
+    console.log($('.card'));
     $('#accuracy').next().find('span').text(0);
     $('#funding').next().find('span').text(0);
     $('#round').next().text('A');
@@ -75,16 +53,15 @@ function newGame() {
         $borderLeft = $('<div>').attr('id', 'border-left');//bor left
         $cardContainer = $('<div>').attr('class', 'card');
         $audio = $('<audio>').attr('src', $randGameboard[i].audioSrc);//make audio tag with audio src
-        console.log($audio[0]);
+
         $cardContainer.append($imgBack, $imgFront, $borderTop, $borderBottom, $borderRight, $borderLeft, $audio).click(function(){
             flip(this);
             flipAudio();
         });
 
         $($gameRowCol[i]).append($cardContainer);
-
-
     }
+    clock(n);
 }
 
 //array of cards
