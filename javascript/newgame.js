@@ -18,7 +18,7 @@ var objArray = [
     {imgSource: 'images/jian.jpg', audioSrc: 'audio/jian.mp3'},
     {imgSource: 'images/peter.png', audioSrc: 'audio/peter.mp3'},
     {imgSource: 'images/peter.png', audioSrc: 'audio/peter.mp3'}
-]
+];
 
 //function for a new game, randomize cards,
 function newGame(n) {
