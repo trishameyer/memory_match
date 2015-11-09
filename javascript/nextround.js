@@ -1,6 +1,6 @@
 function nextRound(){
     var lastFundingVal = $('#funding').next().find('span').text();
-    newGame();
+    newGame(start);
     $('#funding').next().find('span').text(lastFundingVal);
 
     $('.card').fadeIn('slow');

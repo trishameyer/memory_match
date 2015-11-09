@@ -84,7 +84,6 @@ function flip(target_element) {
 
                     if(totalMatch === 9){//if all cards are match
                         if(!($card2.find('.back, .front').is(':animated')) === true) {
-                            console.log('hello');
                             $('#nextRound').fadeIn('slow').slideDown('slow');
                         }
                     }
