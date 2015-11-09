@@ -15,7 +15,7 @@ body{
 
 #sickNavbar>ul>li:first-child {
     position: relative;
-    transform: translateY(13%);
+    -webkit-transform: translateY(13%);
 
 }
 
@@ -108,9 +108,9 @@ body{
     top: 0;
     right: 0;
     border-left: 4px solid rgb(38, 197, 70);
-    transform: scale(0);
+    -webkit-transform: scale(0) ;
     transition:.5s;
-    transform-origin: bottom left;
+    -webkit-transform-origin: bottom left;
     margin-right: 7%;
     margin-left: -5%;
 
@@ -123,11 +123,10 @@ body{
     top: 0;
     right: 0;
     border-right: 4px solid rgb(38, 197, 70);
-    transform: scale(0);
+    -webkit-transform: scale(0);
     transition: .5s;
-    transform-origin: top right;
+    -webkit-transform-origin: top right;
     margin-right: -5%;
-
 
 }
 
@@ -138,9 +137,9 @@ body{
     top: 0;
     right: 0;
     border-top: 4px solid rgb(38, 197, 70);
-    transform: scale(0);
+    -webkit-transform: scale(0);
     transition: .5s;
-    transform-origin: top left;
+    -webkit-transform-origin: top left;
     margin-top: -5%;
 
 }
@@ -152,20 +151,20 @@ body{
     top: 0;
     right: 0;
     border-bottom: 4px solid rgb(38, 197, 70);
-    transform: scale(0);
+    -webkit-transform: scale(0);
     transition: .5s;
-    transform-origin: bottom right;
+    -webkit-transform-origin: bottom right;
     margin-bottom: -5%;
 
 
 }
 
 .matchAnimation{
-    transform: scale(1) !important;
+    -webkit-transform: scale(1) !important;
 }
 
 .morphEnd{
-    background: radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%);
+    background: -webkit-radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%) !important;
     height: 50% !important;
     width: 76% !important;
     border-radius: 50% !important;
@@ -179,11 +178,10 @@ body{
         height: 100%;
         position: absolute;
         border-radius: 5%;
-
     }
 
     to{
-        background: radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%);
+        background: -webkit-radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%) !important;
         height: 50%;
         width:76%;
         border-radius: 50%;
@@ -194,7 +192,7 @@ body{
 }
 
 .morph{
-    -webkit-animation: morph .6s forwards; //
+    -webkit-animation: morph .6s ; /*TODO removed forwards*/
     /*removed forwards*/
 }
 
@@ -216,7 +214,7 @@ body{
 
 
 .front{
-    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 
@@ -258,10 +256,10 @@ body{
 
 @-webkit-keyframes spin {
     from {
-        transform: rotateZ(0);
+        -webkit-transform: rotateZ(0);
     }
     to{
-        transform: rotateZ(360deg);
+        -webkit-transform: rotateZ(360deg);
     }
 }
 
@@ -272,10 +270,10 @@ body{
 
 @-webkit-keyframes match_rotate{
     from {
-        transform: rotateY(0);
+        -webkit-transform: rotateY(0);
     }
     to{
-        transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
     }
 }
 
@@ -340,7 +338,7 @@ div#modalAbout {
     width: 75%;
     height: 49%;
     border: 5px solid black;
-    transform: translate3d(-50%, -50%, 0 );
+    -webkit-transform: translate3d(-50%, -50%, 0 );
     left: 50%;
     box-shadow: 0 0 0 500px rgba(187, 167, 167, 0.74);
     background-color: rgba(0, 0, 0, 0.88);
@@ -357,7 +355,7 @@ div#modalAbout {
 #modalAbout > .container-fluid{
     position: relative;
     top: 50%;
-    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
 }
 
 #modalAbout button {
@@ -391,7 +389,7 @@ div#nextRound {
     width: 50%;
     height: 31%;
     border: 5px solid black;
-    transform: translate3d(-50%, -50%, 0 );
+    -webkit-transform: translate3d(-50%, -50%, 0 );
     left: 50%;
     box-shadow: 0 0 0 500px rgba(187, 167, 167, 0.74);
     background-color: rgba(0, 0, 0, 0.88);
@@ -408,7 +406,7 @@ div#nextRound {
 #nextRound > .container-fluid{
     position: relative;
     top: 50%;
-    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
 }
 
 #nextRound .btn {
@@ -444,7 +442,7 @@ div#nextRound {
     /*width: 80%;*/
     /*height: 60%;*/
     /*border: 5px solid black;*/
-    /*transform: translate3d(-50%, -50%, 0 );*/
+    /*-webkit-transform: translate3d(-50%, -50%, 0 );*/
     /*left: 50%;*/
     /*box-shadow: 0 0 0 500px rgba(187, 167, 167, 0.74);*/
     /*background-color: rgba(0, 0, 0, 0.88);*/
@@ -469,7 +467,7 @@ div#nextRound {
 /*#modalIntro > .container-fluid{*/
     /*position: relative;*/
     /*top: 50%;*/
-    /*transform: translate3d(0, -50%, 0);*/
+    /*-webkit-transform: translate3d(0, -50%, 0);*/
 /*}*/
 
 /*#modalIntro .btn {*/
@@ -503,7 +501,7 @@ div#nextRound {
     /*top: 50%;*/
     /*width: 80%;*/
     /*height: 80%;*/
-    /*transform: translate3d(-50%, -50%, 0 );*/
+    /*-webkit-transform: translate3d(-50%, -50%, 0 );*/
     /*left: 50%;*/
     /*background-color: rgba(0, 0, 0, 0.74);*/
     /*box-shadow: 0 0 0 500px rgba(0, 0, 0, 0.74);*/
@@ -516,7 +514,7 @@ div#playAgain {
     width: 50%;
     height: 31%;
     border: 5px solid black;
-    transform: translate3d(-50%, -50%, 0 );
+    -webkit-transform: translate3d(-50%, -50%, 0 );
     left: 50%;
     box-shadow: 0 0 0 500px rgba(187, 167, 167, 0.74);
     background-color: rgba(0, 0, 0, 0.88);
@@ -533,7 +531,7 @@ div#playAgain {
 #playAgain> .container-fluid{
     position: relative;
     top: 50%;
-    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
 }
 
 #playAgain .btn {
@@ -620,7 +618,7 @@ audio {
     }
     #sickNavbar>ul>li:first-child {
         position: relative;
-        transform: translateY(7%);
+        -webkit-transform: translateY(7%);
         margin-left: 2.5%;
         margin-bottom: 1%;
     }

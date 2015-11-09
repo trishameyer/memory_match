@@ -66,7 +66,8 @@ function flip(target_element) {
 
                     $card2.find('.front').on('webkitTransitionEnd', function(){
                         console.log('flip done');
-                        $card2.find('.front, .back').addClass('morph').removeAttr('src');//css animation morph
+                        $card2.find('.front, .back').removeAttr('src');
+                        $card2.find('.front, .back').addClass('morph');//css animation morph
                     });
 
 
