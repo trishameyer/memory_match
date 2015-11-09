@@ -164,7 +164,7 @@ body{
 }
 
 .morphEnd{
-    background: -webkit-radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%) !important;
+    background: radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%) ;
     height: 50% !important;
     width: 76% !important;
     border-radius: 50% !important;
@@ -181,7 +181,7 @@ body{
     }
 
     to{
-        background: -webkit-radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%) !important;
+        background:radial-gradient(circle at 79% 17%, rgb(255, 101, 92) 6%, #ffffff 49%, rgb(29, 134, 38) 84%) ;
         height: 50%;
         width:76%;
         border-radius: 50%;
