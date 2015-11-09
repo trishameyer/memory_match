@@ -1,10 +1,18 @@
 //clock
 var clockInterval;
 function clock(startVal){
+    $('#deadline').next().text(startVal);//add that to clock
+    var timerEl = $('#timer-sound')[0];
+    timerEl.volume = .2;
+    timerEl.play();
     var val = startVal;//doc ready. val is 60
     $('.game-board .row').css('background-color', 'rgba(13, 255, 255, 0.2)');
 
     clockInterval = setInterval(function(){
+        if(timerEl.currentTime>8.8){
+            timerEl.currentTime = 0;
+            timerEl.play();
+        }
         if(val>55) {//greater than 45
             val = val - 1;//-1
             $('.game-board .row').css('background-color', 'rgba(0, 0, 0, 0.74)');
@@ -14,6 +22,7 @@ function clock(startVal){
             val = val - 1;//-1
             $('.game-board .row').css('background-color', 'rgba(95, 26, 236, 0.41)');
             $('#deadline').next().text(val);//add that to clock
+
 
         } else if(val > 11 && val <= 35) {
             val = val - 1;//-1
@@ -29,14 +38,19 @@ function clock(startVal){
             val = val - 1;//-1
             $('#deadline').next().text(val);//add that to clock
             $('.game-board .row').addClass('warning');
+            timerEl.currentTime = 8.9;
+            timerEl.play();
 
 
         } else if(val < 1){//if 0
+            clearInterval(clockInterval);
+            timerEl.pause();
             $('.game-board .row').removeClass('warning');
             var x = confirm('play again?');
             if(x){
                 $('#round').next().text('A');
                 val = 60;
+
             }
         }
     }, 1000);

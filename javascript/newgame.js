@@ -4,12 +4,12 @@ var objArray = [
     {imgSource: 'images/bighead.jpg', audioSrc: 'audio/bighead.mp3'},
     {imgSource: 'images/gavin.jpg', audioSrc: 'audio/gavin.mp3'},
     {imgSource: 'images/gavin.jpg', audioSrc: 'audio/gavin.mp3'},
-    {imgSource: 'images/amanda.jpg', audioSrc: 'audio/dinesh.mp3'},
-    {imgSource: 'images/amanda.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/erlich.jpg', audioSrc: 'audio/erlich.mp3'},
+    {imgSource: 'images/erlich.jpg', audioSrc: 'audio/erlich.mp3'},
     {imgSource: 'images/dinesh.jpg', audioSrc: 'audio/dinesh.mp3'},
     {imgSource: 'images/dinesh.jpg', audioSrc: 'audio/dinesh.mp3'},
-    {imgSource: 'images/richard.jpg', audioSrc: 'audio/dinesh.mp3'},
-    {imgSource: 'images/richard.jpg', audioSrc: 'audio/dinesh.mp3'},
+    {imgSource: 'images/richard.jpg', audioSrc: 'audio/richard.mp3'},
+    {imgSource: 'images/richard.jpg', audioSrc: 'audio/richard.mp3'},
     {imgSource: 'images/gilfoyle.jpg', audioSrc: 'audio/gilfoyle.wav'},
     {imgSource: 'images/gilfoyle.jpg', audioSrc: 'audio/gilfoyle.wav'},
     {imgSource: 'images/jared.jpg', audioSrc: 'audio/jared.mp3'},
@@ -22,7 +22,7 @@ var objArray = [
 
 //function for a new game, randomize cards,
 function newGame(n) {
-    console.log('restart');
+
     $('.card').remove();
     console.log($('.card'));
     $('#accuracy').next().find('span').text(0);
@@ -61,7 +61,7 @@ function newGame(n) {
 
         $($gameRowCol[i]).append($cardContainer);
     }
-    clock(n);
+    //clock(n); //TODO put back in..
 }
 
 //array of cards

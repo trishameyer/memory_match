@@ -1,5 +1,8 @@
 function nextRound(){
+    var lastFundingVal = $('#funding').next().find('span').text();
     newGame();
+    $('#funding').next().find('span').text(lastFundingVal);
+
     $('.card').fadeIn('slow');
     roundVal = $('#round').next().text(); //grabs string value
     charCode = roundVal.charCodeAt();//charCode is the number associated with letter

@@ -16,6 +16,7 @@ var addpoints = 0;
 
 //flip function
 function flip(target_element) {
+    console.log(totalMatches);
     var nodeList = $('.card');
     var curCount = 0;
     for(var i = 0; i < nodeList.length; i++){
@@ -75,18 +76,16 @@ function flip(target_element) {
                     src1 = null;
                     src2 = null;
                     totalMatch += 1;
-                    //console.log('Matches:'+totalMatch);
+                    console.log(totalMatches);
                     accuracy = (totalMatch/tries)*100;
                     newAccuracy = accuracy.toFixed(0);
                     //console.log('accuracy:'+accuracy);
                     $('#accuracy').next().find('span').text(newAccuracy);
 
                     if(totalMatch === 9){//if all cards are match
-                        if(!($card2.find('.back, .front').is(':animated'))=== true) {
-                            response = confirm('Ready for the next venture round?');
-                            if (response) {
-                                nextRound();
-                            }
+                        if(!($card2.find('.back, .front').is(':animated')) === true) {
+                            console.log('hello');
+                            $('#nextRound').fadeIn('slow').slideDown('slow');
                         }
                     }
 
