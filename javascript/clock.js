@@ -33,11 +33,9 @@ function clock(startVal){
 
         } else if(val < 1){//if 0
             $('.game-board .row').removeClass('warning');
-            var x = confirm('play again?');
-            if(x){
-                $('#round').next().text('A');
-                val = 60;
-            }
+            $('#playAgain').show();
+            clearInterval(clockInterval);
+
         }
     }, 1000);
 
