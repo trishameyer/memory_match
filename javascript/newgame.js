@@ -61,7 +61,7 @@ function newGame(n) {
 
         $($gameRowCol[i]).append($cardContainer);
     }
-    //clock(n); //TODO put back in..
+    clock(n);
 }
 
 //array of cards
