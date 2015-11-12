@@ -199,8 +199,8 @@ button{
 audio{
     width:40px;
     height:30px;
-    bottom:-347px;
-    right:-1348px;
+    left:96vw;
+    top:50vh;
     position:relative;
     background-color:transparent;
 }
@@ -311,4 +311,9 @@ audio{
              width:75vw;
          }
 
+}
+@media screen and (min-width:266px) and (max-width:1237px){
+    body{
+        background-color: black;
+    }
 }

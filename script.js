@@ -65,6 +65,11 @@ function card_clicked(element) {
             first_card_clicked = null;
             second_card_clicked = null;
             accuracy = Math.round(((matches/attempts)*100).toFixed(2));
+            //user clicks on a non_matched card which increases attempts_counter
+            attempts=attempts + 1;
+            attempts_counter=attempts_counter+1;
+            //adds one to attempts in the stats area
+            $(".attempts").find(".value").text(attempts_counter);
 
             setTimeout(function () {
                 //cards flip back
@@ -72,25 +77,12 @@ function card_clicked(element) {
                 can_i_click_a_card = true;
             }, 1050);
             console.log("cards don't match");
-            //user clicks on a non_matched card which increases attempts_counter
-            attempts_counter = attempts_counter + 1;
-            //adds one to attempts in the stats area
-            $(".attempts").find(".value").text(attempts_counter);
         }
         if (match_counter == total_possible_matches) {
             //all matches have been made
             //all matched cards disappear
             $('#game-area').find('.card').addClass('hide_matched_cards');
-            accuracy = Math.round(((matches/attempts)*100).toFixed(2));
 
-            //displays 100% instead of NaN
-            if (accuracy == Infinity) {
-                $(".accuracy").find(".value").text(100 + "%");
-            }
-            else {
-                //displays % in stats area
-                $(".accuracy").find(".value").text(Math.floor(accuracy) + "%");
-            }
             //adds You Won message after game_area has been cleared
             $("#game-area").append($("<h5>").html("You won the <span>Piston Cup!</span>"));
             //changes background to darkest scene
