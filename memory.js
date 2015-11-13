@@ -11,29 +11,29 @@ var cards = 18;
 var difficulty = 'easy';
 
 
-
+//
 //function Lost(){
 //    setTimeout(function () {
 //        $('.bubble1, .bubble2').css('animation', 'bubble 5s infinite');
-//    }, 5000);
+//    }, 1000);
 //    setTimeout(function () {
 //        $('.bubble5, .bubble6, .bubble7, .bubble8').css('animation', 'bubble 7s infinite');
-//    }, 6000);
+//    }, 2000);
 //    setTimeout(function () {
 //        $('.bubble3, .bubble4, .bubble10').css('animation', 'bubble 6s infinite');
-//    }, 7000);
+//    }, 3000);
 //    setTimeout(function () {
 //        $('.bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7, .bubble8, .bubble9, .bubble10').css('animation', 'bubble 3s infinite');
-//    }, 8000);
+//    }, 4000);
 //    setTimeout(function () {
 //        $('.back').fadeOut();
-//    }, 9000);
+//    }, 5000);
 //    setTimeout(function () {
 //        $('.front').addClass('match');
-//    }, 9000);
+//    }, 6000);
 //    setTimeout(function () {
 //        $('#win').text('Oh No!').css('visibility', 'visible');
-//    }, 9000);
+//    }, 6000);
 //}
 
 
@@ -105,7 +105,6 @@ function board_creation() {
 }
 //runs board creation
 board_creation();
-
 function difficulty_hard() {
     difficulty = 'hard';
     reset();
