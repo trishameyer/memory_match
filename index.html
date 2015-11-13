@@ -157,6 +157,8 @@
         </div>
     </div> -->
 </div>
+    <div class=".container2">
+    </div>
 <h1>Cars Cafe</h1>
 
 <div class="stats">
@@ -176,17 +178,19 @@
         <p class="value"></p>
     </div>
     <div id="extras">
-        <a href="#">Settings</a>
-        <button class="reset" onclick="reset_stats(display_stats())">Reset Game</button>
-        <a href="about.html">About</a>
+        <button class="easy_button"onclick="easy()">Easy</button>
+        <button class="medium_button" onclick="medium()">Medium</button>
+        <button class="difficult_button"onclick="difficult()">Difficult</button>
     </div>
-</div>
-
+    <div id ="reset">
+        <audio controls>
+            <source src="images/14%20Life%20Is%20A%20Highway.m4a">
+        </audio>
+    <button class="reset" onclick="reset_stats(display_stats())">Reset Game</button>
+    <a href="about.html">About</a>
+        </div>
 <audio autoplay id="sheriff">
     <source src="images/heapoftrouble.m4r">
 </audio>
-<audio controls>
-    <source src="images/14%20Life%20Is%20A%20Highway.m4a">
-    </audio>
 </body>
 </html> 

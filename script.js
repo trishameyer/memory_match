@@ -2,13 +2,14 @@ var first_card_clicked = null;
 var second_card_clicked = null;
 var total_possible_matches = 9;
 var match_counter = 0;
-var attempts_counter = 0;
 var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 var can_i_click_a_card = true;
 var random_picture = null;
+var difficulty="easy";
+var card=null;
 
 
 //the page has loaded
@@ -18,7 +19,29 @@ $(document).ready(function () {
     $(".attempts").find(".value").text(0);
     $("games_played").find(".value").text(0);
     random_pictures();
+    console.log("ready");
 });
+
+
+function easy(){
+    difficulty="easy";
+    reset_stats();
+    $(".container").removeClass("container2");
+}
+function medium(){
+    difficulty="medium";
+    reset_stats();
+    $(".container").removeClass("container2");
+    $("body").css("background-image", "url(images/dark2.png)");
+}
+function difficult (){
+    difficulty="difficult";
+    reset_stats();
+    $(".container").addClass("container2");
+    $("body").css("background-image", "url(images/dark4.png)");
+    $("h1").remove;
+
+}
 
 function card_clicked(element) {
     //check if you can click on a card
@@ -41,6 +64,7 @@ function card_clicked(element) {
     else {
         //we clicked the second card
         second_card_clicked = the_card;
+        attempts=attempts + 1;
         //the front image of the second card is visible
         $(element).addClass("selected_card");
         console.log("card is second");
@@ -52,7 +76,6 @@ function card_clicked(element) {
             first_card_clicked = null;
             second_card_clicked = null;
             //increases matches and match_counter
-            match_counter = match_counter + 1;
             matches = matches + 1;
             console.log("cards match");
             accuracy = Math.round(((matches/attempts)*100).toFixed(2));
@@ -66,10 +89,8 @@ function card_clicked(element) {
             second_card_clicked = null;
             accuracy = Math.round(((matches/attempts)*100).toFixed(2));
             //user clicks on a non_matched card which increases attempts_counter
-            attempts=attempts + 1;
-            attempts_counter=attempts_counter+1;
             //adds one to attempts in the stats area
-            $(".attempts").find(".value").text(attempts_counter);
+            $(".attempts").find(".value").text(attempts);
 
             setTimeout(function () {
                 //cards flip back
@@ -78,7 +99,7 @@ function card_clicked(element) {
             }, 1050);
             console.log("cards don't match");
         }
-        if (match_counter == total_possible_matches) {
+        if (matches == total_possible_matches) {
             //all matches have been made
             //all matched cards disappear
             $('#game-area').find('.card').addClass('hide_matched_cards');
@@ -94,9 +115,7 @@ function card_clicked(element) {
 function display_stats() {
     $(".games-played").find(".value").text(games_played);
     $(".attempts").find(".value").text(attempts);
-    matches = match_counter;
-    attempts = attempts_counter;
-    accuracy = Math.round(((matches/attempts)*100).toFixed(2));
+    accuracy = Math.floor(((matches/attempts)*100).toFixed(2));
     if (accuracy == Infinity) {
         $(".accuracy").find(".value").text(100 + "%");
     }
@@ -111,8 +130,6 @@ function reset_stats() {
     accuracy = 0;
     matches = 0;
     attempts = 0;
-    match_counter = 0;
-    attempts_counter = 0;
     games_played = games_played + 1;
     //removes cards from game_area
     $(".container").html("");
@@ -142,31 +159,43 @@ function random_pictures() {
         "images/mater.jpg",
         "images/ramone.jpg",
         "images/sally.jpg",
-        "images/sarge.jpg",
-        "images/fillmore.jpg",
-        "images/flo.jpg",
-        "images/guido.jpg",
-        "images/lighteningmcqueen.jpg",
-        "images/luigi.jpg",
-        "images/mater.jpg",
-        "images/ramone.jpg",
-        "images/sally.jpg",
         "images/sarge.jpg"];
 
-    for (var i = 0; i < 18; i++) {
-        var fractional_numbers = Math.random() * pics_array.length;
-// rounds fractional numbers to a whole number
-        var random_pic_index = Math.floor(fractional_numbers);
-        random_picture = pics_array[random_pic_index];
-        $("<img>").addClass("front").attr("src", random_picture);
-        pics_array.splice(random_pic_index, 1);
-        console.log(random_picture);
-        var new_card_div = create_card_con(random_picture);
-        $(".container").append(new_card_div);
+    switch(difficulty) {
+        case "easy":
+            var new_pics_array = pics_array.slice(0, 4);
+            new_pics_array = new_pics_array.concat(new_pics_array);
+            card = 8;
+            total_possible_matches = 4;
+            console.log(new_pics_array);
+            break;
+        case "medium":
+            var new_pics_array=pics_array.slice(0,6);
+            new_pics_array=new_pics_array.concat(new_pics_array);
+            card=12;
+            total_possible_matches=6;
+            console.log(new_pics_array);
+            break;
+        case "difficult":
+            var new_pics_array = pics_array;
+            new_pics_array = new_pics_array.concat(new_pics_array);
+            card = 18;
+            total_possible_matches = 9;
+            console.log(new_pics_array);
+            break;
     }
+    var i=0;
+    while(i<card){
+        var random_i=Math.floor(Math.random()*(new_pics_array.length));
+        create_card_con(new_pics_array[random_i]);
+        i++;
+        new_pics_array.splice(random_i,1);
+    console.log("random pics");
+    }
+    console.log(difficulty);
 }
 
-function create_card_con(src) {
+function create_card_con(random_picture) {
 
     //jquery objects for dynamic board
     var card_div = $("<div>").addClass("card");
@@ -183,6 +212,5 @@ function create_card_con(src) {
     back_div.append(img_back);
     card_div.append(front_div);
     card_div.append(back_div);
-    return card_div;
+    $(".container").append(card_div);
 }
-
