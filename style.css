@@ -9,6 +9,7 @@ body {
 }
 .bubble_easy_hard {
     opacity: .6;
+    width: 100px;
 }
 .bubble_easy_hard:hover {
     opacity: .9;
@@ -25,11 +26,15 @@ body {
     font: 1.5em 'Paytone One', sans-serif;
 }
 
+.logo{
+    width:300px;
+}
+
 nav {
     float: right;
 }
 .navbar {
-    margin-bottom: -150px;
+    margin-bottom: -220px;
 }
 
 ul li a {
@@ -48,25 +53,15 @@ ul li a {
 
 .card .front {
     position: absolute;
-    /*   transform: rotateY(180deg);
-       backface-visibility: hidden;
-       transition: transform .5s linear 0s; */
 }
 
 .card .back {
     position: absolute;
-    /*   transform: rotateY(0deg);
-       backface-visibility: hidden;
-       transition: transform .5s linear 0s;*/
 }
 
-/*
-.card:hover > .front {
-    transform: rotateY(0deg);
+.bubble_easy_hard{
+
 }
-.card:hover > .back {
-    transform: rotateY(180deg);
-}*/
 
 .bottom_row {
     margin-top: 20%;
@@ -121,6 +116,7 @@ ul li a {
     top: 500px;
     margin-left: 600px;
     animation: shark 65s;
+    animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -190,7 +186,6 @@ ul li a {
 .about_bubble {
     width: 120px;
     opacity: .8;
-    margin-top: 35%;
 }
 
 .about_pic {

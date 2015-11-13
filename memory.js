@@ -105,24 +105,11 @@ function board_creation() {
 }
 //runs board creation
 board_creation();
-function difficulty_hard() {
-    difficulty = 'hard';
+function difficulty_level(level) {
+    difficulty = level;
     reset();
     Lost();
 
-}
-function difficulty_medium() {
-
-    difficulty = 'medium';
-    reset();
-    Lost();
-}
-
-function difficulty_easy() {
-
-    difficulty = 'easy';
-    reset();
-    Lost();
 }
 
 function cardClick(element) {
@@ -161,8 +148,6 @@ function cardClick(element) {
                 $('#win').css('visibility', 'visible');
                 $('.play_again').css('visibility', 'visible');
             }
-
-
         }
         //Cards did not match rest back to show and set global var to null
         else {
@@ -172,9 +157,7 @@ function cardClick(element) {
             $(reset_card_2).show(1000);
             first_card_clicked = null;
             second_card_clicked = null;
-
         }
-
     }
 }
 

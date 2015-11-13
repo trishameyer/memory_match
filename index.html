@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,22 +10,11 @@
 
     <title>Memory Match</title>
 
-    <!--Core CSS -->
+    <!--CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
-
-    <!-- Custom CSS -->
     <link href="style.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-
-
+    <!--JQUERY -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 </head>
@@ -35,13 +22,12 @@
 <header class="navbar  navbar-static-top" role="banner">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand"><img  width="300px"src="images/logo.png" </a>
+            <a class="navbar-brand"><img class="logo" src="images/logo.png"></a>
         </div>
             <div class="reset">
-                <!--add an attr with a class in the function have it look for that attribute and switch the statement and call reset(); -->
-                <img  onclick="difficulty_easy()" difficulty="easy" width="100px" class="easy bubble_easy_hard" src="images/level_one.png">
-                <img  onclick="difficulty_medium()" difficulty="medium" width="100px" class="easy bubble_easy_hard" src="images/level_two.png">
-                <img  onclick="difficulty_hard()" difficulty="hard" width="100px" class="hard bubble_easy_hard" src="images/level_three.png">
+                <img  onclick="difficulty_level('easy')"  class="bubble_easy_hard" src="images/level_one.png">
+                <img  onclick="difficulty_level('medium')" class="bubble_easy_hard" src="images/level_two.png">
+                <img  onclick="difficulty_level('hard')" class="bubble_easy_hard" src="images/level_three.png">
             </div>
         <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
@@ -57,7 +43,7 @@
         </nav>
     </div>
     <div class="win_container">
-        <h1 id="win"">YOU WON!!</h1>
+        <h1 id="win">YOU WON!!</h1>
         <h1 class="play_again" onclick="reset()">play again?</h1>
     </div>
 </header>
