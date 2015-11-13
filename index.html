@@ -159,6 +159,7 @@
 </div>
     <div class=".container2">
     </div>
+    <div id="counter"></div>
 <h1>Cars Cafe</h1>
 
 <div class="stats">
@@ -180,7 +181,7 @@
     <div id="extras">
         <button class="easy_button"onclick="easy()">Easy</button>
         <button class="medium_button" onclick="medium()">Medium</button>
-        <button class="difficult_button"onclick="difficult()">Difficult</button>
+        <button class="difficult_button"onclick="difficult();countdown()">Difficult</button>
     </div>
     <div id ="reset">
         <audio controls>
@@ -189,7 +190,7 @@
     <button class="reset" onclick="reset_stats(display_stats())">Reset Game</button>
     <a href="about.html">About</a>
         </div>
-<audio autoplay id="sheriff">
+    <audio autoplay id="sheriff">
     <source src="images/heapoftrouble.m4r">
 </audio>
 </body>

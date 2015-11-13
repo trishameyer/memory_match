@@ -27,6 +27,7 @@ function easy(){
     difficulty="easy";
     reset_stats();
     $(".container").removeClass("container2");
+    $("body").remove("background-image", "url(images/dark3.png)");
 }
 function medium(){
     difficulty="medium";
@@ -39,7 +40,7 @@ function difficult (){
     reset_stats();
     $(".container").addClass("container2");
     $("body").css("background-image", "url(images/dark4.png)");
-    $("h1").remove;
+    countdown();
 
 }
 
@@ -106,10 +107,14 @@ function card_clicked(element) {
 
             //adds You Won message after game_area has been cleared
             $("#game-area").append($("<h5>").html("You won the <span>Piston Cup!</span>"));
-            //changes background to darkest scene
-            $("body").css("background-image", "url(images/dark3.png)");
         }
         display_stats();
+    }
+    if(attempts==20) {
+        $("#game-area").append($("<h5>").html("You were too slow!"));
+        $("body").css("background-image", "url(images/dark4.png)");
+        $('#game-area').find('.card').addClass('hide_matched_cards');
+        console.log(attempts);
     }
 }
 function display_stats() {
@@ -144,7 +149,8 @@ function reset_stats() {
     $('.card').find('.back').removeClass('matched_card');
     $("h5").remove();
     //resets background to daytime picture
-    $("body").css("background-image", "url(images/cars_28.jpg)");
+    //$("body").css("background-image", "url(images/cars_28.jpg)");//
+    difficultly="easy";
 }
 
 //takes all front image urls and stores in array
@@ -214,3 +220,20 @@ function create_card_con(random_picture) {
     card_div.append(back_div);
     $(".container").append(card_div);
 }
+function countdown() {
+    var seconds = 30;
+    function tick() {
+        var counter = document.getElementById("counter");
+        seconds--;
+        counter.innerHTML = "0:" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+            $("#game-area").append($("<h5>").html("Sheriff took you to jail!"));
+            $('#game-area').find('.card').addClass('hide_matched_cards');
+            $("#counter").remove();
+        }
+    }
+    tick();
+}
+
