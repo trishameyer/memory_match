@@ -25,7 +25,10 @@ body {
 .intro h1 {
     font: 1.5em 'Paytone One', sans-serif;
 }
-
+.logo_div, nav ul li{
+    display: inline-block;
+    float: left;
+}
 .logo{
     width:300px;
 }
@@ -33,15 +36,15 @@ body {
 nav {
     float: right;
 }
-.navbar {
-    margin-bottom: -220px;
-}
 
 ul li a {
     text-decoration: none;
     font-size: 2em;
     color: purple;
 
+}
+#game-area{
+    margin-top: -200px;
 }
 
 .well, .well a {
@@ -71,6 +74,9 @@ ul li a {
     position: absolute;
     top: -380px;
     transition-timing-function: ease-in-out;
+}
+.hook_img img {
+    width:170px;
 }
 
 @keyframes mymove {

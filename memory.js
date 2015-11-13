@@ -105,7 +105,6 @@ function board_creation() {
 }
 //runs board creation
 board_creation();
-lost();
 function difficulty_level(level) {
     difficulty = level;
     reset();
@@ -174,7 +173,6 @@ function reset() {
     reset_stats();
     $('#game-area').html('');
     board_creation();
-    lost();
 }
 
 function display_stats() {
