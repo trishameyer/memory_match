@@ -11,29 +11,29 @@ var cards = 18;
 var difficulty = 'easy';
 
 
-//
-//function Lost(){
+//lose option in progress
+//function lost(){
 //    setTimeout(function () {
 //        $('.bubble1, .bubble2').css('animation', 'bubble 5s infinite');
-//    }, 1000);
+//    }, 21000);
 //    setTimeout(function () {
 //        $('.bubble5, .bubble6, .bubble7, .bubble8').css('animation', 'bubble 7s infinite');
-//    }, 2000);
+//    }, 42000);
 //    setTimeout(function () {
 //        $('.bubble3, .bubble4, .bubble10').css('animation', 'bubble 6s infinite');
-//    }, 3000);
+//    }, 53000);
 //    setTimeout(function () {
 //        $('.bubble1, .bubble2, .bubble3, .bubble4, .bubble5, .bubble6, .bubble7, .bubble8, .bubble9, .bubble10').css('animation', 'bubble 3s infinite');
-//    }, 4000);
+//    }, 64000);
 //    setTimeout(function () {
 //        $('.back').fadeOut();
-//    }, 5000);
+//    }, 76000);
 //    setTimeout(function () {
 //        $('.front').addClass('match');
-//    }, 6000);
+//    }, 96000);
 //    setTimeout(function () {
-//        $('#win').text('Oh No!').css('visibility', 'visible');
-//    }, 6000);
+//        $('#win').text('Oh No! Bruce is getting Hungry.. you took too long, Try again?').css('visibility', 'visible');
+//    }, 96000);
 //}
 
 
@@ -105,11 +105,10 @@ function board_creation() {
 }
 //runs board creation
 board_creation();
+lost();
 function difficulty_level(level) {
     difficulty = level;
     reset();
-    Lost();
-
 }
 
 function cardClick(element) {
@@ -175,6 +174,7 @@ function reset() {
     reset_stats();
     $('#game-area').html('');
     board_creation();
+    lost();
 }
 
 function display_stats() {
