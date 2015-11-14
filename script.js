@@ -27,13 +27,15 @@ function easy(){
     difficulty="easy";
     reset_stats();
     $(".container").removeClass("container2");
-    $("body").remove("background-image", "url(images/dark3.png)");
+    $("body").css("background-image", "url(images/cars_28.jpg)");
+    blazes.play();
 }
 function medium(){
     difficulty="medium";
     reset_stats();
     $(".container").removeClass("container2");
     $("body").css("background-image", "url(images/dark2.png)");
+    mater.play();
 }
 function difficult (){
     difficulty="difficult";
@@ -41,6 +43,7 @@ function difficult (){
     $(".container").addClass("container2");
     $("body").css("background-image", "url(images/dark4.png)");
     countdown();
+    sheriff.play();
 
 }
 
@@ -110,11 +113,21 @@ function card_clicked(element) {
         }
         display_stats();
     }
-    if(attempts==20) {
+    if(attempts==15) {
         $("#game-area").append($("<h5>").html("You were too slow!"));
         $("body").css("background-image", "url(images/dark4.png)");
         $('#game-area').find('.card').addClass('hide_matched_cards');
+        lights.play();
         console.log(attempts);
+    }
+    if(matches==4){
+        wake_up.play();
+    }
+    if(matches==6){
+        fillmore.play();
+    }
+    if(matches==9){
+        fun.play();
     }
 }
 function display_stats() {
@@ -221,7 +234,7 @@ function create_card_con(random_picture) {
     $(".container").append(card_div);
 }
 function countdown() {
-    var seconds = 30;
+    var seconds = 45;
     function tick() {
         var counter = document.getElementById("counter");
         seconds--;
