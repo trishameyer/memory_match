@@ -35,7 +35,6 @@ function assign_random_cards(){
     if(debug) console.log('cards_displayed');
     for(var i=0; i<img_arr.length; i++){//fill temp array with indexes totalling number of cards
         temp_arr.push(i);
-
     }
 
     for(var i=0; i<img_arr.length; i++){//loop through img array to create rows with 6 cards
