@@ -6,6 +6,7 @@
     margin-left:15px;
     font-size:20px;
     margin-right:20px;
+    width:78vw;
 }
 
 a{
@@ -35,7 +36,7 @@ h2{
      text-shadow: 7px 7px 7px red;
      display:inline;
      font-family: 'Marck Script', cursive;
-     font-size:23px;
+     font-size:124%;
  }
 h5{
     display:inline;
@@ -79,9 +80,10 @@ body{
 .stats{
      display:inline-block;
      position:absolute;
-     bottom:-237px;
-     left:20px;
-     width:59%;
+     top:57vh;
+     left:3vw;
+     width:63vw;
+     height:3vh;
  }
 .stats div{
     display:inline-block;
@@ -90,7 +92,7 @@ body{
     bottom:0px;
     margin-left:15px;
     font-size:20px;
-    margin-right:20px;
+    margin-right:2vw;
 }
 #game-area{
     height: 65vh;
@@ -166,7 +168,7 @@ button{
      background-position-y:4px;
      box-sizing:border-box;
      background-repeat: no-repeat;
-     width:115px;
+     width:120px;
      margin-right:28px;
  }
 .buttonpic{
@@ -204,6 +206,13 @@ audio{
     left:25px;
     margin-top:10px;
 }
+#rascalflatts {
+    color: white;
+    text-shadow: 7px 7px 7px red;
+    display: inline;
+    font-family: 'Marck Script', cursive;
+    font-size: 23px;
+}
 
 .container2 {
     width: 71vw;
@@ -218,7 +227,10 @@ audio{
     left:428px;
     top:330px;
 }
-
+h6 {
+    visibility: hidden;
+    position:absolute;
+}
 @-webkit-keyframes neon1 {
     from {
              text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
@@ -319,38 +331,44 @@ audio{
         width:57vw;
     }
 }
-}
 
-@media screen and (min-width:450px) and (max-width:1130px){
+
+@media screen and (min-width:730px) and (max-width:1130px){
     .stats{
         display:inline-block;
         position:relative;
-        bottom:-78px;
-        left:20px;
-        width:65%;
+        width:49vw;
+        top:2vh;
     }
     .stats div{
         display:inline-block;
         position:relative;
         left:0px;
         bottom:0px;
-        margin-left:15px;
+        margin-left:2vw;
         font-size:20px;
         margin-right:20px;
     }
     #extras{
-        width:75vw;
-        height:75vh;
+        width:71vw;
+        top:2vh;
+        height:76vh;
         display: inline-block;
     }
+    #reset{
+        left:25px;
+        top:-57vh;
+        height:13vh;
+        width:49vw;
+    }
     h2 {
-        font-size: 100%;
+        font-size: 124%;
     }
     h3{
         font-size:100%;
     }
     .value{
-        font-size:15%;
+        font-size:2vw;
     }
     .front{
             height:100%;
@@ -364,8 +382,42 @@ audio{
              height:10vh;
              width:10vw;
          }
+    #game-area {
+        height: 52vh;
+        width: 57vw;
+    }
+}
+
+@media screen and (min-width:400px) and (max-width:500px){
     #game-area{
-             height:52vh;
-             width:57vw;
-         }
+        display:none;
+    }
+}
+@media only screen and (max-width: 376px) {
+    body {
+        background: black;
+    }
+
+    h6 {
+        color: white;
+        font-size: 100px;
+        position: relative;
+        visibility: visible;
+    }
+    h1{
+        display:none;
+    }
+    #game-area{
+        width:50vw;
+    }
+    .stats{
+        width:128vw;
+        margin-top:19vh;
+    }
+    .card{
+        width:26%;
+    }
+    .container{
+        width:179vw;
+    }
 }

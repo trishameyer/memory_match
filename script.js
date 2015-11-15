@@ -8,7 +8,7 @@ var accuracy = 0;
 var games_played = 0;
 var can_i_click_a_card = true;
 var random_picture = null;
-var difficulty="easy";
+var difficulty="medium";
 var card=null;
 
 
@@ -19,6 +19,7 @@ $(document).ready(function () {
     $(".attempts").find(".value").text(0);
     $("games_played").find(".value").text(0);
     random_pictures();
+    $("body").css("background-image", "url(images/dark2.png)");
     console.log("ready");
 });
 
