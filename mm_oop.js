@@ -1,10 +1,18 @@
 /**
  * Created by Andrew N on 11/14/2015.
  */
+var debug = true;
+
 var GameBoard = function(){
     var self = this;
     self.first_card_clicked = false;
     self.second_card_clicked = false;
+    self.stats = {
+        'matches': 0,
+        'attempts':0,
+        'accuracy': 0,
+        'games_played':0
+    }
     self.mode = {
         'easy':{
             'card_per_row':6,
