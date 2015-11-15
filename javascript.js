@@ -9,7 +9,6 @@ var matches =0;
 var attempts = 0;
 var accuracy = 0;
 
-//trying using event objects.
 $( document ).ready(function() {
     $(".back").click(card_clicked);
     $(".back").click(display_stats);
@@ -24,9 +23,9 @@ $( document ).ready(function() {
 
 function card_clicked(event) {
     $(this).hide().addClass('card_selected'); //could put $(this).toggleClass('someclass that affects css') instead.
-    console.log('event objects worked!');
+    console.log('clicked');
     if (first_card_clicked == null) {
-        first_card_clicked = $(this).prev().find('img').attr('src'); //do I need to  get the image source for the DOM?
+        first_card_clicked = $(this).prev().find('img').attr('src');
     } else {
         second_card_clicked = $(this).prev().find('img').attr('src');
 
@@ -48,9 +47,6 @@ function card_clicked(event) {
         }
         else {
             console.log('first_card_clicked != second_card_clicked');
-            //could put $('.back').toggleClass('someclass that affects css') instead to flip it back.
-      //      $(first_card_clicked).sibling().find('img').show();
-      //      $(second_card_clicked).sibling().find('img').show();
             first_card_clicked = null;
             second_card_clicked = null;
             console.log('click handler functionality is complete - the second');
