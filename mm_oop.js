@@ -17,17 +17,17 @@ var GameBoard = function(){
         'easy':{
             'card_per_row':6,
             'num_rows': 3,
-            'possible_matches':18
+            'possible_matches':9
         },
         'medium': {
             'cards_per_row':10,
             'num_rows': 5,
-            'possible_matches':50
+            'possible_matches':25
         },
         'hard': {
             'cards_per_row':12,
             'num_rows':6,
-            'possible_matches':72
+            'possible_matches':36
         }
     }
     self.img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png', 'card7.png',
@@ -39,21 +39,21 @@ var GameBoard = function(){
         var num_cards_assigned = 0;
         var current_row = null;
         if(debug) console.log('cards_displayed');
-        for(var i=0; i<img_arr.length; i++){//fill temp array with indexes totalling number of cards
+        for(var i=0; i<self.img_arr.length; i++){//fill temp array with indexes totalling number of cards
             temp_arr.push(i);
         }
 
-        for(var i=0; i<img_arr.length; i++){//loop through img array to create rows with 6 cards
+        for(var i=0; i<self.img_arr.length; i++){//loop through img array to create rows with 6 cards
             //also sets random value to each img in array for display of all cards
             var rand_index = Math.floor(Math.random() * (temp_arr.length));//gives random number index from 0 to array length
             //rand index will change as temp array gets smaller after each iteration
-            if(current_row == null || num_cards_assigned % cards_per_row === 0){//add 6 cards per row b/c var cards_per_row set as 6
+            if(current_row == null || num_cards_assigned % self.mode.easy.cards_per_row === 0){//add 6 cards per row b/c var cards_per_row set as 6
                 var row = $('<div>').addClass('row');
                 $('#game-area').append(row);
                 current_row = row;
             }
-            if(debug) console.log(img_arr[temp_arr[rand_index]]);
-            self.add_card_to_row(current_row, img_arr[temp_arr[rand_index]], temp_arr[rand_index]); //add card at temp array index
+            if(debug) console.log(self.img_arr[temp_arr[rand_index]]);
+            self.add_card_to_row(current_row, self.img_arr[temp_arr[rand_index]], temp_arr[rand_index]); //add card at temp array index
             num_cards_assigned++; //for checking card additions per row
 
             temp_arr.splice(rand_index,1);//remove placeholder from temp_array to mark usage
@@ -86,72 +86,72 @@ var GameBoard = function(){
         return $('#front-img-'+id).attr('src');
     }
     self.check_click = function(id){
+        var total_possible_matches = self.img_arr.length / 2;
         console.log('test clicked ' + id);
         var element = $('#back-'+id);
 
-        if(first_card_clicked == false){
+        if(self.first_card_clicked == false){
             //console.log('if initiated');
             $(element).hide(); //show first card
             first_card = element;
-            first_card_clicked = true; //first card clicked
-            card_img_1 = getSrc(id);
+            self.first_card_clicked = true; //first card clicked
+            card_img_1 = self.getSrc(id);
             if(debug) console.log(card_img_1);
         }
         else{
             if(debug) console.log('else initiated');
             $(element).hide(); //show second card
             second_card = element;
-            second_card_clicked = true; //second card clicked
-            card_img_2 = getSrc(id);
+            self.second_card_clicked = true; //second card clicked
+            card_img_2 = self.getSrc(id);
             if(debug) console.log(card_img_2);
-            attempts_counter += 1;
-            if(debug) console.log('number of attempts is equal to: ' + attempts_counter);
+            self.stats['attempts'] += 1;
+            if(debug) console.log('number of attempts is equal to: ' + self.stats.attempts);
 
-            if(card_img_1 == card_img_2 && first_card_clicked && second_card_clicked){
-                match_counter += 1;
-                if(debug) console.log(match_counter);
-                first_card_clicked = false; //reset variables for next card set
-                second_card_clicked = false; //reset variables for next card set
-                display_stats();
+            if(card_img_1 == card_img_2 && self.first_card_clicked && self.second_card_clicked){
+                self.stats['matches'] += 1;
+                if(debug) console.log('number of matches is now: ',self.stats['matches']);
+                self.first_card_clicked = false; //reset variables for next card set
+                self.second_card_clicked = false; //reset variables for next card set
+                self.display_stats();
             }
             else{ //no match!
                 if(debug) console.log('second else initiated');
-                first_card_clicked = false; //reset variables for next card set
-                second_card_clicked = false; //reset variables for next card set
+                self.first_card_clicked = false; //reset variables for next card set
+                self.second_card_clicked = false; //reset variables for next card set
 
-                hide_card(first_card);
-                hide_card(second_card);
+                self.hide_card(first_card);
+                self.hide_card(second_card);
 
-                display_stats();
+                self.display_stats();
             }
         }
 
-        if(match_counter == total_possible_matches){
+        if(self.stats['matches'] == total_possible_matches){
             if(debug) console.log('you win!');
-            games_played += 1;
-            if(debug) console.log('number of games played is: ' + games_played);
-            display_stats();
+            self.stats['games_played'] += 1;
+            if(debug) console.log('number of games played is: ' + self.stats['games_played']);
+            self.display_stats();
         }
     }
     self.display_stats = function(){
         if(debug) console.log('display_stats function called');
 
-        matches = match_counter;
-        attempts = attempts_counter;
-        accuracy = Math.round((matches / attempts) * 100);
+        self.stats['accuracy'] = Math.round((self.stats['matches'] / self.stats['attempts']) * 100);
 
-        if(debug) console.log(matches);
-        if(debug) console.log(attempts);
-        if(debug) console.log(accuracy);
-        $('#games_played_stat').text(games_played);
-        $('#attempts_stat').text(attempts);
-        $('#accuracy_stat').text(((attempts>0)?(accuracy) + '%' : '-'));
+        if(debug) console.log('accuracy is: ', self.stats['accuracy']);
+        $('#games_played_stat').text(self.stats['games_played']);
+        $('#attempts_stat').text(self.stats['attempts']);
+        $('#accuracy_stat').text(((self.stats['attempts']>0)?(self.stats['accuracy']) + '%' : '-'));
     }
-    self.reset_stats = function(){
+    self.reset_board = function(){
         if(debug) console.log('reset_stats function called');
         var all_cards = $(".back");
-        hide_card(all_cards);
-        display_stats();
+        self.hide_card(all_cards);
+        self.display_stats();
+    }
+    self.hide_card = function(element){
+        $(element).show(1000);
     }
 }
 
@@ -161,8 +161,4 @@ var Card = function(card_img, id){
     self.matched = false;
     self.img = card_img;
     self.id = id;
-    self.hide_self = function(){
-        $(this).show(1000);
-
-    }
 }

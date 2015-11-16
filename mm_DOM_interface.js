@@ -3,8 +3,9 @@
  */
 $( document ).ready(function() {
     if(debug) console.log( "ready!" );
-    display_stats();
-    assign_random_cards();
+    var board1 = new GameBoard();
+    board1.display_stats();
+    board1.populate_board();
 
-    $('body').on("click", "#reset_button", reset_stats);
+    $('body').on("click", "#reset_button", board1.reset_board);
 });
