@@ -5,8 +5,8 @@ var game_area = $('<div>').attr('id', 'game-area');
 var front = '';
 
 //************************************APPENDING STUFF-STAT SECTION************************************//
-var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
-var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
+//var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
+//var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
 var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
 var games_played = $('<div>').addClass('.games_played');
 var label = $('<p>').addClass('label');
@@ -125,12 +125,19 @@ function Board_Constructor(array) {
     };
     self.create_board = function() {
         var complete_container = $('<div>').addClass('container-fluid');
+       //header
         var header = $('<div>').addClass('jumbotron');
         var logo = $('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
         var h1 = $('<h1>').text('Music Theme');
 
         header.append(logo, h1);
         complete_container.append(header);
+
+        //stats area
+        var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
+        var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
+
+
 
     }
 }
