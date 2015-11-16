@@ -4,7 +4,6 @@ var card_back = $('<div>').addClass('back');
 var game_area = $('<div>').attr('id', 'game-area');
 var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
     "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
-var card_object_array = [];
 var front = '';
 
 //************************************APPENDING STUFF************************************//
@@ -68,43 +67,73 @@ var board = new Board_Constructor(card_array); //can have separate arrays of car
 
 function Board_Constructor(array) {
     var self = this;
+    var card_object_array = [];
     self.matches = 0;
     self.matches_counter = 0;
     self.attempts = 0;
     self.new_array = [];
     self.cards = array;
     self.objects_array = [];
+
     function randomize(array) { //now we have a new array posted in this.new_array.
         for (o = 0; o < 2; o++) {
-            for (var i = array.length - 1; i > 0; i--) {
+            for (var i = array.length - 1; i > 0; i--) { //randomizes loaded array.
                 var j = Math.floor(Math.random() * (i + 1));
                 var temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
             }
-            if (self.objects_array.length < 1) {
+            if (self.objects_array.length < 1) { //makes an array for win condition check.
                 for (var object_array = 0; object_array < array.length; object_array++) {
-                    self.objects_array[object_array] = array[object_array];
+                    self.objects_array.push(new CardConstructor(array[object_array])); //MAY USE THIS INSTEAD.
                 }
             }
-            for (var t = 0; t < array.length; t++) {
+            for (var t = 0; t < array.length; t++) { //gets done twice -> for card image array.
                 self.new_array[t] = array[t];
             }
         }
     }
+    //AFTER RANDOMIZE IS CALLED, WE SHOULD HAVE ARRAYS TO WORK WITH.
 
-    self.matches = 0;
-    self.matches_counter = 0;
+    self.catch_from_array = function (front) {
+        for (i = 0; i < self.card_object_array.length; i++) {
+            if (front === self.card_object_array[i].artist) {
+                self.card_object_array[i].clicked = true;
+                //card_object_array.splice(i);
+                break;
+            }
+        }
+    };
+
+    self.check_from_array = function (front) {
+        for (i = 0; i < self.card_object_array.length; i++) {
+            if (front === self.card_object_array[i].artist) {
+                if (self.card_object_array[i].clicked === true) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+
+    self.set_false = function (front) {
+        for (i = 0; i < self.card_object_array.length; i++) {
+            if (front === self.card_object_array[i].artist) {
+                self.card_object_array[i].clicked = false;
+            }
+        }
+    };
 }
 
 //this array needs to only be 9 elements.
-for (i = 0; i < board.new_array.length; i++) {
-    var cards_object = new CardConstructor(board.new_array[i]);
-    card_object_array.push(cards_object);
+//for (i = 0; i < board.new_array.length; i++) { //do we need this anymore? board.randomize does this.
+//    var cards_object = new CardConstructor(board.new_array[i]);
+//    card_object_array.push(cards_object);
 }
 function CardConstructor(artist) {
-    this.artist = artist;
-    this.clicked = false;
+    var self = this;
+    self.artist = artist;
+    self.clicked = false;
     //this.first_click = function (clicked_name) {
     //    for (i = 0; i < board.new_array.length; i++) {
     //        if (clicked_name === card_object_array[i].artist) {
@@ -112,6 +141,13 @@ function CardConstructor(artist) {
     //        }
     //    }
     //}
+    self.make_card = function (){
+        var card = $('<div>').addClass('card');
+        var card_front = $('<div>').addClass('front');
+        var card_back = $('<div>').addClass('back');
+
+
+    }
 }
 
 $(document).ready(function () {
@@ -129,47 +165,18 @@ $(document).ready(function () {
     reset_stats();
 });
 
-function catch_from_array(front) {
-    for (i = 0; i < card_object_array.length; i++) {
-        if (front === card_object_array[i].artist) {
-            card_object_array[i].clicked = true;
-            //card_object_array.splice(i);
-            break;
-        }
-    }
-}
-
-function check_from_array(front) {
-    for (i = 0; i < card_object_array.length; i++) {
-        if (front === card_object_array[i].artist) {
-            if (card_object_array[i].clicked === true) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-function set_false(front) {
-    for (i = 0; i < card_object_array.length; i++) {
-        if (front === card_object_array[i].artist) {
-            card_object_array[i].clicked = false;
-        }
-    }
-}
-
 function card_clicked(event) {
     $(this).hide().addClass('card_selected'); //could put $(this).toggleClass('someclass that affects css') instead.
     console.log('clicked');
     if (front === null) {
         //first_card_clicked = $(this).prev().find('img').attr('src');
         front = $(this).prev().find('img').attr('picture');
-        catch_from_array(front);
+        board.catch_from_array(front);
         //redo this to call that method. FOR PROJECT.
     } else {
         //second_card_clicked = $(this).prev().find('img').attr('src');
         front = $(this).prev().find('img').attr('picture');
-        var check_match = check_from_array(front);
+        var check_match = board.check_from_array(front);
         if (check_match) {
             board.matches_counter++;
             board.matches++;
@@ -187,7 +194,7 @@ function card_clicked(event) {
         }
         else {
             console.log('first_card_clicked != second_card_clicked');
-            set_false(front);
+            board.set_false(front);
             front = null;
             console.log('click handler functionality is complete - the second');
             board.attempts++;
@@ -197,4 +204,3 @@ function card_clicked(event) {
 }
 
 //get back from break, start appending the board.new_array[i] through a loop into the page.
-
