@@ -6,12 +6,17 @@ var card_array = ["images/michaeljackson.jpg", "images/thebeatles.jpg", "images/
     "images/atcq.jpg", "images/lanadelrey.jpg", "images/whitneyhouston.jpg", "images/drake.jpg", "images/edsheeran.jpg"];
 
 //************************************APPENDING STUFF************************************//
-var container = $('<div>').addClass('container-fluid');
-var stats_container = $('<div>').attr("id","wrapper");
+var container = $('<div>').addClass('container-fluid not_header');
+var stat_container = $('<div>').attr("id","wrapper");
 var sidebar_wrapper = $('<div>').attr("id","sidebar-wrapper");
 var games_played = $('<div>').addClass('.games_played');
 var label = $('<p>').addClass('label');
 var gp_paragraph = $('<p>').addClass('games_played value');
+var complete_container = $('<div>').addClass('container-fluid');
+var header = $('<div>').addClass(jumobtron);
+var logo = $*('<img>').attr("src","http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
+
+complete_container.append(logo);
 
 games_played.append(label).text('Games Played');
 games_played.append(gp_paragraph);
@@ -33,11 +38,17 @@ accuracy.append(accuracy_paragraph);
 
 var reset_button = $('<button>').addClass('reset').text('reset Game');
 
+header.append(logo);
+complete_container.append(header);
+
 sidebar_wrapper.append(games_played);
 sidebar_wrapper.append(random_paragraph);
 sidebar_wrapper.append(attempts);
 sidebar_wrapper.append(accuracy);
 sidebar_wrapper.append(reset_button);
+stat_container.append(sidebar_wrapper);
+container.append(stat_container);
+complete_container.append(container);
 
 //array of CARDS not just images, find a way to append them.
 card_front.append($('<img>').attr('src', 'images/musicnotes.jpg');
@@ -46,6 +57,8 @@ for (i = 0; i < board.cards.length; i++){
     var full_card = card.append(card_front).append(cardBack);
     game_area.append(full_card);
 }
+
+complete_container.append(game_area);
 //******************************************************
 
 var board = new Board_Constructor(card_array); //can have separate arrays of cards, and depending on which one is clicked, use that array.
@@ -66,6 +79,17 @@ function Board_Constructor(array) {
             for (var t = 0;t < array.length; t++) {
                 self.new_array[t] = array[t];
             }
+        }
+    }
+}
+
+var card = new CardConstructor('images/)
+function CardConstructor(artist,clicked){
+    this.artist = artist;
+    this.clicked = false;
+    this.delete_element = function(){
+        for(i=0; i < board.array.length; i++){
+
         }
     }
 }
