@@ -1,23 +1,21 @@
-var card = $('<div>').addClass('card');
-var card_front = $('<div>').addClass('front');
-var card_back = $('<div>').addClass('back');
+//var card = $('<div>').addClass('card');
+//var card_front = $('<div>').addClass('front');
+//var card_back = $('<div>').addClass('back');
 var game_area = $('<div>').attr('id', 'game-area');
-var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
-    "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
 var front = '';
 
-//************************************APPENDING STUFF************************************//
-var container = $('<div>').addClass('container-fluid not_header');
-var stat_container = $('<div>').attr("id", "wrapper");
+//************************************APPENDING STUFF-STAT SECTION************************************//
+var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
+var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
 var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
 var games_played = $('<div>').addClass('.games_played');
 var label = $('<p>').addClass('label');
 var gp_paragraph = $('<p>').addClass('games_played value');
-var complete_container = $('<div>').addClass('container-fluid');
-var header = $('<div>').addClass(jumobtron);
-var logo = $ * ('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
+//var complete_container = $('<div>').addClass('container-fluid');
+//var header = $('<div>').addClass('jumbotron');
+//var logo = $('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
+//var h1 = $('<h1>').text('Music Theme');
 
-complete_container.append(logo);
 
 games_played.append(label).text('Games Played');
 games_played.append(gp_paragraph);
@@ -39,8 +37,8 @@ accuracy.append(accuracy_paragraph);
 
 var reset_button = $('<button>').addClass('reset').text('reset Game');
 
-header.append(logo);
-complete_container.append(header);
+//header.append(logo, h1);
+//complete_container.append(header);
 
 sidebar_wrapper.append(games_played);
 sidebar_wrapper.append(random_paragraph);
@@ -51,18 +49,19 @@ stat_container.append(sidebar_wrapper);
 container.append(stat_container);
 complete_container.append(container);
 
-//array of CARDS not just images, find a way to append them.
-card_front.append($('<img>').attr('src', 'images/musicnotes.jpg');
-for (i = 0; i < board.new_array.length; i++) {
-    var cardBack = card_back.append($('<img>').attr('src', 'images/' + board.new_array[i]) + '.jpg', "picture", board.new_array[i]);	//have a ton of cards with different images.
-    var full_card = card.append(card_front).append(cardBack);
-    game_area.append(full_card);
-}
+                //array of CARDS not just images, find a way to append them.
+                //card_front.append($('<img>').attr('src', 'images/musicnotes.jpg');
+                //for (i = 0; i < board.new_array.length; i++) {
+                //    var cardBack = card_back.append($('<img>').attr('src', 'images/' + board.new_array[i]) + '.jpg', "picture", board.new_array[i]);	//have a ton of cards with different images.
+                //    var full_card = card.append(card_front).append(cardBack);
+                //    game_area.append(full_card);
+                //}
 
 complete_container.append(game_area);
 $('body').append(complete_container);
 //******************************************************
-
+var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
+    "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
 var board = new Board_Constructor(card_array); //can have separate arrays of cards, and depending on which one is clicked, use that array.
 
 function Board_Constructor(array) {
@@ -93,6 +92,7 @@ function Board_Constructor(array) {
             }
         }
     }
+
     //AFTER RANDOMIZE IS CALLED, WE SHOULD HAVE ARRAYS TO WORK WITH.
 
     self.catch_from_array = function (front) {
@@ -123,6 +123,16 @@ function Board_Constructor(array) {
             }
         }
     };
+    self.create_board = function() {
+        var complete_container = $('<div>').addClass('container-fluid');
+        var header = $('<div>').addClass('jumbotron');
+        var logo = $('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
+        var h1 = $('<h1>').text('Music Theme');
+
+        header.append(logo, h1);
+        complete_container.append(header);
+
+    }
 }
 
 //this array needs to only be 9 elements.
@@ -142,10 +152,16 @@ function CardConstructor(artist) {
     //    }
     //}
     self.make_card = function (){
+        card_front.append($('<img>').attr('src', 'images/musicnotes.jpg');
         var card = $('<div>').addClass('card');
         var card_front = $('<div>').addClass('front');
         var card_back = $('<div>').addClass('back');
-
+        for (i = 0; i < board.new_array.length; i++) {
+            var cardBack = card_back.append($('<img>').attr('src', 'images/' + board.new_array[i]) + '.jpg', "picture", board.new_array[i]);	//have a ton of cards with different images.
+            var full_card = card.append(card_front).append(cardBack);
+            game_area.append(full_card);
+        }
+        card_front.append($('<img>').attr('src', 'images/musicnotes.jpg'));
 
     }
 }
