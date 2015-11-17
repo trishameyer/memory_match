@@ -130,6 +130,11 @@ body{
 
 }
 
+p {
+    margin: 0 0 10px;
+    font-size: 25px;
+}
+
 #border-top{
     position: absolute;
     bottom: 0;
@@ -511,7 +516,7 @@ div#playAgain {
     display: none;
     position: absolute;
     top: 50%;
-    width: 50%;
+    width: 75%;
     height: 31%;
     border: 5px solid black;
     -webkit-transform: translate3d(-50%, -50%, 0 );
@@ -559,16 +564,16 @@ div#playAgain {
     outline: 0;
 }
 
-
-
-
-
-
-
 audio {
     display: none;
 }
+@media screen and (max-width: 768px){
+    #playAgain .btn {
 
+        top: 76%;
+        right: 40%;
+    }
+}
 
 /*large width*/
 @media screen and (min-width: 992px){
