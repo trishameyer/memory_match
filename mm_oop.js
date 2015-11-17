@@ -18,7 +18,7 @@ var GameBoard = function(){
     }
     self.mode = {
         'easy':{
-            'card_per_row':6,
+            'cards_per_row':6,
             'num_rows': 3,
             'possible_matches':9
         }
