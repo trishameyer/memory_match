@@ -21,7 +21,7 @@
   </header>
 
 
-  <section class="stats">
+  <div id="stats">
     <div class="games-played">
       <div class="label">Games Played: </div>
       <div class="value"></div>
@@ -38,186 +38,41 @@
     </div>
 
     <button class="reset" type="reset">Reset Game</button>
-  </section>
+  </div>
 
+  <div id="main">
+    <div id="game-area">
 
-  <section id="game-area">
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Ballade.jpg">
+<!--      <div class="card">
+        <div class="front">
+          <img src="images/Ballade.jpg">
+        </div>
+        <div class="back">
+          <img src="images/MegaMan-back2.jpg">
+        </div>
       </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
+
+      <div class="card">
+        <div class="front">
+          <img src="images/Ballade.jpg">
+        </div>
+        <div class="back">
+          <img src="images/MegaMan-back2.jpg">
+        </div>
+      </div>-->
+
     </div>
 
-    <div class="card">
-      <div class="front">
-        <img src="images/Ballade.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/CutMan.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/CutMan.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Enker.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Enker.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/GutsMan.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/GutsMan.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Punk.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Punk.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/QuickMan.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/QuickMan.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Quint.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Quint.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Shadowman.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Shadowman.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Skullman.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="front">
-        <img src="images/Skullman.jpg">
-      </div>
-      <div class="back">
-        <img src="images/MegaMan-back2.jpg">
-      </div>
+    <div id="select-level">
+      <strong>Select Level</strong><br><br>
+      <button id="18">18 Cards</button>
+      <button id="36">36 Cards</button>
     </div>
 
     <!-- the following image is displayed when the game is won -->
     <img id="img_win" src="images/mm_legacy1.png" alt="Win image">
 
-  </section>
-
+  </div>
 
 </body>
 </html>

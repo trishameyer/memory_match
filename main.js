@@ -13,94 +13,138 @@ update visuals
  */
 
 
-var first_card_clicked = null;
-var second_card_clicked = null;
+//var first_card_clicked = null;
+//var second_card_clicked = null;
 var total_possible_matches = 9;
-var matches = 0;
+// var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
-
 var cards_array = ["images/ff_Ballade.jpg","images/ff_CutMan.jpg","images/ff_Enker.jpg","images/ff_GutsMan.jpg",
     "images/ff_Punk.jpg","images/ff_QuickMan.jpg","images/ff_Quint.jpg","images/ff_Shadowman.jpg","images/ff_Skullman.jpg"];
 
-function shuffle_cards() {
-    for (var i=0; i<cards_array.length; i++) {
-
-    }
-}
-
-
 $(document).ready(function(){
-
-    // call 'card_clicked' function when '.card' div is clicked
-    $(".card").click(card_clicked);
-    // call 'reset_stats' function when '.reset' button is clicked
-    $(".reset").click(reset_stats);
-
+    $("#game-area").on("click", ".card", function() {
+        play(this);
+    });
+    $("#select-level button").click(function() {
+        var level = $(this).attr("id");
+        game_board.total_cards(level);
+        game_board.randomize_cards();
+        game_board.populate_cards();
+    });
 });
 
-
-function card_clicked(){
-
-    // if an already flipped or 3rd card is clicked, do nothing
-    if ($(this).find(".back").is(':hidden') || (second_card_clicked != null)) {
-       return;
-    }
-
-    // if 1st card is clicked, flip the card
-    if (first_card_clicked == null) {
-        $(this).find(".back").hide();
-        // save 1st card DOM info to the tracker, while setting it to non-null
-        first_card_clicked = $(this);
-    }
-    // if 2nd card is clicked, flip the card
-    else {
-        $(this).find(".back").hide();
-        // save 2nd card DOM info to the tracker, while setting it to non-null
-        second_card_clicked = $(this);
-        // increment 'attempts' counter
-        attempts++;
-
-        // Nested If #1 - if 1st and 2nd cards match by checking image src, check if game is won
-        if (first_card_clicked.find(".front img").attr("src") == second_card_clicked.find(".front img").attr("src")) {
-            // increment 'matches' counter
-            matches++;
-            // call 'display_stats' function
-            display_stats();
-            // reset 'first_card_clicked' and 'second_card_clicked' trackers
-            first_card_clicked = null;
-            second_card_clicked = null;
-
-            // set timeout when the game is won, so the last card flipped can be seen before winning image
-            setTimeout(function(){
-                // Nested If #2 - if all possible matches are made, game is won
-                if (matches == total_possible_matches) {
-                    // display game winning image
-                    $("#img_win").css("display", "initial");
-                    // alert a win message
-                    alert("You Win!");
-                }
-            }, 1500);
+var game_board = {
+    total_cards: function(level) {
+        if (level == 18) {
+            cards_array = cards_array.concat(cards_array);
         }
-        // Nested Else #1 - if 1st & 2nd cards don't match, flip back the cards
+        else if (level == 36) {
+            cards_array = cards_array.concat(cards_array);
+            cards_array = cards_array.concat(cards_array);
+        }
+    },
+    randomize_cards: function() {
+        var curr_index = cards_array.length;
+        var temp_value, rand_index;
+        while (0 !== curr_index) {
+            rand_index = Math.floor(Math.random() * curr_index);
+            curr_index -= 1;
+            temp_value = cards_array[curr_index];
+            cards_array[curr_index] = cards_array[rand_index];
+            cards_array[rand_index] = temp_value;
+        }
+        console.log(cards_array);
+        console.log(cards_array.length);
+    },
+    populate_cards: function() {
+        for (var i=0; i < cards_array.length; i++) {
+            var img_front = $("<img>").attr("src", cards_array[i]);
+            var div_front = $("<div class='front'>").append(img_front);
+            var img_back = $("<img>").attr("src", "images/MegaMan-back2.jpg");
+            var div_back = $("<div class='back'>").append(img_back);
+            var div_card = $("<div class='card'>").append(div_front, div_back);
+            $("#game-area").append(div_card);
+        }
+    }
+};
+
+
+var cards = {
+    first_card_clicked: false,
+    second_card_clicked: false,
+    first_card: "",
+    second_card: "",
+    show_front: function(the_card) {
+        $(the_card).find(".back").hide();
+    },
+    show_back: function(card1, card2) {
+        $(card1).find(".back").show();
+        $(card2).find(".back").show();
+    },
+    reset_first_second: function() {
+        cards.first_card_clicked = false;
+        cards.second_card_clicked = false;
+        cards.first_card = "";
+        cards.second_card = "";
+    }
+};
+
+
+var matches = {
+    match_counter: 0,
+    a_match: false,
+    match_check: function(card1, card2) {
+        var img1 = $(card1).find(".front img").attr("src");
+        var img2 = $(card2).find(".front img").attr("src");
+        console.log(img1);
+        console.log(img2);
+        if (img1 === img2) {
+            matches.match_counter++;
+            console.log("counter ", matches.match_counter);
+            matches.a_match = true;
+            matches.win_check();
+        }
         else {
-            // call 'display_stats' to update attempts and accuracy
-            display_stats();
-            // set timeout before flipping back 1st and 2nd cards
-            setTimeout(function(){
-                // flip back 1st and 2nd cards
-                first_card_clicked.find(".back").show();
-                second_card_clicked.find(".back").show();
-                // reset 'first_card_clicked' and 'second_card_clicked' trackers
-                first_card_clicked = null;
-                second_card_clicked = null;
-            }, 2000);
+            console.log("counter ", matches.match_counter);
+            matches.a_match = false;
         }
+    },
+    win_check: function() {
+        if (matches.match_counter === total_possible_matches) {
+            console.log("WIN");
+        }
+    }
+};
 
+
+var play = function(the_card) {
+
+    if (!cards.first_card_clicked) {
+        cards.first_card_clicked = true;
+        cards.first_card = the_card;
+        cards.show_front(the_card);
+        console.log(cards.first_card);
+    }
+    else if (!cards.second_card_clicked) {
+        cards.second_card_clicked = true;
+        cards.second_card = the_card;
+        cards.show_front(the_card);
+        console.log(cards.second_card);
+
+        matches.match_check(cards.first_card, cards.second_card);
+
+        if (!matches.a_match) {
+            cards.show_back(cards.first_card, cards.second_card);
+            cards.reset_first_second();
+        }
+        else {
+            cards.reset_first_second();
+        }
     }
 
-}
+};
 
 
 function display_stats(){

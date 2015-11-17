@@ -14,24 +14,47 @@ a {
 header {
   width: 100vw;
   height: 10vh;
+  border: 1px solid white;
   /*background: url("images/mm_top.jpg") no-repeat;*/
   /*background-size: 100% 100%;*/
   /*border-bottom: 3px solid #021A50;*/
 }
-.stats {
+#stats {
   width: 20vw;
   height: 89vh;
   display: inline-block;
+  border: 1px solid lightgreen;
   /*border-right: 3px solid #021A50;*/
 }
-#game-area {
-  width: 60vw;
-  height: 75vh;
+#main {
+  border: 1px solid yellow;
   display: inline-block;
   vertical-align: top;
   position: relative;
-  top: 7vh;
-  left: 10vw;
+  width: 700px;
+  height: 650px;
+  left: 5vw;
+
+}
+#game-area {
+  width: 640px;
+  height: 500px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  top: 2vh;
+  left: 2vw;
+  border: 1px solid orange;
+}
+#select-level {
+  border: 1px solid red;
+  display: inline-block;
+  clear: both;
+  text-align: center;
+  position: relative;
+  top: 40px;
+  left: 20vw;
+  padding: 20px;
 }
 
 /* Header elements */
@@ -69,14 +92,14 @@ header {
 }
 
 /* Stats elements */
-.stats > div {
+#stats > div {
   width: 70%;
   height: 10%;
   border: 1px solid orange;
   margin: 30px auto;
   padding: 10px 15px;
 }
-.stats button {
+#stats button {
   border: 1px dashed green;
   position: relative;
   left: 30%;
@@ -86,14 +109,14 @@ header {
 
 /* Game-area elements */
 .card {
-  width: 13%;
-  height: 28%;
+  width: 65px;
+  height: 115px;
   display: inline-block;
   position: relative;
-  margin: 1% 1%;
+  margin: 2px;
   transform-style: preserve-3d;
   perspective: 800px;
-  transition: transform 1.5s;
+  transition: transform 2s;
 }
 .card img {
   border: 2px solid grey;
