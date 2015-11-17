@@ -1,25 +1,5 @@
 /** Memory Match - created by Lance **/
-/* To add :
-randomize
-    - save all card info (img src) into an array
-    - populate to DOMs
-    - adv. functionalities > get file names (ff_xxxx) and populate to the array
-update visuals
-    - stat boxes
-    - blast beam behind cards
-    - winning event > show img slides? moving images? (check game ending)
-        > scroll stat numbers, play video?
-    - moving starry background?
- */
 
-
-//var first_card_clicked = null;
-//var second_card_clicked = null;
-var total_possible_matches = 9;
-// var matches = 0;
-var attempts = 0;
-var accuracy = 0;
-var games_played = 0;
 var cards_array = ["images/ff_Ballade.jpg","images/ff_CutMan.jpg","images/ff_Enker.jpg","images/ff_GutsMan.jpg",
     "images/ff_Punk.jpg","images/ff_QuickMan.jpg","images/ff_Quint.jpg","images/ff_Shadowman.jpg","images/ff_Skullman.jpg"];
 
@@ -28,45 +8,69 @@ $(document).ready(function(){
         play(this);
     });
     $("#select-level button").click(function() {
+        game_board.hide_select_level();
         var level = $(this).attr("id");
         game_board.total_cards(level);
         game_board.randomize_cards();
         game_board.populate_cards();
+        stats.update_games_played();
     });
+    $(".reset").on("click", function() {
+        game_board.reset_board();
+        cards.reset_first_second();
+        stats.reset_stats();
+    })
 });
 
+
 var game_board = {
+    new_deck: [],
     total_cards: function(level) {
+        game_board.new_deck = cards_array;
         if (level == 18) {
-            cards_array = cards_array.concat(cards_array);
+            game_board.new_deck = cards_array.concat(cards_array);
+            matches.total_match = (level / 2);
         }
         else if (level == 36) {
-            cards_array = cards_array.concat(cards_array);
-            cards_array = cards_array.concat(cards_array);
+            game_board.new_deck = cards_array.concat(cards_array);
+            game_board.new_deck = game_board.new_deck.concat(game_board.new_deck);
+            matches.total_match = (level / 2);
         }
     },
     randomize_cards: function() {
-        var curr_index = cards_array.length;
+        var curr_index = game_board.new_deck.length;
         var temp_value, rand_index;
         while (0 !== curr_index) {
             rand_index = Math.floor(Math.random() * curr_index);
             curr_index -= 1;
-            temp_value = cards_array[curr_index];
-            cards_array[curr_index] = cards_array[rand_index];
-            cards_array[rand_index] = temp_value;
+            temp_value = game_board.new_deck[curr_index];
+            game_board.new_deck[curr_index] = game_board.new_deck[rand_index];
+            game_board.new_deck[rand_index] = temp_value;
         }
-        console.log(cards_array);
-        console.log(cards_array.length);
     },
     populate_cards: function() {
-        for (var i=0; i < cards_array.length; i++) {
-            var img_front = $("<img>").attr("src", cards_array[i]);
+        for (var i=0; i < game_board.new_deck.length; i++) {
+            var img_front = $("<img>").attr("src", game_board.new_deck[i]);
             var div_front = $("<div class='front'>").append(img_front);
             var img_back = $("<img>").attr("src", "images/MegaMan-back2.jpg");
             var div_back = $("<div class='back'>").append(img_back);
             var div_card = $("<div class='card'>").append(div_front, div_back);
             $("#game-area").append(div_card);
         }
+    },
+    reset_board: function() {
+        $("#game-area").empty();
+        game_board.new_deck = [];
+        matches.match_counter = 0;
+        matches.total_match = 0;
+        matches.a_match = false;
+        game_board.show_select_level();
+    },
+    hide_select_level: function() {
+    $("#select-level").css("visibility", "hidden");
+    },
+    show_select_level: function() {
+        $("#select-level").css("visibility", "visible");
     }
 };
 
@@ -80,8 +84,10 @@ var cards = {
         $(the_card).find(".back").hide();
     },
     show_back: function(card1, card2) {
-        $(card1).find(".back").show();
-        $(card2).find(".back").show();
+        setTimeout(function() {
+            $(card1).find(".back").show();
+            $(card2).find(".back").show();
+        }, 2000);
     },
     reset_first_second: function() {
         cards.first_card_clicked = false;
@@ -94,25 +100,22 @@ var cards = {
 
 var matches = {
     match_counter: 0,
+    total_match: 0,
     a_match: false,
     match_check: function(card1, card2) {
         var img1 = $(card1).find(".front img").attr("src");
         var img2 = $(card2).find(".front img").attr("src");
-        console.log(img1);
-        console.log(img2);
         if (img1 === img2) {
             matches.match_counter++;
-            console.log("counter ", matches.match_counter);
             matches.a_match = true;
             matches.win_check();
         }
         else {
-            console.log("counter ", matches.match_counter);
             matches.a_match = false;
         }
     },
     win_check: function() {
-        if (matches.match_counter === total_possible_matches) {
+        if (matches.match_counter === matches.total_match) {
             console.log("WIN");
         }
     }
@@ -120,62 +123,69 @@ var matches = {
 
 
 var play = function(the_card) {
-
+    // exit function if an open card clicked or 2 cards are open already
+    if ($(the_card).find(".back").is(':hidden') || cards.second_card_clicked) {
+        return;
+    }
     if (!cards.first_card_clicked) {
         cards.first_card_clicked = true;
         cards.first_card = the_card;
         cards.show_front(the_card);
-        console.log(cards.first_card);
     }
     else if (!cards.second_card_clicked) {
         cards.second_card_clicked = true;
         cards.second_card = the_card;
         cards.show_front(the_card);
-        console.log(cards.second_card);
-
         matches.match_check(cards.first_card, cards.second_card);
+        stats.update_attempts();
+        stats.update_accuracy();
 
         if (!matches.a_match) {
             cards.show_back(cards.first_card, cards.second_card);
-            cards.reset_first_second();
+            setTimeout(function() {
+                cards.reset_first_second();
+            }, 2000);
         }
         else {
-            cards.reset_first_second();
+            setTimeout(function() {
+                cards.reset_first_second();
+            }, 2000);
         }
     }
-
 };
 
 
-function display_stats(){
-
-    $(".attempts .value").text(attempts);
-
-    // calculate accuracy
-    accuracy = Math.floor((matches / attempts) * 100);
-    // if accuracy is NaN, set it to blank
-    if (isNaN(accuracy)) {
+var stats = {
+    games_played: 0,
+    attempts: 0,
+    accuracy: 0,
+    update_games_played: function() {
+        stats.games_played++;
+        $(".games-played .value").text(stats.games_played + " times");
+    },
+    update_attempts: function() {
+        stats.attempts++;
+        $(".attempts .value").text(stats.attempts);
+    },
+    update_accuracy: function() {
+        stats.accuracy = Math.floor((matches.match_counter / stats.attempts) * 100);
+        if (isNaN(stats.accuracy)) {
+            $(".accuracy .value").text("");
+        }
+        else {
+            $(".accuracy .value").text(stats.accuracy + "%");
+        }
+    },
+    reset_stats: function() {
+        // *stats.games_played is reset when the page is refreshed
+        stats.attempts = 0;
+        stats.accuracy = 0;
+        $(".attempts .value").text("");
         $(".accuracy .value").text("");
     }
-    else {
-        $(".accuracy .value").text(accuracy + "%");
-    }
-
-    $(".games-played .value").text(games_played + " times");
-
-}
+};
 
 
-function reset_stats(){
-
-    matches = 0;
-    attempts = 0;
-    games_played++;
-    display_stats();
-    $(".card .back").show();
-    $("#img_win").hide();
-
-}
 
 
 

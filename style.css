@@ -13,7 +13,7 @@ a {
 }
 header {
   width: 100vw;
-  height: 10vh;
+  height: 8vh;
   border: 1px solid white;
   /*background: url("images/mm_top.jpg") no-repeat;*/
   /*background-size: 100% 100%;*/
@@ -21,7 +21,7 @@ header {
 }
 #stats {
   width: 20vw;
-  height: 89vh;
+  height: 80vh;
   display: inline-block;
   border: 1px solid lightgreen;
   /*border-right: 3px solid #021A50;*/
@@ -32,13 +32,13 @@ header {
   vertical-align: top;
   position: relative;
   width: 700px;
-  height: 650px;
-  left: 5vw;
+  height: 580px;
+  left: 6vw;
 
 }
 #game-area {
   width: 640px;
-  height: 500px;
+  height: 450px;
   display: inline-block;
   vertical-align: top;
   position: relative;
@@ -52,9 +52,9 @@ header {
   clear: both;
   text-align: center;
   position: relative;
-  top: 40px;
-  left: 20vw;
-  padding: 20px;
+  top: 30px;
+  left: 22vw;
+  padding: 15px;
 }
 
 /* Header elements */
@@ -100,17 +100,18 @@ header {
   padding: 10px 15px;
 }
 #stats button {
-  border: 1px dashed green;
   position: relative;
-  left: 30%;
-  width: 40%;
-  height: 5%;
+  left: 18%;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: greenyellow;
 }
 
 /* Game-area elements */
 .card {
   width: 65px;
-  height: 115px;
+  height: 100px;
   display: inline-block;
   position: relative;
   margin: 2px;
