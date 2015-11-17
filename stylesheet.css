@@ -213,7 +213,7 @@ p {
     position: absolute;
     transition: .5s;
     border-radius: 5%;
-    /*border: 3px solid white;*/
+    border: 1px solid white;
 }
 
 
@@ -334,7 +334,6 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%;
     width: 12%;
     outline-style: hidden;
-
 }
 div#modalAbout {
     display: none;
@@ -512,12 +511,47 @@ div#nextRound {
     /*box-shadow: 0 0 0 500px rgba(0, 0, 0, 0.74);*/
 /*}*/
 
+@media screen and (max-width: 480px) {
+    .game-info .col-xs-6 {
+        padding: 3% 0;
+    }
+    .game-info ul li {
+        display: inline-block;
+        font-size: 5.5vw;
+        color: #FFE3E1;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background-color: rgba(228, 228, 228, 1);
+        opacity: 1;
+        width: 10px;
+        height: 26px;
+        border-radius: 50%;
+        width: 23%;
+        outline-style: hidden;
+    }
+    input[type=range] {
+        display: block;
+        width: 70%;
+        position: relative;
+        margin: 0 auto;
+        top: 10%;
+        -webkit-appearance: none;
+        background-color: #00d95d;
+        height: 12%;
+    }
+    .navbar-inverse .navbar-brand {
+
+        font-size: 5.5vw;
+    }
+}
+
 div#playAgain {
     display: none;
     position: absolute;
     top: 50%;
     width: 75%;
-    height: 31%;
+    height: 57%;
     border: 5px solid black;
     -webkit-transform: translate3d(-50%, -50%, 0 );
     left: 50%;
@@ -535,7 +569,7 @@ div#playAgain {
 
 #playAgain> .container-fluid{
     position: relative;
-    top: 50%;
+    top: 35%;
     -webkit-transform: translate3d(0, -50%, 0);
 }
 
@@ -545,10 +579,11 @@ div#playAgain {
     background: linear-gradient(#00d95d, #009746);
     color: white;
     position: absolute;
-    top: 67%;
+    top: 54%;
     padding: 1% 4%;
     font-size: 80%;
     right: 37%;
+
 }
 
 #playAgain .btn:hover{
@@ -570,8 +605,10 @@ audio {
 @media screen and (max-width: 768px){
     #playAgain .btn {
 
-        top: 76%;
-        right: 40%;
+        top: 62%;
+        padding: 2% 3%;
+        font-size: 140%;
+        right: 35%;
     }
 }
 
@@ -608,8 +645,8 @@ audio {
         left: 1% !important;
         top: 0 !important;
         width: 47%;
-        height: 3.3em;
-        font-size: 3.7vw;
+        height: 4em;
+        font-size: 5.5vw;
     }
     input[type='range']{
         top: 20%;

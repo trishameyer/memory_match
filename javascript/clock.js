@@ -4,6 +4,7 @@ function clock(startVal){
     var val = startVal;//doc ready. val is 60
     $('.game-board .row').css('background-color', 'rgba(13, 255, 255, 0.2)');
     var timerEl = $('#timer-sound')[0];
+    timerEl.currentTime = 0;
     timerEl.play();
     timerEl.volume = .3;
 
@@ -39,20 +40,18 @@ function clock(startVal){
             val = val - 1;//-1
             $('.game-board .row').css('background-color', 'rgba(0, 0, 0, 0.74)'); //greater than 10 background green
             $('#deadline').next().text(val);//add that to clock
-            if(timerEl.currentTime > 8){
-                timerEl.currentTime = 0;
+            if(timerEl.currentTime > 9){
+                timerEl.currentTime = 8.5;
                 timerEl.play();
             }
 
         }else if(val <=10 && val > 0) {  //less than ten.. pulse red and black
+
             val = val - 1;//-1
             $('#deadline').next().text(val);//add that to clock
             $('.game-board .row').addClass('warning');
-            if(timerEl.currentTime > 8){
-                timerEl.currentTime = 0;
+                timerEl.currentTime = 10.5;
                 timerEl.play();
-            }
-
 
         } else if(val < 1){//if 0
             $('.game-board .row').removeClass('warning');
