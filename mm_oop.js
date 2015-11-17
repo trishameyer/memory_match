@@ -21,6 +21,7 @@ var GameBoard = function(){
             'num_rows': 3,
             'possible_matches':9
         }
+        //other modes to be added here
     }
     self.img_arr = ['card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png', 'card7.png',
         'card8.png', 'card9.png', 'card_1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png',
@@ -133,8 +134,8 @@ var GameBoard = function(){
 
 var Card = function(row, card_img, id){
     var self = this;
-    self.clicked = false;
-    self.matched = false;
+    //self.clicked = false;
+    //self.matched = false;
     self.card_img = card_img;
     self.id = id;
     var back_img_raw = 'card_back.png';
@@ -164,7 +165,7 @@ var Card = function(row, card_img, id){
         self.notify_board_of_click(self);
     }
     self.notify_board_of_click = function(card){
-        board1.check_child_click(card)
+        board1.check_child_click(card) //not sure how to feed info to parent here; return bool?
     }
     self.hide_self = function(){
         if(debug) console.log('hide_self called');
