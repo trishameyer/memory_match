@@ -2,7 +2,6 @@
  * Created by Andrew N on 11/14/2015.
  */
 var debug = true;
-var win_msg = $('#win_msg');
 var GameBoard = function(){
     var self = this;
     self.first_card_clicked = false;
@@ -151,7 +150,7 @@ var Card = function(row, card_img, id){
         self.set_click();
     });
 
-    var back_img = $('<img>').attr('src','images/' + back_img_raw); //adds back img to all cards
+    var back_img = $('<img>').attr('src','images/' + back_img_raw);
 
     front.append(front_img);
     back.append(back_img);
