@@ -89,6 +89,10 @@ function flip(target_element) {
                         }
                     }
 
+                    if(addpoints >= 1000000){
+                        $('#modalWin').show();
+                    }
+
                 }else{//if not a match
 
                     timer = true;
