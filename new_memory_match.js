@@ -7,47 +7,47 @@ var front = '';
 //************************************APPENDING STUFF-STAT SECTION************************************//
 //var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
 //var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
-var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
-var games_played = $('<div>').addClass('.games_played');
-var label = $('<p>').addClass('label');
-var gp_paragraph = $('<p>').addClass('games_played value');
+//var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
+//var games_played = $('<div>').addClass('.games_played');
+//var label = $('<p>').addClass('label');
+//var gp_paragraph = $('<p>').addClass('games_played value');
 //var complete_container = $('<div>').addClass('container-fluid');
 //var header = $('<div>').addClass('jumbotron');
 //var logo = $('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
 //var h1 = $('<h1>').text('Music Theme');
 
 
-games_played.append(label).text('Games Played');
-games_played.append(gp_paragraph);
+//games_played.append(label).text('Games Played');
+//games_played.append(gp_paragraph);
 
 
-var random_paragraph = $('<p>').addClass('value');
+//var random_paragraph = $('<p>').addClass('value');
 
-var attempts = $('<div>').addClass('attempts');
-var attempts_value = $('<p>').addClass('attempts value');
+//var attempts = $('<div>').addClass('attempts');
+//var attempts_value = $('<p>').addClass('attempts value');
 
-attempts.append(label).text('Attempts');
-attempts.append(attempts_value);
+//attempts.append(label).text('Attempts');
+//attempts.append(attempts_value);
 
-var accuracy = $('<div>').addClass('accuracy');
-var accuracy_paragraph = $('<p>').addClass('accuracy');
+//var accuracy = $('<div>').addClass('accuracy');
+//var accuracy_paragraph = $('<p>').addClass('accuracy');
 
-accuracy.append(label).text('Accuracy');
-accuracy.append(accuracy_paragraph);
+//accuracy.append(label).text('Accuracy');
+//accuracy.append(accuracy_paragraph);
 
-var reset_button = $('<button>').addClass('reset').text('reset Game');
+//var reset_button = $('<button>').addClass('reset').text('reset Game');
 
 //header.append(logo, h1);
 //complete_container.append(header);
 
-sidebar_wrapper.append(games_played);
-sidebar_wrapper.append(random_paragraph);
-sidebar_wrapper.append(attempts);
-sidebar_wrapper.append(accuracy);
-sidebar_wrapper.append(reset_button);
-stat_container.append(sidebar_wrapper);
-container.append(stat_container);
-complete_container.append(container);
+//sidebar_wrapper.append(games_played);
+//sidebar_wrapper.append(random_paragraph);
+//sidebar_wrapper.append(attempts);
+//sidebar_wrapper.append(accuracy);
+//sidebar_wrapper.append(reset_button);
+//stat_container.append(sidebar_wrapper);
+//container.append(stat_container);
+//complete_container.append(container);
 
                 //array of CARDS not just images, find a way to append them.
                 //card_front.append($('<img>').attr('src', 'images/musicnotes.jpg');
@@ -57,12 +57,13 @@ complete_container.append(container);
                 //    game_area.append(full_card);
                 //}
 
-complete_container.append(game_area);
-$('body').append(complete_container);
+//complete_container.append(game_area);
+//$('body').append(complete_container);
 //******************************************************
 var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
     "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
-var board = new Board_Constructor(card_array); //can have separate arrays of cards, and depending on which one is clicked, use that array.
+
+    //can have separate arrays of cards, and depending on which one is clicked, use that array.
 
 function Board_Constructor(array) {
     var self = this;
@@ -73,6 +74,7 @@ function Board_Constructor(array) {
     self.new_array = [];
     self.cards = array;
     self.objects_array = [];
+    self.accuracy = 0;
 
     function randomize(array) { //now we have a new array posted in this.new_array.
         for (o = 0; o < 2; o++) {
@@ -136,10 +138,52 @@ function Board_Constructor(array) {
         //stats area
         var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
         var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
+        var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
 
+        var games_played = $('<div>').addClass('.games_played');
 
+        var label = $('<p>').addClass('label');
+        var gp_paragraph = $('<p>').addClass('games_played value');
 
-    }
+        games_played.append(label.text('Games Played'),gp_paragraph);
+
+        var attempts = $('<div>').addClass('attempts');
+        var attempts_value = $('<p>').addClass('attempts value');
+
+        attempts.append(label.text('Attempts'),attempts_value);
+
+        var accuracy = $('<div>').addClass('accuracy');
+        var accuracy_paragraph = $('<p>').addClass('accuracy');
+
+        accuracy.append(label.text('Accuracy'), accuracy_paragraph);
+
+        var reset_button = $('<button>').addClass('reset').text('reset Game');
+
+        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button);
+        stat_container.append(sidebar_wrapper);
+        container.append(stat_container);
+        complete_container.append(container);
+
+        $('body').append(complete_container);
+    };
+
+    self.display_stats = function () {
+        $(".games_played .value").text(self.games_played);
+        $('.attempts .value').text(self.attempts);
+        self.accuracy = Math.round((self.matches/self.attempts) * 100);
+        if (isNaN(self.accuracy)) {
+            self.accuracy = 0;
+        }
+        $('.accuracy .value').text(self.accuracy + '%');
+    };
+
+    self.reset_stats = function () {
+        self.accuracy = 0;
+        self.matches = 0;
+        self.attempts = 0;
+        self.display_stats();
+        $('.back').show();
+    };
 }
 
 //this array needs to only be 9 elements.
@@ -169,11 +213,12 @@ function CardConstructor(artist) {
             game_area.append(full_card);
         }
         card_front.append($('<img>').attr('src', 'images/musicnotes.jpg'));
-
     }
+
 }
 
 $(document).ready(function () {
+    board = new Board_Constructor(card_array);
     $(".back").click(card_clicked);
     //$(".back").on('click',function(){ FOR PROJECT -> PENDING.
     //
@@ -184,9 +229,10 @@ $(document).ready(function () {
         reset_stats();
         display_stats();
     });
-    games_played = 0;
-    reset_stats();
+    board.games_played = 0;
+    board.reset_stats();
 });
+
 
 function card_clicked(event) {
     $(this).hide().addClass('card_selected'); //could put $(this).toggleClass('someclass that affects css') instead.
