@@ -65,6 +65,104 @@ var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
 
     //can have separate arrays of cards, and depending on which one is clicked, use that array.
 
+
+
+//this array needs to only be 9 elements.
+//for (i = 0; i < board.new_array.length; i++) { //do we need this anymore? board.randomize does this.
+//    var cards_object = new CardConstructor(board.new_array[i]);
+//    card_object_array.push(cards_object);
+}
+function CardConstructor(artist) {
+    var self = this;
+    self.artist = artist;
+    self.clicked = false;
+    //this.first_click = function (clicked_name) {
+    //    for (i = 0; i < board.new_array.length; i++) {
+    //        if (clicked_name === card_object_array[i].artist) {
+    //            card_object_array.splice(i);
+    //        }
+    //    }
+    //}
+    self.make_card = function (attrInfo){
+        var card = $('<div>').addClass('card');
+        var card_front = $('<div>').addClass('front');
+        var card_back = $('<div>').addClass('back');
+        card_front.append($('<img>').attr('src', 'images/musicnotes.jpg'));
+        var cardBack = card_back.append($('<img>').attr('src',attrInfo));	//have a ton of cards with different images.
+        var full_card = card.append(cardBack).append(card_front);
+        game_area.append(full_card);
+
+        //board.create_board(game_area);
+    };
+
+    self.card_clicked = function (event){
+
+
+};
+    //SOMETHING LIKE THIS NEEDS TO GO INTO MAKE CARD, BUT NOT LOOPED. ANOTHER LOOP WILL CALL IT.
+    //for (i = 0; i < board.new_array.length; i++) {
+    //    card_front.append($('<img>').attr('src', 'images/musicnotes.jpg'));
+       //var cardBack = card_back.append($('<img>').attr('src', 'images/' + board.new_array[i]) + '.jpg', "picture", board.new_array[i]);	//have a ton of cards with different images.
+    //    var full_card = card.append(cardBack).append(card_front);
+    //    game_area.append(full_card);
+    //}
+    //board.create_board(game_area);
+
+$(document).ready(function () {
+    board = new Board_Constructor(card_array);
+    $(".back").click(card_clicked);
+    //$(".back").on('click',function(){ FOR PROJECT -> PENDING.
+    //
+    //});
+    $(".back").click(display_stats);
+    $(".reset").click(function () {
+        games_played++;
+        reset_stats();
+        display_stats();
+    });
+    board.games_played = 0;
+    board.reset_stats();
+});
+
+
+function card_clicked(event) {
+    $(this).hide().addClass('card_selected'); //could put $(this).toggleClass('someclass that affects css') instead.
+    console.log('clicked');
+    if (front === null) {
+        //first_card_clicked = $(this).prev().find('img').attr('src');
+        front = $(this).prev().find('img').attr('picture');
+        board.catch_from_array(front);
+        //redo this to call that method. FOR PROJECT.
+    } else {
+        //second_card_clicked = $(this).prev().find('img').attr('src');
+        front = $(this).prev().find('img').attr('picture');
+        var check_match = board.check_from_array(front);
+        if (check_match) {
+            board.matches_counter++;
+            board.matches++;
+            board.attempts++;
+            console.log('match_counter is: ' + match_counter);
+            front = null;
+            $('.card_selected').removeClass('card_selected');
+            console.log("class name: " + this.className);
+            if (board.matches_counter === 9) {
+                alert('You have won!');
+                reset_stats();
+            } else {
+                return console.log('click handler functionality is complete - the first one');
+            }
+        }
+        else {
+            console.log('first_card_clicked != second_card_clicked');
+            board.set_false(front);
+            front = null;
+            console.log('click handler functionality is complete - the second');
+            board.attempts++;
+            $('.card_selected').show(2000);
+        }
+    }
+}
+
 function Board_Constructor(array) {
     var self = this;
     var card_object_array = [];
@@ -125,9 +223,9 @@ function Board_Constructor(array) {
             }
         }
     };
-    self.create_board = function() {
+    self.create_board = function(game_area) {
         var complete_container = $('<div>').addClass('container-fluid');
-       //header
+        //header
         var header = $('<div>').addClass('jumbotron');
         var logo = $('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
         var h1 = $('<h1>').text('Music Theme');
@@ -164,6 +262,13 @@ function Board_Constructor(array) {
         container.append(stat_container);
         complete_container.append(container);
 
+        var image_attribute = function(){
+            for (i = 0; i < board.new_array.length; i++)
+                var string = ('images/' + self.new_array[i] + '.jpg', "picture", self.new_array[i]).toString();
+
+        };
+        complete_container.append(game_area);
+
         $('body').append(complete_container);
     };
 
@@ -184,92 +289,6 @@ function Board_Constructor(array) {
         self.display_stats();
         $('.back').show();
     };
-}
-
-//this array needs to only be 9 elements.
-//for (i = 0; i < board.new_array.length; i++) { //do we need this anymore? board.randomize does this.
-//    var cards_object = new CardConstructor(board.new_array[i]);
-//    card_object_array.push(cards_object);
-}
-function CardConstructor(artist) {
-    var self = this;
-    self.artist = artist;
-    self.clicked = false;
-    //this.first_click = function (clicked_name) {
-    //    for (i = 0; i < board.new_array.length; i++) {
-    //        if (clicked_name === card_object_array[i].artist) {
-    //            card_object_array.splice(i);
-    //        }
-    //    }
-    //}
-    self.make_card = function (){
-        card_front.append($('<img>').attr('src', 'images/musicnotes.jpg');
-        var card = $('<div>').addClass('card');
-        var card_front = $('<div>').addClass('front');
-        var card_back = $('<div>').addClass('back');
-        for (i = 0; i < board.new_array.length; i++) {
-            var cardBack = card_back.append($('<img>').attr('src', 'images/' + board.new_array[i]) + '.jpg', "picture", board.new_array[i]);	//have a ton of cards with different images.
-            var full_card = card.append(card_front).append(cardBack);
-            game_area.append(full_card);
-        }
-        card_front.append($('<img>').attr('src', 'images/musicnotes.jpg'));
-    }
-
-}
-
-$(document).ready(function () {
-    board = new Board_Constructor(card_array);
-    $(".back").click(card_clicked);
-    //$(".back").on('click',function(){ FOR PROJECT -> PENDING.
-    //
-    //});
-    $(".back").click(display_stats);
-    $(".reset").click(function () {
-        games_played++;
-        reset_stats();
-        display_stats();
-    });
-    board.games_played = 0;
-    board.reset_stats();
-});
-
-
-function card_clicked(event) {
-    $(this).hide().addClass('card_selected'); //could put $(this).toggleClass('someclass that affects css') instead.
-    console.log('clicked');
-    if (front === null) {
-        //first_card_clicked = $(this).prev().find('img').attr('src');
-        front = $(this).prev().find('img').attr('picture');
-        board.catch_from_array(front);
-        //redo this to call that method. FOR PROJECT.
-    } else {
-        //second_card_clicked = $(this).prev().find('img').attr('src');
-        front = $(this).prev().find('img').attr('picture');
-        var check_match = board.check_from_array(front);
-        if (check_match) {
-            board.matches_counter++;
-            board.matches++;
-            board.attempts++;
-            console.log('match_counter is: ' + match_counter);
-            front = null;
-            $('.card_selected').removeClass('card_selected');
-            console.log("class name: " + this.className);
-            if (board.matches_counter === 9) {
-                alert('You have won!');
-                reset_stats();
-            } else {
-                return console.log('click handler functionality is complete - the first one');
-            }
-        }
-        else {
-            console.log('first_card_clicked != second_card_clicked');
-            board.set_false(front);
-            front = null;
-            console.log('click handler functionality is complete - the second');
-            board.attempts++;
-            $('.card_selected').show(2000);
-        }
-    }
 }
 
 //get back from break, start appending the board.new_array[i] through a loop into the page.
