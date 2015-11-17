@@ -394,6 +394,10 @@ div#modalAbout {
 
 }
 
+div#modalAbout p {
+    font-size: 25px;
+}
+
 #modalAbout > .container-fluid{
     position: relative;
     top: 50%;
@@ -477,87 +481,88 @@ div#nextRound {
 }
 
 
-/*#modalIntro {*/
-    /*display:none;*/
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*width: 80%;*/
-    /*height: 60%;*/
-    /*border: 5px solid black;*/
-    /*-webkit-transform: translate3d(-50%, -50%, 0 );*/
-    /*left: 50%;*/
-    /*box-shadow: 0 0 0 500px rgba(187, 167, 167, 0.74);*/
-    /*background-color: rgba(0, 0, 0, 0.88);*/
-    /*color: rgb(249, 16, 2);*/
-    /*font-family: 'oswald', sans-serif;*/
-    /*font-size: 2.5vw;*/
-    /*text-align: center;*/
-    /*color: rgb(255, 0, 0);*/
-    /*border-radius: 6%;*/
-    /*text-shadow: 0px 2px 0px #f9ceb1;*/
+#modalIntro {
+    display:none;
+    position: absolute;
+    top: 52%;
+    width: 80%;
+    height: 60%;
+    border: 5px solid black;
+    -webkit-transform: translate3d(-50%, -50%, 0 );
+    left: 50%;
+    box-shadow: 0 0 0 500px rgba(187, 167, 167, 0.74);
+    background-color: rgba(0, 0, 0, 0.88);
+    color: rgb(249, 16, 2);
+    font-family: 'oswald', sans-serif;
+    font-size: 2.5vw;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    border-radius: 6%;
+    text-shadow: 0px 2px 0px #f9ceb1;
 
-/*}*/
+}
 
-/*#modalIntro h1 {*/
-    /*margin-top: -9%;*/
-    /*margin-bottom: 8%;*/
-    /*font-size: 3.5vw;*/
-    /*text-decoration: underline;*/
+#modalIntro h1 {
+    margin-top: 2%;
+    font-size: 3.5vw;
+    text-decoration: underline;
 
-/*}*/
+}
 
-/*#modalIntro > .container-fluid{*/
-    /*position: relative;*/
-    /*top: 50%;*/
-    /*-webkit-transform: translate3d(0, -50%, 0);*/
-/*}*/
+#modalIntro > .container-fluid{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translate3d(0, -50%, 0);
+}
 
-/*#modalIntro .btn {*/
-    /*border: 5px outset rgb(240, 236, 236);*/
-    /*border-radius: 7px;*/
-    /*background: linear-gradient(#00d95d, #009746);*/
-    /*color: white;*/
-    /*position: absolute;*/
-    /*top: 75%;*/
-    /*padding: 1% 4%;*/
-    /*font-size: 80%;*/
-    /*right: 43%;*/
-/*}*/
+#modalIntro .btn {
+    border: 5px outset rgb(240, 236, 236);
+    border-radius: 7px;
+    background: linear-gradient(#00d95d, #009746);
+    color: white;
+    position: absolute;
+    top: 75%;
+    padding: 1% 4%;
+    font-size: 80%;
+    right: 43%;
+}
 
-/*#modalIntro .btn:hover{*/
-    /*background: linear-gradient(#00d95d 50%, #009746);*/
-    /*color:white;*/
-/*}*/
+#modalIntro .btn:hover{
+    background: linear-gradient(#00d95d 50%, #009746);
+    color:white;
+}
 
-/*#modalIntro .btn:focus{*/
-    /*border: 5px inset rgb(240, 236, 236);*/
-    /*border-radius: 7px;*/
-    /*background: linear-gradient(#00d95d, #009746 34%);*/
-    /*color: white;*/
-    /*outline: 0;*/
-/*}*/
+#modalIntro .btn:focus{
+    border: 5px inset rgb(240, 236, 236);
+    border-radius: 7px;
+    background: linear-gradient(#00d95d, #009746 34%);
+    color: white;
+    outline: 0;
+}
 
 
-/*#introVid {*/
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*width: 80%;*/
-    /*height: 80%;*/
-    /*-webkit-transform: translate3d(-50%, -50%, 0 );*/
-    /*left: 50%;*/
-    /*background-color: rgba(0, 0, 0, 0.74);*/
-    /*box-shadow: 0 0 0 500px rgba(0, 0, 0, 0.74);*/
-/*}*/
+#introVid {
+    position: absolute;
+    top: 50%;
+    width: 80%;
+    height: 80%;
+    -webkit-transform: translate3d(-50%, -50%, 0 );
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.74);
+    box-shadow: 0 0 0 500px rgba(0, 0, 0, 0.74);
+}
 
 @media screen and (max-width: 480px) {
     .game-info .col-xs-6 {
         padding: 3% 0;
     }
+
     .game-info ul li {
         display: inline-block;
         font-size: 5.5vw;
         color: #FFE3E1;
     }
+
     input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         background-color: rgba(228, 228, 228, 1);
@@ -568,6 +573,7 @@ div#nextRound {
         width: 23%;
         outline-style: hidden;
     }
+
     input[type=range] {
         display: block;
         width: 70%;
@@ -578,18 +584,44 @@ div#nextRound {
         background-color: #00d95d;
         height: 12%;
     }
+
     .navbar-inverse .navbar-brand {
         font-size: 5.5vw;
     }
 
     div#modalAbout {
         height: 80%;
+
     }
 
     #modalWin button {
         font-size: 131%;
 
     }
+}
+@media screen and (max-width: 1122px){
+
+    #modalIntro .btn {
+        border: 5px outset rgb(240, 236, 236);
+        border-radius: 7px;
+        background: linear-gradient(#00d95d, #009746);
+        color: white;
+        position: absolute;
+        top: 90%;
+        padding: 1% 4%;
+        font-size: 112%;
+        right: 41%;
+    }
+    #modalIntro p{
+        font-size: 22px;
+    }
+
+    #modalIntro h1{
+        font-size: 7.5vw;
+        margin-top: 2%;
+    }
+
+
 }
 
 div#playAgain {
