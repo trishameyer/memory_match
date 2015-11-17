@@ -2,11 +2,14 @@
  * Created by Andrew N on 11/14/2015.
  */
 var debug = true;
-
+var win_msg = $('#win_msg');
 var GameBoard = function(){
     var self = this;
     self.first_card_clicked = false;
     self.second_card_clicked = false;
+    self.first_card;
+    self.second_card;
+    self.card_array = [];
     self.stats = {
         'matches': 0,
         'attempts':0,
@@ -44,57 +47,36 @@ var GameBoard = function(){
             }
             if(debug) console.log(self.img_arr[temp_arr[rand_index]]);
             var card = new Card(current_row, self.img_arr[temp_arr[rand_index]], temp_arr[rand_index]);//add card at temp array index
+            self.card_array.push(card);
             num_cards_assigned++; //for checking card additions per row
 
             temp_arr.splice(rand_index,1);//remove placeholder from temp_array to mark usage
         }
     }
-    //self.add_card_to_row = function(row, card_img, id){
-    //    var back_img_raw = 'card_back.png';
-    //    var card = $('<div>').addClass('card');
-    //
-    //    var front = $('<div>').addClass('front');
-    //    var front_img = $('<img>').attr('src','images/'+ card_img );
-    //    $(front_img).attr('id','front-img-'+id);
-    //    var back = $('<div>').addClass('back');
-    //    $(back).attr('id','back-'+id);
-    //
-    //    $(back).click( function(){
-    //        self.check_click(id);
-    //    });
-    //
-    //    var back_img = $('<img>').attr('src','images/' + back_img_raw); //adds back img to all cards
-    //
-    //    front.append(front_img);
-    //    back.append(back_img);
-    //    card.append(front);
-    //    card.append(back);
-    //
-    //    row.append(card);
-    //}
+
     self.getSrc = function(id) { //for obtaining image source for comparison
         return $('#front-img-'+id).attr('src');
     }
-    self.check_child_click = function(id){
+    self.check_child_click = function(card){
         var total_possible_matches = self.img_arr.length / 2;
-        console.log('test clicked ' + id);
-        var element = $('#back-'+id);
+        if(debug) console.log('test clicked ' + card.id);
+        var element = $('#back-' + card.id);
 
         if(self.first_card_clicked == false){
             //console.log('if initiated');
             $(element).hide(); //show first card
-            first_card = element;
+            self.first_card = card;
             self.first_card_clicked = true; //first card clicked
-            card_img_1 = self.getSrc(id);
-            if(debug) console.log(card_img_1);
+            card_img_1 = self.getSrc(card.id);
+            if(debug) console.log('card_img_1 is: ', card_img_1);
         }
         else{
             if(debug) console.log('else initiated');
             $(element).hide(); //show second card
-            second_card = element;
+            self.second_card = card;
             self.second_card_clicked = true; //second card clicked
-            card_img_2 = self.getSrc(id);
-            if(debug) console.log(card_img_2);
+            card_img_2 = self.getSrc(card.id);
+            if(debug) console.log('card_img_2 is: ', card_img_2);
             self.stats['attempts'] += 1;
             if(debug) console.log('number of attempts is equal to: ' + self.stats.attempts);
 
@@ -110,18 +92,21 @@ var GameBoard = function(){
                 self.first_card_clicked = false; //reset variables for next card set
                 self.second_card_clicked = false; //reset variables for next card set
 
-                self.hide_card(first_card);
-                self.hide_card(second_card);
+                self.first_card.hide_self();
+                self.second_card.hide_self();
+
+                self.first_card = undefined;
+                self.second_card = undefined;
 
                 self.display_stats();
             }
         }
 
         if(self.stats['matches'] == total_possible_matches){
-            if(debug) console.log('you win!');
             self.stats['games_played'] += 1;
             if(debug) console.log('number of games played is: ' + self.stats['games_played']);
             self.display_stats();
+            self.display_win_modal();
         }
     }
     self.display_stats = function(){
@@ -137,11 +122,13 @@ var GameBoard = function(){
     self.reset_board = function(){
         if(debug) console.log('reset_stats function called');
         var all_cards = $(".back");
-        self.hide_card(all_cards);
+        for(var i=0;i<self.card_array.length; i++){
+            self.card_array[i].hide_self();
+        };
         self.display_stats();
     }
-    self.hide_card = function(element){
-        $(element).show(1000);
+    self.display_win_modal = function(){
+        $('#win_modal').modal('show');
     }
 }
 
@@ -175,61 +162,23 @@ var Card = function(row, card_img, id){
 
     self.set_click = function(){
         self.clicked = true;
-
+        self.notify_board_of_click(self);
     }
-
-    self.notify_board_of_click = function(){
-
+    self.notify_board_of_click = function(card){
+        board1.check_child_click(card)
     }
-
-    self.check_click = function(){
-        var total_possible_matches = self.img_arr.length / 2;
-        console.log('test clicked ' + self.id);
-        var element = $('#back-' + self.id);
-
-        if(self.first_card_clicked == false){
-            //console.log('if initiated');
-            $(element).hide(); //show first card
-            first_card = element;
-            self.first_card_clicked = true; //first card clicked
-            card_img_1 = self.card_img;
-            if(debug) console.log('card_img_1 is: ', card_img_1);
-        }
-        else{
-            if(debug) console.log('else initiated');
-            $(element).hide(); //show second card
-            second_card = element;
-            self.second_card_clicked = true; //second card clicked
-            card_img_2 = self.getSrc(id);
-            if(debug) console.log(card_img_2);
-            self.stats['attempts'] += 1;
-            if(debug) console.log('number of attempts is equal to: ' + self.stats.attempts);
-
-            if(card_img_1 == card_img_2 && self.first_card_clicked && self.second_card_clicked){
-                self.stats['matches'] += 1;
-                if(debug) console.log('number of matches is now: ',self.stats['matches']);
-                self.first_card_clicked = false; //reset variables for next card set
-                self.second_card_clicked = false; //reset variables for next card set
-                self.display_stats();
-            }
-            else{ //no match!
-                if(debug) console.log('second else initiated');
-                self.first_card_clicked = false; //reset variables for next card set
-                self.second_card_clicked = false; //reset variables for next card set
-
-                self.hide_card(first_card);
-                self.hide_card(second_card);
-
-                self.display_stats();
-            }
-        }
-
-        if(self.stats['matches'] == total_possible_matches){
-            if(debug) console.log('you win!');
-            self.stats['games_played'] += 1;
-            if(debug) console.log('number of games played is: ' + self.stats['games_played']);
-            self.display_stats();
-        }
+    self.hide_self = function(){
+        if(debug) console.log('hide_self called');
+        $('#back-' + self.id).show(1000);
     }
-    self.
 }
+
+$( document ).ready(function() {
+    if(debug) console.log( "ready!" );
+    board1.display_stats();
+    board1.populate_board();
+
+    $('body').on("click", "#reset_button", board1.reset_board);
+});
+
+var board1 = new GameBoard();
