@@ -39,12 +39,7 @@ StatsManager.prototype.display = function()
     // Replace attempts number
     $('.attempts>.value').find('p').text(this.attempts);
 
-    // Replace accuracy number
-    // Protect against division by zero
-    if (this.attempts == 0)
-        this.accuracy = 0;
-    else
-        this.accuracy = this.matches / this.attempts;
+    this.accuracy = this.calculateAccuracy();
     var acc = (this.accuracy * 100).toFixed(2);
     $('.accuracy>.value').find('p').text(acc + '%');
 };
@@ -59,4 +54,29 @@ StatsManager.prototype.resetStats = function()
 StatsManager.prototype.incrementGamesPlayed = function()
 {
     this.games_played++;
+};
+
+StatsManager.prototype.incrementMatches = function()
+{
+    this.matches++;
+};
+
+StatsManager.prototype.getNumMatches = function()
+{
+    return this.matches;
+};
+
+StatsManager.prototype.incrementAttempts = function()
+{
+    this.attempts++;
+};
+
+StatsManager.prototype.calculateAccuracy = function()
+{
+    // Replace accuracy number
+    // Protect against division by zero
+    if (this.attempts == 0)
+        return 0;
+    else
+        return (this.matches / this.attempts);
 };

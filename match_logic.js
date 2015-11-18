@@ -1,15 +1,3 @@
-var first_card_clicked = null;
-var second_card_clicked = null;
-var match_counter = 0;
-var card_pair_flipped = false;
-var total_card_matches = 9;
-
-// Stats variables
-var matches = 0;        // Increments when a matching pair is found
-var attempts = 0;       // Increments when the player selects a pair of cards (matching or not).
-var accuracy = 0;       // Quotient of matches and attempts.
-var games_played = 0;   // Increments when the reset button is pressed.
-
 function getPosition(elem)
 {
     // TODO - add functionality that determines the viewport coordinates of an element
@@ -48,19 +36,19 @@ function cardClicked()
         rotateCard(second_card_clicked);
         makeCardUnclickable(second_card_clicked);
         card_pair_flipped = true;
-        attempts++;
+        game_ref.stats_mgr.incrementAttempts(); //attempts++;
 
         // Flowchart - first_card_clicked is equal to second_card_clicked
         if (checkCardsMatch())      // YES
         {
-            matches++;
+            game_ref.stats_mgr.incrementMatches(); //matches++;
 
             // Allow other cards to be flipped
             card_pair_flipped = false;
 
             // Flowchart - increment match counter and
             // Are all cards matched?
-            if(++match_counter == total_card_matches)
+            if (game_ref.stats_mgr.getNumMatches() == game_ref.cards_mgr.getTotalPairs()) //(++match_counter == total_card_matches)
             {
                 // Flowchart - Display to the user that they have won
                 console.log("YOU WON!!!!");
@@ -168,12 +156,12 @@ function resetClickedCards()
 // Undergoes the game-winning sequence.
 function winGame()
 {
+    var game_area = game_ref.layout_mgr.game_area;
     // Make all the cards disappear.
-    $("div.card").addClass("make-disappear");
+    game_area.html('');
 
     // Add a YOU WON!!! to the game area, where the cards one were.
-    var game_area = $("div#game-area");
-    game_area.prepend("<p>YOU WON!!!</p>");
+    game_area.append("<p>YOU WON!!!</p>");
 
     console.log(game_area);
 }

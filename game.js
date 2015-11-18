@@ -10,8 +10,15 @@ function Game()
 Game.prototype.init = function()
 {
     this.cards_mgr = new CardsManager();
-    this.layout_mgr = new LayoutManager(this.cards_mgr.cards);
+    this.layout_mgr = new LayoutManager(this.cards_mgr.deck);
     this.stats_mgr = new StatsManager();
+
+    // Enable the reset button
+    var game = this;    // Eliminate 'this' confusion
+    $("input.reset").on('click', function()
+    {
+        game.resetGame();
+    });
 };
 
 Game.prototype.resetGame = function()
@@ -19,7 +26,6 @@ Game.prototype.resetGame = function()
     // Reset the global variables
     first_card_clicked = null;
     second_card_clicked = null;
-    match_counter = 0;
 
     this.stats_mgr.incrementGamesPlayed();
 
@@ -27,6 +33,7 @@ Game.prototype.resetGame = function()
     this.stats_mgr.display(); //display_stats();
 
     this.cards_mgr.init(); //shuffle_src_arr = shuffle_cards(shuffle_src_arr);
+    this.layout_mgr.changeDeck(this.cards_mgr.deck);
     this.layout_mgr.layoutCards(); //layout_cards(shuffle_src_arr);
 
     // Make the cards visible and showing their back faces

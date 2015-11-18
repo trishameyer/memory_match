@@ -1,7 +1,7 @@
 function CardsManager()
 {
-    this.cards = [];
-    this.pairs = 9;
+    this.deck = [];
+    this.pairs = 4;
     this.init();
 }
 
@@ -9,9 +9,14 @@ CardsManager.prototype.init = function()
 {
     // TODO: setting number of pairs (will be 4, 6, 8, or 9)
 
-    this.cards = this.shuffleCards(this.getCards());
+    this.deck = this.shuffleCards(this.getCards());
 };
 
+
+CardsManager.prototype.getTotalPairs = function()
+{
+    return this.pairs;
+};
 
 CardsManager.prototype.getCards = function()
 {
@@ -78,7 +83,7 @@ CardsManager.prototype.createCardDom = function(card_index)
         {
             class: 'front'
         });
-    var final_card_path = STR_CARD_PATH + this.cards[card_index];
+    var final_card_path = STR_CARD_PATH + this.deck[card_index];
     var front_img = $('<img>',
         {
             src: final_card_path

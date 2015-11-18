@@ -19,6 +19,11 @@ LayoutManager.prototype.init = function()
     this.layoutCards();
 };
 
+LayoutManager.prototype.changeDeck = function(new_deck)
+{
+    this.cards = new_deck;
+};
+
 LayoutManager.prototype.calculateGameAreaDimensions = function()
 {
     var dimensions =
@@ -38,22 +43,28 @@ LayoutManager.prototype.calculateGameAreaDimensions = function()
             area_height = isPortrait() ? 126.0 : 37.8;
             break;
 
-        // 16 -- 4 x 4
+        // 16 -- 4 x 4 (portrait), 8 x 2 (landscape)
         case 16:
-            area_width = isPortrait() ? 80.0 : 54.0;
-            area_height = isPortrait() ? 112.0 : 37.8;
+            area_width = isPortrait() ? 80.0 : 56.0;
+            area_height = isPortrait() ? 112.0 : 19.6;
             break;
 
         // 12 -- 3 x 4 (portrait), 4 x 3 (landscape)
         case 12:
-            area_width = isPortrait() ? 60.0 : 54.0;
+            area_width = isPortrait() ? 60.0 : 36.0;
             area_height = isPortrait() ? 112.0 : 37.8;
+            break;
+
+        // 10 -- 2 x 5 (portrait), 5 x 2 (landscape)
+        case 10:
+            area_width = isPortrait() ? 40.0 : 35.0;
+            area_height = isPortrait() ? 140.0 : 19.6;
             break;
 
         // 8  -- 2 x 4 (portrait), 4 x 2 (landscape)
         case 8:
-            area_width = isPortrait() ? 40.0 : 54.0;
-            area_height = isPortrait() ? 112.0 : 37.8;
+            area_width = isPortrait() ? 40.0 : 36.0;
+            area_height = isPortrait() ? 112.0 : 25.2;
             break;
     }
 
@@ -100,10 +111,10 @@ LayoutManager.prototype.calculateCardDimensions = function()
             }
             break;
 
-        // 16 -- 4 x 4
+        // 16 -- 4 x 4 (portrait), 8 x 2 (landscape)
         case 16:
-            card_width = 100.0 / 4.0;
-            card_height = 100.0 / 4.0;
+            card_width = isPortrait() ? 100.0 / 4.0 : 100.0 / 8.0;
+            card_height = isPortrait() ? 100.0 / 4.0 : 100.0 / 2.0;
             break;
 
         // 12 -- 3 x 4 (portrait), 4 x 3 (landscape)
@@ -116,6 +127,12 @@ LayoutManager.prototype.calculateCardDimensions = function()
                 card_width = 100.0 / 4.0;
                 card_height = 100.0 / 3.0;
             }
+            break;
+
+        // 10  -- 2 x 5 (portrait), 5 x 2 (landscape)
+        case 10:
+            card_width = isPortrait() ? 100.0 / 2.0 : 100.0 / 5.0;
+            card_height = isPortrait() ? 100.0 / 5.0 : 100.0 / 2.0;
             break;
 
         // 8  -- 4 x 2

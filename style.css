@@ -55,6 +55,11 @@ div.anim-quake
     display: inline-block;
 }
 
+.header>div
+{
+    display: inline-block;
+}
+
 .header>#logo
 {
     margin-left: 1%;
@@ -83,6 +88,8 @@ div.anim-quake
 .header>#menu
 {
     text-align: center;
+    float: right;
+    width: 74%;
 }
 
 .header>#menu>nav>ul
@@ -93,6 +100,7 @@ div.anim-quake
 .header>#menu>nav>ul>li
 {
     display: inline-block;
+    margin: auto 3vw;
     width: 33%;
 }
 
@@ -136,18 +144,29 @@ div.anim-quake
     font-family: korataki;
     font-size: 0.8vw;
     color: white;
-    background-color: rgba(3, 95, 145, .5);;
+    background-color: rgba(3, 95, 145, .5);
+    text-align: center;
+}
+
+#game-container
+{
+    position: relative;
+    float: right;
+    top: 18vh;
+    width: 60vw;
+    height: 40vw;
 }
 
 #game-area
 {
     /*border: 1px solid green;*/
     position: relative;
-    top: 18vh;
-    right: 4.5vw;
-    float: right;
+    /*top: 18vh;*/
+    /*right: 4.5vw;*/
+    /*float: right;*/
     width: 52vw;
     height: 36vw;
+    margin: 0 auto;
 }
 
 div.card
