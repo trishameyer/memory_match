@@ -96,16 +96,32 @@ function CardConstructor(artist) {
         var full_card = card.append(cardFront).append(card_back);
         game_area.append(full_card);
     };
+    self.clicked_false = function (show_hide) {
+        self.clicked = true;
+        $(show_hide).hide().addClass('card_selected');
+    };
+    self.click_check = function (show_hide) {
+        $(show_hide).hide().addClass('card_selected');
+        if (self.clicked === true) {
+            board.matches++;
+            board.attempts++;
+            //board.check_for_win();
+            $('.card_selected').removeClass('card_selected');
+        } else {
+            $('.card_selected').show(2000);
+            self.clicked = false;
+        }
+    };
     board.remove_half();
     /**
      *
      * @param card clicked to check and eliminate.
      */
-    //self.card_clicked = function (event) {
-    //    self.clicked = true;
-    //
-    //
-    //};
+//self.card_clicked = function (event) {
+//    self.clicked = true;
+//
+//
+//};
 }
 
 function Board_Constructor(array) {
@@ -135,8 +151,8 @@ function Board_Constructor(array) {
 
     };
 
-    self.remove_half = function(){
-      self.new_array.splice(8,9);
+    self.remove_half = function () {
+        self.new_array.splice(self.cards.length - 1, self.cards.length);
     };
 
     self.catch_from_array = function (front) {
@@ -272,11 +288,27 @@ $(document).ready(function () {
     //board.create_board(game_area);
     board.randomize(card_array);
     $(".back").on('click', function () {
-        front = $(this).prev().find('img').attr('picture');
+        var show = this;
+        if (front === '') {
+            front = $(this).prev().find('img').attr('picture');
+            for (var i = 0; i < board.new_array.length; i++) {
+                if (board.new_array[i].artist === front) {
+                    board.new_array[i].clicked_false(show);
+                }
+            }
+        } else {
+            front = $(this).prev().find('img').attr('picture');
+            for (var i = 0; i < board.new_array.length; i++) {
+                if (board.new_array[i].artist === front) {
+                    board.new_array[i].click_check(show);
+                }
+            }
+            front = '';
+        }
         console.log(front);
         //loop through array to find the object containing this element.
     });
-    $(".back").click(board.display_stats);
+    $(".back").click(board.display_stats());
     $(".reset").click(function () {
         board.games_played++;
         board.reset_stats();
