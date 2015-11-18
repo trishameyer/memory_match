@@ -126,10 +126,9 @@ function Board_Constructor(array) {
         accuracy.append(label.text('Accuracy'), accuracy_paragraph);
 
         var reset_button = $('<button>').addClass('reset').text('reset Game');
-        var button_peace = $('<button>').addClass('btn btn-success peace').text('Peace');
-        var button_war = $('<button>').addClass('btn btn-danger war').text('War');
+        var button_choice = $('<button>').addClass('btn').text('Peace');
 
-        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button, 'button_' + option);
+        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button, select);
         stat_container.append(sidebar_wrapper);
         container.append(stat_container);
         //stats area finished.
@@ -164,7 +163,7 @@ function Board_Constructor(array) {
         $('.back').show();
     };
 }
-function new_board(setName){
+function new_board(setName) {
     board = new Board_Constructor(card_sets[setName]);
     //board.create_board(game_area);
     board.randomize(card_sets[setName]);
@@ -174,6 +173,7 @@ $(document).ready(function () {
     new_board(current_set);
     $(".back").on('click', function () {
         var show = this;
+        board.display_stats();
         if (front === '') {
             front = $(this).prev().find('img').attr('picture');
             for (var i = 0; i < board.new_array2.length; i++) {
@@ -193,25 +193,27 @@ $(document).ready(function () {
         console.log(front);
         //loop through array to find the object containing this element.
     });
-    $(".back").click(board.display_stats());
     $(".reset").click(function () {
+        new_board(current_set);
         board.games_played++;
         board.reset_stats();
         board.display_stats();
     });
-    $('.war').on('click', function () {
+
+    $('.btn').on('click', function () {
         board.reset_stats();
         board.display_stats();
-        current_set = 'war';
-        boardwar = new Board_Constructor(card_sets.war, peace);
-        board.randomize(card_sets.war);
-    });
-    $('.peace').on('click', function () {
-        board.reset_stats();
-        board.display_stats();
-        current_set = 'peace';
-        boardwar = new Board_Constructor(card_sets.peace, war);
-        board.randomize(card_sets.peace);
+        if ($(this).text('Peace')) {
+            current_set = 'war';
+            //boardwar = new Board_Constructor(card_sets[current_set], 'War Theme');
+            new_board(current_set);
+            $(this).addClass('btn-danger').text('War');
+        } else {
+            current_set = 'peace';
+            //boardwar = new Board_Constructor(card_sets[current_set], 'Peace Theme');
+            new_board(current_set);
+            $(this).addClass('btn-success').text('Peace');
+        }
     });
     board.games_played = 0;
     board.reset_stats();
