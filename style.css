@@ -76,6 +76,11 @@
     display: none;
 }
 
+.btn {
+    margin-top: 15%;
+    display: block;
+}
+
 /*
 .two_faces:hover > .backcard {
     transform: rotateY(-180deg) perspective(1000px);

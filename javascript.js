@@ -1,6 +1,6 @@
 var game_area = $('<div>').attr('id', 'game-area');
 var front = '';
-var current_set = 'peace';
+var current_set = 'war';
 var card_sets = {
     peace: ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
         "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"],
@@ -34,8 +34,8 @@ function CardConstructor(artist, number) {
         board.display_stats();
     };
 
-    self.click_check = function (front, index) {
-        if (self.clicked === false && self.index === index && self.artist === front) {
+    self.click_check = function (front) {
+        if (self.clicked === false && self.artist === front) {
             self.clicked = true; //????
             board.matches++;
             board.attempts++;
@@ -47,6 +47,11 @@ function CardConstructor(artist, number) {
             $('.card_selected').show(2000);
             self.clicked = false;
             board.attempts++;
+            for (var i = 0; i < board.final_array;i++){ //want to loop through and set both object's artist names to false.
+                if (board.final_array[i][self.artist] === true){
+                    board.final_array[i][self.artist] = false;
+                }
+            }
         }
         board.display_stats();
     };
@@ -137,27 +142,31 @@ function Board_Constructor(array) {
         var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
         var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
 
-        var games_played = $('<div>').addClass('.games_played');
+        var games_played = $('<div>').addClass('games_played');
 
-        var label = $('<p>').addClass('label');
+        var label1 = $('<p>').addClass('label').text('Games Played');
         var gp_paragraph = $('<p>').addClass('games_played value');
 
-        games_played.append(label.text('Games Played'), gp_paragraph);
+        games_played.append(label1, gp_paragraph);
+
+        var random_paragraph = $('<p>').addClass('value');
 
         var attempts = $('<div>').addClass('attempts');
+        var label2 =  $('<p>').addClass('label').text('Accuracy');
         var attempts_value = $('<p>').addClass('attempts value');
 
-        attempts.append(label.text('Attempts'), attempts_value);
+        attempts.append(label2, attempts_value);
 
         var accuracy = $('<div>').addClass('accuracy');
+        //var label3 =  $('<p>').addClass('label').text('Accuracy');
         var accuracy_paragraph = $('<p>').addClass('accuracy');
 
-        accuracy.append(label.text('Accuracy'), accuracy_paragraph);
+        accuracy.append(accuracy_paragraph);
 
         var reset_button = $('<button>').addClass('reset').text('reset Game');
         var button_choice = $('<button>').addClass('btn').text('Peace');
 
-        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button, button_choice);
+        sidebar_wrapper.append(games_played, random_paragraph, attempts, accuracy, reset_button, button_choice);
         stat_container.append(sidebar_wrapper);
         container.append(stat_container);
         //stats area finished.
@@ -236,6 +245,7 @@ $(document).ready(function () {
         if ($(this).text('Peace')) {
             current_set = 'war';
             //boardwar = new Board_Constructor(card_sets[current_set], 'War Theme');
+            //how to clear board to append to new below:
             new_board(current_set);
             $(this).addClass('btn-danger').text('War');
         } else {
