@@ -1,36 +1,52 @@
 //Stats
 var Stats = function () {
-    this.matchAttempts = 0;
-    this.matchingAccuracy = 0;
-    this.gamesPlayed = 0;
+    var self = this;
 
-    this.displayStats = function () {
-        this.matchingAccuracy = Math.round(100 * (newController.currentTotalMatches / this.matchAttempts);
+    self.matchAttempts = 0;
+    self.matchingAccuracy = 0;
+    self.gamesPlayed = 0;
 
-        $(".games-played .value").text(this.gamesPlayed);
+    self.displayStats = function (controller) {
+        self.matchingAccuracy = Math.round(100 * (controller.currentTotalMatches / self.matchAttempts));
 
-        $(".attempts .value").text(this.matchAttempts);
+        $(".games-played .value").text(self.gamesPlayed);
 
-        if (newController.currentTotalMatches == 0 && this.matchAttempts == 0) {
+        $(".attempts .value").text(self.matchAttempts);
+
+        if (controller.currentTotalMatches == 0 && self.matchAttempts == 0) {
             $(".accuracy .value").text("100%");
         }
         else {
-            $(".accuracy .value").text(this.matchingAccuracy + "%");
+            $(".accuracy .value").text(self.matchingAccuracy + "%");
         }
     };
+
+    self.resetStats = function (controller) {
+        $(".back").show();
+        $("div").removeClass("back_effect front_effect selected_card matched");
+
+        self.gamesPlayed++;
+        self.matchingAccuracy = 0;
+        controller.currentTotalMatches = 0;
+        self.matchAttempts = 0;
+
+        self.displayStats(controller);
+    }
 };
 
 //Cards
+//Pass in properties to Cards?
 var Cards = function () {
-    this.cardImage = '';
-    this.matched = false;
-    this.currentlySelected = false;
+    var self = this;
 
-    this.cardTransitionEffect = function (element) {
-        $(element).toggleClass("back_effect");
-        $(element).prev(".front").toggleClass("front_effect");
-    }
+    self.cardImage = '';
+    self.matched = false;
+    self.currentlySelected = false;
 
+    self.cardTransitionEffect = function (card) {
+        $(card).toggleClass("back_effect");
+        $(card).prev(".front").toggleClass("front_effect");
+    };
 };
 
 //Game Controller Object
@@ -42,23 +58,67 @@ var gameController = function () {
     self.totalPossibleMatches = 9;
     self.currentTotalMatches = 0;
 
+    self.cardClicked = function (card, stats, controller) {
+        if ($(card).hasClass("matched") == true || $(card).hasClass("selected_card") == true) {
+            return
+        }
+
+        $(card).addClass("selected_card");
+        card_effect(card);
+
+        if (self.firstCardClicked == null) {
+            self.firstCardClicked = $(card).prev().find("img").attr("src");
+            return self.firstCardClicked;
+        }
+
+        else {
+            self.secondCardClicked = $(card).prev().find("img").attr("src");
+            attempts = attempts + 1;
+
+            if (self.firstCardClicked == self.secondCardClicked) {
+                self.currentTotalMatches++;
+                self.firstCardClicked = null;
+                self.secondCardClicked = null;
+                $(".selected_card").addClass("matched");
+                $("div").removeClass("selected_card");
+
+                if (self.currentTotalMatches == self.totalPossibleMatches) {
+                    alert("You won!");
+                }
+            }
+
+            else {
+                $(".back").off("click", self.cardClicked);
+                setTimeout(function () {
+                    card_effect(".selected_card");
+                    $(".selected_card").show();
+                    self.firstCardClicked = null;
+                    self.secondCardClicked = null;
+                    $(".back").removeClass("selected_card").on("click", self.cardClicked);
+                }, 1500);
+            }
+        }
+
+        stats.displayStats(controller);
+
+    };
 };
 
 //Document Ready
 $(document).ready(function () {
+    var gameStats = new Stats();
+    var newController = new gameController();
 
     $(".back").click(function () {
-        card_clicked(this);
+        newController.cardClicked(this);
     });
 
     $(".reset").click(function () {
-        reset_stats();
+        gameStats.resetStats(newController);
     });
 
-    display_stats();
-
+    gameStats.displayStats(newController);
 });
 
 //Misc
-var gameStats = Stats();
-var newController = gameController();
+
