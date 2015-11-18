@@ -7,42 +7,49 @@ var card_sets = {
     war: ['jasonbourne', 'jackreacher', 'eli', 'johnwick', 'taken',
         'alejandro', 'jamesbond', 'jaqen', 'omar']
 };
-{
-    card_sets[current_set]
-}
-function CardConstructor(artist) {
+//{
+//    card_sets[current_set]
+//}
+function CardConstructor(artist, number) {
     var self = this;
     self.artist = artist;
     self.clicked = false;
+    self.index = number;
+    self.domreference = '';
     make_card(artist);
-    function make_card(artist) {
-        console.log('make_card called');
+    function make_card(artist, ind) {
+        console.log(artist);
         var card = $('<div>').addClass('card');
         var card_front = $('<div>').addClass('front');
         var card_back = $('<div>').addClass('back');
         card_back.append($('<img>').attr('src', 'images/war-and-peace.jpg'));
-        var cardFront = card_front.append($('<img>').attr('src', 'images/' + artist + '.jpg').attr("picture", artist));	//have a ton of cards with different images.
+        var cardFront = card_front.append($('<img>').attr('src', 'images/' + artist + '.jpg').attr("picture", artist).attr('ind', number));	//have a ton of cards with different images.
         var full_card = card.append(cardFront).append(card_back);
+        self.domreference = full_card;
         game_area.append(full_card);
     };
-    self.clicked_false = function (show_hide) {
+
+    self.clicked_false = function () {
         self.clicked = true;
-        $(show_hide).hide().addClass('card_selected');
+        board.display_stats();
     };
-    self.click_check = function (show_hide) {
-        $(show_hide).hide().addClass('card_selected');
-        if (self.clicked === true) {
+
+    self.click_check = function (front, index) {
+        if (self.clicked === false && self.index === index && self.artist === front) {
+            self.clicked = true; //????
             board.matches++;
             board.attempts++;
             board.check_win();
             $('.card_selected').removeClass('card_selected');
-        } else {
+        } else if(self.clicked === true && self.artist === front) {
+            alert('select another card');
+        } else if(self.artist !== front){
             $('.card_selected').show(2000);
             self.clicked = false;
             board.attempts++;
         }
+        board.display_stats();
     };
-    board.remove_half();
 
 }
 
@@ -57,24 +64,36 @@ function Board_Constructor(array) {
     self.cards = array;
     self.accuracy = 0;
     self.new_array2 = [];
+    self.final_array = [];
 
     self.randomize = function (array) { //now we have a new array posted in this.new_array.
         console.log('called');
         self.create_board(game_area);
-        //self.new_array = array.slice(Math.floor(Math.random()*9));
+
         self.new_array = array.slice();
-        for (var o = 0; o < self.new_array.length; o++) {
-            self.new_array.push(self.new_array[o]);
+        console.log('new array:', self.new_array);
+
+        var super_array = self.new_array.concat(array);
+        console.log('here is the super array: ', super_array);
+
+        var index = '';
+        var length = super_array.length;
+        console.log('length of super array: ', super_array.length);
+        for (i = 0; i < length; i++) {
+            index = Math.floor(Math.random() * super_array.length);
+            console.log('loop elements: ', index);
+            self.new_array2.push(super_array[index]);
+            super_array.splice(index, 1);
         }
-        var index;
-        for (i = 0; i < self.new_array.length; i++) {
-            index = Math.floor(Math.random() * self.new_array.length);
-            self.new_array2.push(self.new_array[index]);
-            self.new_array.splice(index, 1);
+        length = self.new_array2.length;
+        console.log('self new array inside funtion: ', self.new_array2);
+        console.log('before constructor', self.new_array2);
+
+        for (var t = 0; t < length; t++) {
+            self.final_array.push(new CardConstructor(self.new_array2[t], t));
         }
-        for (var t = 0; t < self.new_array2.length; t++) {
-            var card = new CardConstructor(self.new_array2[t])
-        }
+        console.log('self new array inside funtion: ', self.new_array2);
+        //self.remove_half();
         //copy the array
         //loop until the array is empty
         //pick a random element from the current array length
@@ -82,15 +101,25 @@ function Board_Constructor(array) {
         //remove the same element from the old array
     };
 
-    self.remove_half = function () {
-        for (var o = 0; o < self.new_array2.length; o++) {
-            for (var i = 0; i < self.new_array2.length; i++) {
-                if (self.new_array2[o].artist === self.new_array2[i].artist) {
-                    self.new_array2.splice(i, 1);
-                }
-            }
-        }
-    };
+    //self.remove_half = function () {
+    //    //console.log('new array 2: ', self.new_array2);
+    //    //var check_array = self.new_array2.slice();
+    //    //for (var o = 0; o < self.new_array2.length; o++) {
+    //    //    for (var i = 0; i < self.new_array2.length; i++) {
+    //    //        if (self.new_array2[o].artist === self.new_array2[i].artist) {
+    //    //            self.new_array2.splice(i, 1);
+    //    //        }
+    //    //    }
+    //    //}
+    //    self.new_array2.sort();
+    //    for (var i = 1; i < self.new_array2.length;) {
+    //        if (self.new_array2[i - 1].artist == self.new_array2[i].artist) {
+    //            self.new_array2.splice(i, 1);
+    //        } else {
+    //            i++;
+    //        }
+    //    }
+    //};
 
     self.create_board = function (game_area, option) {
         console.log('create_board is called');
@@ -128,7 +157,7 @@ function Board_Constructor(array) {
         var reset_button = $('<button>').addClass('reset').text('reset Game');
         var button_choice = $('<button>').addClass('btn').text('Peace');
 
-        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button, select);
+        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button, button_choice);
         stat_container.append(sidebar_wrapper);
         container.append(stat_container);
         //stats area finished.
@@ -172,20 +201,21 @@ function new_board(setName) {
 $(document).ready(function () {
     new_board(current_set);
     $(".back").on('click', function () {
-        var show = this;
-        board.display_stats();
+        $(this).hide().addClass('card_selected');
         if (front === '') {
             front = $(this).prev().find('img').attr('picture');
-            for (var i = 0; i < board.new_array2.length; i++) {
-                if (board.new_array2[i].artist === front) {
-                    board.new_array2[i].clicked_false(show);
+            var index = $(this).prev().find('img').attr('ind');
+            for (var i = 0; i < board.final_array.length; i++) {
+                if (board.final_array[i].index === index) {
+                    board.final_array[i].clicked_false();
                 }
             }
         } else {
             front = $(this).prev().find('img').attr('picture');
-            for (var i = 0; i < board.new_array2.length; i++) {
-                if (board.new_array2[i].artist === front) {
-                    board.new_array2[i].click_check(show);
+            var index = $(this).prev().find('img').attr('ind');
+            for (var o = 0; o < board.final_array.length; o++) {
+                if (board.final_array[o].index === index) {
+                    board.final_array[o].click_check(front, index);
                 }
             }
             front = '';
