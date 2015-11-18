@@ -2,18 +2,20 @@ document.addEventListener("DOMContentLoaded", function()
 {
     console.log("Excuse me while I kiss the sky.");
 
-    init_display_stats();
+    var game = new Game();
+    game_ref = game;            // Remove when done testing.
 
-    shuffle_src_arr = shuffle_cards(pics);
-
-    var layout_mgr = new LayoutManager(shuffle_src_arr);
-
-    //layout_cards(shuffle_src_arr);
-    layout_mgr.layoutCards();
+    matches = game.stats_mgr.matches;
+    attempts = game.stats_mgr.attempts;
+    accuracy = game.stats_mgr.accuracy;
+    games_played = game.stats_mgr.games_played;
 
     $("div#game-area>div.card").click(cardClicked);
     //document.querySelector("#game-area>div.card").addEventListener("click", cardClicked);
-    $("input.reset").click(resetGame);
+    $("input.reset").on('click', function()
+    {
+        game.resetGame();
+    });
 });
 
 function isPortrait()

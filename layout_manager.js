@@ -4,6 +4,7 @@ function LayoutManager(cards_arr)
     this.game_area = null;
     this.card_dimensions = null;
     this.game_area_dimensions = null;
+
     this.init();
 }
 
@@ -14,6 +15,8 @@ LayoutManager.prototype.init = function()
     this.setGameAreaDimensions();
 
     this.card_dimensions = this.calculateCardDimensions();
+
+    this.layoutCards();
 };
 
 LayoutManager.prototype.calculateGameAreaDimensions = function()
@@ -134,6 +137,8 @@ LayoutManager.prototype.getCardDimensions = function()
 
 LayoutManager.prototype.layoutCards = function()
 {
+    this.game_area.html('');
+
     // Create all cards and put it in the game area
     for (var i = 0; i < this.cards.length; i++)
     {
@@ -152,7 +157,7 @@ LayoutManager.prototype.layoutCards = function()
             });
         var back_img = $('<img>',
             {
-                src: (str_card_path + 'Back.png')
+                src: (STR_CARD_PATH + 'Back.png')
             });
         card_back_span.append(back_img);
 
@@ -161,7 +166,7 @@ LayoutManager.prototype.layoutCards = function()
             {
                 class: 'front'
             });
-        var final_card_path = str_card_path + this.cards[i];
+        var final_card_path = STR_CARD_PATH + this.cards[i];
         var front_img = $('<img>',
             {
                 src: final_card_path
@@ -175,5 +180,5 @@ LayoutManager.prototype.layoutCards = function()
         // Add the card to the game area.
         this.game_area.append(card_div);
     }
-    console.log("Final game area: " + $('#game-area').html());
+    //console.log("Final game area: " + $('#game-area').html());
 };
