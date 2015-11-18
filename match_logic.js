@@ -34,20 +34,20 @@ var pics =
     ];
 var shuffle_src_arr = [];
 
-$(document).ready(function()
-{
-    console.log("Excuse me while I kiss the sky.");
-
-
-    init_display_stats();
-
-    shuffle_src_arr = shuffle_cards(pics);
-    layout_cards(shuffle_src_arr);
-
-    $("div#game-area>div.card").click(cardClicked);
-    //document.querySelector("#game-area>div.card").addEventListener("click", cardClicked);
-    $("input.reset").click(resetGame);
-});
+//$(document).ready(function()
+//{
+//    console.log("Excuse me while I kiss the sky.");
+//
+//
+//    init_display_stats();
+//
+//    shuffle_src_arr = shuffle_cards(pics);
+//    layout_cards(shuffle_src_arr);
+//
+//    $("div#game-area>div.card").click(cardClicked);
+//    //document.querySelector("#game-area>div.card").addEventListener("click", cardClicked);
+//    $("input.reset").click(resetGame);
+//});
 
 function getPosition(elem)
 {

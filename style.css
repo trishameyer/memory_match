@@ -144,7 +144,7 @@ div.anim-quake
     /*border: 1px solid green;*/
     position: relative;
     top: 18vh;
-    right: 6.5vw;
+    right: 4.5vw;
     float: right;
     width: 52vw;
     height: 36vw;
@@ -190,16 +190,16 @@ div.card>span.back
     transition-duration: .4s;
     z-index: 200;
     position: absolute;
-    width: inherit;
-    height: inherit;
+    max-width: 100%;
+    max-height: 100%;
     transform-origin: 50% 50%;
     backface-visibility: hidden;
 }
 
 div.card>span.back>img
 {
-    width: inherit;
-    height: inherit;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 div.card>span.front
@@ -207,8 +207,8 @@ div.card>span.front
     transition-duration: .4s;
     z-index: 100;
     position: absolute;
-    width: inherit;
-    height: inherit;
+    max-width: 100%;
+    max-height: 100%;
     transform-origin: 50% 50%;
     transform: rotateY(180deg);
 
@@ -218,8 +218,8 @@ div.card>span.front
 
 div.card>span.front>img
 {
-    width: inherit;
-    height: inherit;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* Rotation animation */

@@ -1,0 +1,16 @@
+@media screen and (max-width: 800px)
+{
+    .stats-section
+    {
+        top: 40vh;
+    }
+
+    #game-area
+    {
+        position: static;
+        float: none;
+        margin: 0 auto;
+        width: 90vw;
+        height: 180vw;
+    }
+}
