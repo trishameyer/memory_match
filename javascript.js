@@ -105,11 +105,12 @@ function CardConstructor(artist) {
         if (self.clicked === true) {
             board.matches++;
             board.attempts++;
-            //board.check_for_win();
+            board.check_win();
             $('.card_selected').removeClass('card_selected');
         } else {
             $('.card_selected').show(2000);
             self.clicked = false;
+            board.attempts++;
         }
     };
     board.remove_half();
@@ -124,6 +125,7 @@ function CardConstructor(artist) {
 //};
 }
 
+//ok keep it how it is, except make the card array twice as long and append from that (or run the loop to randomize twice). Then run a loop in the board object from the cards constructor to remove duplicates.
 function Board_Constructor(array) {
     var self = this;
     var card_object_array = [];
@@ -228,6 +230,12 @@ function Board_Constructor(array) {
 
         $('body').append(complete_container);
     };
+
+    self.check_win = function(){
+        if (self.matches === self.cards.length){
+            alert('you have won!');
+        }
+    }
 
     self.display_stats = function () {
         $(".games_played .value").text(self.games_played);
