@@ -1,6 +1,6 @@
 var game_area = $('<div>').attr('id', 'game-area');
 var front = '';
-var current_set='peace';
+var current_set = 'peace';
 var card_sets = {
     peace: ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
         "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"],
@@ -20,7 +20,7 @@ function CardConstructor(artist) {
         var card = $('<div>').addClass('card');
         var card_front = $('<div>').addClass('front');
         var card_back = $('<div>').addClass('back');
-        card_back.append($('<img>').attr('src', 'images/musicnotes.jpg'));
+        card_back.append($('<img>').attr('src', 'images/war-and-peace.jpg'));
         var cardFront = card_front.append($('<img>').attr('src', 'images/' + artist + '.jpg').attr("picture", artist));	//have a ton of cards with different images.
         var full_card = card.append(cardFront).append(card_back);
         game_area.append(full_card);
@@ -63,16 +63,16 @@ function Board_Constructor(array) {
         self.create_board(game_area);
         //self.new_array = array.slice(Math.floor(Math.random()*9));
         self.new_array = array.slice();
-        for (var o = 0; o < self.new_array.length; o++){
+        for (var o = 0; o < self.new_array.length; o++) {
             self.new_array.push(self.new_array[o]);
         }
         var index;
-        for(i=0; i < self.new_array.length; i++){
+        for (i = 0; i < self.new_array.length; i++) {
             index = Math.floor(Math.random() * self.new_array.length);
             self.new_array2.push(self.new_array[index]);
             self.new_array.splice(index, 1);
         }
-        for (var t = 0; t < self.new_array2.length; t++){
+        for (var t = 0; t < self.new_array2.length; t++) {
             var card = new CardConstructor(self.new_array2[t])
         }
         //copy the array
@@ -80,24 +80,13 @@ function Board_Constructor(array) {
         //pick a random element from the current array length
         //put that element into a new array
         //remove the same element from the old array
-        //for (o = 0; o < 2; o++) {
-        //    self.new_array = array.slice(Math.floor(Math.random()*9));
-            //for (var i = array.length - 1; i > 0; i--) { //randomizes loaded array.
-            //    var j = Math.floor(Math.random() * (i + 1));
-            //    var temp = array[i];
-            //    array[i] = array[j];
-            //    array[j] = temp;
-            //}
-            //for (var t = 0; t < array.length; t++) { //gets done twice -> for card image array.
-            //    self.new_array2.push(new CardConstructor(array[t]));
-            //}
     };
 
     self.remove_half = function () {
         for (var o = 0; o < self.new_array2.length; o++) {
             for (var i = 0; i < self.new_array2.length; i++) {
-                if (self.new_array2[o].artist ===self.new_array2[i].artist){
-                    self.new_array2.splice(i,1);
+                if (self.new_array2[o].artist === self.new_array2[i].artist) {
+                    self.new_array2.splice(i, 1);
                 }
             }
         }
@@ -140,7 +129,7 @@ function Board_Constructor(array) {
         var button_peace = $('<button>').addClass('btn btn-success peace').text('Peace');
         var button_war = $('<button>').addClass('btn btn-danger war').text('War');
 
-        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button, 'button_'+option);
+        sidebar_wrapper.append(games_played, attempts, accuracy, reset_button, 'button_' + option);
         stat_container.append(sidebar_wrapper);
         container.append(stat_container);
         //stats area finished.
@@ -151,8 +140,8 @@ function Board_Constructor(array) {
         $('body').append(complete_container);
     };
 
-    self.check_win = function(){
-        if (self.matches === self.cards.length){
+    self.check_win = function () {
+        if (self.matches === self.cards.length) {
             alert('you have won!');
         }
     };
@@ -175,60 +164,28 @@ function Board_Constructor(array) {
         $('.back').show();
     };
 }
-
-function card_clicked(event) {
-    $(this).hide().addClass('card_selected'); //could put $(this).toggleClass('someclass that affects css') instead.
-    console.log('clicked');
-    if (front === null) {
-        front = $(this).prev().find('img').attr('picture');
-        board.catch_from_array(front);
-    } else {
-        front = $(this).prev().find('img').attr('picture');
-        var check_match = board.check_from_array(front);
-        if (check_match) {
-            board.matches_counter++;
-            board.matches++;
-            board.attempts++;
-            console.log('match_counter is: ' + match_counter);
-            front = null;
-            $('.card_selected').removeClass('card_selected');
-            console.log("class name: " + this.className);
-            if (board.matches_counter === 9) {
-                alert('You have won!');
-                board.reset_stats();
-            } else {
-                return console.log('click handler functionality is complete - the first one');
-            }
-        }
-        else {
-            console.log('first_card_clicked != second_card_clicked');
-            board.set_false(front);
-            front = null;
-            console.log('click handler functionality is complete - the second');
-            board.attempts++;
-            $('.card_selected').show(2000);
-        }
-    }
+function new_board(setName){
+    board = new Board_Constructor(card_sets[setName]);
+    //board.create_board(game_area);
+    board.randomize(card_sets[setName]);
 }
 
 $(document).ready(function () {
-    board = new Board_Constructor(card_sets[current_set]);
-    //board.create_board(game_area);
-    board.randomize(card_array_peace);
+    new_board(current_set);
     $(".back").on('click', function () {
         var show = this;
         if (front === '') {
             front = $(this).prev().find('img').attr('picture');
             for (var i = 0; i < board.new_array2.length; i++) {
-                if (board.new_array[i].artist === front) {
-                    board.new_array[i].clicked_false(show);
+                if (board.new_array2[i].artist === front) {
+                    board.new_array2[i].clicked_false(show);
                 }
             }
         } else {
             front = $(this).prev().find('img').attr('picture');
             for (var i = 0; i < board.new_array2.length; i++) {
-                if (board.new_array[i].artist === front) {
-                    board.new_array[i].click_check(show);
+                if (board.new_array2[i].artist === front) {
+                    board.new_array2[i].click_check(show);
                 }
             }
             front = '';
@@ -242,17 +199,19 @@ $(document).ready(function () {
         board.reset_stats();
         board.display_stats();
     });
-    $('.war').on('click', function(){
+    $('.war').on('click', function () {
         board.reset_stats();
         board.display_stats();
-        boardwar = new Board_Constructor(card_array_war, peace);
-        board.randomize(card_array_war);
+        current_set = 'war';
+        boardwar = new Board_Constructor(card_sets.war, peace);
+        board.randomize(card_sets.war);
     });
-    $('.war').on('click', function(){
+    $('.peace').on('click', function () {
         board.reset_stats();
         board.display_stats();
-        boardwar = new Board_Constructor(card_array_peace, war);
-        board.randomize(card_array_peace);
+        current_set = 'peace';
+        boardwar = new Board_Constructor(card_sets.peace, war);
+        board.randomize(card_sets.peace);
     });
     board.games_played = 0;
     board.reset_stats();
