@@ -1,5 +1,7 @@
 /** Memory Match - created by Lance **/
 
+// ***** Re-write to OOP - Object Literal way
+
 var cards_array = ["images/ff_Ballade.jpg","images/ff_CutMan.jpg","images/ff_Enker.jpg","images/ff_GutsMan.jpg",
     "images/ff_Punk.jpg","images/ff_QuickMan.jpg","images/ff_Quint.jpg","images/ff_Shadowman.jpg","images/ff_Skullman.jpg"];
 
@@ -67,7 +69,7 @@ var game_board = {
         game_board.show_select_level();
     },
     hide_select_level: function() {
-    $("#select-level").css("visibility", "hidden");
+        $("#select-level").css("visibility", "hidden");
     },
     show_select_level: function() {
         $("#select-level").css("visibility", "visible");
