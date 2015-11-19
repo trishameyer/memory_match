@@ -88,112 +88,114 @@ function Board_Constructor(array) {
     self.accuracy = 0;
     self.new_array2 = [];
     self.final_array = [];
-
-    //will change variable names for arrays.
-    self.randomize = function (array) {
-        self.create_board(game_area);
-
-        self.new_array = array.slice();
-
-
-        var super_array = self.new_array.concat(array);
-
-
-        var index = '';
-        var length = super_array.length;
-        console.log('length of super array: ', super_array.length);
-        for (i = 0; i < length; i++) {
-            index = Math.floor(Math.random() * super_array.length);
-            self.new_array2.push(super_array[index]);
-            super_array.splice(index, 1);
-        }
-        length = self.new_array2.length;
-
-        for (var t = 0; t < length; t++) {
-            self.final_array.push(new CardConstructor(self.new_array2[t], t));
-        }
-
-    };
-
-    self.create_board = function (game_area) {
-        console.log('create_board is called');
-        var complete_container = $('<div>').addClass('container-fluid');
-        //header
-        var header = $('<div>').addClass('jumbotron');
-        var logo = $('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
-        var h1 = $('<h1>').text('Music Theme');
-
-        header.append(logo, h1);
-        complete_container.append(header);
-
-        //stats area
-        var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
-        var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
-        var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
-
-        var games_played = $('<div>').addClass('games_played');
-
-        var label1 = $('<p>').addClass('label').text('Games Played');
-        var gp_paragraph = $('<p>').addClass('games_played value');
-
-        games_played.append(label1, gp_paragraph);
-
-        var random_paragraph = $('<p>').addClass('value');
-
-        var attempts = $('<div>').addClass('attempts');
-        var label2 = $('<p>').addClass('label').text('Accuracy');
-        var attempts_value = $('<p>').addClass('attempts value');
-
-        attempts.append(label2, attempts_value);
-
-        var accuracy = $('<div>').addClass('accuracy');
-        //var label3 =  $('<p>').addClass('label').text('Accuracy');
-        var accuracy_paragraph = $('<p>').addClass('accuracy');
-
-        accuracy.append(accuracy_paragraph);
-
-        var reset_button = $('<button>').addClass('reset').text('reset Game');
-        var change_theme = $('<button>').addClass('btn btn-success ').text('Change Theme');
-
-        sidebar_wrapper.append(games_played, random_paragraph, attempts, accuracy, reset_button, change_theme);
-        stat_container.append(sidebar_wrapper);
-        container.append(stat_container);
-        //stats area finished.
-        container.append(game_area);
-
-        complete_container.append(container);
-
-        $('body').append(complete_container);
-    };
-
-    self.check_win = function () {
-        if (self.matches === self.cards.length) {
-            alert('you have won!');
-            board.reset_stats();
-        } else if (self.attempts > 10) {
-            alert('you have lost');
-            board.reset_stats();
-        }
-    };
-
-    self.display_stats = function () {
-        $(".games_played .value").text(self.games_played);
-        $('.attempts .value').text("attempts = " + self.attempts);
-        self.accuracy = Math.round((self.matches / self.attempts) * 100);
-        if (isNaN(self.accuracy)) {
-            self.accuracy = 0;
-        }
-        $('.accuracy .value').text("Accuracy " + self.accuracy + '%');
-    };
-
-    self.reset_stats = function () {
-        self.accuracy = 0;
-        self.matches = 0;
-        self.attempts = 0;
-        self.display_stats();
-        $('.back').show();
-    };
 }
+//will change variable names for arrays.
+Board_Constructor.prototype.randomize = function (array) {
+    var self = this;
+    self.create_board(game_area);
+
+    self.new_array = array.slice();
+
+    var super_array = self.new_array.concat(array);
+
+    var index = '';
+    var length = super_array.length;
+    console.log('length of super array: ', super_array.length);
+    for (i = 0; i < length; i++) {
+        index = Math.floor(Math.random() * super_array.length);
+        self.new_array2.push(super_array[index]);
+        super_array.splice(index, 1);
+    }
+    length = self.new_array2.length;
+
+    for (var t = 0; t < length; t++) {
+        self.final_array.push(new CardConstructor(self.new_array2[t], t));
+    }
+};
+
+Board_Constructor.prototype.create_board = function (game_area) {
+    var self = this;
+    console.log('create_board is called');
+    var complete_container = $('<div>').addClass('container-fluid');
+    //header
+    var header = $('<div>').addClass('jumbotron');
+    var logo = $('<img>').attr("src", "http://thumbs.dreamstime.com/x/music-logo-13731704.jpg");
+    var h1 = $('<h1>').text('Music Theme');
+
+    header.append(logo, h1);
+    complete_container.append(header);
+
+    //stats area
+    var container = $('<div>').addClass('container-fluid not_header'); //STRICT STAT AREA.
+    var stat_container = $('<div>').attr("id", "wrapper"); //INSIDE "STRICT STAT AREA"
+    var sidebar_wrapper = $('<div>').attr("id", "sidebar-wrapper");
+
+    var games_played = $('<div>').addClass('games_played');
+
+    var label1 = $('<p>').addClass('label').text('Games Played');
+    var gp_paragraph = $('<p>').addClass('games_played value');
+
+    games_played.append(label1, gp_paragraph);
+
+    var random_paragraph = $('<p>').addClass('value');
+
+    var attempts = $('<div>').addClass('attempts');
+    var label2 = $('<p>').addClass('label').text('Accuracy');
+    var attempts_value = $('<p>').addClass('attempts value');
+
+    attempts.append(label2, attempts_value);
+
+    var accuracy = $('<div>').addClass('accuracy');
+    //var label3 =  $('<p>').addClass('label').text('Accuracy');
+    var accuracy_paragraph = $('<p>').addClass('accuracy');
+
+    accuracy.append(accuracy_paragraph);
+
+    var reset_button = $('<button>').addClass('reset').text('reset Game');
+    var change_theme = $('<button>').addClass('btn btn-success ').text('Change Theme');
+
+    sidebar_wrapper.append(games_played, random_paragraph, attempts, accuracy, reset_button, change_theme);
+    stat_container.append(sidebar_wrapper);
+    container.append(stat_container);
+    //stats area finished.
+    container.append(game_area);
+
+    complete_container.append(container);
+
+    $('body').append(complete_container);
+};
+
+Board_Constructor.prototype.check_win = function () {
+    var self = this;
+    if (self.matches === self.cards.length) {
+        alert('you have won!');
+        board.reset_stats();
+    } else if (self.attempts = 10) {
+        alert('you have lost');
+        board.reset_stats();
+    }
+};
+
+Board_Constructor.prototype.display_stats = function () {
+    var self = this;
+    $(".games_played .value").text(self.games_played);
+    $('.attempts .value').text("attempts (you have 10) = " + self.attempts);
+    self.accuracy = Math.round((self.matches / self.attempts) * 100);
+    if (isNaN(self.accuracy)) {
+        self.accuracy = 0;
+    }
+    $('.accuracy .value').text("Accuracy " + self.accuracy + '%');
+};
+
+Board_Constructor.prototype.reset_stats = function () {
+    var self = this;
+    self.accuracy = 0;
+    self.matches = 0;
+    self.attempts = 0;
+    self.display_stats();
+    $('.back').show();
+};
+
 function new_board(array) {
 
     board = new Board_Constructor(array);
