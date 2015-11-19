@@ -24,8 +24,3 @@ function getRandomSize()
 var game_ref;
 var cm_ref;
 var sm_ref;
-
-
-var first_card_clicked = null;
-var second_card_clicked = null;
-var card_pair_flipped = false;
