@@ -56,7 +56,7 @@ header h1 {
     padding: 1%;
 }
 
-.game_menu ul {
+.game_menu > ul {
     float: left;
     margin: 0;
     padding: 1%;
@@ -67,7 +67,40 @@ header h1 {
     display: inline-block;
     font-size: 22px;
     padding-left: 35px;
+    float: left;
 }
+
+/*Settings Drop Down Menu*/
+#settings-menu:hover > a {
+    color: ghostwhite;
+
+}
+
+ul > li#settings-menu {
+    position: relative;
+}
+
+#settings-menu > ul {
+    display: none;
+    height: 100px;
+}
+
+#settings-menu:hover > ul {
+    display: block;
+    position: absolute;
+    top: 35px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+ul > li.settings-sub {
+    padding: 0;
+    margin: 0;
+    height: 40%;
+    font-size: 15px;
+}
+/*****/
 
 main {
     position: absolute;
@@ -138,7 +171,7 @@ main {
     backface-visibility: hidden;
 }
 
-.front, .back, .matched{
+.front, .back, .matched {
     position: absolute;
     backface-visibility: hidden;
 }
