@@ -39,6 +39,7 @@ function CardConstructor(artist, number) {
 }
 
 CardConstructor.prototype.clicked_false = function (jquery) {
+    var self = this;
     console.log('getting called');
     //self.back.hide().addClass('card_selected');
     //this.find('.back').hide().addClass('card_selected');
@@ -49,7 +50,8 @@ CardConstructor.prototype.clicked_false = function (jquery) {
 };
 
 CardConstructor.prototype.click_check = function (front, jquery) {
-    if (self.artist === front) {
+    var self = this;
+    if (self.artist == front) {
         //matching condition.
         $(jquery).hide().addClass('card_selected');
         self.clicked = true; //????
@@ -59,6 +61,7 @@ CardConstructor.prototype.click_check = function (front, jquery) {
         $('.card_selected').removeClass('card_selected');
         console.log('first if');
     } else {
+        var self = this;
         $(jquery).hide().addClass('card_selected');
         $('.card_selected').show(2000);
         self.clicked = false;
