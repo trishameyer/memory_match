@@ -170,7 +170,7 @@ Board_Constructor.prototype.check_win = function () {
     if (self.matches === self.cards.length) {
         alert('you have won!');
         board.reset_stats();
-    } else if (self.attempts = 10) {
+    } else if (self.attempts === 10) {
         alert('you have lost');
         board.reset_stats();
     }
@@ -197,7 +197,6 @@ Board_Constructor.prototype.reset_stats = function () {
 };
 
 function new_board(array) {
-
     board = new Board_Constructor(array);
     //board.create_board(game_area);
     board.randomize(array);
