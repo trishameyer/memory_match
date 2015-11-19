@@ -35,7 +35,6 @@ var Stats = function () {
 };
 
 //Cards
-//Pass in properties to Cards?
 var Cards = function () {
     var self = this;
 
@@ -53,18 +52,23 @@ var Cards = function () {
 var gameController = function () {
     var self = this;
 
+    self.cardSetOne = ['images/cardfront1.jpg', 'images/cardfront2.jpg', 'images/cardfront3.jpg', 'images/cardfront4.jpg', 'images/cardfront5.jpg', 'images/cardfront6.jpg', 'images/cardfront7.jpg', 'images/cardfront8.jpg', 'images/cardfront9.jpg'];
+
     self.firstCardClicked = null;
     self.secondCardClicked = null;
     self.totalPossibleMatches = 9;
     self.currentTotalMatches = 0;
 
+    self.tempCard = new Cards();
+
     self.cardClicked = function (card, stats, controller) {
+
         if ($(card).hasClass("matched") == true || $(card).hasClass("selected_card") == true) {
             return
         }
 
         $(card).addClass("selected_card");
-        card_effect(card);
+        self.tempCard.cardTransitionEffect(card);
 
         if (self.firstCardClicked == null) {
             self.firstCardClicked = $(card).prev().find("img").attr("src");
@@ -73,7 +77,7 @@ var gameController = function () {
 
         else {
             self.secondCardClicked = $(card).prev().find("img").attr("src");
-            attempts = attempts + 1;
+            stats.matchAttempts++;
 
             if (self.firstCardClicked == self.secondCardClicked) {
                 self.currentTotalMatches++;
@@ -90,7 +94,7 @@ var gameController = function () {
             else {
                 $(".back").off("click", self.cardClicked);
                 setTimeout(function () {
-                    card_effect(".selected_card");
+                    self.tempCard.cardTransitionEffect(".selected_card");
                     $(".selected_card").show();
                     self.firstCardClicked = null;
                     self.secondCardClicked = null;
@@ -110,7 +114,7 @@ $(document).ready(function () {
     var newController = new gameController();
 
     $(".back").click(function () {
-        newController.cardClicked(this);
+        newController.cardClicked(this, gameStats, newController);
     });
 
     $(".reset").click(function () {
