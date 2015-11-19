@@ -25,6 +25,10 @@ State_PickFirst.prototype.execute = function(state_machine)
     console.log("Executing State PICK FIRST");
     // Card has been clicked
     var cm = state_machine.game.cards_mgr;
+
+    if (cm.shakeSingleCard(cm.card_clicked.get()))
+        return;
+
     cm.setFirstCardClicked(false);
 
     state_machine.changeState(new State_PickSecond(state_machine));
@@ -89,8 +93,10 @@ State_PickSecond.prototype.evaluatePair = function(state_machine)
         // Set delay to going back to state pick first
         var lm = state_machine.game.layout_mgr;
         lm.shakeScreen();
+        this.cm.shake.set(true);
 
-        this.cm.flipPairAround();
+        this.cm.flipPairAround(this.cm.first_card_clicked.get(), this.cm.second_card_clicked.get());
+        this.cm.flushClickedCards();
 
         state_machine.changeState(new State_PickFirst(state_machine));
     }
@@ -119,13 +125,16 @@ State_EvaluatePair.prototype.init = function(state_machine)
     this.stats.incrementAttempts();
 
     // Check for matching pair
-    if (this.rm.checkRule(RULE_KEY_PAIRS_MATCH) == true)
+    if (this.rm.checkRule(RULE_KEY_PAIRS_MATCH))
     {
         this.stats.incrementMatches();
+        this.stats.display();
         // Check if all pairs match
         if (this.rm.checkRule(RULE_KEY_ALL_PAIRS_MATCHED))
         {
             // win game
+            console.log("YOU WIN!");
+            state_machine.changeState(new State_WinGame(state_machine));
         }
         else
         {
@@ -140,7 +149,8 @@ State_EvaluatePair.prototype.init = function(state_machine)
         var lm = state_machine.game.layout_mgr;
         lm.shakeScreen();
 
-        this.cm.flipPairAround();
+        this.cm.flipPairAround(this.cm.first_card_clicked.get(), this.cm.second_card_clicked.get());
+        this.cm.flushClickedCards();
 
         state_machine.changeState(new State_PickFirst(state_machine));
     }

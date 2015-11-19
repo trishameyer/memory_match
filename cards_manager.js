@@ -4,9 +4,85 @@ function CardsManager(game, num_pairs)
     this.deck = [];
     this.pairs = 0;
 
-    this.card_clicked = null;
-    this.first_card_clicked = null;
-    this.second_card_clicked = null;
+    this.card_clicked = //null;
+        (function()
+            {
+                var card_obj = null;
+
+                return {
+                    set: function(clicked_card) {
+                        card_obj = clicked_card;
+                    },
+                    get: function() {
+                        return card_obj;
+                    }
+                };
+            }
+        )();
+
+    this.first_card_clicked = // null;
+        (function()
+            {
+                var card_obj = null;
+
+                return {
+                    set: function(clicked_card) {
+                        card_obj = clicked_card;
+                    },
+                    get: function() {
+                        return card_obj;
+                    },
+                    disable: function() {
+                        $(card_obj).off('click');
+                    },
+                    enable: function(manager) {
+                        $(card_obj).on('click', function(){
+                            manager.game.cardClicked();
+                        });
+                    }
+                };
+            }
+        )();
+
+    this.second_card_clicked = //null;
+        (function()
+            {
+                var card_obj = null;
+
+                return {
+                    set: function(clicked_card) {
+                        card_obj = clicked_card;
+                    },
+                    get: function() {
+                        return card_obj;
+                    },
+                    disable: function() {
+                        $(card_obj).off('click');
+                    },
+                    enable: function(manager) {
+                        $(card_obj).on('click', function(){
+                            manager.game.cardClicked();
+                        });
+                    }
+                };
+            }
+        )();
+
+    this.shake =
+        (function()
+            {
+                var enabled = false;
+
+                return {
+                    get: function() {
+                        return enabled;
+                    },
+                    set: function(flag) {
+                        enabled = flag;
+                    }
+                };
+            }
+        )();
 
     this.init(num_pairs);
 }
@@ -73,7 +149,7 @@ CardsManager.prototype.enableAllCards = function()
     var cm = this;
     $('#game-area').on('click', 'div.card', function()
     {
-        cm.card_clicked = this;
+        cm.card_clicked.set(this);
         game.cardClicked();
     });
 };
@@ -89,27 +165,27 @@ CardsManager.prototype.enableSingleCard = function(card)
     var cm = this;
     $(card).on('click', function()
     {
-        cm.card_clicked = this;
+        cm.card_clicked.set(this);
         game.cardClicked();
     });
 };
-CardsManager.prototype.disableSingleCard = function(card)
-{
-    $(card).off('click');
-};
+//CardsManager.prototype.disableSingleCard = function(card)
+//{
+//    $(card).off('click');
+//};
 
 CardsManager.prototype.setFirstCardClicked = function(flush)
 {
     if (flush != undefined && flush != null && flush == true)
     {
-        this.first_card_clicked = null;
+        this.first_card_clicked.set(null);
     }
     else
     {
-        this.first_card_clicked = this.card_clicked;
+        this.first_card_clicked.set(this.card_clicked.get());
 
-        this.rotateCard(this.first_card_clicked);
-        this.disableSingleCard(this.first_card_clicked);
+        this.rotateCard(this.first_card_clicked.get());
+        this.first_card_clicked.disable();
     }
 
 };
@@ -118,20 +194,20 @@ CardsManager.prototype.setSecondCardClicked = function(flush)
 {
     if (flush != undefined && flush != null && flush == true)
     {
-        this.second_card_clicked = null;
+        this.second_card_clicked.set(null);
     }
     else
     {
-        this.second_card_clicked = this.card_clicked;
+        this.second_card_clicked.set(this.card_clicked.get());
 
-        this.rotateCard(this.second_card_clicked);
-        this.disableSingleCard(this.second_card_clicked);
+        this.rotateCard(this.second_card_clicked.get());
+        this.second_card_clicked.disable();
     }
 };
 
 CardsManager.prototype.flushClickedCards = function()
 {
-    this.card_clicked = null;
+    this.card_clicked.set(null);
     this.setFirstCardClicked(true);
     this.setSecondCardClicked(true);
 };
@@ -150,6 +226,9 @@ CardsManager.prototype.rotateCard = function(card)
 
 CardsManager.prototype.shakeSingleCard = function(card)
 {
+    if (this.shake.get() == false)
+        return false;
+
     // Do a shaking animation
     $(card).addClass("anim-shake");
     var temp_card = $(card);
@@ -160,18 +239,19 @@ CardsManager.prototype.shakeSingleCard = function(card)
         },
         650
     );
+    return true;
 };
 
-CardsManager.prototype.flipPairAround = function()
+CardsManager.prototype.flipPairAround = function(card_one, card_two)
 {
     var self = this;
     setTimeout(function()
         {
-            self.rotateCard(self.first_card_clicked);
-            self.rotateCard(self.second_card_clicked);
-            self.enableSingleCard(self.first_card_clicked);
-            self.enableSingleCard(self.second_card_clicked);
-            self.flushClickedCards();
+            self.rotateCard(card_one);
+            self.rotateCard(card_two);
+            self.enableSingleCard(card_one);
+            self.enableSingleCard(card_two);
+            self.shake.set(false);
         },
         FLIP_BACK_DELAY
     );

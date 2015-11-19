@@ -204,6 +204,7 @@ LayoutManager.prototype.createCardDom = function(index)
     card_div = card_div.append(card_back_span);
     card_div = card_div.append(card_front_span);
 
+    this.game.cards_mgr.enableSingleCard(card_div);
     return card_div;
 };
 

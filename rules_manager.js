@@ -45,7 +45,7 @@ Rule_PairsMatch.prototype.evaluate = function()
 {
     var cm = this.rm.game.cards_mgr;
 
-    if ($(cm.first_card_clicked).find("span.front>img").attr('src') === $(cm.second_card_clicked).find("span.front>img").attr('src'))
+    if ($(cm.first_card_clicked.get()).find("span.front>img").attr('src') === $(cm.second_card_clicked.get()).find("span.front>img").attr('src'))
         return true;
 
     return false;

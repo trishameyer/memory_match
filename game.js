@@ -20,7 +20,7 @@ Game.prototype.init = function()
     cm_ref = this.cards_mgr;
     sm_ref = this.state_machine;
 
-    this.cards_mgr.enableAllCards();
+    //this.cards_mgr.enableAllCards();
     // Enable the reset button
     var game = this;    // Eliminate 'this' confusion
     $("input.reset").on('click', function()
@@ -31,6 +31,9 @@ Game.prototype.init = function()
 
 Game.prototype.resetGame = function()
 {
+    // Make all the cards clickable.
+    this.cards_mgr.disableAllCards();
+
     this.stats_mgr.incrementGamesPlayed();
 
     this.stats_mgr.resetStats(); //reset_stats();
@@ -40,9 +43,8 @@ Game.prototype.resetGame = function()
     this.layout_mgr.changeDeck(this.cards_mgr.deck);
     this.layout_mgr.init();
 
-    // Make all the cards clickable.
-    this.cards_mgr.disableAllCards();
-    this.cards_mgr.enableAllCards();
+
+    //this.cards_mgr.enableAllCards();
 
     console.log("resetGame called!!!");
     this.state_machine.init();
