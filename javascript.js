@@ -1,14 +1,18 @@
 var game_area = $('<div>').attr('id', 'game-area');
 var front = '';
-var current_set = 'war';
-var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
-    "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
-//    war: ['jasonbourne', 'jackreacher', 'eli', 'johnwick', 'taken',
+//var current_set = 'war';
+//var current_set = 'music';
+//var card_set = {
+//    music: ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
+//        "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"],
+//
+//    assassins: ['jasonbourne', 'jackreacher', 'eli', 'johnwick', 'taken',
 //        'alejandro', 'jamesbond', 'jaqen', 'omar']
 //};
-//{
-//    card_sets[current_set]
-//}
+
+var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
+    "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
+
 function CardConstructor(artist, number) {
     var self = this;
     self.artist = artist;
@@ -31,48 +35,46 @@ function CardConstructor(artist, number) {
         var full_card = card.append(cardFront).append(card_back);
         // self.back = card_back;
         game_area.append(full_card);
-        self.domreference = full_card;
-    };
-
-    self.clicked_false = function (jquery) {
-        console.log('getting called');
-        //self.back.hide().addClass('card_selected');
-        //this.find('.back').hide().addClass('card_selected');
-        $(jquery).hide().addClass('card_selected');
-        self.clicked = true;
-        board.display_stats();
-        console.log('click called');
-    };
-
-    self.click_check = function (front, jquery) {
-        if (self.artist === front) {
-            //matching condition.
-            $(jquery).hide().addClass('card_selected');
-            self.clicked = true; //????
-            board.matches++;
-            board.attempts++;
-            board.check_win();
-            $('.card_selected').removeClass('card_selected');
-            console.log('first if');
-        } else {
-            $(jquery).hide().addClass('card_selected');
-            $('.card_selected').show(2000);
-            self.clicked = false;
-            board.attempts++;
-            console.log('2nd if');
-            board.check_win();
-            for (var i = 0; i < board.final_array; i++) { //want to loop through and set both object's artist names to false.
-                if (board.final_array[i][self.artist] === true) {
-                    board.final_array[i][self.artist] = false;
-                }
-            }
-        }
-        board.display_stats();
-    };
-
+    }
 }
 
-//ok keep it how it is, except make the card array twice as long and append from that (or run the loop to randomize twice). Then run a loop in the board object from the cards constructor to remove duplicates.
+CardConstructor.prototype.clicked_false = function (jquery) {
+    console.log('getting called');
+    //self.back.hide().addClass('card_selected');
+    //this.find('.back').hide().addClass('card_selected');
+    $(jquery).hide().addClass('card_selected');
+    self.clicked = true;
+    board.display_stats();
+    console.log('click called');
+};
+
+CardConstructor.prototype.click_check = function (front, jquery) {
+    if (self.artist === front) {
+        //matching condition.
+        $(jquery).hide().addClass('card_selected');
+        self.clicked = true; //????
+        board.matches++;
+        board.attempts++;
+        board.check_win();
+        $('.card_selected').removeClass('card_selected');
+        console.log('first if');
+    } else {
+        $(jquery).hide().addClass('card_selected');
+        $('.card_selected').show(2000);
+        self.clicked = false;
+        board.attempts++;
+        console.log('2nd if');
+        board.check_win();
+        for (var i = 0; i < board.final_array; i++) { //want to loop through and set both object's artist names to false.
+            if (board.final_array[i][self.artist] === true) {
+                board.final_array[i][self.artist] = false;
+            }
+        }
+    }
+    board.display_stats();
+};
+
+//since it's just one board object, should use object literal notation instead?
 function Board_Constructor(array) {
     var self = this;
     self.matches = 0;
@@ -84,7 +86,8 @@ function Board_Constructor(array) {
     self.new_array2 = [];
     self.final_array = [];
 
-    self.randomize = function (array) { //now we have a new array posted in this.new_array.
+    //will change variable names for arrays.
+    self.randomize = function (array) {
         self.create_board(game_area);
 
         self.new_array = array.slice();
@@ -147,8 +150,9 @@ function Board_Constructor(array) {
         accuracy.append(accuracy_paragraph);
 
         var reset_button = $('<button>').addClass('reset').text('reset Game');
+        var change_theme = $('<button>').addClass('btn btn-success ').text('Change Theme');
 
-        sidebar_wrapper.append(games_played, random_paragraph, attempts, accuracy, reset_button);
+        sidebar_wrapper.append(games_played, random_paragraph, attempts, accuracy, reset_button, change_theme);
         stat_container.append(sidebar_wrapper);
         container.append(stat_container);
         //stats area finished.
@@ -171,12 +175,12 @@ function Board_Constructor(array) {
 
     self.display_stats = function () {
         $(".games_played .value").text(self.games_played);
-        $('.attempts .value').text(self.attempts);
+        $('.attempts .value').text("attempts = " + self.attempts);
         self.accuracy = Math.round((self.matches / self.attempts) * 100);
         if (isNaN(self.accuracy)) {
             self.accuracy = 0;
         }
-        $('.accuracy .value').text(self.accuracy + '%');
+        $('.accuracy .value').text("Accuracy " + self.accuracy + '%');
     };
 
     self.reset_stats = function () {
@@ -188,6 +192,7 @@ function Board_Constructor(array) {
     };
 }
 function new_board(array) {
+
     board = new Board_Constructor(array);
     //board.create_board(game_area);
     board.randomize(array);
@@ -195,6 +200,7 @@ function new_board(array) {
 
 $(document).ready(function () {
     new_board(card_array);
+    console.log('original is called');
     $(".back").on('click', function () {
         //$(this).hide().addClass('card_selected');
         if (front === '') {
@@ -225,6 +231,11 @@ $(document).ready(function () {
         board.reset_stats();
         board.display_stats();
     });
+    //$('.btn').on('click', function () {
+    //    document.body.innerHTML = '';
+    //    current_set = 'assassins';
+    //    new_board(card_set[current_set])
+    //});
 
     board.games_played = 0;
     board.reset_stats();
