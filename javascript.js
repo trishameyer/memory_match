@@ -16,44 +16,50 @@ function CardConstructor(artist, number) {
     self.index = number;
     self.domreference = '';
     self.back = null;
-    make_card(artist);
+    make_card(artist, number);
     function make_card(artist, number) {
         console.log(artist);
         var card = $('<div>').addClass('card');
         var card_front = $('<div>').addClass('front');
         var card_back = $('<div>').addClass('back');
-        var card_back_image = card_back.append($('<img>').attr('src', 'images/musicnotes.jpg'));
-        var cardFront = card_front.append($('<img>').attr('src', 'images/' + artist + '.jpg').attr({"picture": artist, 'ind': number}));	//have a ton of cards with different images.
-        var full_card = card.append(cardFront).append(card_back_image);
-        self.domreference = full_card;
+        card_back.append($('<img>').attr('src', 'images/musicnotes.jpg'));
+        var cardFront = card_front.append($('<img>').attr({
+            'src': 'images/' + artist + '.jpg',
+            "picture": artist,
+            'ind': number
+        }));	//have a ton of cards with different images.
+        var full_card = card.append(cardFront).append(card_back);
+        // self.back = card_back;
         game_area.append(full_card);
-        self.back = card_back_image;
+        self.domreference = full_card;
     };
 
-    self.clicked_false = function (click) {
+    self.clicked_false = function (jquery) {
+        console.log('getting called');
         //self.back.hide().addClass('card_selected');
-        self.domreference.find('.front').prev().hide().addClass('card_selected');
+        //this.find('.back').hide().addClass('card_selected');
+        $(jquery).hide().addClass('card_selected');
         self.clicked = true;
         board.display_stats();
         console.log('click called');
     };
 
-    self.click_check = function (front) {
-        if (self.clicked === false && self.artist === front) {
+    self.click_check = function (front, jquery) {
+        if (self.artist === front) {
             //matching condition.
-            self.back.hide().addClass('card_selected');
+            $(jquery).hide().addClass('card_selected');
             self.clicked = true; //????
             board.matches++;
             board.attempts++;
             board.check_win();
             $('.card_selected').removeClass('card_selected');
-        } else if (self.clicked === true && self.artist === front) {
-            alert('select another card');
-        } else if (self.artist !== front) {
-            self.back.hide().addClass('card_selected');
+            console.log('first if');
+        } else {
+            $(jquery).hide().addClass('card_selected');
             $('.card_selected').show(2000);
             self.clicked = false;
             board.attempts++;
+            console.log('2nd if');
             board.check_win();
             for (var i = 0; i < board.final_array; i++) { //want to loop through and set both object's artist names to false.
                 if (board.final_array[i][self.artist] === true) {
@@ -156,7 +162,7 @@ function Board_Constructor(array) {
     self.check_win = function () {
         if (self.matches === self.cards.length) {
             alert('you have won!');
-        } else if(self.attempts > 10){
+        } else if (self.attempts > 10) {
             alert('you have lost');
         }
     };
@@ -195,16 +201,17 @@ $(document).ready(function () {
             var index = $(this).prev().find('img').attr('ind');
             console.log(index);
             for (var i = 0; i < board.final_array.length; i++) {
-                if (board.final_array[i].index === index) {
+                if (board.final_array[i].index == index) {
                     board.final_array[i].clicked_false(this);
                 }
             }
         } else {
-            front = $(this).prev().find('img').attr('picture');
-            var index = $(this).prev().attr('ind');
+            //front = $(this).prev().find('img').attr('picture');
+            var index = $(this).prev().find('img').attr('ind');
+            console.log(front, index);
             for (var o = 0; o < board.final_array.length; o++) {
-                if (board.final_array[o].index === index) {
-                    board.final_array[o].click_check(front, index);
+                if (board.final_array[o].index == index && board.final_array[o].clicked !== true) {
+                    board.final_array[o].click_check(front, this);
                 }
             }
             front = '';
@@ -216,30 +223,7 @@ $(document).ready(function () {
         board.reset_stats();
         board.display_stats();
     });
-    //
-    //$('.btn').on('click', function () {
-    //    board.reset_stats();
-    //    board.display_stats();
-    //    if ($(this).text('Peace')) {
-    //        current_set = 'war';
-    //        //boardwar = new Board_Constructor(card_sets[current_set], 'War Theme');
-    //        //how to clear board to append to new below:
-    //        board = {};
-    //        delete board;
-    //        document.body.innerHTML = ""; //erases stats, need to fix, not enough time.
-    //        new_board(current_set);
-    //        $(this).text('War');
-    //    } else {
-    //        current_set = 'peace';
-    //        //boardwar = new Board_Constructor(card_sets[current_set], 'Peace Theme');
-    //        board = {};
-    //        delete board;
-    //        document.body.innerHTML = ""; //erases stats, need to fix, not enough time.
-    //        new_board(current_set);
-    //        $(this).text('Peace');
-    //
-    //    }
-    //});
+
     board.games_played = 0;
     board.reset_stats();
 });
