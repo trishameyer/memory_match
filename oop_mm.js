@@ -61,7 +61,7 @@ var gameController = function () {
 
     self.tempCard = new Cards();
 
-    self.cardClicked = function (card, stats, controller) {
+    self.cardClicked = function (card, stats) {
 
         if ($(card).hasClass("matched") == true || $(card).hasClass("selected_card") == true) {
             return
@@ -103,26 +103,44 @@ var gameController = function () {
             }
         }
 
-        stats.displayStats(controller);
+        stats.displayStats(self);
+    };
 
+    self.cardRandomizer = function () {
+        var tempArray = [];
+
+        for (var i = 0; i < (self.cardSetOne.length); i++) {
+            tempArray.push(self.cardSetOne[i]);
+            tempArray.push(self.cardSetOne[i]);
+        }
+
+        $('.front').each(function (){
+            var randIndex = Math.floor(Math.random() * tempArray.length);
+            var cardFace = $('<img>').attr('src', tempArray[randIndex]);
+            $(this).append(cardFace);
+            tempArray.splice(randIndex, 1);
+        });
     };
 };
 
 //Document Ready
 $(document).ready(function () {
-    var gameStats = new Stats();
-    var newController = new gameController();
+
+    newController.cardRandomizer();
 
     $(".back").click(function () {
-        newController.cardClicked(this, gameStats, newController);
+        newController.cardClicked(this, gameStats);
     });
 
     $(".reset").click(function () {
         gameStats.resetStats(newController);
+        newController.cardRandomizer();
     });
 
     gameStats.displayStats(newController);
 });
 
 //Misc
+var gameStats = new Stats();
+var newController = new gameController();
 
