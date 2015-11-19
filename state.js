@@ -22,6 +22,7 @@ State_PickFirst.prototype.init = function(state_machine)
 };
 State_PickFirst.prototype.execute = function(state_machine)
 {
+    console.log("Executing State PICK FIRST");
     // Card has been clicked
     var cm = state_machine.game.cards_mgr;
     cm.setFirstCardClicked(false);
@@ -46,6 +47,7 @@ State_PickSecond.prototype.init = function()
 };
 State_PickSecond.prototype.execute = function(state_machine)
 {
+    console.log("Executing State PICK SECOND");
     // Card has been clicked
     var cm = state_machine.game.cards_mgr;
     cm.setSecondCardClicked(false);
@@ -55,6 +57,7 @@ State_PickSecond.prototype.execute = function(state_machine)
 };
 State_PickSecond.prototype.evaluatePair = function(state_machine)
 {
+    console.log("EVALUATING PAIR");
     this.stats = state_machine.game.stats_mgr;
     this.rm = state_machine.game.rules_mgr;
     this.cm = state_machine.game.cards_mgr;
@@ -64,7 +67,9 @@ State_PickSecond.prototype.evaluatePair = function(state_machine)
     // Check for matching pair
     if (this.rm.checkRule(RULE_KEY_PAIRS_MATCH))
     {
+        console.log('Matching!!!');
         this.stats.incrementMatches();
+        this.stats.display();
         // Check if all pairs match
         if (this.rm.checkRule(RULE_KEY_ALL_PAIRS_MATCHED))
         {

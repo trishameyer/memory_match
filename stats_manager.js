@@ -3,10 +3,78 @@ function StatsManager(game)
     this.game = game;
 
     // Stats variables
-    this.matches = 0;        // Increments when a matching pair is found
-    this.attempts = 0;       // Increments when the player selects a pair of cards (matching or not).
-    this.accuracy = 0;       // Quotient of matches and attempts.
-    this.games_played = 0;   // Increments when the reset button is pressed.
+
+    // Increments when a matching pair is found
+    this.matches = (function()
+    {
+        var count = 0;
+        return {
+            increment: function() {
+                count++;
+            },
+            reset: function() {
+                count = 0;
+            },
+            value: function() {
+                return count;
+            }
+        };
+    })();
+
+    // Increments when the player selects a pair of cards (matching or not).
+    this.attempts = (function()
+    {
+        var count = 0;
+        return {
+            increment: function() {
+                count++;
+            },
+            reset: function() {
+                count = 0;
+            },
+            value: function() {
+                return count;
+            }
+        };
+    })();
+
+    // Increments when the reset button is pressed.
+    this.games_played = (function()
+    {
+        var count = 0;
+        return {
+            increment: function() {
+                count++;
+            },
+            //reset: function() {
+            //    count = 0;
+            //},
+            value: function() {
+                return count;
+            }
+        };
+    })();
+
+    // Quotient of matches and attempts.
+    this.accuracy = (function()
+    {
+        var percentage = 0.0;
+        return {
+            reset: function() {
+                percentage = 0.0;
+            },
+            calculate: function(matches, attempts) {
+                // Protect against division by zero
+                if (attempts == 0)
+                    percentage = 0;
+                else
+                    percentage = (matches / attempts);
+            },
+            value: function() {
+                return percentage;
+            }
+        };
+    })();
 
     this.init();
 }
@@ -15,19 +83,19 @@ StatsManager.prototype.init = function()
 {
     // Add p element to display Games Played
     var temp = $("<p>");
-    temp.append(this.games_played);
+    temp.append(this.games_played.value());
     var gp_div = $('.games-played>.value');
     gp_div.append(temp);
 
     // Add p element to display attempts
     temp = $("<p>");
-    temp.append(this.attempts);
+    temp.append(this.attempts.value());
     var attempts_div = $('.attempts>.value');
     attempts_div.append(temp);
 
     // Add p element to display accuracy
     temp = $("<p>");
-    temp.append(this.accuracy.toFixed(2) + '%');
+    temp.append(this.accuracy.value().toFixed(2) + '%');
     var accuracy_div = $('.accuracy>.value');
     accuracy_div.append(temp);
 };
@@ -35,49 +103,44 @@ StatsManager.prototype.init = function()
 StatsManager.prototype.display = function()
 {
     // Replace games played number
-    $('.games-played>.value').find('p').text(this.games_played);
+    $('.games-played>.value').find('p').text(this.games_played.value());
 
     // Replace attempts number
-    $('.attempts>.value').find('p').text(this.attempts);
+    $('.attempts>.value').find('p').text(this.attempts.value());
 
-    this.accuracy = this.calculateAccuracy();
-    var acc = (this.accuracy * 100).toFixed(2);
+    this.calculateAccuracy();
+    var acc = (this.accuracy.value() * 100).toFixed(2);
     $('.accuracy>.value').find('p').text(acc + '%');
 };
 
 StatsManager.prototype.resetStats = function()
 {
-    this.accuracy = 0;
-    this.matches = 0;
-    this.attempts = 0;
+    this.accuracy.reset();
+    this.matches.reset();
+    this.attempts.reset();
 };
 
 StatsManager.prototype.incrementGamesPlayed = function()
 {
-    this.games_played++;
+    this.games_played.increment();
 };
 
 StatsManager.prototype.incrementMatches = function()
 {
-    this.matches++;
+    this.matches.increment();
 };
 
 StatsManager.prototype.getNumMatches = function()
 {
-    return this.matches;
+    return this.matches.value();
 };
 
 StatsManager.prototype.incrementAttempts = function()
 {
-    this.attempts++;
+    this.attempts.increment();
 };
 
 StatsManager.prototype.calculateAccuracy = function()
 {
-    // Replace accuracy number
-    // Protect against division by zero
-    if (this.attempts == 0)
-        return 0;
-    else
-        return (this.matches / this.attempts);
+    return this.accuracy.calculate(this.matches.value(), this.attempts.value());
 };

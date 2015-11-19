@@ -50,5 +50,6 @@ Game.prototype.resetGame = function()
 
 Game.prototype.cardClicked = function()
 {
+    console.log("CARD CLICKED");
     this.state_machine.run();
 };

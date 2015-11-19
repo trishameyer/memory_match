@@ -164,15 +164,14 @@ CardsManager.prototype.shakeSingleCard = function(card)
 
 CardsManager.prototype.flipPairAround = function()
 {
-    var cm = this;
-    setTimeout(
-        function()
+    var self = this;
+    setTimeout(function()
         {
-            cm.rotateCard(cm.first_card_clicked);
-            cm.rotateCard(cm.second_card_clicked);
-            cm.enableSingleCard(cm.first_card_clicked);
-            cm.enableSingleCard(cm.second_card_clicked);
-            cm.flushClickedCards();
+            self.rotateCard(self.first_card_clicked);
+            self.rotateCard(self.second_card_clicked);
+            self.enableSingleCard(self.first_card_clicked);
+            self.enableSingleCard(self.second_card_clicked);
+            self.flushClickedCards();
         },
         FLIP_BACK_DELAY
     );
