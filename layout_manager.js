@@ -205,4 +205,42 @@ LayoutManager.prototype.createCardDom = function(index)
     card_div = card_div.append(card_front_span);
 
     return card_div;
+};
+
+LayoutManager.prototype.shakeScreen = function()
+{
+    // Shake the screen!
+    var temp_wrapper = $('div.page-wrapper');
+    setTimeout(
+        function()
+        {
+            temp_wrapper.addClass("anim-quake");
+        },
+        500);
+
+    setTimeout(
+        function()
+        {
+            temp_wrapper.removeClass("anim-quake");
+        },
+        1000);
+};
+
+// Undergoes the game-winning sequence.
+LayoutManager.prototype.winGame = function()
+{
+    var self = this;
+    setTimeout(
+        function()
+        {
+            // Make all the cards disappear.
+            self.game_area.html('');
+
+            // Add a YOU WON!!! to the game area, where the cards one were.
+            self.game_area.append("<p>YOU WON!!!</p>");
+        },
+        500
+    );
+
+    console.log(this.game_area);
 }

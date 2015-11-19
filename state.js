@@ -1,10 +1,9 @@
 function State(state_machine)
 {
-    this.machine = state_machine;
-    this.init();
+    this.init(state_machine);
 }
-State.prototype.init = function() {};
-State.prototype.execute = function() {};
+State.prototype.init = function(state_machine) {};
+State.prototype.execute = function(state_machine) {};
 
 /**
  * State_PickFirst
@@ -17,17 +16,17 @@ function State_PickFirst(state_machine)
 }
 State_PickFirst.prototype = new State();
 State_PickFirst.prototype.constructor = State_PickFirst;
-State_PickFirst.prototype.init = function()
+State_PickFirst.prototype.init = function(state_machine)
 {
 
 };
-State_PickFirst.prototype.execute = function()
+State_PickFirst.prototype.execute = function(state_machine)
 {
     // Card has been clicked
-    var cm = this.machine.game.cards_mgr;
+    var cm = state_machine.game.cards_mgr;
     cm.setFirstCardClicked(false);
 
-    this.machine.changeState(new State_PickSecond(this));
+    state_machine.changeState(new State_PickSecond(state_machine));
 };
 
 /**
@@ -45,13 +44,51 @@ State_PickSecond.prototype.init = function()
 {
 
 };
-State_PickSecond.prototype.execute = function()
+State_PickSecond.prototype.execute = function(state_machine)
 {
     // Card has been clicked
-    var cm = this.machine.game.cards_mgr;
+    var cm = state_machine.game.cards_mgr;
     cm.setSecondCardClicked(false);
 
-    this.machine.changeState(new State_EvaluatePair(this));
+    this.evaluatePair(state_machine);
+    //state_machine.changeState(new State_EvaluatePair(state_machine));
+};
+State_PickSecond.prototype.evaluatePair = function(state_machine)
+{
+    this.stats = state_machine.game.stats_mgr;
+    this.rm = state_machine.game.rules_mgr;
+    this.cm = state_machine.game.cards_mgr;
+
+    this.stats.incrementAttempts();
+
+    // Check for matching pair
+    if (this.rm.checkRule(RULE_KEY_PAIRS_MATCH))
+    {
+        this.stats.incrementMatches();
+        // Check if all pairs match
+        if (this.rm.checkRule(RULE_KEY_ALL_PAIRS_MATCHED))
+        {
+            // win game
+            console.log("YOU WIN!");
+            state_machine.changeState(new State_WinGame(state_machine));
+        }
+        else
+        {
+            this.cm.flushClickedCards();
+            state_machine.changeState(new State_PickFirst(state_machine));
+        }
+    }
+    else    // Pair doesn't match
+    {
+        this.stats.display();
+        // Set delay to going back to state pick first
+        var lm = state_machine.game.layout_mgr;
+        lm.shakeScreen();
+
+        this.cm.flipPairAround();
+
+        state_machine.changeState(new State_PickFirst(state_machine));
+    }
 };
 
 /**
@@ -61,15 +98,68 @@ State_PickSecond.prototype.execute = function()
  */
 function State_EvaluatePair(state_machine)
 {
+    this.stats = null;
+    this.rm = null;
+    this.cm = null;
     State.call(this, state_machine);
 }
 State_EvaluatePair.prototype = new State();
 State_EvaluatePair.prototype.constructor = State_EvaluatePair;
-State_EvaluatePair.prototype.init = function()
+State_EvaluatePair.prototype.init = function(state_machine)
 {
+    this.stats = state_machine.game.stats_mgr;
+    this.rm = state_machine.game.rules_mgr;
+    this.cm = state_machine.game.cards_mgr;
 
+    this.stats.incrementAttempts();
+
+    // Check for matching pair
+    if (this.rm.checkRule(RULE_KEY_PAIRS_MATCH) == true)
+    {
+        this.stats.incrementMatches();
+        // Check if all pairs match
+        if (this.rm.checkRule(RULE_KEY_ALL_PAIRS_MATCHED))
+        {
+            // win game
+        }
+        else
+        {
+            this.cm.flushClickedCards();
+            state_machine.changeState(new State_PickFirst(state_machine));
+        }
+    }
+    else    // Pair doesn't match
+    {
+        this.stats.display();
+        // Set delay to going back to state pick first
+        var lm = state_machine.game.layout_mgr;
+        lm.shakeScreen();
+
+        this.cm.flipPairAround();
+
+        state_machine.changeState(new State_PickFirst(state_machine));
+    }
 };
-State_EvaluatePair.prototype.execute = function()
+State_EvaluatePair.prototype.execute = function(state_machine)
 {
+    // Trying to click on a card shakes the card.
+    this.cm.shakeSingleCard(this.cm.card_clicked);
+};
 
+/**
+ * State_WinGame
+ * @param state_machine
+ * @constructor
+ */
+function State_WinGame(state_machine)
+{
+    State.call(this, state_machine);
+}
+State_WinGame.prototype = new State();
+State_WinGame.prototype.constructor = State_WinGame;
+State_WinGame.prototype.init = function(state_machine)
+{
+    var lm = state_machine.game.layout_mgr;
+
+    lm.winGame();
 };

@@ -19,5 +19,5 @@ StateMachine.prototype.changeState = function(new_state)
 
 StateMachine.prototype.run = function()
 {
-    this.curr_state.execute();
+    this.curr_state.execute(this);
 };

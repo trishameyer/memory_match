@@ -83,18 +83,97 @@ CardsManager.prototype.disableAllCards = function()
     $('#game-area').off('click', 'div.card');
 };
 
-CardsManager.prototype.setFirstCardClicked = function(disable)
+CardsManager.prototype.enableSingleCard = function(card)
 {
-    if (disable == undefined || disable == null || disable == false)
-        this.first_card_clicked = this.card_clicked;
-    else
-        this.first_card_clicked = null;
+    var game = this.game;
+    var cm = this;
+    $(card).on('click', function()
+    {
+        cm.card_clicked = this;
+        game.cardClicked();
+    });
+};
+CardsManager.prototype.disableSingleCard = function(card)
+{
+    $(card).off('click');
 };
 
-CardsManager.prototype.setSecondCardClicked = function(disable)
+CardsManager.prototype.setFirstCardClicked = function(flush)
 {
-    if (disable == undefined || disable == null || disable == false)
-        this.second_card_clicked = this.card_clicked;
+    if (flush != undefined && flush != null && flush == true)
+    {
+        this.first_card_clicked = null;
+    }
     else
+    {
+        this.first_card_clicked = this.card_clicked;
+
+        this.rotateCard(this.first_card_clicked);
+        this.disableSingleCard(this.first_card_clicked);
+    }
+
+};
+
+CardsManager.prototype.setSecondCardClicked = function(flush)
+{
+    if (flush != undefined && flush != null && flush == true)
+    {
         this.second_card_clicked = null;
+    }
+    else
+    {
+        this.second_card_clicked = this.card_clicked;
+
+        this.rotateCard(this.second_card_clicked);
+        this.disableSingleCard(this.second_card_clicked);
+    }
+};
+
+CardsManager.prototype.flushClickedCards = function()
+{
+    this.card_clicked = null;
+    this.setFirstCardClicked(true);
+    this.setSecondCardClicked(true);
+};
+
+CardsManager.prototype.rotateCard = function(card)
+{
+    if (card == null)
+        console.log("Trying to rotate a NULL card!!!");
+
+    var back_card = $(card).find("span.back");
+    back_card.toggleClass("rotate-card-hide");
+
+    var front_card = $(card).find("span.front");
+    front_card.toggleClass("rotate-card-show");
+};
+
+CardsManager.prototype.shakeSingleCard = function(card)
+{
+    // Do a shaking animation
+    $(card).addClass("anim-shake");
+    var temp_card = $(card);
+    setTimeout(
+        function()
+        {
+            temp_card.removeClass("anim-shake");
+        },
+        650
+    );
+};
+
+CardsManager.prototype.flipPairAround = function()
+{
+    var cm = this;
+    setTimeout(
+        function()
+        {
+            cm.rotateCard(cm.first_card_clicked);
+            cm.rotateCard(cm.second_card_clicked);
+            cm.enableSingleCard(cm.first_card_clicked);
+            cm.enableSingleCard(cm.second_card_clicked);
+            cm.flushClickedCards();
+        },
+        FLIP_BACK_DELAY
+    );
 };
