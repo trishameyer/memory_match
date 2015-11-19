@@ -1,5 +1,6 @@
-function LayoutManager(cards_arr)
+function LayoutManager(game, cards_arr)
 {
+    this.game = game;
     this.cards = cards_arr;
     this.game_area = null;
     this.card_dimensions = null;
@@ -154,48 +155,54 @@ LayoutManager.prototype.getCardDimensions = function()
 
 LayoutManager.prototype.layoutCards = function()
 {
+    // Empty out the contents of the game area.
     this.game_area.html('');
 
     // Create all cards and put it in the game area
     for (var i = 0; i < this.cards.length; i++)
     {
         // Create the card container
-        var card_div = $('<div>',
-            {
-                class: 'card'
-            });
-
+        var card_div = this.createCardDom(i);
         card_div.css(this.card_dimensions);
-
-        // Create the back part of the card
-        var card_back_span = $('<span>',
-            {
-                class: 'back'
-            });
-        var back_img = $('<img>',
-            {
-                src: (STR_CARD_PATH + 'Back.png')
-            });
-        card_back_span.append(back_img);
-
-        // Create the front part of the card
-        var card_front_span = $('<span>',
-            {
-                class: 'front'
-            });
-        var final_card_path = STR_CARD_PATH + this.cards[i];
-        var front_img = $('<img>',
-            {
-                src: final_card_path
-            });
-        card_front_span.append(front_img);
-
-        // Put the new card together
-        card_div = card_div.append(card_back_span);
-        card_div = card_div.append(card_front_span);
 
         // Add the card to the game area.
         this.game_area.append(card_div);
     }
-    //console.log("Final game area: " + $('#game-area').html());
 };
+
+LayoutManager.prototype.createCardDom = function(index)
+{
+    var card_div = $('<div>',
+        {
+            class: 'card'
+        });
+
+    // Create the back part of the card
+    var card_back_span = $('<span>',
+        {
+            class: 'back'
+        });
+    var back_img = $('<img>',
+        {
+            src: (STR_CARD_PATH + 'Back.png')
+        });
+    card_back_span.append(back_img);
+
+    // Create the front part of the card
+    var card_front_span = $('<span>',
+        {
+            class: 'front'
+        });
+    var final_card_path = STR_CARD_PATH + this.cards[index];
+    var front_img = $('<img>',
+        {
+            src: final_card_path
+        });
+    card_front_span.append(front_img);
+
+    // Put the new card together
+    card_div = card_div.append(card_back_span);
+    card_div = card_div.append(card_front_span);
+
+    return card_div;
+}

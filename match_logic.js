@@ -3,15 +3,15 @@ function getPosition(elem)
     // TODO - add functionality that determines the viewport coordinates of an element
 }
 
-function cardClicked()
+function cardClicked(the_card)
 {
-    console.log("Da card clicked: " + $(this));
+    console.log("Da card clicked: " + $(the_card));
 
     if (card_pair_flipped)
     {
         // Do a shaking animation
-        $(this).addClass("anim-shake");
-        var temp_card = $(this);
+        $(the_card).addClass("anim-shake");
+        var temp_card = $(the_card);
         setTimeout(
             function()
             {
@@ -25,14 +25,14 @@ function cardClicked()
     // Flowchart - first_card_clicked is null?
     if (first_card_clicked == null)     // YES
     {
-        first_card_clicked = $(this);
+        first_card_clicked = $(the_card);
         rotateCard(first_card_clicked);
         makeCardUnclickable(first_card_clicked);
     }
     else
     if (second_card_clicked == null)    // NO
     {
-        second_card_clicked = $(this);
+        second_card_clicked = $(the_card);
         rotateCard(second_card_clicked);
         makeCardUnclickable(second_card_clicked);
         card_pair_flipped = true;

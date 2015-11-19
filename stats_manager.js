@@ -1,5 +1,7 @@
-function StatsManager()
+function StatsManager(game)
 {
+    this.game = game;
+
     // Stats variables
     this.matches = 0;        // Increments when a matching pair is found
     this.attempts = 0;       // Increments when the player selects a pair of cards (matching or not).
@@ -29,7 +31,6 @@ StatsManager.prototype.init = function()
     var accuracy_div = $('.accuracy>.value');
     accuracy_div.append(temp);
 };
-
 
 StatsManager.prototype.display = function()
 {

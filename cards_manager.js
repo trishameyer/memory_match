@@ -1,13 +1,20 @@
-function CardsManager()
+function CardsManager(game, num_pairs)
 {
+    this.game = game;
     this.deck = [];
-    this.pairs = 4;
-    this.init();
+    this.pairs = 0;
+
+    this.card_clicked = null;
+    this.first_card_clicked = null;
+    this.second_card_clicked = null;
+
+    this.init(num_pairs);
 }
 
-CardsManager.prototype.init = function()
+CardsManager.prototype.init = function(num_pairs)
 {
     // TODO: setting number of pairs (will be 4, 6, 8, or 9)
+    this.pairs = num_pairs;
 
     this.deck = this.shuffleCards(this.getCards());
 };
@@ -60,39 +67,34 @@ CardsManager.prototype.shuffleCards = function(card_arr)
     return splice_arr;
 };
 
-CardsManager.prototype.createCardDom = function(card_index)
+CardsManager.prototype.enableAllCards = function()
 {
-    var card_div = $('<div>',
-        {
-            class: 'card'
-        });
+    var game = this.game;
+    var cm = this;
+    $('#game-area').on('click', 'div.card', function()
+    {
+        cm.card_clicked = this;
+        game.cardClicked();
+    });
+};
 
-    // Create the back part of the card
-    var card_back_span = $('<span>',
-        {
-            class: 'back'
-        });
-    var back_img = $('<img>',
-        {
-            src: (STR_CARD_PATH + 'Back.png')
-        });
-    card_back_span.append(back_img);
+CardsManager.prototype.disableAllCards = function()
+{
+    $('#game-area').off('click', 'div.card');
+};
 
-    // Create the front part of the card
-    var card_front_span = $('<span>',
-        {
-            class: 'front'
-        });
-    var final_card_path = STR_CARD_PATH + this.deck[card_index];
-    var front_img = $('<img>',
-        {
-            src: final_card_path
-        });
-    card_front_span.append(front_img);
+CardsManager.prototype.setFirstCardClicked = function(disable)
+{
+    if (disable == undefined || disable == null || disable == false)
+        this.first_card_clicked = this.card_clicked;
+    else
+        this.first_card_clicked = null;
+};
 
-    // Put the new card together
-    card_div = card_div.append(card_back_span);
-    card_div = card_div.append(card_front_span);
-
-    return card_div;
+CardsManager.prototype.setSecondCardClicked = function(disable)
+{
+    if (disable == undefined || disable == null || disable == false)
+        this.second_card_clicked = this.card_clicked;
+    else
+        this.second_card_clicked = null;
 };
