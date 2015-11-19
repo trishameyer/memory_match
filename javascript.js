@@ -2,7 +2,7 @@ var game_area = $('<div>').attr('id', 'game-area');
 var front = '';
 var current_set = 'war';
 var card_array = ["michaeljackson", "thebeatles", "ladygaga", "pharrell",
-        "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
+    "atcq", "lanadelrey", "whitneyhouston", "drake", "edsheeran"];
 //    war: ['jasonbourne', 'jackreacher', 'eli', 'johnwick', 'taken',
 //        'alejandro', 'jamesbond', 'jaqen', 'omar']
 //};
@@ -15,39 +15,48 @@ function CardConstructor(artist, number) {
     self.clicked = false;
     self.index = number;
     self.domreference = '';
+    self.back = null;
     make_card(artist);
-    function make_card(artist, ind) {
+    function make_card(artist, number) {
         console.log(artist);
         var card = $('<div>').addClass('card');
         var card_front = $('<div>').addClass('front');
         var card_back = $('<div>').addClass('back');
-        card_back.append($('<img>').attr('src', 'images/musicnotes.jpg'));
-        var cardFront = card_front.append($('<img>').attr('src', 'images/' + artist + '.jpg').attr("picture", artist).attr('ind', number));	//have a ton of cards with different images.
-        var full_card = card.append(cardFront).append(card_back);
+        var card_back_image = card_back.append($('<img>').attr('src', 'images/musicnotes.jpg'));
+        var cardFront = card_front.append($('<img>').attr('src', 'images/' + artist + '.jpg').attr({"picture": artist, 'ind': number}));	//have a ton of cards with different images.
+        var full_card = card.append(cardFront).append(card_back_image);
         self.domreference = full_card;
         game_area.append(full_card);
+        self.back = card_back_image;
     };
 
-    self.clicked_false = function () {
+    self.clicked_false = function (click) {
+        //self.back.hide().addClass('card_selected');
+        self.domreference.find('.front').prev().hide().addClass('card_selected');
         self.clicked = true;
         board.display_stats();
+        console.log('click called');
     };
 
     self.click_check = function (front) {
         if (self.clicked === false && self.artist === front) {
+            //matching condition.
+            self.back.hide().addClass('card_selected');
             self.clicked = true; //????
             board.matches++;
             board.attempts++;
             board.check_win();
             $('.card_selected').removeClass('card_selected');
-        } else if(self.clicked === true && self.artist === front) {
+        } else if (self.clicked === true && self.artist === front) {
             alert('select another card');
-        } else if(self.artist !== front){
+        } else if (self.artist !== front) {
+            self.back.hide().addClass('card_selected');
             $('.card_selected').show(2000);
             self.clicked = false;
             board.attempts++;
-            for (var i = 0; i < board.final_array;i++){ //want to loop through and set both object's artist names to false.
-                if (board.final_array[i][self.artist] === true){
+            board.check_win();
+            for (var i = 0; i < board.final_array; i++) { //want to loop through and set both object's artist names to false.
+                if (board.final_array[i][self.artist] === true) {
                     board.final_array[i][self.artist] = false;
                 }
             }
@@ -60,7 +69,6 @@ function CardConstructor(artist, number) {
 //ok keep it how it is, except make the card array twice as long and append from that (or run the loop to randomize twice). Then run a loop in the board object from the cards constructor to remove duplicates.
 function Board_Constructor(array) {
     var self = this;
-    var card_object_array = [];
     self.matches = 0;
     self.matches_counter = 0;
     self.attempts = 0;
@@ -71,59 +79,29 @@ function Board_Constructor(array) {
     self.final_array = [];
 
     self.randomize = function (array) { //now we have a new array posted in this.new_array.
-        console.log('called');
         self.create_board(game_area);
 
         self.new_array = array.slice();
-        console.log('new array:', self.new_array);
+
 
         var super_array = self.new_array.concat(array);
-        console.log('here is the super array: ', super_array);
+
 
         var index = '';
         var length = super_array.length;
         console.log('length of super array: ', super_array.length);
         for (i = 0; i < length; i++) {
             index = Math.floor(Math.random() * super_array.length);
-            console.log('loop elements: ', index);
             self.new_array2.push(super_array[index]);
             super_array.splice(index, 1);
         }
         length = self.new_array2.length;
-        console.log('self new array inside funtion: ', self.new_array2);
-        console.log('before constructor', self.new_array2);
 
         for (var t = 0; t < length; t++) {
             self.final_array.push(new CardConstructor(self.new_array2[t], t));
         }
-        console.log('self new array inside funtion: ', self.new_array2);
-        //self.remove_half();
-        //copy the array
-        //loop until the array is empty
-        //pick a random element from the current array length
-        //put that element into a new array
-        //remove the same element from the old array
-    };
 
-    //self.remove_half = function () {
-    //    //console.log('new array 2: ', self.new_array2);
-    //    //var check_array = self.new_array2.slice();
-    //    //for (var o = 0; o < self.new_array2.length; o++) {
-    //    //    for (var i = 0; i < self.new_array2.length; i++) {
-    //    //        if (self.new_array2[o].artist === self.new_array2[i].artist) {
-    //    //            self.new_array2.splice(i, 1);
-    //    //        }
-    //    //    }
-    //    //}
-    //    self.new_array2.sort();
-    //    for (var i = 1; i < self.new_array2.length;) {
-    //        if (self.new_array2[i - 1].artist == self.new_array2[i].artist) {
-    //            self.new_array2.splice(i, 1);
-    //        } else {
-    //            i++;
-    //        }
-    //    }
-    //};
+    };
 
     self.create_board = function (game_area) {
         console.log('create_board is called');
@@ -151,7 +129,7 @@ function Board_Constructor(array) {
         var random_paragraph = $('<p>').addClass('value');
 
         var attempts = $('<div>').addClass('attempts');
-        var label2 =  $('<p>').addClass('label').text('Accuracy');
+        var label2 = $('<p>').addClass('label').text('Accuracy');
         var attempts_value = $('<p>').addClass('attempts value');
 
         attempts.append(label2, attempts_value);
@@ -178,6 +156,8 @@ function Board_Constructor(array) {
     self.check_win = function () {
         if (self.matches === self.cards.length) {
             alert('you have won!');
+        } else if(self.attempts > 10){
+            alert('you have lost');
         }
     };
 
@@ -208,18 +188,20 @@ function new_board(array) {
 $(document).ready(function () {
     new_board(card_array);
     $(".back").on('click', function () {
-        $(this).hide().addClass('card_selected');
+        //$(this).hide().addClass('card_selected');
         if (front === '') {
             front = $(this).prev().find('img').attr('picture');
+            console.log(front);
             var index = $(this).prev().find('img').attr('ind');
+            console.log(index);
             for (var i = 0; i < board.final_array.length; i++) {
                 if (board.final_array[i].index === index) {
-                    board.final_array[i].clicked_false();
+                    board.final_array[i].clicked_false(this);
                 }
             }
         } else {
             front = $(this).prev().find('img').attr('picture');
-            var index = $(this).prev().find('img').attr('ind');
+            var index = $(this).prev().attr('ind');
             for (var o = 0; o < board.final_array.length; o++) {
                 if (board.final_array[o].index === index) {
                     board.final_array[o].click_check(front, index);
@@ -227,7 +209,6 @@ $(document).ready(function () {
             }
             front = '';
         }
-        console.log(front);
         //loop through array to find the object containing this element.
     });
     $(".reset").click(function () {
