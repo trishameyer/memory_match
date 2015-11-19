@@ -293,3 +293,16 @@ ul li a {
 .hide, .match_hide {
     visibility: hidden;
 }
+.mobile{
+    display: none;
+}
+@media screen and (max-width: 480px) {
+    .container {
+        display: none;
+    }
+    .mobile{
+        display: block;
+        color: white;
+    }
+
+}
