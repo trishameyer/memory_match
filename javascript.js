@@ -162,8 +162,10 @@ function Board_Constructor(array) {
     self.check_win = function () {
         if (self.matches === self.cards.length) {
             alert('you have won!');
+            board.reset_stats();
         } else if (self.attempts > 10) {
             alert('you have lost');
+            board.reset_stats();
         }
     };
 
