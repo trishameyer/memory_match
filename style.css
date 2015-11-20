@@ -13,6 +13,10 @@ body {
     cursor: default;
 }
 
+.hidden {
+    di
+}
+
 a:link {
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
@@ -100,8 +104,8 @@ ul > li.settings-sub {
     height: 40%;
     font-size: 15px;
 }
-/*****/
 
+/*****/
 main {
     position: absolute;
 }
@@ -131,13 +135,26 @@ main {
 }
 
 .reset:hover {
+    color: ghostwhite;
     background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4) transition : background-color 0.3 s ease-in, border-color 0.3 s ease-in;
+    border-color: rgba(255, 255, 255, 0.4);
+    transition : background-color 0.3s ease-in, border-color 0.3s ease-in;
 }
 
 .reset:active {
     color: black;
     background-color: transparent;
+}
+
+#win-message {
+    font-size: 50px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 160px;
+    left: 30px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color .5s ease-in;
 }
 
 #game-area {
