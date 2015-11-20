@@ -1,0 +1,284 @@
+@font-face {
+    font-family: metropolian;
+    src: url("Metropolian-Text.ttf");
+}
+
+body {
+    background-color: black;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: metropolian, serif;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+
+.hidden {
+    di
+}
+
+a:link {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+}
+
+a:hover, li a:hover {
+    color: ghostwhite;
+}
+
+a:visited {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+}
+
+/* index.html */
+
+#full_page {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 950px;
+    width: 100%;
+    background-image: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0)), url("images/background_wallpaper.jpg");
+    text-shadow: 1px 1px 8px ghostwhite;
+}
+
+.game_menu {
+    background: url("images/curtain_top_mirror.png") no-repeat, url("images/curtain_top_mirror2.png") repeat-x, linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    background-size: contain, contain;
+    line-height: 80px;
+    height: 140px;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+header h1 {
+    float: left;
+    margin: 0;
+    padding: 1%;
+}
+
+.game_menu > ul {
+    float: left;
+    margin: 0;
+    padding: 1%;
+}
+
+.game_menu ul li {
+    list-style: none;
+    display: inline-block;
+    font-size: 22px;
+    padding-left: 35px;
+    float: left;
+}
+
+/*Settings Drop Down Menu*/
+#settings-menu:hover > a {
+    color: ghostwhite;
+
+}
+
+ul > li#settings-menu {
+    position: relative;
+}
+
+#settings-menu > ul {
+    display: none;
+    height: 100px;
+}
+
+#settings-menu:hover > ul {
+    display: block;
+    position: absolute;
+    top: 35px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+ul > li.settings-sub {
+    padding: 0;
+    margin: 0;
+    height: 40%;
+    font-size: 15px;
+}
+
+/*****/
+main {
+    position: absolute;
+}
+
+.stats {
+    background-image: url("images/curtain_left.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    float: left;
+    height: 480px;
+    width: 140px;
+    position: absolute;
+    padding: 1%;
+    line-height: 38px;
+}
+
+.reset {
+    font-family: metropolian, serif;
+    color: rgba(255, 255, 255, 0.6);
+    background-color: transparent;
+    display: inline-block;
+    padding: 6%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.reset:hover {
+    color: ghostwhite;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transition : background-color 0.3s ease-in, border-color 0.3s ease-in;
+}
+
+.reset:active {
+    color: black;
+    background-color: transparent;
+}
+
+#win-message {
+    font-size: 50px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 160px;
+    left: 30px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color .5s ease-in;
+}
+
+#game-area {
+    float: left;
+    margin: 0;
+    height: 60%;
+    width: 1200px;
+    position: relative;
+    top: 25px;
+    left: 225px;
+    text-align: center;
+}
+
+.card {
+    height: 195px;
+    width: 140px;
+    margin: 0.5% 1%;
+    padding: 1%;
+    display: inline-block;
+    position: relative;
+    background-image: url("images/card_frame.png");
+    background-size: 100% 100%;
+}
+
+.front img, .back img {
+    height: 154px;
+    width: 108px;
+    top: 21px;
+    left: 16px;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front, .back, .matched {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    opacity: 0;
+    filter: blur(10px) grayscale(100%);
+    -webkit-filter: blur(10px) grayscale(100%);
+    transition: 1.5s ease-out;
+}
+
+.back {
+    opacity: 1;
+    filter: blur(0) grayscale(0);
+    -webkit-filter: blur(0) grayscale(0);
+    transition: 1.5s ease-out;
+}
+
+#foreground {
+    height: 50px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    background: url("images/wood_tile.jpg") repeat-x, linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0));
+
+}
+
+#left_lady {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    opacity: 0.6;
+}
+
+.selected_card {
+}
+
+.back_effect {
+    opacity: 0;
+    filter: blur(10px) grayscale(100%);
+    -webkit-filter: blur(10px) grayscale(100%);
+    transition: .5s ease-in;
+}
+
+.front_effect {
+    opacity: 1;
+    filter: blur(0) grayscale(0);
+    -webkit-filter: blur(0) grayscale(0);
+    transition: .5s ease-in;
+}
+
+/* about.html */
+
+#about_page {
+    background: black url("images/curtain_top_mirror2.png") top left repeat-x;
+    text-shadow: 1px 1px 8px ghostwhite;
+}
+
+.about {
+    align-content: center;
+    text-align: center;
+    height: 450px;
+    width: 60%;
+    padding: 2%;
+    margin: 1% auto;
+    line-height: 25px;
+    border: 20px;
+}
+
+.about img {
+    height: 50%;
+}
+
+.about ul {
+    padding: 4% 0 3% 0;
+    margin: 0;
+}
+
+#skills {
+    font-weight: bold;
+}
+
+.about li {
+    margin: 0;
+    padding-bottom: 2%;
+    list-style: none;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+p {
+    margin: 1%;
+}
