@@ -61,6 +61,37 @@ var gameController = function () {
 
     self.tempCard = new Cards();
 
+    self.populateBoard = function (size, controller, stats) {
+        console.log(size);
+
+        $('.game_row').html('');
+
+        var tempCard = '<div class="card"><div class="front"></div><div class="back"><img src="images/cardback.jpg" alt="card"></div></div>';
+
+        if (size == 'twelve_cards') {
+            $('.game_row').each(function () {
+                for (var x = 4; x > 0; x--) {
+                    $(this).append(tempCard);
+                }
+            });
+        }
+
+        else {
+            $('.game_row').each(function () {
+                for (var x = 6; x > 0; x--) {
+                    $(this).append(tempCard);
+                }
+            });
+        }
+
+        $(".back").click(function () {
+            newController.cardClicked(this, gameStats);
+        });
+
+        controller.cardRandomizer();
+        stats.resetStats(controller);
+    };
+
     self.cardClicked = function (card, stats) {
 
         if ($(card).hasClass("matched") == true || $(card).hasClass("selected_card") == true) {
@@ -87,7 +118,7 @@ var gameController = function () {
                 $("div").removeClass("selected_card");
 
                 if (self.currentTotalMatches == self.totalPossibleMatches) {
-                    alert("You won!");
+                    $('#game-area').html('<span id="win-message" >You have won.</span>');
                 }
             }
 
@@ -114,7 +145,7 @@ var gameController = function () {
             tempArray.push(self.cardSetOne[i]);
         }
 
-        $('.front').each(function (){
+        $('.front').each(function () {
             var randIndex = Math.floor(Math.random() * tempArray.length);
             var cardFace = $('<img>').attr('src', tempArray[randIndex]);
             $(this).append(cardFace);
@@ -125,16 +156,16 @@ var gameController = function () {
 
 //Document Ready
 $(document).ready(function () {
-
-    newController.cardRandomizer();
-
-    $(".back").click(function () {
-        newController.cardClicked(this, gameStats);
-    });
+    newController.populateBoard('twelve_cards', newController, gameStats);
 
     $(".reset").click(function () {
         gameStats.resetStats(newController);
         newController.cardRandomizer();
+    });
+
+    $(".settings-sub").click(function () {
+        var boardSize = $(this).attr('id');
+        newController.populateBoard(boardSize, newController, gameStats);
     });
 
     gameStats.displayStats(newController);
@@ -143,4 +174,3 @@ $(document).ready(function () {
 //Misc
 var gameStats = new Stats();
 var newController = new gameController();
-
