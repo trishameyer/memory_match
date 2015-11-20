@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Memory Match games with Nemo theme">
+    <meta name="author" content="Adia Guidry">
+
+    <title>Memory Match</title>
+
+    <!--CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
+    <link href="style.css" rel="stylesheet">
+    <!--JQUERY -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+<header>
+    <div class="mobile"><h3>Go to a desktop and Enjoy this memory match game!</h3></div>
+    <div class="container">
+        <div class="logo_div">
+            <a><img class="logo" src="images/logo.png"></a>
+        </div>
+            <div class="levels">
+                <img  onclick="difficulty_level('easy')"  class="bubble_easy_hard" src="images/level_one.png">
+                <img  onclick="difficulty_level('medium')" class="bubble_easy_hard" src="images/level_two.png">
+                <img  onclick="difficulty_level('hard')" class="bubble_easy_hard" src="images/level_three.png">
+            </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="about.html"><img class="about_bubble" src="images/about_link.png"></a>
+                </li>
+                <li><!--will reset the game -->
+                    <div class="reset" onclick="reset()">
+                    <img width="150px" class="reset" src="images/reset.png">
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="win_container">
+        <h1 id="win" onclick="reset()">YOU WON!!</h1>
+        <h1 class="play_again" onclick="reset()">play again?</h1>
+    </div>
+</header>
+<div class="container">
+<div>
+    <img class="sharkBody" src="images/bruce.png">
+</div>
+<div class="hook">
+    <div class="hook_img">
+        <img src="images/hook.png">
+    </div>
+</div>
+<!-- Begin Body -->
+<div class="row">
+    <div class="col-md-2" id="div">
+    </div>
+    <div class="col-md-8" id="game-area">
+         <!--  board created in JS  -->
+    </div>
+        <div class="col-md-2" id="rightCol">
+            <div class="well stats-container">
+                <h1>Stats:</h1>
+                <div class="games-played">
+                    <div class="label">Games played</div>
+                    <div class="games_played_value">0</div>
+                </div>
+                <div class="attempts">
+                    <div class="label">Attempts</div>
+                    <div class="attempts_value">0</div>
+                </div>
+                <div class="accuracy">
+                    <div class="label">Accuracy</div>
+                    <div class="accuracy_value">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="all_bubbles">
+            <img class="big_bubble bubbles bubble1" src="images/bubble.png">
+            <img class="big_bubble bubbles bubble2" src="images/bubble.png">
+            <img class="md_bubble bubbles bubble3" src="images/bubble.png">
+            <img class="big_bubble bubbles bubble4" src="images/bubble.png">
+            <img class="big_bubble bubbles bubble5" src="images/bubble.png">
+            <img class="sm_bubble bubbles bubble6" src="images/bubble.png">
+            <img class="md_bubble bubbles bubble7" src="images/bubble.png">
+            <img class="big_bubble bubbles bubble8"  src="images/bubble.png">
+            <img class="md_bubble bubbles bubble9" src="images/bubble.png">
+            <img class="sm_bubble bubbles bubble10" src="images/bubble.png">
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="memory.js"></script>
+
+
+</body>
+
+</html>
