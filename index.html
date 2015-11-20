@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="mm_oop.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+</head>
+<body>
+<nav class="navbar navbar-inverse" id="nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Memory Match</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Game Option 1</a></li>
+                <li><a href="#">Game Option 2</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="col-md-1" id="sidebar">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="games_played">
+            <div class="label">
+                <span>Games Played:<p id="games_played_stat"></p></span>
+            </div>
+        </li>
+        <li class="attempts">
+            <div class="label">
+                <span>Attempts:<p id="attempts_stat"></p></span>
+            </div>
+        </li>
+        <li class="accuracy">
+            <div class="label">
+                <span>Accuracy:<p id="accuracy_stat"></p></span>
+            </div>
+        </li>
+        <li><button type="button" id="reset_button">
+                Reset
+            </button>
+        </li>
+    </ul>
+</div>
+<div class="col-md-11">
+    <div id="game-area">
+        <!--Dynamically created cards appear here-->
+    </div>
+</div>
+<div id="win_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Congratulations!</h4>
+            </div>
+            <div class="modal-body" id="win_msg">
+                <p>You win!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<canvas id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view
+    this.</p></canvas>
+<script src="hakim.wave.js"></script>
+</body>
+</html>
