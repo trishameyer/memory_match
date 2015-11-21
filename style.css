@@ -12,6 +12,28 @@ body
     background-attachment: fixed;
 }
 
+#settings-modal
+{
+    font-family: korataki;
+    color: white;
+}
+
+.modal-header, .modal-body, .modal-footer
+{
+    background-color: rgba(3, 95, 145, .8);
+}
+
+.modal-footer>button
+{
+    width: 14vw;
+    /*height: 2vw;*/
+    font-family: korataki;
+    /*font-size: 0.8vw;*/
+    color: white;
+    background-color: rgba(3, 95, 145, .5);
+    text-align: center;
+}
+
 div.page-wrapper
 {
     /*border: 1px solid white;*/
@@ -104,7 +126,8 @@ div.anim-quake
     width: 33%;
 }
 
-.header>#menu>nav>ul>li>a
+.header>#menu>nav>ul>li>a,
+.header>#menu>nav>ul>li>button
 {
     text-decoration: none;
     color: white;

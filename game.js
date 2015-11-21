@@ -5,13 +5,15 @@ function Game()
     this.stats_mgr = null;
     this.state_machine = null;
     this.rules_mgr = null;
+    this.settings_manager = null;
 
     this.init();
 }
 
 Game.prototype.init = function()
 {
-    this.cards_mgr = new CardsManager(this, getRandomSize());
+    this.settings_manager = new SettingsManager(this);
+    this.cards_mgr = new CardsManager(this, this.settings_manager.size.get());
     this.layout_mgr = new LayoutManager(this, this.cards_mgr.deck);
     this.stats_mgr = new StatsManager(this);
     this.state_machine = new StateMachine(this);
@@ -39,7 +41,7 @@ Game.prototype.resetGame = function()
     this.stats_mgr.resetStats(); //reset_stats();
     this.stats_mgr.display(); //display_stats();
 
-    this.cards_mgr.init(getRandomSize());//this.cards_mgr.getTotalPairs());
+    this.cards_mgr.init(this.settings_manager.size.get());//this.cards_mgr.getTotalPairs());
     this.layout_mgr.changeDeck(this.cards_mgr.deck);
     this.layout_mgr.init();
 

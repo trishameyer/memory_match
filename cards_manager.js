@@ -1,10 +1,32 @@
+/**
+ * CardsManager
+ *  Basically manages functionality for every card,
+ *  except for DOM creation.
+ */
 function CardsManager(game, num_pairs)
 {
     this.game = game;
     this.deck = [];
-    this.pairs = 0;
 
-    this.card_clicked = //null;
+    this.pairs =
+        (function()
+        {
+            var num_pairs = null;
+
+            return {
+                set: function(value)
+                {
+                    num_pairs = value;
+                },
+                get: function()
+                {
+                    return num_pairs;
+                }
+            };
+        }
+        )();
+
+    this.card_clicked = 
         (function()
             {
                 var card_obj = null;
@@ -20,7 +42,7 @@ function CardsManager(game, num_pairs)
             }
         )();
 
-    this.first_card_clicked = // null;
+    this.first_card_clicked = 
         (function()
             {
                 var card_obj = null;
@@ -44,7 +66,7 @@ function CardsManager(game, num_pairs)
             }
         )();
 
-    this.second_card_clicked = //null;
+    this.second_card_clicked = 
         (function()
             {
                 var card_obj = null;
@@ -90,7 +112,7 @@ function CardsManager(game, num_pairs)
 CardsManager.prototype.init = function(num_pairs)
 {
     // TODO: setting number of pairs (will be 4, 6, 8, or 9)
-    this.pairs = num_pairs;
+    this.pairs.set(num_pairs > 0 ? num_pairs : getRandomSize());
 
     this.deck = this.shuffleCards(this.getCards());
 };
@@ -98,7 +120,7 @@ CardsManager.prototype.init = function(num_pairs)
 
 CardsManager.prototype.getTotalPairs = function()
 {
-    return this.pairs;
+    return this.pairs.get();
 };
 
 CardsManager.prototype.getCards = function()
@@ -118,7 +140,7 @@ CardsManager.prototype.getCards = function()
         ];
 
     // Randomly pick cards to make the to-shuffle deck
-    for (var i = 0; i < this.pairs; i++)
+    for (var i = 0; i < this.pairs.get(); i++)
     {
         rand_index = Math.floor(Math.random() * cards_arr.length);
         var picked = cards_arr.splice(rand_index, 1).pop();
