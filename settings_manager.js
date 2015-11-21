@@ -39,16 +39,19 @@ SettingsManager.prototype.init = function()
     $('#radio-btns-size').on('change', 'input[type=radio]', function()
     {
         self.temp_size.set(parseInt($(this).attr('value')));
+        $('#button-close-and-set').text('Confirm and Restart');
     });
 
     $('#button-close-and-set').on('click', function()
     {
-        self.change_size = true;
+        if ($(this).text() != 'Close')
+            self.change_size = true;
     });
 
     // When modal pops up
     $('#settings-modal').on('show.bs.modal', function()
     {
+        $('#button-close-and-set').text('Close');
         self.change_size = false;
     });
 
@@ -56,7 +59,15 @@ SettingsManager.prototype.init = function()
     $('#settings-modal').on('hide.bs.modal', function()
     {
         if (self.change_size)
+        {
             self.changeSizePermanent(self.temp_size.get());
+        }
+        else
+        {
+            // Changing back the radio buttons on 'cancel'
+            $('#radio-btns-size>input[type=radio][value=' + self.temp_size.get() + ']')[0].checked = false;
+            $('#radio-btns-size>input[type=radio][value=' + self.size.get() + ']')[0].checked = true;
+        }
     });
 };
 
