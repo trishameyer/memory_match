@@ -1,0 +1,204 @@
+body {
+  margin: 0;
+  background: url("images/mm_top.jpg");
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  color: #E0FDFC;
+}
+a {
+  text-decoration: none;
+  color: #FC284A;
+}
+
+/*** Header elements ***/
+header {
+  width: 100vw;
+  height: 8vh;
+}
+#logo {
+  display: inline-block;
+  width: 12%;
+  height: 100%;
+  background: url("images/mm_logo.jpg") no-repeat;
+  background-size: 100% 100%;
+}
+#game-title, #settings, #about {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  top: 32%;
+  margin-right: 9%;
+}
+#game-title {
+  width: 280px;
+  height: 50%;
+  font-size: 140%;
+  text-shadow: 1px 2px #194720;
+  top: 25%;
+  left: 15%;
+}
+#settings {
+  width: 10%;
+  height: 50%;
+  left: 19%;
+}
+#about {
+  width: 10%;
+  height: 50%;
+  left: 16%;
+}
+
+/*** Stats elements ***/
+#stats {
+  width: 20vw;
+  height: 80vh;
+  display: inline-block;
+  text-align: center;
+}
+#stats > div {
+  width: 70%;
+  height: 10%;
+  border-radius: 5px;
+  margin: 30px auto;
+  padding: 10px 15px;
+  background-color: #2FB5F3;
+  color: #1E023F;
+}
+#stats button {
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #E1C829;
+}
+
+/*** Main, Game-area elements ***/
+#main {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 700px;
+  height: 500px;
+  left: 6vw;
+  text-align: center;
+}
+#game-area {
+  width: 640px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: 30px;
+}
+.card {
+  width: 65px;
+  height: 100px;
+  display: inline-block;
+  position: relative;
+  margin: 2px;
+  opacity: 0.7;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  transition: transform 2s;
+}
+.card:hover {
+  opacity: 1;
+}
+.card img {
+  border: 2px solid grey;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  #backface-visibility: hidden;
+}
+.front {
+  #transform: rotateY(180deg);
+}
+.card:hover {
+  #transform: rotateY(180deg);
+}
+#select-level {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: 100px;
+  padding: 15px;
+  background-color: orange;
+  border-radius: 5px;
+  width: 220px;
+}
+#select-level button {
+  background-color: lightgreen;
+  width: 90px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+#img_win {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*** About.html styling ***/
+#page_about {
+  padding: 50px;
+}
+.back_link {
+  text-align: center;
+}
+.mypic img {
+  border-radius: 50px;
+  width: 120px;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+  -o-filter: grayscale(1);
+  -ms-filter: grayscale(1);
+}
+
+@media only screen and (max-width: 992px) {
+  #main {
+    width: 500px;
+    height: 300px;
+  }
+  #game-area {
+    width: 440px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #game-title, #settings, #about {
+    display: none;
+  }
+  #logo {
+    width: 100%;
+  }
+  #stats {
+    width: 100%;
+    height: 200px;
+  }
+  #stats > div {
+    width: 90%;
+    height: 20%;
+    margin: 2px auto;
+    padding: 2px 5px;
+  }
+  #main {
+    width: 100%;
+    left: 0;
+  }
+  #game-area {
+    width: 95%;
+  }
+  #select-level {
+    width: 160px;
+  }
+  #select-level button {
+    width: 75px;
+    height: 30px;
+  }
+}
