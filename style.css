@@ -1,0 +1,353 @@
+@font-face
+{
+    font-family: korataki;
+    src: url("assets/fonts/korataki.ttf");
+}
+
+body
+{
+    background-image: url("assets/images/wallpaper02.jpg");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+#settings-modal
+{
+    font-family: korataki;
+    color: white;
+}
+
+.modal-header, .modal-body, .modal-footer
+{
+    background-color: rgba(3, 95, 145, .8);
+}
+
+.modal-footer>button
+{
+    width: 14vw;
+    /*height: 2vw;*/
+    font-family: korataki;
+    /*font-size: 0.8vw;*/
+    color: white;
+    background-color: rgba(3, 95, 145, .5);
+    text-align: center;
+}
+
+div.page-wrapper
+{
+    /*border: 1px solid white;*/
+    position: relative;
+    font-family: korataki;
+    color: white;
+    width: 80vw;
+    /*height: 98vh;*/
+    margin: auto auto;
+}
+
+div.anim-quake
+{
+    animation-name: screen-shake;
+    animation-duration: .5s;
+}
+
+@keyframes screen-shake
+{
+    10%  {right: .25vw; bottom: .25vw; }
+    20%  {right: -.5vw; bottom: -.5vw; }
+    30%  {right: .25vw; bottom: -.5vw; }
+    40%  {right: -.5vw; bottom: .25vw; }
+    50%  {right: .25vw; bottom: .25vw; }
+    60%  {right: -.5vw; bottom: -.5vw; }
+    70%  {right: .25vw; bottom: -.5vw; }
+    80%  {right: -.5vw; bottom: .25vw; }
+    90%  {right: .25vw; bottom: .25vw; }
+    100% {right: 0vw; bottom: 0vw; }
+}
+
+.header
+{
+    /*border: 1px solid red;*/
+    position: absolute;
+    top: 0%;
+    height: 11vh;
+    width: 100%;
+    z-index: 200;
+    /*overflow: hidden;*/
+    display: inline-block;
+}
+
+.header>div
+{
+    display: inline-block;
+}
+
+.header>#logo
+{
+    margin-left: 1%;
+    float: left;
+}
+
+.header>#logo>a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.header>#logo>a>h1
+{
+    font-size: 3vw;
+    margin-top: 1%;
+    margin-bottom: 0;
+}
+
+.header>#logo>a>p
+{
+    font-size: 2vw;
+    margin-top: -0.7vw;
+}
+
+.header>#menu
+{
+    text-align: center;
+    float: right;
+    width: 74%;
+}
+
+.header>#menu>nav>ul
+{
+    list-style-type: none;
+}
+
+.header>#menu>nav>ul>li
+{
+    display: inline-block;
+    margin: auto 3vw;
+    width: 33%;
+}
+
+.header>#menu>nav>ul>li>a,
+.header>#menu>nav>ul>li>button
+{
+    text-decoration: none;
+    color: white;
+    font-size: 2vw;
+}
+
+
+
+/* index.html STYLING*/
+.stats-section
+{
+    /*border: 1px solid blue;*/
+    position: relative;
+    top: 16vh;
+    width: 16vw;
+    height: 60%;
+    text-align: center;
+    background-color: rgba(3, 95, 145, .5);
+    display: inline-block;
+    padding-bottom: 1vw;
+}
+
+.stats-section h1
+{
+    font-size: 1vw;
+}
+
+.stats-section p
+{
+    font-size: 0.8vw;
+}
+
+.stats-section input[type=button]
+{
+    width: 14vw;
+    height: 2vw;
+    font-family: korataki;
+    font-size: 0.8vw;
+    color: white;
+    background-color: rgba(3, 95, 145, .5);
+    text-align: center;
+}
+
+#game-container
+{
+    position: relative;
+    float: right;
+    top: 18vh;
+    width: 60vw;
+    height: 40vw;
+}
+
+#game-area
+{
+    /*border: 1px solid green;*/
+    position: relative;
+    /*top: 18vh;*/
+    /*right: 4.5vw;*/
+    /*float: right;*/
+    width: 52vw;
+    height: 36vw;
+    margin: 0 auto;
+}
+
+div.card
+{
+    position: relative;
+    width: 7.857vw;
+    height: 11vw;
+    display: inline-block;
+    margin: .5vw .4vw;
+    float: left;
+}
+
+div.make-disappear
+{
+    display: none;
+}
+
+div.anim-shake
+{
+    animation-name: card-shake;
+    animation-duration: .6s;
+}
+
+@keyframes card-shake
+{
+    10%  {right: .25vw;}
+    20%  {right: -.5vw;}
+    30%  {right: .25vw;}
+    40%  {right: -.5vw;}
+    50%  {right: .25vw;}
+    60%  {right: -.5vw;}
+    70%  {right: .25vw;}
+    80%  {right: -.5vw;}
+    90%  {right: .25vw;}
+    100% {right: 0vw;}
+}
+
+div.card>span.back
+{
+    transition-duration: .4s;
+    z-index: 200;
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+}
+
+div.card>span.back>img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+div.card>span.front
+{
+    transition-duration: .4s;
+    z-index: 100;
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    transform-origin: 50% 50%;
+    transform: rotateY(180deg);
+
+    /* Used when using the rotation animation. */
+    backface-visibility: hidden;
+}
+
+div.card>span.front>img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Rotation animation */
+/*div.card:hover>span.back
+{
+    transition-duration: .8s;
+    z-index: 90;
+    transform-origin: 50% 50%;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+}
+
+div.card:hover>span.front
+{
+    transition-duration: .8s;
+    transform-origin: 50% 50%;
+    transform: rotateY(360deg);
+}*/
+div.card>span.rotate-card-hide
+{
+    transition-duration: .8s;
+    z-index: 90;
+    transform-origin: 50% 50%;
+    transform: rotateY(180deg);
+}
+
+div.card>span.rotate-card-show
+{
+    transition-duration: .8s;
+    transform-origin: 50% 50%;
+    transform: rotateY(0deg);
+}
+
+/*END index.html STYLING*/
+
+
+
+/*about.html STYLING*/
+#about-section
+{
+    position: relative;
+    top: 12vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2vw;
+    background-color: rgba(3, 95, 145, .5);
+}
+
+#about-section p,
+#about-section li,
+#about-section a
+{
+    font-size: 90%;
+}
+
+
+#about-section>h2
+{
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#about-section>#designed-by
+{
+    text-align: center;
+}
+
+#about-section>#designed-by>a
+{
+    color: cornflowerblue;
+}
+
+#about-section>#designed-by>a:visited
+{
+    color: cornflowerblue;
+}
+
+#about-section>#designed-by>a>img
+{
+    width: 8vw;
+}
+
+#about-section>#description>h3
+{
+    text-transform: uppercase;
+}
+/*END about.html STYLING*/
+
+
