@@ -8,6 +8,11 @@ body{
     border: 1px solid black;
     position: relative;
     display: inline-block;
+    border-radius: 10px;
+    background-color: #ffcce6;
+    -webkit-box-shadow: 0 6px 41px -4px;
+    -moz-box-shadow: 0 6px 41px -4px;
+    box-shadow: 0 6px 41px -4px;
 }
 
 #cat_logo{
