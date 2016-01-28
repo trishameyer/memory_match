@@ -61,12 +61,13 @@ body{
 .card{
     height: 30%;
     width: 15%;
-    border: 1px solid red;
+    border: 1px solid black;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     display: inline-block;
     margin-right: 1%;
+    margin-top: 10px;:
 }
 
 
@@ -74,13 +75,15 @@ body{
     position: absolute;
 }
 
-.front{
-    border: 1px solid green;
-}
-
-.front img{
+.front img, .back img{
     width: 100%;
     height: auto;
+    /*width: auto;
+    height: 100%*/
+}
+
+.back img {
+    width: 200%;
 }
 
 .back:hover {
