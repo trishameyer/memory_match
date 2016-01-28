@@ -64,26 +64,26 @@ body{
 .game-area{
     padding-left: 1%;
     padding-bottom: 1%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 80%;
     height: 450px;
     position: absolute;
     right: 2%;
-    top: 23%;
+    top: 20%;
 
 }
 
 /*The cards themselves*/
 .card{
-    height: 30%;
+    height: 35%;
     width: 15%;
     border: 1px solid black;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     display: inline-block;
-    margin-right: 1%;
-    margin-top: 10px;:
+    margin-right: 0.7%;
+    margin-top: 1.5px;:
 }
 
 
@@ -103,5 +103,6 @@ body{
 /*When you hover over the back side of the card, it makes the back of the card transparent and you see the front of the card*/
 .back:hover {
     opacity: 0;
+    /*visibility: hidden;*/
 }
 
