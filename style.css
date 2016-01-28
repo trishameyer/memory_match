@@ -122,10 +122,53 @@ a:visited, a:link, a:hover, a:active{
 
 
 /*CSS FOR MY ABOUT ME PAGE*/
-.author_pic img{
-    width: 10%;
+/*.about_body div{
+    border: 1px solid black;
+    position: relative;
 }
 
-.about_me_body div{
-    border: 1px solid black;
+.parent_div{
+    width: 80%;
+    height: 85vh;
+    position: absolute;
+    transform: translate(12%, 7%);
 }
+
+.about_div{
+    display: inline-block;
+    width: 45%;
+    position: relative;
+}
+
+.author_pic_container img{
+    width: 30%;
+
+}
+
+.author_pic_container{
+    float: left;
+}
+
+.about_game_container, .skills_container{
+    float: right;
+}*/
+
+
+/*EXPERIMENTATION WITH CSS/BOOTSTRAP*/
+.main_container{
+    transform: translate(0, 40%);
+}
+
+.main_container > div{
+    display: inline-block;
+}
+
+.right_div{
+    margin-left: 7%;
+    margin-top: 3%
+}
+.left_div img{
+    width: 40%;
+    float: right;
+}
+
