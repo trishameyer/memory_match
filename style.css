@@ -78,14 +78,13 @@ body{
 .front img, .back img{
     width: 100%;
     height: auto;
-    /*width: auto;
-    height: 100%*/
 }
 
 .back img {
     width: 200%;
 }
 
+/*When you hover over the back side of the card, it makes the back of the card transparent and you see the front of the card*/
 .back:hover {
     opacity: 0;
 }
