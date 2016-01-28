@@ -11,6 +11,7 @@ body{
     font-family: "Marker Felt", fantasy;
     color: #32549D;
 }
+
 /*The main header container that contains the logo, title, and links*/
 .header_container{
     width: 98%;
@@ -53,19 +54,13 @@ body{
     font-size: 1.5em;
 }
 
-.label{
-    color: #32549D;
-    font-size: inherit;
-
-}
-
 a:visited, a:link, a:hover, a:active{
     text-decoration: none;
     color: #32549D;
 }
 
 
-/*Stats div related css selectors*/
+/*Stats div container related css selectors*/
 .stats-container{
     position: relative;
     /*border: 1px solid black;*/
@@ -83,6 +78,11 @@ a:visited, a:link, a:hover, a:active{
     padding-top: 5px;
     text-align: center;
     font-size: 1.5em;
+}
+
+.label{
+    color: #32549D;
+    font-size: inherit;
 }
 
 /*Game area where all the cards are*/
@@ -125,51 +125,14 @@ a:visited, a:link, a:hover, a:active{
     width: 200%;
 }
 
-/*When you hover over the back side of the card, it makes the back of the card transparent and you see the front of the card*/
+/*When you hover over the back side of the card, it makes the back of the card transparent and you see the front img of the card underneath it*/
 .back:hover {
     opacity: 0;
-    /*visibility: hidden;*/
 }
 
 
-/*CSS FOR MY ABOUT ME PAGE*/
-/*.about_body div{
-    border: 1px solid black;
-    position: relative;
-}
 
-.parent_div{
-    width: 80%;
-    height: 85vh;
-    position: absolute;
-    transform: translate(12%, 7%);
-}
-
-.about_div{
-    display: inline-block;
-    width: 45%;
-    position: relative;
-}
-
-.author_pic_container img{
-    width: 30%;
-
-}
-
-.author_pic_container{
-    float: left;
-}
-
-.about_game_container, .skills_container{
-    float: right;
-}*/
-
-
-/*EXPERIMENTATION WITH CSS/BOOTSTRAP*/
-.main_container{
-    /*transform: translate(0, 5%);*/
-}
-
+/*CSS FOR MY ABOUT PAGE*/
 .main_container > div{
     display: inline-block;
 }
