@@ -1,6 +1,63 @@
-header{
+/*The main header container that contains the logo, title, and links*/
+.header_container{
     width: 100%;
-    height: auto;
+    height: 18vh;
     border: 1px solid black;
     position: relative;
+    display: inline-block;
+}
+
+#cat_logo{
+    width: 6%;
+    padding-left: 2%;
+}
+
+.title_container{
+    left: 45%;
+    position: absolute;
+}
+
+.links_container{
+    right: 0;
+    top: 70px;
+    position: absolute;
+    width: 17%;
+}
+
+.links_container li {
+    list-style-type: none;
+    display: inline-block;
+    padding-right: 20%;
+}
+
+/*Stats div related css selectors*/
+.games-played{
+    position: relative;
+    border: 1px solid black;
+    width: 15%;
+}
+
+.games-played div{
+    width: 100%;
+    height: 100px;
+    border: 1px solid gray;
+}
+
+/*Game area where all the cards are*/
+.game-area{
+    border: 1px solid black;
+    width: 80%;
+    height: 450px;
+    position: absolute;
+    right: 2%;
+    top: 23%;
+}
+
+/*The cards themselves*/
+.card{
+    height: 30%;
+    width: 15%;
+    border: 1px solid red;
+    border-radius: 10px;
+    overflow: hidden;
 }
