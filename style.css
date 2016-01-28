@@ -21,7 +21,7 @@ body{
     margin: 1%;
 }
 
-.header_container, .stats-container{
+.header_container, .stats-container, .right_div{
     border-radius: 10px;
     background-color: #ffcce6;
     -webkit-box-shadow: 0 6px 41px -4px black;
@@ -50,6 +50,13 @@ body{
     list-style-type: none;
     display: inline-block;
     padding-left: 10%;
+    font-size: 1.5em;
+}
+
+.label{
+    color: #32549D;
+    font-size: inherit;
+
 }
 
 a:visited, a:link, a:hover, a:active{
@@ -73,8 +80,9 @@ a:visited, a:link, a:hover, a:active{
     height: 100px;
     display: inline-block;
     /*border: 1px solid gray;*/
-    padding-left: 5px;
     padding-top: 5px;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 /*Game area where all the cards are*/
@@ -159,20 +167,24 @@ a:visited, a:link, a:hover, a:active{
 
 /*EXPERIMENTATION WITH CSS/BOOTSTRAP*/
 .main_container{
-    transform: translate(0, 20%);
+    /*transform: translate(0, 5%);*/
 }
 
 .main_container > div{
     display: inline-block;
 }
 
-.right_div{
+.row{
+    padding: 2%;
+}
 
-    margin-left: 7%;
-    margin-top: 3%
+.right_div{
+    margin-left: 3%;
+    border: 1px solid black;
 }
 .left_div img{
-    width: 40%;
+    width: 35%;
     float: right;
+    border-radius: 10px;
 }
 
