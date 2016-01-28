@@ -1,5 +1,15 @@
+/*@font-face{
+    font-family: spicyRice;
+    src: url(SpictyRice-Regular.otf);
+}*/
 body{
     background-color: gray;
+    /* could change background gif so it is relevant to the theme
+    background-image: url("images/snow.gif");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    font-family: "Marker Felt", fantasy;
+    color: #32549D;
 }
 /*The main header container that contains the logo, title, and links*/
 .header_container{
@@ -8,19 +18,14 @@ body{
     border: 1px solid black;
     position: relative;
     display: inline-block;
-    /*border-radius: 10px;
-    background-color: #ffcce6;
-    -webkit-box-shadow: 0 6px 41px -4px;
-    -moz-box-shadow: 0 6px 41px -4px;
-    box-shadow: 0 6px 41px -4px;*/
 }
 
 .header_container, .games-played{
     border-radius: 10px;
     background-color: #ffcce6;
-    -webkit-box-shadow: 0 6px 41px -4px;
-    -moz-box-shadow: 0 6px 41px -4px;
-    box-shadow: 0 6px 41px -4px;
+    -webkit-box-shadow: 0 6px 41px -4px black;
+    -moz-box-shadow: 0 6px 41px -4px black;
+    box-shadow: 0 6px 41px -4px black;
 }
 
 #cat_logo{
@@ -46,16 +51,24 @@ body{
     padding-right: 20%;
 }
 
+a:visited, a:link, a:hover, a:active{
+    text-decoration: none;
+    color: #32549D;
+}
+
+
 /*Stats div related css selectors*/
 .games-played{
     position: relative;
     /*border: 1px solid black;*/
     width: 15%;
+    height: auto%;
 }
 
 .games-played div{
     width: 100%;
     height: 100px;
+    display: inline-block;
     /*border: 1px solid gray;*/
     padding-left: 5px;
 }
@@ -64,9 +77,9 @@ body{
 .game-area{
     padding-left: 1%;
     padding-bottom: 1%;
-    /*border: 1px solid black;*/
-    width: 80%;
-    height: 450px;
+    border: 1px solid black;
+    width: 80vw;
+    height: 73vh;
     position: absolute;
     right: 2%;
     top: 20%;
@@ -83,7 +96,7 @@ body{
     position: relative;
     display: inline-block;
     margin-right: 0.7%;
-    margin-top: 1.5px;:
+    margin-top: 0.2%;:
 }
 
 
