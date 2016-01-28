@@ -1,3 +1,6 @@
+body{
+    background-color: gray;
+}
 /*The main header container that contains the logo, title, and links*/
 .header_container{
     width: 100%;
@@ -51,6 +54,7 @@
     position: absolute;
     right: 2%;
     top: 23%;
+
 }
 
 /*The cards themselves*/
@@ -60,4 +64,26 @@
     border: 1px solid red;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin-right: 1%;
 }
+
+
+.front, .back{
+    position: absolute;
+}
+
+.front{
+    border: 1px solid green;
+}
+
+.front img{
+    width: 100%;
+    height: auto;
+}
+
+.back:hover {
+    opacity: 0;
+}
+
