@@ -1,0 +1,156 @@
+/*@font-face{
+    font-family: spicyRice;
+    src: url(SpictyRice-Regular.otf);
+}*/
+body{
+    background-color: gray;
+    /* could change background gif so it is relevant to the theme
+    background-image: url("images/snow.gif");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    font-family: "Marker Felt", fantasy;
+    color: #32549D;
+}
+
+/*The main header container that contains the logo, title, and links*/
+.header_container{
+    width: 98%;
+    height: 17.5vh;
+    border: 1px solid black;
+    position: relative;
+    display: inline-block;
+    margin: 1%;
+}
+
+.header_container, .stats-container, .right_div{
+    border-radius: 10px;
+    background-color: #ffcce6;
+    -webkit-box-shadow: 0 6px 41px -4px black;
+    -moz-box-shadow: 0 6px 41px -4px black;
+    box-shadow: 0 6px 41px -4px black;
+}
+
+#cat_logo{
+    width: 7.7%;
+    padding-left: 2%;
+}
+
+.title_container{
+    left: 45%;
+    position: absolute;
+}
+
+.links_container{
+    right: 0;
+    top: 70px;
+    position: absolute;
+    width: 25%;
+}
+
+.links_container li {
+    list-style-type: none;
+    display: inline-block;
+    padding-left: 10%;
+    font-size: 1.5em;
+}
+
+a:visited, a:link, a:hover, a:active{
+    text-decoration: none;
+    color: #32549D;
+}
+
+
+/*Stats div container related css selectors*/
+.stats-container{
+    position: relative;
+    /*border: 1px solid black;*/
+    width: 15%;
+    height: auto%;
+    margin-top: 3%;
+    margin-left: 1%;
+}
+
+.stats-container > div{
+    width: 100%;
+    height: 100px;
+    display: inline-block;
+    /*border: 1px solid gray;*/
+    padding-top: 5px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.label{
+    color: #32549D;
+    font-size: inherit;
+}
+
+/*Game area where all the cards are*/
+.game-area{
+    padding-left: 1%;
+    padding-bottom: 1%;
+    /*border: 1px solid black;*/
+    width: 80vw;
+    height: 73vh;
+    position: absolute;
+    right: 2%;
+    top: 20%;
+
+}
+
+/*The cards themselves*/
+.card{
+    height: 35%;
+    width: 15%;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin-right: 0.7%;
+    margin-top: 0.2%;
+    -webkit-box-shadow: 10px 10px 45px -16px black;
+    -moz-box-shadow: 10px 10px 45px -16px black;
+    box-shadow: 10px 10px 45px -16px black;
+}
+
+
+.front, .back{
+    position: absolute;
+}
+
+.front img, .back img{
+    width: 100%;
+    height: auto;
+}
+
+.back img {
+    width: 200%;
+}
+
+/*When you hover over the back side of the card, it makes the back of the card transparent and you see the front img of the card underneath it*/
+/*.back:hover {*/
+/*opacity: 0;*/
+/*}*/
+
+
+
+/*CSS FOR MY ABOUT PAGE*/
+.main_container > div{
+    display: inline-block;
+}
+
+.row{
+    padding: 2%;
+}
+
+.right_div{
+    margin-left: 3%;
+    border: 1px solid black;
+}
+.left_div img{
+    width: 35%;
+    float: right;
+    border-radius: 10px;
+}
+
