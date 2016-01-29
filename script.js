@@ -21,13 +21,10 @@ $(document).ready(function(){
 });
 
 function card_clicked(the_card){
-    $(the_card).hide();
-}
-
-function card_clicked(the_card){
     //could i also just use (first_card_clicked) with no condition?
     if (first_card_clicked == null){
         first_card_clicked =  $(this).find("img").attr('src');
+        $(the_card).hide();
     } else {
         if(first_card_clicked == second_card_clicked){
 
