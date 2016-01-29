@@ -3,237 +3,240 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
+    <!--<script src="script.js"></script>-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
-    <div class="header_container">
-        <header>
-            <div class="title_container">
-                <!--Game Title-->
-                <h1>Game Title</h1>
-            </div>
-            <div>
-                <!--Game Logo-->
-                <img id="cat_logo" src="images/cattart.png">
-            </div>
-            <nav class="links_container">
-                <ul>
-                    <!--Link back to the memory match game-->
-                    <li><a href="index.html">Game</a></li>
-                    <!--Settings Link-->
-                    <li><a href="#">Settings</a></li>
-                    <!--About Link..to page with description of game and what you did in it-->
-                    <li><a href="about.html">About</a></li>
-                </ul>
-            </nav>
-        </header>
-    </div>
-
-    <div class="stats-container">
-        <!--Games played counter-->
-        <div class="games-played">
-            <p class="label">Games Played</p>
-            <div class="value"><!--Value Output Here--></div>
+<div class="header_container">
+    <header>
+        <div class="title_container">
+            <!--Game Title-->
+            <h1>Game Title</h1>
         </div>
-        <!--Attempts: number of times the user has clicked on cards-->
-        <div class="attempts">
-            <p class="label">Attempts</p>
-            <div class="value"><!--Value Output Here--></div>
-        </div>
-        <!--Accuracy: how many times they got it right/ number of total clicks for the current game-->
-        <div class="accuracy">
-            <p class="label">Accuracy</p>
-            <div class="value"><!--Value Output Here--></div>
-        </div>
-        <!--Button Element: to reset game-->
         <div>
-            <button class="reset">Reset Game</button>
+            <!--Game Logo-->
+            <img id="cat_logo" src="images/cattart.png">
         </div>
+        <nav class="links_container">
+            <ul>
+                <!--Link back to the memory match game-->
+                <li><a href="index.html">Game</a></li>
+                <!--Settings Link-->
+                <li><a href="#">Settings</a></li>
+                <!--About Link..to page with description of game and what you did in it-->
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 
+<div class="stats-container">
+    <!--Games played counter-->
+    <div class="games-played">
+        <p class="label">Games Played</p>
+        <div class="value"><!--Value Output Here--></div>
     </div>
-    <div class="game-area">
-        <!--9 matching card elements (total 18) inside-->
+    <!--Attempts: number of times the user has clicked on cards-->
+    <div class="attempts">
+        <p class="label">Attempts</p>
+        <div class="value"><!--Value Output Here--></div>
+    </div>
+    <!--Accuracy: how many times they got it right/ number of total clicks for the current game-->
+    <div class="accuracy">
+        <p class="label">Accuracy</p>
+        <div class="value"><!--Value Output Here--></div>
+    </div>
+    <!--Button Element: to reset game-->
+    <div>
+        <button class="reset">Reset Game</button>
+    </div>
 
-        <!--Card 1-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
+</div>
+<!--kept game-area class just in case i need it at the moment-->
+<div class="game-area" id="game-area">
+    <!--9 matching card elements (total 18) inside-->
+
+    <!--Card 1-->
+    <div class="card">
+        <div class="front">
+            <img src="images/monoclePusheen.png">
         </div>
-
-        <!--Card 2-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 3-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 4-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 5-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 6-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 7-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 8-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 9-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 10-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 11-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 12-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 13-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 14-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 15-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 16-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 17-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
-        </div>
-
-        <!--Card 18-->
-        <div class="card">
-            <div class="front">
-                <img src="images/monoclePusheen.png">
-            </div>
-            <div class="back">
-                <img src="images/mice.png">
-            </div>
+        <div class="back">
+            <img src="images/mice.png">
         </div>
     </div>
+
+    <!--Card 2-->
+    <div class="card">
+        <div class="front">
+            <img src="images/monoclePusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 3-->
+    <div class="card">
+        <div class="front">
+            <img src="images/bieberPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 4-->
+    <div class="card">
+        <div class="front">
+            <img src="images/bieberPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 5-->
+    <div class="card">
+        <div class="front">
+            <img src="images/cookiePusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 6-->
+    <div class="card">
+        <div class="front">
+            <img src="images/cookiePusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 7-->
+    <div class="card">
+        <div class="front">
+            <img src="images/glassesPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 8-->
+    <div class="card">
+        <div class="front">
+            <img src="images/glassesPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 9-->
+    <div class="card">
+        <div class="front">
+            <img src="images/keyboardPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 10-->
+    <div class="card">
+        <div class="front">
+            <img src="images/keyboardPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 11-->
+    <div class="card">
+        <div class="front">
+            <img src="images/noodlePusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 12-->
+    <div class="card">
+        <div class="front">
+            <img src="images/noodlePusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 13-->
+    <div class="card">
+        <div class="front">
+            <img src="images/pizzaPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 14-->
+    <div class="card">
+        <div class="front">
+            <img src="images/pizzaPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 15-->
+    <div class="card">
+        <div class="front">
+            <img src="images/pusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 16-->
+    <div class="card">
+        <div class="front">
+            <img src="images/pusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 17-->
+    <div class="card">
+        <div class="front">
+            <img src="images/eatingPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+
+    <!--Card 18-->
+    <div class="card">
+        <div class="front">
+            <img src="images/eatingPusheen.png">
+        </div>
+        <div class="back">
+            <img src="images/mice.png">
+        </div>
+    </div>
+</div>
 </body>
 </html>
