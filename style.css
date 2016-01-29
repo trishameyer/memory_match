@@ -126,9 +126,9 @@ a:visited, a:link, a:hover, a:active{
 }
 
 /*When you hover over the back side of the card, it makes the back of the card transparent and you see the front img of the card underneath it*/
-.back:hover {
-    opacity: 0;
-}
+/*.back:hover {*/
+    /*opacity: 0;*/
+/*}*/
 
 
 
