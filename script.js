@@ -1,9 +1,7 @@
 //Declare a global variable "matches" and set equal to 0: every time applications finds a match,this variable should be incremented by 1
 var matches = 0;
 for(matches; matches<=9; matches++){
-    if(this.src = true) {
 
-    }
 }
 //Declare a global variable "attempts" and set to 0: every time a user attempts a match (clicks on 2nd card) the attempts should be incremented by 1
 var attempts= 0;
