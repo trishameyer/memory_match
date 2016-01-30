@@ -18,6 +18,7 @@ $(document).ready(function(){
     });
 });
 
+
 function card_clicked(the_card){
     //check the flag variable value: if false(ie. the cards don't match) then exit the card_clicked function
     if(!canClick){
