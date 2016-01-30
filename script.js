@@ -6,11 +6,8 @@ var total_possible_matches = 9;
 match_counter = 0;
 //define a flag variable that controls the ability to click
 var canClick = true;
-////Declare a global variable "matches" and set equal to 0
-//var matches = 0;
-////Declare a global variable "attempts" and set to 0
-//var attempts= 0;
-//var g;
+
+
 
 //Add a click handler to each card using either jQuery-intermediate or onclick attribute-fundamentals
 $(document).ready(function(){
@@ -34,12 +31,10 @@ function card_clicked(the_card){
     } else {
         //sets clicked card to variable second_card clicked since it wasn't the first card clicked
         second_card_clicked = $(the_card).find('.front').find('img').attr('src');
-        //attempts++; // every time a user attempts a match (clicks on 2nd card) the attempts should be incremented by 1
         $(the_card).find('.back').hide();
-
         //asks if first card clicked is equal to second card click
         if (first_card_clicked == second_card_clicked){
-            //increment matches up one and set both card variables equal to null; allows you the ability to click more cards now that the variables are reset
+            //increment match_counter up one and set both card variables equal to null; allows you the ability to click more cards now that the variables are reset
             match_counter++;
             first_card_clicked = null;
             second_card_clicked = null;
@@ -54,7 +49,7 @@ function card_clicked(the_card){
             //set flag variable to false which prevents additional clicks when card clicked is called
             canClick = false;
             setTimeout(function(){
-                $('.back').show(10);
+                $('.back').show();
                 canClick = true; // sets flag variable to true after 2000ms(2 seconds) so you can click the cards after the backs of the cards show
             }, 2000);
             first_card_clicked = null;
@@ -65,4 +60,3 @@ function card_clicked(the_card){
     } //end of else statement card=null
 
 } //end of function
-
