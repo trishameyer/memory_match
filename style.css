@@ -128,13 +128,6 @@ a:visited, a:link, a:hover, a:active{
     width: 200%;
 }
 
-/*When you hover over the back side of the card, it makes the back of the card transparent and you see the front img of the card underneath it*/
-/*.back:hover {*/
-/*opacity: 0;*/
-/*}*/
-
-
-
 /*CSS FOR MY ABOUT PAGE*/
 .main_container > div{
     display: inline-block;
