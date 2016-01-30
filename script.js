@@ -49,13 +49,8 @@ function card_clicked(the_card){
             canClick = false;
             setTimeout(function(){
                 $('.back').show(10);
-                canClick = true; // sets flag variable to true after 2000ms so you can click the cards
+                canClick = true; // sets flag variable to true after 2000ms(2 seconds) so you can click the cards after the backs of the cards show
             }, 2000);
-            console.log("cards are not the same");
-            console.log("delayed on turnover");
-
-
-            $('.back').delay(2000).show(100);
             first_card_clicked = null;
             second_card_clicked = null;
 
