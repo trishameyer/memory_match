@@ -2,7 +2,7 @@
 var first_card_clicked = null;
 var second_card_clicked = null;
 //Assigned to the total possible number of matches
-var total_possible_matches = 2;
+var total_possible_matches = 9;
 match_counter = 0;
 //define a flag variable that controls the ability to click
 var canClick = true;
@@ -29,17 +29,17 @@ function card_clicked(the_card){
     $(the_card).find('.back').hide();
     if(first_card_clicked == null){
         first_card_clicked = $(the_card).find('.front').find('img').attr('src');
-        first = $(the_card).find('.back')//.hide(); //added code
+        first = $(the_card).find('.back');//.hide(); //added code
     } else {
         //sets clicked card to variable second_card clicked since it wasn't the first card clicked
         second_card_clicked = $(the_card).find('.front').find('img').attr('src');
-        second = $(the_card).find('.back')//.hide();
+        second = $(the_card).find('.back');//.hide();
         //asks if first card clicked is equal to second card click
         if (first_card_clicked == second_card_clicked){
             //increment match_counter up one and set both card variables equal to null; allows you the ability to click more cards now that the variables are reset
             canClick = false;
-            $(first).removeClass('.notFlipped');
-            $(second).removeClass('.notFlipped');
+            $(first).removeClass('notFlipped');
+            $(second).removeClass('notFlipped');
             match_counter++;
             first_card_clicked = null;
             second_card_clicked = null;
