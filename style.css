@@ -1,12 +1,8 @@
-/*@font-face{
-    font-family: spicyRice;
-    src: url(SpictyRice-Regular.otf);
-}*/
 body{
-    background-color: gray;
-    /* could change background gif so it is relevant to the theme
-    background-image: url("images/snow.gif");
-    background-repeat: no-repeat;
+    background-color: dimgray;
+    /* could change background gif so it is relevant to the theme*/
+    /*background-image: url("images/cat_back.gif");
+    background-repeat: repeat-y;
     background-size: cover;*/
     font-family: "Marker Felt", fantasy;
     color: #32549D;
@@ -16,7 +12,7 @@ body{
 .header_container{
     width: 98%;
     height: 17.5vh;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     position: relative;
     display: inline-block;
     margin: 1%;
@@ -35,14 +31,18 @@ body{
     padding-left: 2%;
 }
 
+h1{
+  font-size: 7vw;
+}
+
 .title_container{
-    left: 45%;
+    left: 35%;
     position: absolute;
 }
 
 .links_container{
     right: 0;
-    top: 70px;
+    top: 70%;
     position: absolute;
     width: 25%;
 }
@@ -51,7 +51,7 @@ body{
     list-style-type: none;
     display: inline-block;
     padding-left: 10%;
-    font-size: 1.5em;
+    font-size: 1.5vw;
 }
 
 a:visited, a:link, a:hover, a:active{
@@ -60,7 +60,8 @@ a:visited, a:link, a:hover, a:active{
 }
 
 
-/*Stats div container related css selectors*/
+
+/*STATS CONTAINER*/
 .stats-container{
     position: relative;
     /*border: 1px solid black;*/
@@ -78,6 +79,11 @@ a:visited, a:link, a:hover, a:active{
     padding-top: 5px;
     text-align: center;
     font-size: 1.5em;
+    border-bottom: 2px dashed #32549D;
+}
+
+.stats-container div:last-child{
+    border-bottom: none;
 }
 
 .label{
@@ -85,7 +91,20 @@ a:visited, a:link, a:hover, a:active{
     font-size: inherit;
 }
 
-/*Game area where all the cards are*/
+.value{
+    color: black;
+    font-size: 2em;
+}
+
+.stats-container div button{
+    background-color: #92A2BC;
+    border-radius: 10px;
+    margin-top: 1em;
+}
+
+
+
+/*GAME AREA WHERE CARDS ARE*/
 .game-area{
     padding-left: 1%;
     padding-bottom: 1%;
@@ -98,7 +117,9 @@ a:visited, a:link, a:hover, a:active{
 
 }
 
-/*The cards themselves*/
+
+
+/*THE CARDS THEMSELVES*/
 .card{
     height: 35%;
     width: 15%;
@@ -114,7 +135,6 @@ a:visited, a:link, a:hover, a:active{
     box-shadow: 10px 10px 45px -16px black;
 }
 
-
 .front, .back{
     position: absolute;
 }
@@ -125,13 +145,10 @@ a:visited, a:link, a:hover, a:active{
 }
 
 .back img {
-    width: 200%;
+    width: 300%;
+    transform: translate(-35%, -15%);
 }
 
-/*When you hover over the back side of the card, it makes the back of the card transparent and you see the front img of the card underneath it*/
-/*.back:hover {*/
-    /*opacity: 0;*/
-/*}*/
 
 
 
@@ -154,9 +171,13 @@ a:visited, a:link, a:hover, a:active{
     border-radius: 10px;
 }
 
+
+
+
 /*jQuery DOM ELEMENTS*/
 .new_div {
     position: absolute;
     top: 0;
-    font-size: 17em;
+    font-size: 10vw;
+    transform: translate(50%, 200%);
 }
