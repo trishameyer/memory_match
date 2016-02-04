@@ -16,6 +16,7 @@ var second = null;
 
 //Add a click handler to each card using either jQuery-intermediate or onclick attribute-fundamentals
 $(document).ready(function(){
+    shuffle(imgArray);
     //click handler for back of card that calls to function card_clicked
     $('.card').click(function(){
         card_clicked(this);
@@ -34,6 +35,43 @@ $(document).ready(function(){
     });
     //display_stats();
 });
+
+var imgArray = ['images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png', 'images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png' ];
+
+
+function shuffle(old_array) {
+    var buffer_array = old_array.slice(),
+        new_array = [],
+        index;
+    // use the *old_array* as the looping reference
+    old_array.forEach(function () {
+        index = Math.floor(Math.random() * buffer_array.length);
+        new_array.push(buffer_array[index]);
+        buffer_array.splice(index, 1);
+    });
+
+    return makeCards(new_array);
+}
+
+
+function makeCards(shuffArray){
+    var counter;
+    shuffArray.forEach(function(index) {
+        counter++;
+        var new_img = $('<img>').attr('src', index);
+        var new_front_card = $('<div>').addClass('front').append(new_img);
+        var back_img = $('<img>').attr('src', 'images/cat_back.gif');
+        var new_back_card = $('<div>').addClass('back notFlipped');
+        var new_card = $('<div>').addClass('card');
+
+        $(new_back_card).append(back_img);
+
+        $(new_card).append(new_front_card);
+        $(new_card).append(new_back_card);
+        $('.game-area').append(new_card);
+    });
+}
+
 
 
 function card_clicked(the_card){
@@ -106,5 +144,13 @@ function reset_stats (){
     matches = 0;
     attempts = 0;
     display_stats();
+
+    //shuffle(imgArray); //adds another 18 cards instead of clearing cards and then creating them again
 }
+
+
+
+
+
+
 
