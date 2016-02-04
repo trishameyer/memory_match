@@ -77,12 +77,13 @@ function makeCards(shuffArray){
 
 function card_clicked(the_card){
     //check the flag variable value: if false(ie. the cards don't match) then exit the card_clicked function
-    if(!canClick){
+    if(!canClick || $(the_card).find('.back').hasClass('revealed')){
         return;
     }
     //is the first card == to null, if it is then set item clicked to variable first_card_clicked
-    $(the_card).find('.back').hide();
-    if(first_card_clicked == null){
+    $(the_card).find('.back').addClass('revealed').hide();
+    //if the card is not already matched....
+    if(first_card_clicked == null){ //... and if the card is null
         first_card_clicked = $(the_card).find('.front').find('img').attr('src');
         first = $(the_card).find('.back');
     } else {
@@ -114,7 +115,7 @@ function card_clicked(the_card){
             //set flag variable to false which prevents additional clicks when card clicked is called
             canClick = false;
             setTimeout(function(){
-                $('.card').find('.notFlipped').show(10);
+                $('.card').find('.notFlipped').removeClass('revealed').show(10);
                 canClick = true; // sets flag variable to true AFTER 2000ms(2 seconds) so you can click the cards after the backs of the cards show
             }, 2000);
             first_card_clicked = null;
@@ -148,7 +149,6 @@ function reset_stats (){
     $('.game-area').empty(); //doesn't allow me to click on the cards the 2nd time around
     shuffle(imgArray); //adds another 18 cards instead of clearing cards and then creating them again
 }
-
 
 
 
