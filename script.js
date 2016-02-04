@@ -31,9 +31,10 @@ $(document).ready(function(){
         display_stats(); //can't get code quite right in working order
         $('.back').addClass('notFlipped').show();
         $(new_div).hide(); //if this hasn't showed up yet, you get a reference error because the div hasn't been created yet
-
+        $('.card').click(function(){
+            card_clicked(this);
+        });
     });
-    //display_stats();
 });
 
 var imgArray = ['images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png', 'images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png' ];
@@ -144,8 +145,8 @@ function reset_stats (){
     matches = 0;
     attempts = 0;
     display_stats();
-
-    //shuffle(imgArray); //adds another 18 cards instead of clearing cards and then creating them again
+    $('.game-area').empty(); //doesn't allow me to click on the cards the 2nd time around
+    shuffle(imgArray); //adds another 18 cards instead of clearing cards and then creating them again
 }
 
 
