@@ -40,19 +40,20 @@ $(document).ready(function(){
 var imgArray = ['images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png', 'images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png' ];
 
 //dan start
-function shuffle(old_array) {
-    var buffer_array = old_array.slice(),
-        new_array = [],
-        index;
-    // use the *old_array* as the looping reference
-    old_array.forEach(function () {
-        index = Math.floor(Math.random() * buffer_array.length);
-        new_array.push(buffer_array[index]);
-        buffer_array.splice(index, 1);
-    });
 
-    return makeCards(new_array);
-}
+//declare a function that will randomly pick an image source from your parameter array..original array..and it will store it into a new array
+//takes the original array and copies the whole thing into a new array variable so we can use that and not mess with the original array
+//declare an empty array variable for later use
+//declare a variable that will store the random number that will be the same as the index number we want
+// use the original array as the looping reference, and use the method forEach() with a function in it that goes through each index of the original array
+//store a random whole number between 0 and the length of the new array in the already declared variable of index
+//take the random number generated and use that as your index space in your new array, take that index value and add it to the empty array already declared and your new array has a new length to work with
+//take the value at whatever random number you generated and cut it out, with splice, of the new array so it shortens the length of it...make sure you are only cutting out that one value and not multiple ones
+//this line before the end of the forEach() loop goes back to beginning of the forEach()loop and loops through the original_array until you loop to the end of the length of the new_array
+//end of forEach()loop method
+//call the function that will make the cards with the empty array as a parameter, now full of your randomized image sources, and dynamically make cards the cards to have an image with one of the index values in the array you are using as parameter
+} //end of the original function you declared at the beginning
+
 //dan end
 
 function makeCards(shuffArray){
