@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 var imgArray = ['images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png', 'images/bieberPusheen.png', 'images/cookiePusheen.png', 'images/eatingPusheen.png', 'images/glassesPusheen.png', 'images/keyboardPusheen.png', 'images/monoclePusheen.png', 'images/noodlePusheen.png', 'images/pizzaPusheen.png', 'images/pusheen.png' ];
 
-
+//dan start
 function shuffle(old_array) {
     var buffer_array = old_array.slice(),
         new_array = [],
@@ -53,7 +53,7 @@ function shuffle(old_array) {
 
     return makeCards(new_array);
 }
-
+//dan end
 
 function makeCards(shuffArray){
     var counter;
